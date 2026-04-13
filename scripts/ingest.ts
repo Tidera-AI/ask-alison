@@ -1,6 +1,7 @@
 import { createHash } from "node:crypto";
 import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
+import { openai } from "@ai-sdk/openai";
 import { createClient } from "@supabase/supabase-js";
 import { embedMany } from "ai";
 import { chunkText } from "../lib/rag/chunker";
@@ -16,8 +17,13 @@ if (!SUPABASE_URL || !SUPABASE_SERVICE_ROLE_KEY) {
   process.exit(1);
 }
 
+if (!process.env.OPENAI_API_KEY) {
+  console.error("Missing required env var: OPENAI_API_KEY");
+  process.exit(1);
+}
+
 const supabase = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY);
-const EMBEDDING_MODEL = "openai/text-embedding-3-small";
+const EMBEDDING_MODEL = openai.embedding("text-embedding-3-small");
 
 interface ContentSource {
   file: string;

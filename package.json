@@ -19,6 +19,7 @@
     "ingest": "tsx scripts/ingest.ts"
   },
   "dependencies": {
+    "@ai-sdk/openai": "^3.0.52",
     "@ai-sdk/provider": "^3.0.3",
     "@ai-sdk/react": "3.0.118",
     "@codemirror/lang-python": "^6.1.6",
