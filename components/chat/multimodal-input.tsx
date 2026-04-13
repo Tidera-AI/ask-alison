@@ -651,6 +651,11 @@ function PureModelSelectorCompact({
     activeModels[0];
   const [provider] = selectedModel.id.split("/");
 
+  // Don't show model selector when there's only one model
+  if (activeModels.length <= 1) {
+    return null;
+  }
+
   return (
     <ModelSelector onOpenChange={setOpen} open={open}>
       <ModelSelectorTrigger asChild>
