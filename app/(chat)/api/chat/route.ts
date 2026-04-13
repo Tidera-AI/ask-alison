@@ -1,23 +1,23 @@
-import { streamText, generateText } from "ai";
-import { getLanguageModel, getTitleModel } from "@/lib/ai/providers";
+import { randomUUID } from "node:crypto";
+import { generateText, streamText } from "ai";
 import { DEFAULT_CHAT_MODEL_ID } from "@/lib/ai/models";
 import { buildSystemPrompt, titlePrompt } from "@/lib/ai/prompts";
+import { getLanguageModel, getTitleModel } from "@/lib/ai/providers";
+import { trackQuestion } from "@/lib/analytics/track";
 import {
-  retrieveRelevantChunks,
-  formatChunksForPrompt,
-} from "@/lib/rag/retrieval";
-import {
-  saveChat,
-  saveMessage,
   getChatById,
   getMessagesByChatId,
-  updateChatTitle,
   getOrCreateUser,
+  saveChat,
+  saveMessage,
+  updateChatTitle,
 } from "@/lib/db/queries";
+import {
+  formatChunksForPrompt,
+  retrieveRelevantChunks,
+} from "@/lib/rag/retrieval";
 import { getOrCreateSessionUserId } from "@/lib/session/anonymous";
-import { trackQuestion } from "@/lib/analytics/track";
 import { chatRequestSchema } from "./schema";
-import { randomUUID } from "crypto";
 
 export async function POST(request: Request) {
   const body = await request.json();
@@ -62,16 +62,16 @@ export async function POST(request: Request) {
       .map((c) => c.topic)
       .filter((t): t is string => t !== null),
     chunks_used: chunks.length,
-  }).catch(() => {});
+  }).catch(() => {
+    /* fire and forget */
+  });
 
   // Get conversation history for context
   const previousMessages = await getMessagesByChatId(chatId);
-  const conversationHistory = previousMessages
-    .slice(-10)
-    .map((m) => ({
-      role: m.role as "user" | "assistant",
-      content: m.content,
-    }));
+  const conversationHistory = previousMessages.slice(-10).map((m) => ({
+    role: m.role as "user" | "assistant",
+    content: m.content,
+  }));
 
   // Build system prompt with retrieved context
   const systemPrompt = buildSystemPrompt(context);

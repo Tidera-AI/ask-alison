@@ -1,15 +1,18 @@
+import { createHash } from "node:crypto";
+import { readFileSync } from "node:fs";
+import { resolve } from "node:path";
 import { createClient } from "@supabase/supabase-js";
-import { createHash } from "crypto";
-import { readFileSync } from "fs";
-import { resolve } from "path";
 import { embedMany } from "ai";
 import { chunkText } from "../lib/rag/chunker";
 
-const SUPABASE_URL = process.env.SUPABASE_URL!;
-const SUPABASE_SERVICE_ROLE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY!;
+const SUPABASE_URL = process.env.SUPABASE_URL as string;
+const SUPABASE_SERVICE_ROLE_KEY = process.env
+  .SUPABASE_SERVICE_ROLE_KEY as string;
 
 if (!SUPABASE_URL || !SUPABASE_SERVICE_ROLE_KEY) {
-  console.error("Missing required env vars: SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY");
+  console.error(
+    "Missing required env vars: SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY"
+  );
   process.exit(1);
 }
 
@@ -25,11 +28,27 @@ interface ContentSource {
 const CONTENT_DIR = resolve(process.env.CONTENT_DIR ?? "./content");
 
 const sources: ContentSource[] = [
-  { file: "blog-text-extracted.txt", source: "blog", title: "Elevate Etiquette Blog" },
+  {
+    file: "blog-text-extracted.txt",
+    source: "blog",
+    title: "Elevate Etiquette Blog",
+  },
   { file: "evie_posts_combined.md", source: "evie", title: "Evie Magazine" },
-  { file: "substack_posts.md", source: "substack", title: "Substack Newsletter" },
-  { file: "elevateetiquette_captions_all.txt", source: "instagram", title: "Instagram" },
-  { file: "alison_knowledge_basev3.md", source: "knowledge_base", title: "Knowledge Base" },
+  {
+    file: "substack_posts.md",
+    source: "substack",
+    title: "Substack Newsletter",
+  },
+  {
+    file: "elevateetiquette_captions_all.txt",
+    source: "instagram",
+    title: "Instagram",
+  },
+  {
+    file: "alison_knowledge_basev3.md",
+    source: "knowledge_base",
+    title: "Knowledge Base",
+  },
 ];
 
 function contentHash(text: string): string {
@@ -42,7 +61,9 @@ async function embedBatch(texts: string[]): Promise<number[][]> {
 
   for (let i = 0; i < texts.length; i += batchSize) {
     const batch = texts.slice(i, i + batchSize);
-    console.log(`  Embedding batch ${Math.floor(i / batchSize) + 1}/${Math.ceil(texts.length / batchSize)}...`);
+    console.log(
+      `  Embedding batch ${Math.floor(i / batchSize) + 1}/${Math.ceil(texts.length / batchSize)}...`
+    );
     const { embeddings } = await embedMany({
       model: EMBEDDING_MODEL,
       values: batch,
@@ -93,7 +114,7 @@ async function ingest() {
     skippedChunks += chunks.length - newIndices.length;
 
     if (newIndices.length === 0) {
-      console.log(`  All chunks already ingested, skipping.\n`);
+      console.log("  All chunks already ingested, skipping.\n");
       continue;
     }
 

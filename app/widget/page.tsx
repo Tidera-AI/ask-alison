@@ -2,7 +2,7 @@
 
 import { useChat } from "@ai-sdk/react";
 import { DefaultChatTransport } from "ai";
-import { useState, useRef, useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 
 function generateId() {
   return crypto.randomUUID();
@@ -10,9 +10,9 @@ function generateId() {
 
 export default function WidgetChat() {
   const chatId = useRef(
-    typeof window !== "undefined"
-      ? (sessionStorage.getItem("widget-chat-id") ?? generateId())
-      : generateId(),
+    typeof window === "undefined"
+      ? generateId()
+      : (sessionStorage.getItem("widget-chat-id") ?? generateId())
   );
 
   useEffect(() => {
@@ -31,13 +31,16 @@ export default function WidgetChat() {
 
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: scroll on new messages
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!input.trim()) return;
+    if (!input.trim()) {
+      return;
+    }
     sendMessage({ text: input });
     setInput("");
   };
@@ -60,8 +63,8 @@ export default function WidgetChat() {
         )}
         {messages.map((message) => (
           <div
-            key={message.id}
             className={`flex ${message.role === "user" ? "justify-end" : "justify-start"}`}
+            key={message.id}
           >
             <div
               className={`max-w-[85%] rounded-2xl px-4 py-2 text-sm ${
@@ -70,8 +73,10 @@ export default function WidgetChat() {
                   : "bg-zinc-100 text-zinc-900 dark:bg-zinc-800 dark:text-zinc-100"
               }`}
             >
-              {message.parts.map((part, i) =>
-                part.type === "text" ? <span key={i}>{part.text}</span> : null
+              {message.parts.map((part) =>
+                part.type === "text" ? (
+                  <span key={part.text}>{part.text}</span>
+                ) : null
               )}
             </div>
           </div>
@@ -87,21 +92,23 @@ export default function WidgetChat() {
       </div>
 
       <form
-        onSubmit={handleSubmit}
         className="flex-shrink-0 border-t border-zinc-200 dark:border-zinc-800 px-4 py-3"
+        onSubmit={handleSubmit}
       >
         <div className="flex gap-2">
           <input
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            placeholder="Ask an etiquette question..."
             className="flex-1 rounded-xl border border-zinc-300 dark:border-zinc-700 px-3 py-2 text-sm bg-white dark:bg-zinc-900 focus:outline-none focus:ring-2 focus:ring-zinc-400"
             disabled={status === "streaming" || status === "submitted"}
+            onChange={(e) => setInput(e.target.value)}
+            placeholder="Ask an etiquette question..."
+            value={input}
           />
           <button
-            type="submit"
-            disabled={status === "streaming" || status === "submitted" || !input.trim()}
             className="rounded-xl bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-900 px-4 py-2 text-sm font-medium disabled:opacity-50"
+            disabled={
+              status === "streaming" || status === "submitted" || !input.trim()
+            }
+            type="submit"
           >
             Send
           </button>

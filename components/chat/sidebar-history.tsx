@@ -31,6 +31,7 @@ type Chat = {
   createdAt: string | Date;
   visibility: "private" | "public";
 };
+
 import { LoaderIcon } from "./icons";
 import { ChatItem } from "./sidebar-history-item";
 
@@ -114,11 +115,10 @@ export function SidebarHistory() {
     isValidating,
     isLoading,
     mutate,
-  } = useSWRInfinite<ChatHistory>(
-    getChatHistoryPaginationKey,
-    fetcher,
-    { fallbackData: [], revalidateOnFocus: false }
-  );
+  } = useSWRInfinite<ChatHistory>(getChatHistoryPaginationKey, fetcher, {
+    fallbackData: [],
+    revalidateOnFocus: false,
+  });
 
   const router = useRouter();
   const [deleteId, setDeleteId] = useState<string | null>(null);

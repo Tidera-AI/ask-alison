@@ -9,6 +9,7 @@ type Chat = {
   createdAt: string | Date;
   visibility: VisibilityType;
 };
+
 import {
   DropdownMenu,
   DropdownMenuContent,

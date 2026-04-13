@@ -34,21 +34,14 @@ vi.mock("./supabase", () => {
   return { supabase };
 });
 
-// Import after mock is established.
-import { supabase } from "./supabase";
 import {
   getChatsByUserId,
   getMessagesByChatId,
   getOrCreateUser,
   saveChat,
 } from "./queries";
-
-// Helper: configure supabase.from to return a fresh chainable mock.
-function mockFrom(terminalResult: unknown) {
-  const chain = makeChain(terminalResult);
-  (supabase.from as ReturnType<typeof vi.fn>).mockReturnValue(chain);
-  return chain;
-}
+// Import after mock is established.
+import { supabase } from "./supabase";
 
 beforeEach(() => {
   vi.clearAllMocks();
@@ -60,7 +53,9 @@ describe("getOrCreateUser", () => {
 
     // First call: select → maybeSingle returns existing user
     const selectChain = makeChain({ data: existingUser, error: null });
-    (supabase.from as ReturnType<typeof vi.fn>).mockReturnValueOnce(selectChain);
+    (supabase.from as ReturnType<typeof vi.fn>).mockReturnValueOnce(
+      selectChain
+    );
 
     const result = await getOrCreateUser("user-1");
 
@@ -74,11 +69,15 @@ describe("getOrCreateUser", () => {
 
     // First call: select → maybeSingle returns null (no existing user)
     const selectChain = makeChain({ data: null, error: null });
-    (supabase.from as ReturnType<typeof vi.fn>).mockReturnValueOnce(selectChain);
+    (supabase.from as ReturnType<typeof vi.fn>).mockReturnValueOnce(
+      selectChain
+    );
 
     // Second call: insert → single returns new user
     const insertChain = makeChain({ data: newUser, error: null });
-    (supabase.from as ReturnType<typeof vi.fn>).mockReturnValueOnce(insertChain);
+    (supabase.from as ReturnType<typeof vi.fn>).mockReturnValueOnce(
+      insertChain
+    );
 
     const result = await getOrCreateUser("user-2");
 
@@ -112,7 +111,7 @@ describe("saveChat", () => {
     (supabase.from as ReturnType<typeof vi.fn>).mockReturnValue(insertChain);
 
     await expect(
-      saveChat({ id: "chat-1", user_id: "user-1", title: "Hello" }),
+      saveChat({ id: "chat-1", user_id: "user-1", title: "Hello" })
     ).rejects.toThrow("Failed to save chat: db error");
   });
 });
@@ -162,7 +161,7 @@ describe("getMessagesByChatId", () => {
     (supabase.from as ReturnType<typeof vi.fn>).mockReturnValue(chain);
 
     await expect(getMessagesByChatId("chat-1")).rejects.toThrow(
-      "Failed to get messages: query failed",
+      "Failed to get messages: query failed"
     );
   });
 });

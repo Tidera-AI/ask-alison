@@ -19,8 +19,13 @@ describe("chunkText", () => {
   });
 
   it("preserves all content across chunks (no text lost)", () => {
-    const paragraph = "The quick brown fox jumps over the lazy dog. ".repeat(10).trim();
-    const longText = Array.from({ length: 8 }, (_, i) => `Paragraph ${i + 1}: ${paragraph}`).join("\n\n");
+    const paragraph = "The quick brown fox jumps over the lazy dog. "
+      .repeat(10)
+      .trim();
+    const longText = Array.from(
+      { length: 8 },
+      (_, i) => `Paragraph ${i + 1}: ${paragraph}`
+    ).join("\n\n");
 
     const chunks = chunkText(longText);
 
@@ -42,7 +47,10 @@ describe("chunkText", () => {
 
   it("respects custom maxTokens option", () => {
     // With a tiny maxTokens, even a moderate text must be split
-    const text = Array.from({ length: 5 }, (_, i) => `Paragraph ${i + 1} with some words here.`).join("\n\n");
+    const text = Array.from(
+      { length: 5 },
+      (_, i) => `Paragraph ${i + 1} with some words here.`
+    ).join("\n\n");
     const chunksSmall = chunkText(text, { maxTokens: 10, overlapTokens: 0 });
     const chunksLarge = chunkText(text, { maxTokens: 600, overlapTokens: 0 });
 

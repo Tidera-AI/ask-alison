@@ -22,6 +22,7 @@ export type UIArtifact = {
 
 // Re-exported from create-artifact to avoid duplicate type definitions
 import type { ArtifactToolbarItem as _ArtifactToolbarItem } from "./create-artifact";
+
 export type { ArtifactToolbarItem } from "./create-artifact";
 
 export type ArtifactDefinition = {
@@ -32,7 +33,9 @@ export type ArtifactDefinition = {
   toolbar: _ArtifactToolbarItem[];
   onStreamPart?: (params: {
     streamPart: unknown;
-    setArtifact: (updater: UIArtifact | ((current: UIArtifact) => UIArtifact)) => void;
+    setArtifact: (
+      updater: UIArtifact | ((current: UIArtifact) => UIArtifact)
+    ) => void;
     setMetadata: (metadata: unknown) => void;
   }) => void;
   initialize?: (params: {

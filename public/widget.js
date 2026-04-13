@@ -1,10 +1,9 @@
-(function () {
-  "use strict";
+(() => {
+  const CHAT_URL =
+    window.__ASK_ALISON_URL || "https://ask.elevateetiquette.com";
+  const WIDGET_PATH = "/widget";
 
-  var CHAT_URL = window.__ASK_ALISON_URL || "https://ask.elevateetiquette.com";
-  var WIDGET_PATH = "/widget";
-
-  var style = document.createElement("style");
+  const style = document.createElement("style");
   style.textContent = [
     "#ask-alison-bubble {",
     "  position: fixed;",
@@ -60,22 +59,22 @@
   ].join("\n");
   document.head.appendChild(style);
 
-  var bubble = document.createElement("button");
+  const bubble = document.createElement("button");
   bubble.id = "ask-alison-bubble";
   bubble.setAttribute("aria-label", "Open Ask Alison chat");
   bubble.innerHTML = "\uD83D\uDCAC";
   document.body.appendChild(bubble);
 
-  var panel = document.createElement("div");
+  const panel = document.createElement("div");
   panel.id = "ask-alison-panel";
   panel.setAttribute("role", "dialog");
   panel.setAttribute("aria-label", "Ask Alison etiquette chat");
   document.body.appendChild(panel);
 
-  var iframe = null;
-  var isOpen = false;
+  let iframe = null;
+  let isOpen = false;
 
-  bubble.addEventListener("click", function () {
+  bubble.addEventListener("click", () => {
     isOpen = !isOpen;
 
     if (isOpen) {
@@ -98,7 +97,7 @@
     }
   });
 
-  document.addEventListener("keydown", function (e) {
+  document.addEventListener("keydown", (e) => {
     if (e.key === "Escape" && isOpen) {
       bubble.click();
     }

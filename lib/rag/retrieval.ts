@@ -13,7 +13,7 @@ export interface RetrievedChunk {
 
 export async function retrieveRelevantChunks(
   query: string,
-  topK: number = 6,
+  topK = 6
 ): Promise<RetrievedChunk[]> {
   const queryEmbedding = await generateEmbedding(query);
 
@@ -38,7 +38,7 @@ export function formatChunksForPrompt(chunks: RetrievedChunk[]): string {
   return chunks
     .map(
       (chunk, i) =>
-        `[Source ${i + 1}: ${chunk.title} (${chunk.source})]:\n${chunk.content}`,
+        `[Source ${i + 1}: ${chunk.title} (${chunk.source})]:\n${chunk.content}`
     )
     .join("\n\n---\n\n");
 }

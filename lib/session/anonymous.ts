@@ -1,5 +1,5 @@
+import { randomUUID } from "node:crypto";
 import { cookies } from "next/headers";
-import { randomUUID } from "crypto";
 
 export const SESSION_COOKIE_NAME = "ask-alison-session";
 const SESSION_MAX_AGE = 60 * 60 * 24 * 365; // 1 year

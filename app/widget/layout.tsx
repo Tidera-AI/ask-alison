@@ -11,9 +11,7 @@ export default function WidgetLayout({
 }) {
   return (
     <html lang="en">
-      <body className="bg-white dark:bg-zinc-950">
-        {children}
-      </body>
+      <body className="bg-white dark:bg-zinc-950">{children}</body>
     </html>
   );
 }

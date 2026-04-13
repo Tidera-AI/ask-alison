@@ -9,7 +9,7 @@ function estimateTokens(text: string): number {
 
 export function chunkText(
   text: string,
-  options: ChunkOptions = { maxTokens: 600, overlapTokens: 75 },
+  options: ChunkOptions = { maxTokens: 600, overlapTokens: 75 }
 ): string[] {
   const { maxTokens, overlapTokens } = options;
 
@@ -35,11 +35,15 @@ export function chunkText(
       const sentences = paragraph.match(/[^.!?]+[.!?]+/g) ?? [paragraph];
       for (const sentence of sentences) {
         const sentenceTokens = estimateTokens(sentence);
-        if (currentTokens + sentenceTokens > maxTokens && currentChunk.length > 0) {
+        if (
+          currentTokens + sentenceTokens > maxTokens &&
+          currentChunk.length > 0
+        ) {
           chunks.push(currentChunk.join(" "));
           const overlapText = currentChunk.slice(-1);
           currentChunk = overlapTokens > 0 ? overlapText : [];
-          currentTokens = overlapTokens > 0 ? estimateTokens(overlapText.join(" ")) : 0;
+          currentTokens =
+            overlapTokens > 0 ? estimateTokens(overlapText.join(" ")) : 0;
         }
         currentChunk.push(sentence.trim());
         currentTokens += sentenceTokens;
@@ -47,13 +51,17 @@ export function chunkText(
       continue;
     }
 
-    if (currentTokens + paragraphTokens > maxTokens && currentChunk.length > 0) {
+    if (
+      currentTokens + paragraphTokens > maxTokens &&
+      currentChunk.length > 0
+    ) {
       chunks.push(currentChunk.join("\n\n"));
       const overlapText = overlapTokens > 0 ? currentChunk.slice(-1) : [];
       currentChunk = [...overlapText];
-      currentTokens = overlapTokens > 0
-        ? overlapText.reduce((sum, t) => sum + estimateTokens(t), 0)
-        : 0;
+      currentTokens =
+        overlapTokens > 0
+          ? overlapText.reduce((sum, t) => sum + estimateTokens(t), 0)
+          : 0;
     }
 
     currentChunk.push(paragraph);

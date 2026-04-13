@@ -1,6 +1,7 @@
 import { type NextRequest, NextResponse } from "next/server";
 
-const ALLOWED_ORIGIN = process.env.ALLOWED_ORIGIN ?? "https://elevateetiquette.com";
+const ALLOWED_ORIGIN =
+  process.env.ALLOWED_ORIGIN ?? "https://elevateetiquette.com";
 
 export function proxy(request: NextRequest) {
   const response = NextResponse.next();

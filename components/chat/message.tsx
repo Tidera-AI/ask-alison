@@ -135,7 +135,8 @@ const PurePreviewMessage = ({
       const approvalId = anyPart.approval?.id;
       const isDenied =
         state === "output-denied" ||
-        (state === "approval-responded" && anyPart.approval?.approved === false);
+        (state === "approval-responded" &&
+          anyPart.approval?.approved === false);
       const widthClass = "w-[min(100%,450px)]";
 
       if (state === "output-available") {

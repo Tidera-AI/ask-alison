@@ -10,7 +10,10 @@ export type MessageMetadata = z.infer<typeof messageMetadataSchema>;
 
 // Stub tool types — actual tool implementations removed
 const stubTool = z.object({}).passthrough();
-type StubTool = InferUITool<{ inputSchema: typeof stubTool; execute: () => Promise<unknown> }>;
+type StubTool = InferUITool<{
+  inputSchema: typeof stubTool;
+  execute: () => Promise<unknown>;
+}>;
 
 export type ChatTools = {
   getWeather: StubTool;
