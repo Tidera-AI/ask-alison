@@ -1,7 +1,13 @@
 import type { Node } from "prosemirror-model";
 import { Plugin, PluginKey } from "prosemirror-state";
 import { DecorationSet } from "prosemirror-view";
-import type { Suggestion } from "@/lib/db/schema";
+
+type Suggestion = {
+  id: string;
+  originalText: string;
+  suggestedText: string;
+  description?: string | null;
+};
 
 export interface UISuggestion extends Suggestion {
   selectionStart: number;

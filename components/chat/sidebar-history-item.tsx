@@ -1,7 +1,14 @@
 import Link from "next/link";
 import { memo } from "react";
 import { useChatVisibility } from "@/hooks/use-chat-visibility";
-import type { Chat } from "@/lib/db/schema";
+import type { VisibilityType } from "./visibility-selector";
+
+type Chat = {
+  id: string;
+  title: string;
+  createdAt: string | Date;
+  visibility: VisibilityType;
+};
 import {
   DropdownMenu,
   DropdownMenuContent,

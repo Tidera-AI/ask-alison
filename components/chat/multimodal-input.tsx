@@ -682,7 +682,7 @@ function PureModelSelectorCompact({
             for (const model of allModels) {
               const key = curatedIds.has(model.id)
                 ? "_available"
-                : model.provider;
+                : (model.provider ?? "other");
               if (!grouped[key]) {
                 grouped[key] = [];
               }

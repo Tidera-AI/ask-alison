@@ -129,19 +129,19 @@ const PurePreviewMessage = ({
     }
 
     if (type === "tool-getWeather") {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const anyPart = part as any;
       const { toolCallId, state } = part;
-      const approvalId = (part as { approval?: { id: string } }).approval?.id;
+      const approvalId = anyPart.approval?.id;
       const isDenied =
         state === "output-denied" ||
-        (state === "approval-responded" &&
-          (part as { approval?: { approved?: boolean } }).approval?.approved ===
-            false);
+        (state === "approval-responded" && anyPart.approval?.approved === false);
       const widthClass = "w-[min(100%,450px)]";
 
       if (state === "output-available") {
         return (
           <div className={widthClass} key={toolCallId}>
-            <Weather weatherAtLocation={part.output} />
+            <Weather weatherAtLocation={anyPart.output} />
           </div>
         );
       }
@@ -219,15 +219,17 @@ const PurePreviewMessage = ({
     }
 
     if (type === "tool-createDocument") {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const anyPart = part as any;
       const { toolCallId } = part;
 
-      if (part.output && "error" in part.output) {
+      if (anyPart.output && "error" in anyPart.output) {
         return (
           <div
             className="rounded-lg border border-red-200 bg-red-50 p-4 text-red-500 dark:bg-red-950/50"
             key={toolCallId}
           >
-            Error creating document: {String(part.output.error)}
+            Error creating document: {String(anyPart.output.error)}
           </div>
         );
       }
@@ -236,21 +238,23 @@ const PurePreviewMessage = ({
         <DocumentPreview
           isReadonly={isReadonly}
           key={toolCallId}
-          result={part.output}
+          result={anyPart.output}
         />
       );
     }
 
     if (type === "tool-updateDocument") {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const anyPart = part as any;
       const { toolCallId } = part;
 
-      if (part.output && "error" in part.output) {
+      if (anyPart.output && "error" in anyPart.output) {
         return (
           <div
             className="rounded-lg border border-red-200 bg-red-50 p-4 text-red-500 dark:bg-red-950/50"
             key={toolCallId}
           >
-            Error updating document: {String(part.output.error)}
+            Error updating document: {String(anyPart.output.error)}
           </div>
         );
       }
@@ -258,15 +262,17 @@ const PurePreviewMessage = ({
       return (
         <div className="relative" key={toolCallId}>
           <DocumentPreview
-            args={{ ...part.output, isUpdate: true }}
+            args={{ ...anyPart.output, isUpdate: true }}
             isReadonly={isReadonly}
-            result={part.output}
+            result={anyPart.output}
           />
         </div>
       );
     }
 
     if (type === "tool-requestSuggestions") {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const anyPart = part as any;
       const { toolCallId, state } = part;
 
       return (
@@ -277,19 +283,19 @@ const PurePreviewMessage = ({
         >
           <ToolHeader state={state} type="tool-requestSuggestions" />
           <ToolContent>
-            {state === "input-available" && <ToolInput input={part.input} />}
+            {state === "input-available" && <ToolInput input={anyPart.input} />}
             {state === "output-available" && (
               <ToolOutput
                 errorText={undefined}
                 output={
-                  "error" in part.output ? (
+                  anyPart.output && "error" in anyPart.output ? (
                     <div className="rounded border p-2 text-red-500">
-                      Error: {String(part.output.error)}
+                      Error: {String(anyPart.output.error)}
                     </div>
                   ) : (
                     <DocumentToolResult
                       isReadonly={isReadonly}
-                      result={part.output}
+                      result={anyPart.output}
                       type="request-suggestions"
                     />
                   )

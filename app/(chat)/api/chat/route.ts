@@ -69,9 +69,8 @@ export async function POST(request: Request) {
   const conversationHistory = previousMessages
     .slice(-10)
     .map((m) => ({
-      id: m.id,
       role: m.role as "user" | "assistant",
-      parts: [{ type: "text" as const, text: m.content }],
+      content: m.content,
     }));
 
   // Build system prompt with retrieved context
@@ -95,7 +94,7 @@ export async function POST(request: Request) {
         const titleResult = await generateText({
           model: getTitleModel(),
           system: titlePrompt,
-          messages: [{ role: "user", parts: [{ type: "text", text: userText }] }],
+          messages: [{ role: "user" as const, content: userText }],
         });
         await updateChatTitle(chatId, titleResult.text.trim());
       }
