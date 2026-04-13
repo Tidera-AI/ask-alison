@@ -15,8 +15,15 @@ export const fetcher = async (url: string) => {
   const response = await fetch(url);
 
   if (!response.ok) {
-    const { code, cause } = await response.json();
-    throw new ChatbotError(code as ErrorCode, cause);
+    try {
+      const { code, cause } = await response.json();
+      throw new ChatbotError(code as ErrorCode, cause);
+    } catch (e) {
+      if (e instanceof ChatbotError) {
+        throw e;
+      }
+      throw new Error(`Request failed: ${response.status} ${response.statusText}`);
+    }
   }
 
   return response.json();
@@ -30,8 +37,15 @@ export async function fetchWithErrorHandlers(
     const response = await fetch(input, init);
 
     if (!response.ok) {
-      const { code, cause } = await response.json();
-      throw new ChatbotError(code as ErrorCode, cause);
+      try {
+        const { code, cause } = await response.json();
+        throw new ChatbotError(code as ErrorCode, cause);
+      } catch (e) {
+        if (e instanceof ChatbotError) {
+          throw e;
+        }
+        throw new Error(`Request failed: ${response.status} ${response.statusText}`);
+      }
     }
 
     return response;
