@@ -49,9 +49,7 @@
     "jtbd_evidence_source": "Stated (from official marketing on aaaaccelerator.com, liamottley.com, Skool community descriptions, YouTube video titles, and LinkedIn posts)"
   },
   "functionality": {
-    "modalities": [
-      "text"
-    ],
+    "modalities": ["text"],
     "requires_login": "[uncertain] DoBot access requirements not publicly documented. Agentive required account creation. AAA Accelerator Skool community requires membership.",
     "memory_persistence": "[uncertain] Not publicly documented for DoBot or Agentive.",
     "upload_support": "[uncertain] Agentive supported website training (URL-based ingestion). DoBot upload capabilities not documented.",

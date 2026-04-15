@@ -45,9 +45,7 @@
     "jtbd_evidence_source": "Inferred from GPT Store listings and Bartlett's broader product ecosystem. The GPTs do not appear to be heavily promoted as standalone products with explicit JTBD framing."
   },
   "functionality": {
-    "modalities": [
-      "text"
-    ],
+    "modalities": ["text"],
     "requires_login": true,
     "login_note": "Requires a ChatGPT account (free tier may have limited access; ChatGPT Plus provides full GPT Store access)",
     "memory_persistence": "[uncertain] Depends on ChatGPT platform defaults. No custom memory features documented for these GPTs.",

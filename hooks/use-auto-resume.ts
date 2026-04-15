@@ -15,7 +15,7 @@ export type UseAutoResumeParams = {
 export function useAutoResume({
   autoResume,
   initialMessages,
-  resumeStream,
+  resumeStream: _resumeStream,
   setMessages,
 }: UseAutoResumeParams) {
   const { dataStream } = useDataStream();

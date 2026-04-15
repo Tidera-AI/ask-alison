@@ -45,9 +45,7 @@
     "jtbd_evidence_source": "Stated (from official marketing copy on schoolofbots.co, go.schoolofbots.co/welcome, podcast interviews on Creator Science, Amy Porterfield, Jenna Kutcher, and Melissa Ambrosini shows, and ManyChat partnership page)"
   },
   "functionality": {
-    "modalities": [
-      "text"
-    ],
+    "modalities": ["text"],
     "requires_login": false,
     "memory_persistence": "[uncertain] ManyChat-based automations have conversation history within the platform, but persistence details depend on ManyChat's infrastructure rather than School of Bots proprietary systems",
     "upload_support": "[uncertain] Not publicly documented for the chat funnels themselves",

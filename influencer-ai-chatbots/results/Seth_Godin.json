@@ -49,9 +49,7 @@
     "jtbd_evidence_source": "Stated (from Seth Godin's blog posts 'Opening the pod bay door' March 2023 and 'ChatGPT for you' September 2023, and Chat Thing platform listing)"
   },
   "functionality": {
-    "modalities": [
-      "text"
-    ],
+    "modalities": ["text"],
     "requires_login": false,
     "memory_persistence": "[uncertain] Not publicly documented; Chat Thing platform does support chat sessions but persistence across sessions unclear",
     "upload_support": false,

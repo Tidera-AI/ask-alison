@@ -51,10 +51,7 @@
     "jtbd_evidence_source": "Stated (from Delphi.ai marketing copy, Fast Company coverage, and iwillteachyoutoberich.com)"
   },
   "functionality": {
-    "modalities": [
-      "text",
-      "voice"
-    ],
+    "modalities": ["text", "voice"],
     "requires_login": "[uncertain] Delphi.ai Digital Minds typically allow limited free interactions; full access may require account creation or payment depending on creator configuration",
     "memory_persistence": "[uncertain] Delphi platform supports contact management (up to 1,000 on Builder plan), suggesting some conversation memory, but specifics for Ramit's implementation not documented",
     "upload_support": "[uncertain] Not publicly documented for end-user interactions. Creator side supports content uploads for training.",

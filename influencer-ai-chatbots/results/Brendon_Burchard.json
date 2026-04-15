@@ -2,7 +2,14 @@
   "creator_profile": {
     "name": "Brendon Burchard",
     "primary_niche": "High performance coaching, personal development, motivation, leadership, entrepreneurship",
-    "main_platforms": ["YouTube", "Instagram", "Podcast (Progress Mode with Brendon Burchard)", "GrowthDay app", "Facebook", "X/Twitter"],
+    "main_platforms": [
+      "YouTube",
+      "Instagram",
+      "Podcast (Progress Mode with Brendon Burchard)",
+      "GrowthDay app",
+      "Facebook",
+      "X/Twitter"
+    ],
     "audience_size_documented": {
       "social_media_total": "5M+ followers across platforms (per brendon.com, verified April 2026)",
       "youtube_subscribers": "~2.3M subscribers (per Social Blade, verified April 2026)",

@@ -1,0 +1,124 @@
+{
+  "creator_profile": {
+    "name": "Amy Porterfield",
+    "primary_niche": "Online courses/digital marketing, entrepreneurship, email list building",
+    "main_platforms": [
+      "Podcast (The Amy Porterfield Show)",
+      "Instagram",
+      "Facebook",
+      "YouTube",
+      "Website (amyporterfield.com)"
+    ],
+    "audience_size_documented": {
+      "Instagram": "~465K followers (April 2026, via Instagram @amyporterfield)",
+      "Facebook": "~357K followers (April 2026, via Facebook /AmyPorterfield)",
+      "YouTube": "~36.6K subscribers (estimated, via youtubers.me)",
+      "Podcast": "840+ episodes, 34M+ cumulative downloads as of early 2022; 1M downloads in a single month milestone achieved; 234% download growth after strategic restructuring",
+      "Email_list": "Hundreds of thousands of subscribers; grows by ~10,000 subscribers/month via lead magnets and pop-ups",
+      "cross_platform_note": "New York Times bestselling author (Two Weeks Notice). $130M+ cumulative online business revenue. 100,000+ students across all programs. 16+ years in the online marketing space."
+    },
+    "tier_classification": "Tier B",
+    "tier_justification": "Dominant figure in online course creation and digital marketing education with 16+ years of experience. $130M+ in cumulative course sales. 100K+ students. Top-ranked podcast with 840+ episodes and 34M+ downloads. Moderate social media following (465K Instagram, 357K Facebook) compared to Tier A creators, but extraordinary depth of influence within the course creator niche. NYT bestselling author. Primary revenue (95%) comes from digital course sales."
+  },
+  "bot_identity": {
+    "bot_name": "[uncertain] No specific standalone bot name identified; referred to as 'custom-trained AI assistant' and 'AI toolkit' within Digital Course Academy modules",
+    "positioning_tagline": "Like having a business coach in your back pocket -- custom-trained AI assistants embedded in every module of Digital Course Academy.",
+    "positioning_narrative_excerpts": [
+      "Every single module comes with access to a custom-trained AI assistant that's like having a business coach in your back pocket.",
+      "This isn't some generic chatbot, it's specifically trained to help you with things like drafting compelling sales page copy that actually converts, brainstorming webinar talking points that keep your audience engaged, simplifying all the tech stuff that usually trips people up, and clarifying exactly what your next step should be when you feel stuck.",
+      "AI is a tool, not a voice -- when you lead with your stories and lived experience, AI becomes your assistant rather than your replacement, helping to sharpen content rather than water it down."
+    ],
+    "launch_date": "2024-2025 (AI toolkits integrated into Digital Course Academy as part of the 2025 program redesign; AI-focused podcast episodes began appearing in late 2024)",
+    "current_status": "Active (embedded within DCA modules; enrollment opens annually in September)"
+  },
+  "jobs_to_be_done": {
+    "primary_jtbds": [
+      "course_teaching_assistant - Custom-trained AI assistant in every DCA module to guide students through course creation process",
+      "content_creation_support - Drafting compelling sales page copy that converts",
+      "webinar_preparation - Brainstorming webinar talking points that keep audiences engaged",
+      "tech_simplification - Simplifying technical tasks that typically trip up course creators",
+      "next_step_clarification - Clarifying exactly what the next step should be when students feel stuck"
+    ],
+    "secondary_jtbds": [
+      "course_outline_development - AI assists with outlining course content in Module 3",
+      "brainstorming_partner - AI serves as brainstorming partner for course ideas and positioning",
+      "blank_page_syndrome_relief - Reduces the blank page syndrome that many course creators face when developing content",
+      "pre_sale_education - AI helps with sales copy, positioning, and launch strategy within course modules"
+    ],
+    "jtbd_evidence_source": "Stated (from official DCA marketing copy on dca.jennakutcher.com, affiliate review sites, and Amy Porterfield podcast episodes #742 and #749)"
+  },
+  "functionality": {
+    "modalities": ["text"],
+    "requires_login": true,
+    "memory_persistence": "[uncertain] Not publicly documented; AI assistants are module-specific within the DCA platform",
+    "upload_support": "[uncertain] Not publicly documented",
+    "tool_integrations": "[uncertain] No specific third-party integrations publicly documented. The AI toolkit appears to be embedded within the DCA course platform. Amy has referenced tools like ChatGPT, custom GPTs, napkin.ai, and lately.ai in her podcast content, but it is unclear if these are directly integrated into DCA or recommended as supplementary tools.",
+    "knowledge_grounding_claimed": "Custom-trained on Amy Porterfield's course creation methodology, sales copy frameworks, webinar strategies, tech workflows, and digital course launch processes. Each module has its own AI toolkit trained on module-specific content and processes. The AI is designed to deliver answers aligned with Amy's proven frameworks from 16+ years of online course creation experience.",
+    "moderation_disclaimers": "[uncertain] No specific moderation disclaimers for the AI assistants have been publicly documented. DCA program terms and refund policies exist but AI-specific terms are not separately referenced.",
+    "human_handoff": "DCA includes live Q&A sessions with Amy Porterfield, a Q&A vault, and community support. The AI assistants complement rather than replace human coaching. Unclear if the AI itself escalates to human support.",
+    "platform_infrastructure": "[uncertain] Underlying LLM provider not publicly disclosed. Marketing references 'custom-trained AI assistant' which could indicate custom GPTs (OpenAI) or another platform. Amy has discussed custom GPTs on her podcast (episode #742) and featured case studies of students using OpenAI's custom GPT builder, suggesting familiarity with the OpenAI ecosystem. The DCA course platform itself is not publicly identified.",
+    "voice_modality_details": "No voice modality documented for the AI assistants. Text-based interaction within course modules.",
+    "ai_agent_capabilities": "Advisory/instructional chatbot focused on course creation guidance. Generates outputs such as sales page copy drafts, webinar talking points, course outlines, and step-by-step next actions. No documented autonomous action-taking capabilities (no booking, CRM integration, or workflow execution). Positioned as a 'brainstorming partner' and 'behind-the-scenes assistant' rather than an autonomous agent."
+  },
+  "distribution": {
+    "access_url": "https://www.amyporterfield.com/online-business-courses/ (course catalog) and https://dca.jennakutcher.com/ (DCA enrollment via affiliate)",
+    "distribution_path_description": "Podcast (The Amy Porterfield Show) -> website amyporterfield.com -> free webinar/bootcamp (Course Confident Bootcamp at $47 or free masterclass) -> DCA enrollment page -> purchase Digital Course Academy ($1,997 or payment plan) -> AI toolkits accessible within each module. Also distributed via affiliate partners (Jenna Kutcher, Jamie Trull, etc.) with bonus packages.",
+    "link_in_bio_platform": "Custom (amyporterfield.com). Instagram bio links to amyporterfield.com. Also uses bootcamp.amyporterfield.com and subscribed.amyporterfield.com for specific funnels.",
+    "social_to_bot_funnel": "Podcast episodes -> lead magnets and free resources -> email list nurture -> annual DCA launch (September) -> course enrollment -> AI toolkit access within modules. Instagram @amyporterfield -> bio link to amyporterfield.com. Facebook /AmyPorterfield -> content and community engagement. YouTube -> supplementary content. The AI assistants are not directly accessible from social media; they require DCA enrollment."
+  },
+  "monetization": {
+    "pricing_model": "bundled_with_course (AI assistants are integrated into Digital Course Academy modules, not sold separately)",
+    "public_price": "$1,997 one-time payment for Digital Course Academy (or $387/month for 6 months, or 12-month payment plan). Course Confident Bootcamp is $47 (lead-in product). List Builders Society is $497 (separate course). AI toolkits are included in DCA at no additional cost.",
+    "bundled_with": "Digital Course Academy ($1,997) -- AI toolkits are embedded in every module as part of the core program, not offered as a standalone product",
+    "monetization_linkage_type": "course_retention (AI assistants increase perceived value and reduce student friction within DCA), lead_generation (AI-related podcast content drives interest in DCA), upsell_funnel (free bootcamp -> DCA enrollment)",
+    "list_building_integration": "Multiple lead magnets drive email list growth (~10K subscribers/month): free masterclasses, Course Confident Bootcamp ($47), podcast lead magnets, website pop-ups, and the SUBSCRIBED program. Email list is the primary sales channel for annual DCA launches.",
+    "revenue_model_detail": {
+      "digital_course_academy": "$1,997 one-time or $387/month x 6 months (annual enrollment, typically September)",
+      "list_builders_society": "$497 one-time or $179/month x 3 months or $89/month x 6 months",
+      "course_confident_bootcamp": "$47 one-time (lead-in product to DCA)",
+      "subscribed_program": "[uncertain] Pricing not confirmed in search results",
+      "cumulative_revenue": "$130M+ in total online business revenue over 16+ years",
+      "annual_revenue": "~$5M/year reported (95% from digital course sales)",
+      "estimated_annual_ai_revenue": "[uncertain] Not separately disclosed. AI toolkits are bundled into DCA and not monetized as a standalone product."
+    }
+  },
+  "content_training": {
+    "content_training_corpus": "Amy Porterfield's proprietary course creation methodology developed over 16+ years, including: digital course planning frameworks, sales page copywriting templates, webinar structure and talking points, tech setup workflows, course outline processes, launch strategy playbooks, and email marketing frameworks. Each module's AI toolkit is trained on module-specific content. Additionally informed by experience helping 100,000+ students create and launch digital courses.",
+    "update_frequency": "[uncertain] Not publicly documented. DCA undergoes annual updates (the 2025 version was described as completely reimagined and streamlined), suggesting AI toolkits are updated at least annually alongside the course content."
+  },
+  "risks_guardrails": {
+    "stated_disclaimers": "[uncertain] No AI-specific disclaimers publicly documented for the DCA AI assistants. General course terms exist at help.amyporterfield.com. DCA includes a refund policy (conditions apply).",
+    "data_use_policy_cited": "[uncertain] Amy Porterfield's general privacy policy exists on amyporterfield.com, but no AI-specific data use policy has been publicly referenced.",
+    "minors_policy": "[uncertain] Not specifically documented in publicly available search results.",
+    "impersonation_safeguards": "Amy Porterfield has publicly stated that AI should be 'a tool, not a voice' and that creators should lead with their own stories and lived experience. The AI assistants are positioned as complementary tools rather than replacements for Amy herself. However, no specific technical safeguards against impersonation have been publicly documented.",
+    "regulatory_compliance_status": "[uncertain] No public statements found regarding FTC disclosure requirements, state AI laws, or professional impersonation safeguards specific to the DCA AI assistants."
+  },
+  "competitive": {
+    "competitive_moat_type": "Proprietary methodology (16+ years of proven course creation frameworks refined across 100K+ students), brand authority (NYT bestselling author, $130M+ in course sales, top-ranked podcast), deep course integration (AI assistants custom-trained per module rather than generic chatbot), ecosystem lock-in (DCA -> List Builders Society -> Course Confident Bootcamp pipeline), affiliate network (large affiliate partner ecosystem including Jenna Kutcher, Jamie Trull, and others who drive enrollment), community trust (established reputation as the go-to authority in digital course creation).",
+    "meta_creator_ai_status": "[uncertain] No evidence found of participation in Meta's Creator AI program for Instagram/Facebook AI chatbot clones.",
+    "engagement_metrics_public": "[uncertain] No publicly disclosed engagement metrics (MAU, messages per session, retention, NPS) found for the DCA AI assistants specifically. DCA has helped 25,000-100,000+ students (figures vary by source and time period) but AI-specific usage data is not available."
+  },
+  "verification": {
+    "confidence_level": "medium-high",
+    "primary_source_url": "https://dca.jennakutcher.com/",
+    "corroborating_source_url": "https://www.amyporterfield.com/2024/12/742/",
+    "last_verified_date": "2026-04-15"
+  },
+  "uncertain": [
+    "bot_identity.bot_name",
+    "functionality.memory_persistence",
+    "functionality.upload_support",
+    "functionality.tool_integrations",
+    "functionality.moderation_disclaimers",
+    "functionality.platform_infrastructure",
+    "monetization.revenue_model_detail.subscribed_program",
+    "monetization.revenue_model_detail.estimated_annual_ai_revenue",
+    "content_training.update_frequency",
+    "risks_guardrails.stated_disclaimers",
+    "risks_guardrails.data_use_policy_cited",
+    "risks_guardrails.minors_policy",
+    "risks_guardrails.regulatory_compliance_status",
+    "competitive.meta_creator_ai_status",
+    "competitive.engagement_metrics_public"
+  ]
+}

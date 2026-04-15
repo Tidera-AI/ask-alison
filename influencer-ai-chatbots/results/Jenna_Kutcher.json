@@ -1,0 +1,126 @@
+{
+  "creator_profile": {
+    "name": "Jenna Kutcher",
+    "primary_niche": "Digital marketing, Instagram strategy, online business for women, photography (earlier career)",
+    "main_platforms": [
+      "Instagram",
+      "Podcast (The Goal Digger Podcast)",
+      "Pinterest",
+      "YouTube",
+      "TikTok"
+    ],
+    "audience_size_documented": {
+      "Instagram": "~1.1M followers (April 2026, via Instagram @jennakutcher)",
+      "Podcast": "115M+ downloads across 900+ episodes (April 2026, via jennakutcher.com); The Goal Digger Podcast Instagram @goaldiggerpodcast has 263K followers",
+      "Pinterest": "~95.4K followers (April 2026); described as her number one organic traffic driver and most lucrative channel",
+      "YouTube": "[uncertain] Present on the platform but exact subscriber count not confirmed from primary source",
+      "TikTok": "[uncertain] Present on the platform but exact follower count not confirmed from primary source",
+      "cross_platform_note": "Ranked #5 on Feedspot's Top 70 Small Business Influencers list for 2026. NYT bestselling author ('How Are You, Really?' - 2M+ copies sold). Over 12,000 five-star podcast reviews."
+    },
+    "tier_classification": "Tier B",
+    "tier_justification": "Major influence in the online business and digital marketing niche with 1.1M Instagram followers, 115M+ podcast downloads, and NYT bestselling author status. Widely recognized as a top small business influencer (Feedspot #5). However, her audience is niche-focused (women entrepreneurs, course creators, photographers) rather than mainstream cross-demographic, placing her firmly in Tier B rather than Tier A."
+  },
+  "bot_identity": {
+    "bot_name": "ManyChat DM Chat Funnels (not a branded standalone AI chatbot)",
+    "positioning_tagline": "Automated Instagram DM conversations that qualify leads, build email lists, and drive sales while you sleep.",
+    "positioning_narrative_excerpts": [
+      "This ONE Strategy Earned Me An Extra 1 Million Dollars Last Year \u2014 automated chat funnels in Instagram DMs.",
+      "A chat funnel is a fully automated back-and-forth conversation between your business and an Instagram user. Think of it as a landing page and an email sequence combined into an IG DM conversation.",
+      "While spending time with family on the weekend, a chatbot can engage potential customers, get their email address, and serve them with exactly what they need \u2014 without lifting a finger.",
+      "Within 5 weeks of doing her first Chat Funnel, she grew 16,052 emails and made $58,175."
+    ],
+    "launch_date": "~2022-2023 (initial adoption via partnership with Natasha Willis / School of Bots; became primary strategy by 2023-2024)",
+    "current_status": "Active (ongoing use of 40+ ManyChat chat funnels as of latest reporting)"
+  },
+  "jobs_to_be_done": {
+    "primary_jtbds": [
+      "lead_capture - Keyword-triggered DM automation collects email addresses from Instagram followers (38,490 emails in 12 months)",
+      "pre_sale_education - Level Up Quiz qualifies leads via interactive DM quiz, then delivers personalized course/product recommendations",
+      "webinar_registration - Automated DM funnels drive webinar sign-ups with 85% registration rate (vs 30-40% on landing pages)",
+      "sales_conversion - Chat funnels drive direct course/product sales ($900K-$1.7M in 12-month periods)"
+    ],
+    "secondary_jtbds": [
+      "list_building - Converts Instagram followers into email subscribers without driving traffic off-platform",
+      "affiliate_promotion - Promotes School of Bots via jennakutcher.com/schoolofbots as affiliate/partner",
+      "broadcast_marketing - Uses ManyChat DM broadcast lists for promotional campaigns (e.g., Black Friday)"
+    ],
+    "jtbd_evidence_source": "Stated and demonstrated (from ManyChat case studies, Jenna's blog posts, and School of Bots partnership materials)"
+  },
+  "functionality": {
+    "modalities": ["text (Instagram DM)"],
+    "requires_login": false,
+    "login_note": "Users interact via Instagram DMs; no separate login required. Users must have an Instagram account and follow or comment on Jenna's posts to trigger the automation.",
+    "memory_persistence": "Session-based within individual chat funnels. ManyChat tracks user interactions and can segment based on quiz responses and past engagement.",
+    "upload_support": "No \u2014 interactions are text-based keyword triggers and multiple-choice quiz flows within Instagram DMs.",
+    "tool_integrations": "ManyChat (primary automation platform), Instagram API (DM delivery), email marketing platform (for email capture and list segmentation), webinar platform (for registration delivery). School of Bots builds and manages the chat funnel infrastructure.",
+    "knowledge_grounding_claimed": "Not applicable \u2014 these are rule-based automated DM flows (decision trees), not AI-generated conversational responses. Chat funnels follow pre-scripted conversation paths based on keyword triggers and user selections.",
+    "moderation_disclaimers": "[uncertain] Not publicly documented. ManyChat automation operates within Instagram's API terms of service and Meta's messaging policies.",
+    "human_handoff": "[uncertain] Jenna claims to personally respond to all her own DMs and comments, with nobody on her team having access to her login. Unclear how automated funnels hand off to personal responses when needed.",
+    "platform_infrastructure": "ManyChat (SaaS platform for Instagram DM automation). Chat funnels are built using ManyChat's visual flow builder. Keyword triggers initiate automated conversation sequences. School of Bots (Natasha Willis's agency) built and manages the 40+ chat funnels. Not a custom AI/LLM product \u2014 uses rule-based conversational automation.",
+    "voice_modality_details": "No voice modality. All interactions are text-based within Instagram DMs.",
+    "ai_agent_capabilities": "These are NOT AI chatbots in the generative AI sense. They are rule-based automated DM flows (chat funnels) that use keyword triggers, branching logic, and pre-scripted responses. The automation handles: keyword detection (e.g., user DMs 'QUIZ'), interactive quiz delivery, personalized recommendation routing based on quiz answers, email capture, webinar registration link delivery, and broadcast messaging to DM subscriber lists. No autonomous reasoning or generative text capabilities."
+  },
+  "distribution": {
+    "access_url": "Instagram DMs via @jennakutcher (triggered by keyword comments on posts or direct DMs). School of Bots partnership page: https://jennakutcher.com/schoolofbots",
+    "distribution_path_description": "Instagram post/reel/story -> CTA to comment specific keyword (e.g., 'QUIZ', 'WEBINAR', 'FREEBIE') -> ManyChat triggers automated DM conversation -> DM collects email and/or delivers registration link -> user enters email marketing funnel -> receives course/product offers via email. Also uses click-to-Instagram paid ads that send leads directly into DM funnels.",
+    "link_in_bio_platform": "Custom (jennakutcher.com). Bio links to jennakutcher.com which routes to courses, podcast, and lead magnets. The chat funnel strategy specifically replaces 'link in bio' with 'DM me [keyword]' as the primary CTA.",
+    "social_to_bot_funnel": "Instagram posts/reels include CTA to comment a keyword (e.g., 'DM me QUIZ') -> ManyChat detects keyword and initiates DM automation -> automated quiz or registration flow within DMs -> email capture -> nurture sequence. Paid ads also use click-to-Instagram DM format. 55.6% of webinar registrations came through the chat funnel channel. Podcast episodes (Goal Digger) feature episodes about the strategy and drive awareness."
+  },
+  "monetization": {
+    "pricing_model": "indirect (chat funnels are free for users to interact with; they drive sales of paid digital courses and products)",
+    "public_price": "Free to interact with DM automation. Downstream products include: The Instagram Lab, The Pinterest Lab, The Podcast Lab, The List to Launch Lab, The Content Lab, and other digital courses (estimated $200-$600+ per course). Also promotes third-party products like School of Bots and Digital Course Academy (Amy Porterfield) as affiliate.",
+    "bundled_with": "Chat funnels serve as the top-of-funnel lead generation for Jenna's entire digital product ecosystem. They are not sold as a standalone product.",
+    "monetization_linkage_type": "lead_generation (chat funnels capture emails and drive webinar registrations which convert to course sales), affiliate_revenue (promotes School of Bots as affiliate partner), direct_course_sales (DM funnels send users directly to purchase pages)",
+    "list_building_integration": "Core function of the chat funnels. 38,490 email addresses collected in 12 months. 53,000 total email leads attributed to the DM automation strategy. Emails feed into Jenna's email marketing nurture sequences which promote courses, podcast episodes, and affiliate offers.",
+    "revenue_model_detail": {
+      "chat_funnel_attributed_revenue_12mo": "$900K-$1M in direct sales from 40+ ManyChat chat funnels in a 12-month period (per ManyChat case study)",
+      "total_dm_strategy_revenue": "$1.7M in sales and 53,000 email leads attributed to the full DM automation strategy (per School of Bots partnership reporting)",
+      "black_friday_revenue": "$900K generated from Black Friday Instagram sales strategies using ManyChat broadcasting and chat funnels",
+      "webinar_funnel_revenue": "~$500K from a single webinar registration chat funnel, with 13% of chat leads converting to course purchases",
+      "first_chat_funnel_results": "$58,175 in revenue and 16,052 emails within first 5 weeks of initial chat funnel deployment",
+      "school_of_bots_affiliate": "Affiliate/partner revenue from promoting School of Bots (jennakutcher.com/schoolofbots); specific commission not publicly disclosed",
+      "estimated_annual_ai_revenue": "[uncertain] Not separately disclosed. Chat funnel revenue is commingled with overall course and product sales. ManyChat case study attributes $900K-$1M directly to chat funnels in 12 months. Total business revenue likely significantly higher."
+    }
+  },
+  "content_training": {
+    "content_training_corpus": "Not applicable in the traditional AI training sense. Chat funnels are rule-based decision trees, not AI models. The 'training' consists of pre-scripted conversation flows built by School of Bots (Natasha Willis) and Jenna's team. Content includes: quiz questions and branching logic, product recommendation scripts, email capture sequences, webinar registration flows, and promotional broadcast messages. All copy is human-written and manually configured in ManyChat's flow builder.",
+    "update_frequency": "Active and ongoing. 40+ chat funnels have been created and iterated over 12+ months. New funnels are created for specific campaigns (product launches, Black Friday, webinar promotions). School of Bots manages and optimizes the funnels on an ongoing basis."
+  },
+  "risks_guardrails": {
+    "stated_disclaimers": "[uncertain] No specific disclaimers documented for the DM automation itself. ManyChat operates within Instagram/Meta's messaging API terms of service.",
+    "data_use_policy_cited": "[uncertain] Email addresses collected through chat funnels are subject to Jenna Kutcher's privacy policy at jennakutcher.com. ManyChat has its own data processing and privacy policies. No specific chatbot-level privacy disclosures documented.",
+    "minors_policy": "[uncertain] Not specifically documented. Instagram's own minimum age requirement (13+) applies to platform interactions.",
+    "impersonation_safeguards": "Lower risk than AI chatbot impersonation. Chat funnels are clearly automated DM sequences (not pretending to be Jenna having a live conversation). However, the use of first-person language in automated DMs (e.g., 'DM me') creates some ambiguity about whether the user is interacting with Jenna or an automation. Jenna states she personally responds to all her own DMs separately from the automated flows.",
+    "regulatory_compliance_status": "[uncertain] No public statements found regarding FTC disclosure of automated DM marketing, CAN-SPAM compliance for email capture via DMs, or state-specific chatbot disclosure laws (e.g., California's BOT Act requiring disclosure of automated communication). School of Bots as an agency partner may handle compliance, but this is not publicly documented."
+  },
+  "competitive": {
+    "competitive_moat_type": "Established brand and audience trust (1.1M Instagram followers, 115M+ podcast downloads, NYT bestselling author), proven case study metrics (publicly documented $1M+ in chat funnel revenue creates social proof), strategic partnership with School of Bots/Natasha Willis (premier DM automation agency with $56M+ in client results), ManyChat brand ambassador (featured case study on ManyChat's site), deep expertise in digital course marketing (5+ Lab courses across Instagram, Pinterest, podcasting, email, content), and first-mover advantage in the influencer-educator DM automation space.",
+    "meta_creator_ai_status": "[uncertain] No evidence found of participation in Meta's Creator AI program for Instagram/Facebook AI chatbot clones. Jenna uses ManyChat (third-party) rather than Meta's native AI tools.",
+    "chatbot_adjacent_note": "IMPORTANT: Jenna Kutcher does NOT operate a traditional AI chatbot. Her use case is chatbot-adjacent: rule-based ManyChat DM automation (chat funnels) rather than generative AI conversational agents. This represents a significant and highly profitable category of creator chatbot usage that predates and differs from the LLM-based AI chatbot trend. Her case study demonstrates that simple keyword-triggered automation can generate $1M+ in annual incremental revenue without any AI/LLM technology.",
+    "engagement_metrics_public": "85% webinar registration rate from chat funnel interactions (vs 30-40% industry average on landing pages). 13% conversion rate from chat leads to course purchases. 55.6% of webinar registrations attributed to chat funnel channel. 38,490 email addresses collected via 40+ chat funnels in 12 months. Quiz completion rate of 85% within DM funnels."
+  },
+  "verification": {
+    "confidence_level": "high",
+    "primary_source_url": "https://manychat.com/blog/success-stories/jenna-kutcher/",
+    "corroborating_source_url": "https://jennakutcherblog.com/natashawillis2/",
+    "additional_sources": [
+      "https://manychat.com/meet-jenna-kutcher",
+      "https://manychat.com/blog/black-friday-jenna-kutchers-instagram-strategies/",
+      "https://jennakutcher.com/schoolofbots",
+      "https://jennakutcherblog.com/natashawillis/"
+    ],
+    "last_verified_date": "2026-04-15"
+  },
+  "uncertain": [
+    "creator_profile.audience_size_documented.YouTube",
+    "creator_profile.audience_size_documented.TikTok",
+    "functionality.moderation_disclaimers",
+    "functionality.human_handoff",
+    "monetization.revenue_model_detail.estimated_annual_ai_revenue",
+    "risks_guardrails.stated_disclaimers",
+    "risks_guardrails.data_use_policy_cited",
+    "risks_guardrails.minors_policy",
+    "risks_guardrails.regulatory_compliance_status",
+    "competitive.meta_creator_ai_status"
+  ]
+}

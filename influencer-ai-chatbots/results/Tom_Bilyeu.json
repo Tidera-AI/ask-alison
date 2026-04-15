@@ -52,9 +52,7 @@
     "jtbd_evidence_source": "Stated (from official social media posts on X, Threads, Facebook, LinkedIn; The Next Wave podcast interview; tombilyeu.com landing pages for Zero to Launch GPT and Physics of Scaling GPT)"
   },
   "functionality": {
-    "modalities": [
-      "text"
-    ],
+    "modalities": ["text"],
     "requires_login": true,
     "login_detail": "Requires ChatGPT Plus ($20/month) or ChatGPT Pro ($200/month) subscription to access custom GPTs via OpenAI's GPT Store. Tom personally uses the Pro version.",
     "memory_persistence": "Yes - Tom creates a shared memory document uploaded into all GPT projects. He maintains a list of memories in memory entry format so the GPT recognizes him across all projects. He stated the GPT recognizes him 'at least in a faux way' across everything.",

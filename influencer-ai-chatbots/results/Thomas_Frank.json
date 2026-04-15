@@ -1,0 +1,128 @@
+{
+  "creator_profile": {
+    "name": "Thomas Frank",
+    "primary_niche": "Productivity, Notion templates, study/learning strategies",
+    "main_platforms": [
+      "YouTube (Thomas Frank - main channel)",
+      "YouTube (Thomas Frank Explains - second channel)",
+      "Instagram (@tomfrankly)",
+      "X/Twitter (@TomFrankly)",
+      "Website (thomasjfrank.com)",
+      "Podcast (The Inforium on Spotify, formerly College Info Geek Podcast)",
+      "Gumroad (thomasfrank.gumroad.com)"
+    ],
+    "audience_size_documented": {
+      "YouTube_main": "~2.9M subscribers (April 2026, via SocialBlade)",
+      "YouTube_explains": "~230K subscribers (April 2026, via vidIQ)",
+      "Instagram": "~104K followers (April 2026, via @tomfrankly)",
+      "X_Twitter": "~144K followers (April 2026, via @TomFrankly)",
+      "cross_platform_note": "Main YouTube channel has 170M+ total views. Has built one of the largest Notion-focused creator audiences globally."
+    },
+    "tier_classification": "Tier B",
+    "tier_justification": "Leading productivity/Notion creator with ~2.9M YouTube subscribers on main channel and ~230K on second channel. Generated $2.1M+ in Notion template sales over two years, with monthly template revenue averaging ~$120K/mo. Deep integration with Notion's ecosystem including official Notion Marketplace presence. Smaller social footprint on Instagram (~104K) and X (~144K) compared to Tier A creators, but dominant authority in the Notion/productivity niche."
+  },
+  "bot_identity": {
+    "bot_name": "Productivity Coach (Notion Agent template)",
+    "positioning_tagline": "A personal AI productivity coach powered by Notion's Agent, designed to help you plan your day, prioritize tasks, and capture to-dos automatically.",
+    "positioning_narrative_excerpts": [
+      "Helps Notion's Agent act as a personal productivity coach and assistant.",
+      "Set your life priorities and default capture locations, and Agent will help plan your day, prioritize tasks, and automatically capture new to-do's.",
+      "A great starting point for getting started with your Notion AI assistant.",
+      "Works seamlessly with the Ultimate Brain template."
+    ],
+    "launch_date": "[uncertain] Available on Notion Marketplace as of 2024-2025; exact launch date not confirmed from primary source",
+    "current_status": "Active (available on Notion Marketplace)",
+    "secondary_ai_products": {
+      "voice_to_notion_workflow": "AI-powered voice-to-Notion pipeline using OpenAI Whisper for transcription and ChatGPT for summarization, built on Pipedream. Open-source on GitHub (TomFrankly/pipedream-notion-voice-notes).",
+      "voice_task_creation": "Voice-activated task creation in Notion using Apple Shortcuts + ChatGPT API to automatically set projects, assignees, and due dates."
+    }
+  },
+  "jobs_to_be_done": {
+    "primary_jtbds": [
+      "course_teaching_assistant - Notion Agent acts as a personal productivity coach within the user's Notion workspace, helping plan days and prioritize tasks",
+      "ask_my_method - Users can interact with the AI coach to get personalized productivity guidance based on Thomas Frank's frameworks",
+      "pre_sale_education - Free Productivity Coach template serves as entry point to Thomas Frank's paid template ecosystem (Ultimate Brain, Creator's Companion)"
+    ],
+    "secondary_jtbds": [
+      "workflow_automation - Voice-to-Notion workflows automate note-taking and task creation using Whisper + ChatGPT",
+      "content_capture - AI-powered transcription and summarization of voice notes directly into Notion databases",
+      "community_help - Thomas Frank Community (community.thomasjfrank.com) has dedicated Automations & AI help section"
+    ],
+    "jtbd_evidence_source": "Stated (from Notion Marketplace listing, thomasjfrank.com tutorials, and GitHub repository)"
+  },
+  "functionality": {
+    "modalities": [
+      "text",
+      "voice (via separate Whisper/ChatGPT workflow, not built into template)"
+    ],
+    "requires_login": true,
+    "login_details": "Requires Notion account with Notion AI/Agent subscription (Notion AI is a paid add-on to Notion). Voice workflows require separate OpenAI API key and Pipedream account.",
+    "memory_persistence": "Yes - Notion Agent operates within user's Notion workspace, so all context (tasks, projects, priorities, notes) persists in the user's Notion databases",
+    "upload_support": "Voice workflows support mp3 and m4a audio file uploads to Google Drive, Dropbox, or OneDrive for transcription",
+    "tool_integrations": "Notion (primary platform), Pipedream (automation orchestration for voice workflows), OpenAI Whisper API (speech-to-text), ChatGPT API (summarization and task parsing), Apple Shortcuts (voice input trigger), Google Drive/Dropbox/OneDrive (cloud storage for audio files)",
+    "knowledge_grounding_claimed": "Productivity Coach template includes user-configurable life priorities and default capture locations. AI personalization features help categorize ideas. Works seamlessly with Ultimate Brain template data (tasks, projects, notes, goals).",
+    "moderation_disclaimers": "[uncertain] Not specifically documented. Relies on Notion's platform-level AI terms of service and OpenAI's usage policies for voice workflows.",
+    "human_handoff": "No direct human handoff mechanism. Community support available at community.thomasjfrank.com with dedicated Automations & AI help forum.",
+    "platform_infrastructure": "Notion Agent (Notion's built-in AI assistant) for the Productivity Coach template. OpenAI APIs (Whisper + ChatGPT) for voice workflows. Pipedream for no-code/low-code automation orchestration. Open-source code on GitHub.",
+    "voice_modality_details": "Voice input via two separate workflows: (1) Voice-to-notes: Record audio, upload to cloud storage, Whisper transcribes, ChatGPT summarizes with key points/action items, results sent to Notion page. (2) Voice-to-tasks: Apple Shortcuts captures voice input, ChatGPT parses into structured task with project/assignee/due date, creates task in Notion. Cost: ~$0.003 per voice task run, ~$0.40 per hour of audio transcription.",
+    "ai_agent_capabilities": "Notion Agent within the Productivity Coach template can: plan your day based on set priorities, prioritize tasks, automatically capture new to-dos, categorize ideas using AI personalization. Voice workflows can autonomously transcribe audio, generate summaries with key points, extract action items, and create structured Notion pages/tasks. No autonomous action-taking beyond Notion workspace (no booking, CRM, or external service integration)."
+  },
+  "distribution": {
+    "access_url": "https://www.notion.com/templates/productivity-coach (Productivity Coach template), https://thomasjfrank.com/how-to-transcribe-audio-to-text-with-chatgpt-and-notion/ (voice notes workflow), https://thomasjfrank.com/notion-chatgpt-voice-tasks/ (voice tasks workflow), https://github.com/TomFrankly/pipedream-notion-voice-notes (open-source code)",
+    "distribution_path_description": "YouTube tutorials (2.9M+ subscribers) -> thomasjfrank.com blog posts with detailed setup guides -> free Productivity Coach template on Notion Marketplace OR free open-source Pipedream workflows on GitHub -> upsell to paid Ultimate Brain ($129) and Creator's Companion templates on Gumroad/Notion Marketplace. Also distributed through Thomas Frank Community forum.",
+    "link_in_bio_platform": "thomasjfrank.com (personal website serves as hub for all templates, tutorials, and resources)",
+    "social_to_bot_funnel": "YouTube videos demonstrate AI workflows and Notion templates -> description links to thomasjfrank.com tutorial pages -> tutorials include links to free Productivity Coach template on Notion Marketplace and free Pipedream workflow setup -> users who adopt free tools are exposed to paid Ultimate Brain and Creator's Companion templates. Instagram and X/Twitter (@tomfrankly/@TomFrankly) drive traffic to same funnel."
+  },
+  "monetization": {
+    "pricing_model": "freemium (free template + paid premium templates + platform subscription costs)",
+    "public_price": "Productivity Coach template: Free on Notion Marketplace. Notion AI/Agent: requires Notion paid plan with AI add-on (~$10/mo). Voice workflows: free (open-source) but require OpenAI API credits (~$0.003/task, ~$0.40/hr transcription) and free Pipedream account.",
+    "bundled_with": "Productivity Coach works seamlessly with Ultimate Brain ($129, or $79 with promo code SPRING50) and Creator's Companion. Ultimate Brain + Creator's Companion bundle: $179.",
+    "monetization_linkage_type": "freemium_funnel (free AI template drives adoption of paid Notion template ecosystem), course_retention (AI features increase stickiness of Ultimate Brain), content_marketing (YouTube tutorials on AI workflows drive traffic and template sales)",
+    "list_building_integration": "thomasjfrank.com captures email subscribers. Thomas Frank Community (community.thomasjfrank.com) serves as engagement and retention channel. Gumroad handles sales and customer email list.",
+    "revenue_model_detail": {
+      "template_sales": "$2.1M+ total Notion template revenue over two years. ~$120K/month average. Ultimate Brain: $760K, Creator's Companion/UB bundle: $298K, other templates: $103K+.",
+      "ai_specific_revenue": "Productivity Coach template is free - serves as top-of-funnel for paid templates. Voice workflow tutorials are free content that drives YouTube ad revenue and template sales.",
+      "estimated_annual_ai_revenue": "[uncertain] AI products (Productivity Coach, voice workflows) are free; they function as marketing/retention tools for the $120K/mo template business rather than direct revenue generators."
+    }
+  },
+  "content_training": {
+    "content_training_corpus": "Productivity Coach template is configured by the user with their own life priorities and capture preferences. It leverages Notion Agent's underlying LLM (likely powered by Anthropic/OpenAI via Notion's AI infrastructure) rather than a custom-trained model. The template provides structured prompts and context to Notion Agent based on the user's Notion workspace data (tasks, projects, notes, goals from Ultimate Brain). Voice workflows use OpenAI's general-purpose Whisper and ChatGPT models without custom fine-tuning.",
+    "update_frequency": "[uncertain] Template updates follow Notion Marketplace update cadence. Ultimate Brain received major 3.0 redesign in November 2024. Voice workflow code is maintained on GitHub (TomFrankly/pipedream-notion-voice-notes). No stated regular update schedule for AI-specific features."
+  },
+  "risks_guardrails": {
+    "stated_disclaimers": "[uncertain] No specific AI disclaimers documented for the Productivity Coach template beyond Notion's standard terms. Voice workflows rely on OpenAI's terms of service.",
+    "data_use_policy_cited": "[uncertain] Data handling governed by Notion's privacy policy (for Productivity Coach) and OpenAI's data usage policy (for voice workflows). Thomas Frank's personal data practices not specifically documented for AI products.",
+    "minors_policy": "[uncertain] Not specifically documented. Thomas Frank's audience historically included college students (College Info Geek brand), but no specific minors policy for AI products.",
+    "impersonation_safeguards": "Lower impersonation risk than personality-driven AI chatbots. Productivity Coach is positioned as a methodology-based tool rather than a Thomas Frank personality clone. The AI acts as a 'productivity coach' informed by the user's own data, not as Thomas Frank himself.",
+    "regulatory_compliance_status": "[uncertain] No public statements found regarding FTC disclosure, state AI laws, or compliance specific to the Productivity Coach template or voice workflows."
+  },
+  "competitive": {
+    "competitive_moat_type": "Platform integration (deep official partnership with Notion - featured template creator on Notion Marketplace), methodology expertise (decade of productivity content since 2010), content ecosystem (2.9M YouTube subscribers, 170M+ views creating massive organic distribution), open-source community (GitHub repos for voice workflows build developer trust and adoption), template ecosystem lock-in (Productivity Coach integrates with Ultimate Brain, creating switching costs).",
+    "meta_creator_ai_status": "[uncertain] No evidence found of participation in Meta's Creator AI program.",
+    "engagement_metrics_public": "[uncertain] No publicly disclosed engagement metrics for Productivity Coach template (downloads, active users, messages per session). Notion Marketplace does not publicly display download counts. GitHub voice-notes repo activity provides some proxy for voice workflow adoption."
+  },
+  "verification": {
+    "confidence_level": "high",
+    "primary_source_url": "https://www.notion.com/templates/productivity-coach",
+    "corroborating_source_urls": [
+      "https://thomasjfrank.com/how-to-transcribe-audio-to-text-with-chatgpt-and-notion/",
+      "https://thomasjfrank.com/notion-chatgpt-voice-tasks/",
+      "https://github.com/TomFrankly/pipedream-notion-voice-notes",
+      "https://www.starterstory.com/stories/thomas-frank",
+      "https://typefully.com/TomFrankly/dollar1-million-in-notion-template-sales-kuFT0iD"
+    ],
+    "last_verified_date": "2026-04-15"
+  },
+  "uncertain": [
+    "bot_identity.launch_date",
+    "functionality.moderation_disclaimers",
+    "monetization.revenue_model_detail.estimated_annual_ai_revenue",
+    "content_training.update_frequency",
+    "risks_guardrails.stated_disclaimers",
+    "risks_guardrails.data_use_policy_cited",
+    "risks_guardrails.minors_policy",
+    "risks_guardrails.regulatory_compliance_status",
+    "competitive.meta_creator_ai_status",
+    "competitive.engagement_metrics_public"
+  ]
+}

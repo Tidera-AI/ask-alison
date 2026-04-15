@@ -46,10 +46,7 @@
     "jtbd_evidence_source": "Stated (from Lenny Rachitsky's X announcements, LinkedIn posts, and lennybot.com)"
   },
   "functionality": {
-    "modalities": [
-      "text",
-      "voice (phone call and text via Delphi)"
-    ],
+    "modalities": ["text", "voice (phone call and text via Delphi)"],
     "requires_login": "[uncertain] Not clearly documented. Delphi.ai clones generally allow some free interactions without login, but may require account creation for extended use.",
     "memory_persistence": "Yes - Delphi.ai platform keeps memory of past conversations, allowing the bot to reference things previously discussed for continuity across sessions.",
     "upload_support": "[uncertain] Not publicly documented for Lennybot specifically.",

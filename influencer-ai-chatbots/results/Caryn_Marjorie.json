@@ -2,12 +2,7 @@
   "creator_profile": {
     "name": "Caryn Marjorie",
     "primary_niche": "Lifestyle/beauty/fashion, AI companion pioneer",
-    "main_platforms": [
-      "Snapchat",
-      "YouTube",
-      "Instagram",
-      "TikTok"
-    ],
+    "main_platforms": ["Snapchat", "YouTube", "Instagram", "TikTok"],
     "audience_size_documented": {
       "Snapchat": "~1.8M followers (primary platform, reported across multiple sources at time of CarynAI launch in May 2023; content generates over 1 billion views per month)",
       "YouTube": "~721K subscribers (per Beacons.ai bio; now-deleted videos were used to train CarynAI)",
@@ -43,10 +38,7 @@
     "jtbd_evidence_source": "Stated (from Caryn Marjorie's public interviews with Fortune, NBC News, Washington Post, and marketing copy on caryn.ai)"
   },
   "functionality": {
-    "modalities": [
-      "text",
-      "voice"
-    ],
+    "modalities": ["text", "voice"],
     "requires_login": true,
     "memory_persistence": "[uncertain] Not publicly documented. Telegram-based interactions likely session-based without persistent memory across conversations.",
     "upload_support": "[uncertain] Not publicly documented. Users typed text questions; no evidence of file/image upload support.",

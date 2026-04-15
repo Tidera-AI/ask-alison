@@ -46,9 +46,7 @@
     "jtbd_evidence_source": "Stated (from official marketing on monetise-us.com, Whop case study, Facebook video ads, and Ghostwriter OS website)"
   },
   "functionality": {
-    "modalities": [
-      "text"
-    ],
+    "modalities": ["text"],
     "requires_login": true,
     "memory_persistence": "[uncertain] Not publicly documented; tools appear session-based",
     "upload_support": "[uncertain] Not publicly documented",

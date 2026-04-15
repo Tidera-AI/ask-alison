@@ -42,9 +42,7 @@
     "jtbd_evidence_source": "Stated (from Rhonda Patrick's X/Twitter endorsement and Dexa AI platform descriptions)"
   },
   "functionality": {
-    "modalities": [
-      "text"
-    ],
+    "modalities": ["text"],
     "requires_login": true,
     "memory_persistence": "[uncertain] Not publicly documented; Dexa AI platform may retain conversation history per user session but no explicit memory/personalization feature documented",
     "upload_support": "[uncertain] No upload functionality documented for Dexa AI",

@@ -76,8 +76,5 @@
     "corroborating_source_url": "https://variety.com/2023/digital/news/meta-ai-chatbots-snoop-dogg-mrbeast-tom-brady-kendall-jenner-charli-damelio-1235737740/",
     "last_verified_date": "2026-04-15"
   },
-  "uncertain": [
-    "minors_policy",
-    "regulatory_compliance_status"
-  ]
+  "uncertain": ["minors_policy", "regulatory_compliance_status"]
 }

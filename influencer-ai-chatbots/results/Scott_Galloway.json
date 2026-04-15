@@ -51,9 +51,7 @@
     "jtbd_evidence_source": "Stated (from Prof G Pod bonus episode introducing ProfG.AI, Toast Studio case study, and Google Labs Portraits marketing materials)"
   },
   "functionality": {
-    "modalities": [
-      "text"
-    ],
+    "modalities": ["text"],
     "requires_login": true,
     "memory_persistence": "[uncertain] Not publicly documented for ProfG.AI. Prof G-PT on GPT Store inherits ChatGPT's memory features. Google Portraits memory behavior not documented.",
     "upload_support": "Prof G-PT on GPT Store supports file attachments. ProfG.AI upload support not publicly documented.",

@@ -2,7 +2,13 @@
   "creator_profile": {
     "name": "Alex Hormozi",
     "primary_niche": "Business/entrepreneurship, fitness (earlier career)",
-    "main_platforms": ["YouTube", "Instagram", "X (Twitter)", "TikTok", "Podcast (The Game w/ Alex Hormozi on Spotify)"],
+    "main_platforms": [
+      "YouTube",
+      "Instagram",
+      "X (Twitter)",
+      "TikTok",
+      "Podcast (The Game w/ Alex Hormozi on Spotify)"
+    ],
     "audience_size_documented": {
       "YouTube": "~3.87M subscribers (April 2026, via SocialBlade/HypeAuditor)",
       "Instagram": "~5M followers (April 2026, via Instagram @hormozi)",

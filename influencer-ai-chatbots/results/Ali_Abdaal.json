@@ -49,10 +49,7 @@
     "jtbd_evidence_source": "Stated (from official landing pages at aliabdaal.com/gps-coach/, aliabdaal.com/business-ideas-gpt/, aliabdaal.com/craft-skills/, aliabdaal.com/revenue-mapping-coach/; VoicePal marketing on X, LinkedIn, TikTok, App Store)"
   },
   "functionality": {
-    "modalities": [
-      "text (custom GPTs)",
-      "voice-to-text (VoicePal)"
-    ],
+    "modalities": ["text (custom GPTs)", "voice-to-text (VoicePal)"],
     "requires_login": true,
     "login_details": "Custom GPTs: require ChatGPT account (free tier sufficient for GPT Store access) plus email signup on aliabdaal.com to receive the GPT link. VoicePal: requires app download and account creation.",
     "memory_persistence": "Custom GPTs: standard ChatGPT conversation memory (within session). VoicePal: persistent recording library with saved transcripts and transformations.",

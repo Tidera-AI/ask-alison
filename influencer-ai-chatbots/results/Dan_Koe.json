@@ -1,0 +1,117 @@
+{
+  "creator_profile": {
+    "name": "Dan Koe",
+    "primary_niche": "Creator economy, philosophy, one-person business, self-improvement, AI-powered content systems",
+    "main_platforms": [
+      "X (Twitter)",
+      "YouTube",
+      "Instagram",
+      "Substack (future/proof)",
+      "Threads",
+      "LinkedIn",
+      "Podcast (The Koe Cast)"
+    ],
+    "audience_size_documented": {
+      "YouTube": "~1.24M subscribers (January 2026, via vidIQ/SocialBlade)",
+      "Instagram": "~2M followers (April 2026, via Instagram @thedankoe)",
+      "X_Twitter": "~750K followers (January 2026, via x.com/thedankoe)",
+      "Substack": "~290K+ subscribers (April 2026, via Substack @thedankoe)",
+      "email_list": "~170K-175K subscribers (reported across multiple sources)",
+      "cross_platform_note": "Combined following reported at nearly 4 million across all platforms. Single X post reached 150 million views."
+    },
+    "tier_classification": "Tier B",
+    "tier_justification": "Multi-platform creator with significant reach across YouTube (1.24M), Instagram (2M), X (750K), and Substack (290K+). Known as a thought leader in the one-person business and creator economy space. Co-founder of Kortex/Eden AI software products. Reported $4M+ annual revenue. Pioneer of 'You Are The Niche' philosophy. Actively building AI-powered creative tools (Kortex, then Eden) alongside digital courses and community products."
+  },
+  "bot_identity": {
+    "bot_name": "kAI (Kortex AI) / Eden AI",
+    "positioning_tagline": "An AI-powered second brain and creative workspace that integrates multiple AI models with knowledge management, content creation, and creative workflows.",
+    "positioning_narrative_excerpts": [
+      "Kortex is a second brain for your ideas, bookmarks, notes, and writing. Like Notion, Obsidian, and Google Docs had a baby.",
+      "Use any model like ChatGPT, Claude, Grok, Gemini, etc in one place without paying for multiple subscriptions.",
+      "25+ prebuilt AI workflows for content creation, marketing, learning, and planning that generate better results than most people who use AI.",
+      "Our mission is to pioneer the future of creative work and create a tool that allows people to be more creative with AI, not less.",
+      "Eden is a search engine for your memories where everything you want to remember is all in one place, automatically organized."
+    ],
+    "launch_date": "September 2024 (Kortex initial rollout); Eden early access began November 24, 2025 with full launch planned Q1 2026",
+    "current_status": "Active (transitioning from Kortex to Eden). Kortex still available but expected to wind down within 6-12 months of Eden launch."
+  },
+  "jobs_to_be_done": {
+    "primary_jtbds": [
+      "ask_my_method - Use kAI to ask questions, get summaries, advice, research, or study plans grounded in user's captured knowledge (YouTube videos, highlights, notes, documents, PDFs)",
+      "content_creation_system - Prebuilt AI workflows for generating content ideas, writing posts, newsletters, and threads using Dan Koe's tested prompts",
+      "knowledge_management - Capture, organize, and search across notes, bookmarks, documents, and media in a unified second brain",
+      "creative_workspace - Eden's AI canvas for visually organizing files, connecting AI chats, and building creative projects"
+    ],
+    "secondary_jtbds": [
+      "learning_acceleration - AI-powered learning workflows to study and synthesize information 10x faster",
+      "marketing_planning - Prebuilt AI flows for marketing strategy, planning, and campaign ideation",
+      "course_teaching_assistant - Mini Course on systemizing life with AI teaches users to leverage Kortex/Eden for their own businesses"
+    ],
+    "jtbd_evidence_source": "Stated (from official marketing on kortex.co, thedankoe.com, X posts, and Substack newsletters)"
+  },
+  "functionality": {
+    "modalities": ["text", "voice transcription"],
+    "requires_login": true,
+    "memory_persistence": "Yes - knowledge management platform stores notes, documents, bookmarks, and captured content persistently. kAI can reference multiple documents and sources within the user's workspace.",
+    "upload_support": "Yes - supports PDF uploads, document creation, bookmarks, YouTube video capture (auto-transcribed), Instagram reels, articles, newsletters, and link capture. Free tier: 5MB file upload; Kore: 50MB; Premium: 1GB.",
+    "tool_integrations": "Multi-model AI integration (ChatGPT, Claude, Grok, Gemini, Llama Scout, Llama Maverick, Gemini 2.5 Pro). Desktop app with floating AI chat accessible from anywhere on computer. Eden adds visual canvas, AI agents for auto-organizing notes, and neural search.",
+    "knowledge_grounding_claimed": "kAI is grounded in the user's own captured knowledge base (notes, documents, PDFs, YouTube transcripts, highlights). Additionally, Dan Koe's prebuilt prompt library and AI workflows (25+) are included with subscription. Not trained on Dan Koe's personal methodology corpus in the way a creator chatbot would be - this is a tool, not a persona bot.",
+    "moderation_disclaimers": "[uncertain] No specific moderation disclaimers found in search results. Standard terms of service likely exist on kortex.co.",
+    "human_handoff": "No direct human handoff from the AI tool. Community support available through Modern Mastery HQ community (separate subscription) and Kortex Premium community.",
+    "platform_infrastructure": "Custom-built SaaS application (kortex.co). Desktop app available. Integrates multiple third-party LLM providers (OpenAI, Anthropic, Google, Meta) rather than being built on a single provider. Eden is a complete rebuild of the Kortex codebase by co-founders Arihant Bapna and Matthew Ao.",
+    "voice_modality_details": "Voice transcription supported (5/month free, 250/month Kore, unlimited Premium). No voice chat or voice clone functionality documented.",
+    "ai_agent_capabilities": "Eden includes AI agents that can organize notes, create file structures, and surface connections automatically. kAI in Kortex can synthesize chat into fleshed-out notes, provide summaries and advice from captured sources. 25+ prebuilt AI workflows automate content creation, marketing, learning, and planning tasks. Not an autonomous agent in the traditional sense - operates within the user's workspace context."
+  },
+  "distribution": {
+    "access_url": "https://www.kortex.co/ (Kortex); Eden access via waitlist/early access program",
+    "distribution_path_description": "Social media (X, YouTube, Instagram, Substack) -> newsletter/content -> Stan Store (stan.store/thedankoe) or thedankoe.com -> Kortex/Eden signup. Also distributed through Substack mini courses, YouTube tutorials, and integrated into course offerings (Mini Course: How I Systemize My Life With AI).",
+    "link_in_bio_platform": "Stan Store (stan.store/thedankoe) and custom link page (links.thedankoe.com). Products sold through Stan Store include courses and AI mini-course.",
+    "social_to_bot_funnel": "X posts about AI workflows and Kortex/Eden features -> direct links to kortex.co signup; YouTube long-form content on AI content systems -> description links to Kortex/courses; Substack newsletter (future/proof) -> embedded course content and Kortex promotion; Instagram -> bio link to Stan Store with product listings. Newsletter content often doubles as Kortex/Eden feature education and AI workflow tutorials."
+  },
+  "monetization": {
+    "pricing_model": "freemium (Kortex Free tier available) with paid subscription tiers",
+    "public_price": "Kortex Free: $0 (15 AI requests/month, 5GB storage); Kortex Kore: $10/seat/month billed annually (unlimited base AI models, 15GB storage); Kortex Premium: $17.50/seat/month billed annually (premium AI models, 25GB storage, unlimited voice transcriptions). Eden pricing not yet publicly announced.",
+    "bundled_with": "Kortex Premium includes creator quick start course, premium community access, strategy library, monthly writing templates, and creator events. Also cross-promoted with Modern Mastery HQ ($9-$297/yr), The 2 Hour Writer course, Mental Monetization course, and One-Person Business Launchpad.",
+    "monetization_linkage_type": "direct_subscription (Kortex/Eden SaaS), course_retention (AI mini-course drives Kortex adoption), content_flywheel (newsletter content teaches AI workflows that require Kortex), community_value_add (Premium community included with subscription)",
+    "list_building_integration": "Newsletter (170K-175K email list + 290K Substack subscribers) serves as primary list building channel. Substack paid subscriptions available. Stan Store captures purchases and builds customer list. Kortex/Eden signups build product user base.",
+    "revenue_model_detail": {
+      "kortex_saas": "Freemium with Kore ($10/mo annual) and Premium ($17.50/mo annual) tiers",
+      "courses": "Mental Monetization (price unlisted, 3,191+ students), The 2 Hour Writer, One-Person Business Launchpad, Digital Economics Masters Degree, How To Productize Yourself",
+      "community": "Modern Mastery HQ: Apprentice ($9/mo), Master ($27/mo), Actualized ($297/yr)",
+      "newsletter": "Substack paid subscriptions (future/proof newsletter)",
+      "total_estimated_annual_revenue": "Reported $4M+ annually (per multiple sources), though breakdown between software, courses, community, and newsletter not publicly disclosed",
+      "estimated_annual_ai_revenue": "[uncertain] Not separately disclosed. Kortex/Eden revenue commingled with course and community revenue streams."
+    }
+  },
+  "content_training": {
+    "content_training_corpus": "Unlike traditional creator chatbots, Kortex/kAI is not trained on Dan Koe's personal content corpus. Instead, it is a multi-model AI workspace that users populate with their own content. However, it ships with 25+ prebuilt AI workflows and a Starter Prompt Library created by Dan Koe, refined over months of testing for content creation, marketing, learning, and planning. These prompts encode Dan Koe's content creation methodology without being a RAG-based clone of his knowledge. Eden adds automatic transcription and tagging of captured content.",
+    "update_frequency": "AI workflows and prompt libraries updated 2-4x per month (stated). Kortex V2 AI update shipped with improved model access and workflows. Eden represents a ground-up rebuild with continuous development."
+  },
+  "risks_guardrails": {
+    "stated_disclaimers": "[uncertain] No specific disclaimers found in search results beyond standard SaaS terms of service.",
+    "data_use_policy_cited": "[uncertain] Privacy policy likely exists on kortex.co but was not accessible in search results.",
+    "minors_policy": "[uncertain] Not specifically documented in publicly available search results.",
+    "impersonation_safeguards": "Not applicable in the traditional sense - Kortex/Eden is positioned as a productivity tool and creative workspace, not as an AI clone of Dan Koe. kAI does not claim to be Dan Koe or speak in his voice. The AI operates as a utility tool for the user's own content, not as a simulated version of the creator.",
+    "regulatory_compliance_status": "[uncertain] No public statements found regarding FTC disclosure requirements or AI-specific regulations."
+  },
+  "competitive": {
+    "competitive_moat_type": "Creator-as-software-founder model. Dan Koe leverages his 4M+ combined audience as a distribution channel for a SaaS product (Kortex/Eden) rather than just selling a chatbot persona. Competitive moat includes: proprietary AI workflow library refined through personal use, integration of multiple AI models in one workspace, transition from note-taking tool to full AI creative canvas (Eden), cross-promotion flywheel between newsletter content and software product, and community of one-person business creators as target user base. Distinct from other creator AI products in that it is a general-purpose creative AI tool, not a persona-based chatbot.",
+    "meta_creator_ai_status": "[uncertain] No evidence found of participation in Meta's Creator AI program.",
+    "engagement_metrics_public": "[uncertain] No publicly disclosed engagement metrics (MAU, retention, NPS) for Kortex/Eden. Kortex waitlist generated significant interest when announced in September 2024. 3,191+ students enrolled in Mental Monetization course. Modern Mastery HQ community active but size not publicly disclosed."
+  },
+  "verification": {
+    "confidence_level": "medium-high",
+    "primary_source_url": "https://www.kortex.co/",
+    "corroborating_source_url": "https://x.com/thedankoe/status/1968042371771404385",
+    "last_verified_date": "2026-04-15"
+  },
+  "uncertain": [
+    "monetization.revenue_model_detail.estimated_annual_ai_revenue",
+    "risks_guardrails.stated_disclaimers",
+    "risks_guardrails.data_use_policy_cited",
+    "risks_guardrails.minors_policy",
+    "risks_guardrails.regulatory_compliance_status",
+    "competitive.meta_creator_ai_status",
+    "competitive.engagement_metrics_public"
+  ]
+}

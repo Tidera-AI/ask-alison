@@ -1,0 +1,127 @@
+{
+  "creator_profile": {
+    "name": "Russell Brunson",
+    "primary_niche": "Digital marketing, sales funnels, online business/entrepreneurship",
+    "main_platforms": [
+      "Instagram",
+      "YouTube",
+      "Facebook",
+      "TikTok",
+      "LinkedIn",
+      "Podcast (The Russell Brunson Show on Spotify/Apple)"
+    ],
+    "audience_size_documented": {
+      "Instagram": "~1.46M followers (April 2026, via SocialVeins/HypeAuditor)",
+      "YouTube": "~365K subscribers (April 2026, via vidIQ)",
+      "Facebook": "~770K followers (April 2026, via Facebook @RussellBrunsonLIVE)",
+      "TikTok": "~62K followers (April 2026, via TikTok @russellbrunson)",
+      "LinkedIn": "Top LinkedIn Creator #4218 (April 2026, exact follower count not confirmed)",
+      "cross_platform_note": "Built a following of over 1 million entrepreneurs across platforms over two decades. Podcast formerly known as Marketing Secrets, rebranded to The Russell Brunson Show."
+    },
+    "tier_classification": "Tier B",
+    "tier_justification": "Co-founder of ClickFunnels, one of the most influential SaaS platforms in digital marketing ($170M+ annual revenue at peak). Estimated net worth $40-100M (sources vary). Author of DotCom Secrets, Expert Secrets, Traffic Secrets, and more. Instagram following of ~1.46M, YouTube ~365K, Facebook ~770K. While highly influential in the marketing/funnel space, his individual social media following is smaller than Tier A creators. ClickFunnels platform impact and book sales (sold hundreds of thousands of copies) elevate his influence beyond raw follower counts."
+  },
+  "bot_identity": {
+    "bot_name": "Marketing.AI Chatbot (ClickFunnels built-in)",
+    "secondary_bots": [
+      "Chat with Russell Brunson (Facebook Messenger bot via ChatBottle, circa 2016-2020)",
+      "Chat with Russell Brunson (unofficial ChatGPT GPT Store clone)",
+      "Russell Brunson AI (unofficial ChatGPT GPT Store clone)",
+      "School of Bots-managed DM automation (Instagram DM and Facebook Messenger Chat Funnels)"
+    ],
+    "positioning_tagline": "Quickly and easily harness the power of GPT AI to write effective sales copy and content, without going anywhere else.",
+    "positioning_narrative_excerpts": [
+      "With the power of artificial intelligence, Marketing.AI automatically creates personalized copy and images for each customer.",
+      "The perfect solution for busy entrepreneurs and marketers who want to create high-converting copy, without spending hours crafting the perfect message.",
+      "The most significant upgrade is their AI-powered funnel creation system, which allows you to create a funnel in just 10-15 minutes."
+    ],
+    "launch_date": "2023 (Marketing.AI beta released at Funnel Hacking Live 2023; integrated into ClickFunnels 2.0 platform; School of Bots DM automation relationship since 2016)",
+    "current_status": "Active (Marketing.AI integrated into all ClickFunnels plans as 'AI Tools' with word-count allocations; DM automation managed by School of Bots is ongoing)"
+  },
+  "jobs_to_be_done": {
+    "primary_jtbds": [
+      "content_generation - AI-powered copywriting for sales pages, landing pages, email sequences, and funnel content within ClickFunnels",
+      "funnel_building - AI-powered funnel creation system that builds optimized funnels from prompts and specifications in 10-15 minutes",
+      "image_generation - Automatically creates personalized images for marketing materials alongside copy",
+      "dm_automation - Instagram DM and Facebook Messenger Chat Funnels for lead generation, nurture sequences, and sales conversion (managed by School of Bots)"
+    ],
+    "secondary_jtbds": [
+      "lead_generation - ManyChat-powered DM automation to capture leads from organic content and ads",
+      "pre_sale_education - Automated chat sequences to educate prospects and drive them into funnels",
+      "event_promotion - Messenger reminders and DM automation for webinars, launches, and Funnel Hacking Live"
+    ],
+    "jtbd_evidence_source": "Stated (from ClickFunnels official blog announcing Marketing.AI, ClickFunnels pricing pages listing AI Tools, School of Bots client listings, and ManyChat agency listing)"
+  },
+  "functionality": {
+    "modalities": ["text", "image"],
+    "requires_login": true,
+    "memory_persistence": "[uncertain] Marketing.AI operates within ClickFunnels workspace context. DM automation via ManyChat has subscriber-level persistence. Specific session memory behavior not publicly documented.",
+    "upload_support": "[uncertain] Not publicly documented for Marketing.AI chatbot specifically. ClickFunnels platform supports media uploads generally.",
+    "tool_integrations": "Marketing.AI is natively integrated into ClickFunnels 2.0 platform (funnel builder, email marketing, CRM, workflows, courses, memberships). DM automation uses ManyChat as the underlying platform, integrating with Instagram DM, Facebook Messenger, WhatsApp, and SMS. OfferLab (launched 2025) integrates with ClickFunnels, GoHighLevel, Shopify, Kartra, and WordPress. Funnel Scripts (co-created with Jim Edwards) is a separate copywriting tool; Jim Edwards later created CopyAndContent.ai as an AI evolution.",
+    "knowledge_grounding_claimed": "Marketing.AI uses GPT to generate copy and content. No specific proprietary training corpus claimed (unlike Hormozi's ACQ AI). The tool generates based on user-provided prompts about their business, audience, and goals. Funnel Scripts is grounded in Russell Brunson's DotCom Secrets and Expert Secrets frameworks.",
+    "moderation_disclaimers": "[uncertain] No specific AI moderation disclaimers found for Marketing.AI beyond standard ClickFunnels Terms of Service. Russell Brunson has publicly stated that 'lived experience always beats AI when it comes to great copy that connects' and cautioned against over-reliance on AI for copywriting.",
+    "human_handoff": "[uncertain] Marketing.AI is a content generation tool, not a conversational agent, so human handoff is not applicable in the traditional sense. DM automation via School of Bots can be configured for human handoff but specifics for Brunson's implementation are not publicly documented.",
+    "platform_infrastructure": "Marketing.AI is built on GPT (OpenAI) and integrated into the ClickFunnels 2.0 platform (co-founded by Todd Dickerson, who is also the founder of Marketing.AI). DM automation runs on ManyChat. All plans include AI Tools with word-count allocations (2M words on lower tiers, more on higher tiers).",
+    "voice_modality_details": "No voice modality documented for Marketing.AI or DM automation bots. Russell Brunson's content is primarily text and video-based.",
+    "ai_agent_capabilities": "Marketing.AI is primarily a content generation tool (copywriting, image creation, funnel building) rather than an autonomous agent. It generates sales copy, landing page content, email sequences, and funnel structures based on user prompts. DM automation via ManyChat/School of Bots operates as rule-based and AI-enhanced chat flows for lead capture, nurture, and conversion. No documented autonomous action-taking capabilities (no CRM updates, booking, or workflow execution beyond the ManyChat platform)."
+  },
+  "distribution": {
+    "access_url": "https://www.clickfunnels.com/ (Marketing.AI within ClickFunnels platform); DM automation accessed via Instagram DM @russellbrunson and Facebook Messenger",
+    "distribution_path_description": "Social media (Instagram, YouTube, Facebook, TikTok, LinkedIn) -> content with CTA -> link in bio / clickfunnels.com / Linktree (linktr.ee/russell.brunson) -> ClickFunnels free trial or paid plan (includes Marketing.AI) -> AI-assisted funnel building and copywriting. DM automation path: Instagram/Facebook content -> 'Comment [keyword] below' CTA -> ManyChat-powered DM automation -> lead capture -> email list / funnel entry -> product purchase.",
+    "link_in_bio_platform": "Linktree (linktr.ee/russell.brunson). Also uses clickfunnels.com and offerlab.deal for specific campaigns.",
+    "social_to_bot_funnel": "Instagram @russellbrunson -> bio link to Linktree with multiple offers; YouTube -> description links to ClickFunnels and courses; TikTok @russellbrunson -> short-form content driving to funnels; Facebook @RussellBrunsonLIVE -> Messenger bot and DM automation; Podcast (The Russell Brunson Show) -> mentions ClickFunnels tools and AI features. School of Bots manages the DM automation layer that converts social engagement into leads and sales."
+  },
+  "monetization": {
+    "pricing_model": "bundled_with_platform (Marketing.AI included in all ClickFunnels subscription plans)",
+    "public_price": "ClickFunnels Launch: $81/month (annual) or $97/month (monthly). Scale: $164/month (annual). Optimize: $248/month (annual). Dominate: $5,997/year flat. All plans include AI Tools with 2M+ word allocations. 14-day free trial available.",
+    "bundled_with": "ClickFunnels platform subscription (includes funnels, landing pages, email marketing, CRM, workflows, courses, memberships, community app, Payments AI, and AI Tools). Funnel Scripts was previously sold as a separate $797 product (co-created with Jim Edwards).",
+    "monetization_linkage_type": "platform_feature (AI tools increase ClickFunnels platform value and reduce churn), lead_generation (DM automation drives prospects into funnels), course_retention (AI simplifies implementation of Brunson's teachings), upsell_to_events (Funnel Hacking Live tickets, OfferLab)",
+    "list_building_integration": "DM automation via ManyChat/School of Bots captures leads directly from Instagram DMs and Facebook Messenger into email lists and CRM. ClickFunnels platform includes built-in email marketing and CRM for ongoing nurture.",
+    "revenue_model_detail": {
+      "clickfunnels_platform": "$97-$248/month per user or $5,997/year. ClickFunnels reportedly reached $170M+ in annual revenue.",
+      "funnel_scripts": "$797 one-time (legacy product, co-created with Jim Edwards). Jim Edwards later evolved this into CopyAndContent.ai.",
+      "offerlab": "Free to start, platform takes processing fee on transactions (launched 2025)",
+      "books_and_courses": "DotCom Secrets, Expert Secrets, Traffic Secrets (free + shipping model). Your First Funnel Challenge (free). One Funnel Away Challenge ($100). Various high-ticket programs.",
+      "events": "Funnel Hacking Live (annual event, tickets typically $997-$2,997)",
+      "estimated_annual_ai_revenue": "[uncertain] AI revenue is not separately disclosed. It is bundled into ClickFunnels platform subscriptions and contributes to overall platform value and retention."
+    }
+  },
+  "content_training": {
+    "content_training_corpus": "Marketing.AI uses GPT (OpenAI) with no publicly documented proprietary training corpus specific to Brunson's content. Users provide their own business context and prompts. Funnel Scripts (predecessor) was grounded in DotCom Secrets and Expert Secrets frameworks. Unofficial ChatGPT clones ('Chat with Russell Brunson', 'Russell Brunson AI') are community-created GPTs likely trained on his publicly available books and content but are NOT official products.",
+    "update_frequency": "[uncertain] Marketing.AI updates are tied to ClickFunnels platform updates. ClickFunnels team has been 'consistently shipping meaningful updates' but no specific AI update cadence documented."
+  },
+  "risks_guardrails": {
+    "stated_disclaimers": "[uncertain] No specific AI-related disclaimers found for Marketing.AI beyond standard ClickFunnels Terms of Service. Russell Brunson has publicly stated that 'lived experience always beats AI when it comes to great copy that connects' and cautioned against over-reliance on AI for copywriting.",
+    "data_use_policy_cited": "ClickFunnels Privacy Policy governs data handling. Marketing.AI processes user-provided prompts to generate content. DM automation via ManyChat is subject to ManyChat's privacy policy and Meta's platform policies.",
+    "minors_policy": "[uncertain] Not specifically documented for Marketing.AI or DM automation bots.",
+    "impersonation_safeguards": "[uncertain] Unofficial ChatGPT clones ('Chat with Russell Brunson', 'Russell Brunson AI') exist in the GPT Store and are NOT endorsed by Brunson. These create impersonation risk. No public statements found regarding safeguards against unauthorized AI impersonation.",
+    "regulatory_compliance_status": "[uncertain] No public statements found regarding FTC disclosure requirements, state AI laws, or platform-specific AI regulations applicable to Marketing.AI or DM automation."
+  },
+  "competitive": {
+    "competitive_moat_type": "Platform integration (Marketing.AI is deeply embedded in ClickFunnels, the dominant funnel-building SaaS with 100K+ active users), proprietary methodology (DotCom Secrets, Expert Secrets, Traffic Secrets framework), ecosystem lock-in (ClickFunnels + OfferLab + Funnel Scripts + books + events + community), agency partnership (School of Bots manages DM automation with $56M+ in documented client results), brand recognition (Russell Brunson is synonymous with sales funnels and online marketing).",
+    "meta_creator_ai_status": "[uncertain] No evidence found of participation in Meta's Creator AI program for Instagram/Facebook/WhatsApp AI chatbot clones.",
+    "engagement_metrics_public": "[uncertain] No publicly disclosed engagement metrics (MAU, messages per session, retention) found for Marketing.AI or DM automation bots. School of Bots claims $56M+ in client revenue generated through Chat Funnels (across all clients, not Brunson-specific). ClickFunnels platform has 100K+ active users."
+  },
+  "verification": {
+    "confidence_level": "medium",
+    "confidence_note": "Russell Brunson's AI chatbot strategy is multi-layered: (1) Marketing.AI is a platform feature within ClickFunnels, not a standalone personality-driven chatbot like ACQ AI; (2) DM automation via School of Bots/ManyChat is a lead-gen tool, not an AI advisor; (3) multiple unofficial ChatGPT clones exist but are not endorsed. The 'chatbot' landscape for Brunson is more fragmented and tool-oriented than personality-driven.",
+    "primary_source_url": "https://www.clickfunnels.com/blog/clickfunnels-launches-marketingai/",
+    "corroborating_source_url": "https://manychat.com/agency/listing/91",
+    "last_verified_date": "2026-04-15"
+  },
+  "uncertain": [
+    "creator_profile.audience_size_documented.LinkedIn",
+    "functionality.memory_persistence",
+    "functionality.upload_support",
+    "functionality.moderation_disclaimers",
+    "functionality.human_handoff",
+    "content_training.update_frequency",
+    "monetization.revenue_model_detail.estimated_annual_ai_revenue",
+    "risks_guardrails.stated_disclaimers",
+    "risks_guardrails.minors_policy",
+    "risks_guardrails.impersonation_safeguards",
+    "risks_guardrails.regulatory_compliance_status",
+    "competitive.meta_creator_ai_status",
+    "competitive.engagement_metrics_public"
+  ]
+}

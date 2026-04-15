@@ -2,7 +2,13 @@
   "creator_profile": {
     "name": "Mark Manson",
     "primary_niche": "Self-help / personal development",
-    "main_platforms": ["YouTube", "Instagram", "Newsletter", "Podcast (Solved)", "markmanson.net"],
+    "main_platforms": [
+      "YouTube",
+      "Instagram",
+      "Newsletter",
+      "Podcast (Solved)",
+      "markmanson.net"
+    ],
     "audience_size_documented": "YouTube: ~2.7M subscribers; Instagram: ~2M followers; Facebook: ~1.1M followers; Newsletter ('Your Next Breakthrough'): ~650K subscribers. Sources: Instagram bio, YouTube channel page, Nathan Barry creator business breakdown. Verified April 2026.",
     "tier_classification": "Tier A",
     "tier_justification": "3x #1 New York Times bestselling author; 'The Subtle Art of Not Giving a F*ck' has sold over 20 million copies worldwide; multi-platform audience totaling approximately 6.5M+ across YouTube, Instagram, Facebook, and newsletter; reported ~$2.5M/year creator business revenue; mainstream media recognition (Fast Company, TechRadar, Puck, Maria Shriver's Sunday Paper). Sources: PRNewswire press release (Dec 2025), Nathan Barry podcast breakdown, Instagram bio."
@@ -24,10 +30,7 @@
       "accountability",
       "course_teaching_assistant"
     ],
-    "secondary_jtbds": [
-      "fan_qa",
-      "community_help"
-    ],
+    "secondary_jtbds": ["fan_qa", "community_help"],
     "jtbd_evidence_source": "Stated and Inference. Marketing copy explicitly describes the mentoring, self-discovery assessments, and challenge system. Fan Q&A and community help roles inferred from product behavior (chat anytime, reflect on tough moments, plan next steps)."
   },
   "functionality": {

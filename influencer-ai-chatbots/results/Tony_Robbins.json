@@ -2,7 +2,15 @@
   "creator_profile": {
     "name": "Tony Robbins",
     "primary_niche": "Self-help, personal development, life and business coaching",
-    "main_platforms": ["YouTube", "Instagram", "Facebook", "X/Twitter", "LinkedIn", "Podcast", "Website (tonyrobbins.com)"],
+    "main_platforms": [
+      "YouTube",
+      "Instagram",
+      "Facebook",
+      "X/Twitter",
+      "LinkedIn",
+      "Podcast",
+      "Website (tonyrobbins.com)"
+    ],
     "audience_size_documented": "Instagram: ~8M followers (2025, via Socialveins); Facebook: ~6.7M followers (2025, via Facebook page); X/Twitter: ~3.1M followers (2025, via SPEAKRJ); YouTube: ~2.08M subscribers (2025, via youtubers.me); LinkedIn: 7M+ followers (2025, via ExeedDigitals). Combined cross-platform audience exceeds 25 million.",
     "tier_classification": "Tier A",
     "tier_justification": "Tony Robbins is a globally recognized self-help icon with 40+ years of mainstream visibility, best-selling books (Awaken the Giant Within, Unlimited Power, Money Master the Game), a Netflix documentary (I Am Not Your Guru), Fortune 500 coaching clients, and multi-platform audiences totaling 25M+. He has spoken to 100M+ people in 100+ countries. One of the most commercially ambitious creator AI products launched."

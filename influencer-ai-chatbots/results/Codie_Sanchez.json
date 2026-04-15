@@ -51,10 +51,7 @@
     "jtbd_evidence_source": "Stated (from official Contrarian Thinking blog post 'We Built an AI Codie' and codie.chat landing page copy)"
   },
   "functionality": {
-    "modalities": [
-      "text",
-      "voice"
-    ],
+    "modalities": ["text", "voice"],
     "requires_login": false,
     "memory_persistence": "[uncertain] Not publicly documented. Delphi AI platform may support session memory but specifics for Codie.chat are not confirmed.",
     "upload_support": "[uncertain] Not publicly documented.",
