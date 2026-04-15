@@ -1,0 +1,111 @@
+{
+  "creator_profile": {
+    "name": "Andrew Huberman, Ph.D.",
+    "primary_niche": "Health, neuroscience, and science-based wellness",
+    "main_platforms": ["YouTube", "Podcast (Spotify, Apple Podcasts)", "Instagram", "X/Twitter", "Newsletter"],
+    "audience_size_documented": [
+      {
+        "platform": "YouTube",
+        "metric": "subscribers",
+        "value": "7.39M",
+        "date": "2026-02",
+        "source": "https://hypeauditor.com/youtube/UC2D2CMWXMOVWx7giW1n3LIg/"
+      },
+      {
+        "platform": "Instagram",
+        "metric": "followers",
+        "value": "8M",
+        "date": "2026-04",
+        "source": "https://www.instagram.com/hubermanlab/"
+      },
+      {
+        "platform": "Newsletter",
+        "metric": "subscribers",
+        "value": "1M+",
+        "date": "2026-04",
+        "source": "https://healthynexercise.com/top-health-influencers/andrew-huberman/"
+      }
+    ],
+    "tier_classification": "Tier A",
+    "tier_justification": "7.39M YouTube subscribers, 8M Instagram followers, 1M+ newsletter subscribers, Huberman Lab podcast consistently ranked #1 in health/science globally on Spotify and Apple Podcasts. Multi-platform mainstream recognition as one of the top health influencers worldwide."
+  },
+  "bot_identity": {
+    "bot_name": "Ask Huberman Lab (powered by Dexa AI)",
+    "positioning_tagline": "Search Huberman Lab's entire back catalog powered by AI",
+    "positioning_narrative_excerpts": [
+      "Partnering with Dexa furthers that mission by giving people an easy way to find and consume all of the knowledge across our nearly 200 episodes in a new way, as well as to provide our content to new audiences. -- Andrew Huberman",
+      "Ask Huberman Lab allows you to search Huberman Lab's entire back catalog, with queries on topics ranging from maximizing REM sleep to stretching protocols matched with summaries and clips from relevant episodes.",
+      "Instant, zero-cost access to search the show's entire back catalog on ai.hubermanlab.com."
+    ],
+    "launch_date": "2023-05 [uncertain]",
+    "current_status": "Active"
+  },
+  "jobs_to_be_done": {
+    "primary_jtbds": [
+      "fan_qa",
+      "ask_my_method"
+    ],
+    "secondary_jtbds": [
+      "community_help",
+      "pre_sale_education"
+    ],
+    "jtbd_evidence_source": "Stated"
+  },
+  "functionality": {
+    "modalities": ["text"],
+    "requires_login": "Optional -- core search is free without login; sign-in page exists suggesting some features may require authentication",
+    "memory_persistence": "No [uncertain]",
+    "upload_support": "No",
+    "tool_integrations": "Embedded YouTube video player for timestamped clips; no documented CRM, calendar, or payment integrations",
+    "knowledge_grounding_claimed": "Full Huberman Lab podcast transcript corpus (400+ episodes), with time-stamped citations linking back to specific moments in episodes",
+    "moderation_disclaimers": "Medical disclaimer: content is general information only, not medical advice. No doctor/patient relationship is formed. Users advised to always consult a qualified professional for personal medical decisions.",
+    "human_handoff": "None documented",
+    "platform_infrastructure": "Dexa AI -- custom RAG (Retrieval-Augmented Generation) platform built with their open-source 'Dexter' TypeScript library, using OpenAI API integration for LLM inference, tiktoken for tokenization, and OpenTelemetry for observability. Backed by $6M seed funding.",
+    "voice_modality_details": "Text-only; no voice clone or audio interaction",
+    "ai_agent_capabilities": "Answers questions only (search and summarize); no agentic actions such as booking, checkout, or workflow execution"
+  },
+  "distribution": {
+    "access_url": "https://ai.hubermanlab.com/",
+    "distribution_path_description": "Huberman Lab website -> dedicated ai.hubermanlab.com subdomain; also accessible via dexa.ai/andrewhuberman. Promoted through podcast episodes, social media posts, and Huberman Lab website navigation.",
+    "link_in_bio_platform": "Custom site (hubermanlab.com)",
+    "social_to_bot_funnel": "YouTube video descriptions and podcast show notes link to hubermanlab.com, which hosts a direct link to ai.hubermanlab.com. Instagram bio links to hubermanlab.com. X/Twitter posts from @hubermanlab and @dexa_ai promote the tool."
+  },
+  "monetization": {
+    "pricing_model": "free",
+    "public_price": "Free",
+    "bundled_with": "None -- standalone free tool integrated into Huberman Lab's content ecosystem",
+    "monetization_linkage_type": "list_building, community_value_add",
+    "list_building_integration": "Sign-in page exists which likely captures user email; Huberman Lab newsletter with 1M+ subscribers is the primary list-building mechanism",
+    "revenue_model_detail": "The AI chatbot itself is free to users. Revenue model is indirect: Dexa AI is a separate venture-backed company ($6M seed funding) that partners with Huberman Lab. For Huberman, the bot serves as a content discovery and audience engagement tool that drives listeners to podcast episodes (ad-supported) and the broader Huberman Lab ecosystem including premium content, supplements partnerships, and sponsorships. No direct subscription or per-use fees for the chatbot."
+  },
+  "content_training": {
+    "content_training_corpus": "Complete Huberman Lab podcast transcript library (400+ episodes as of 2026), including full episode transcripts with time-stamped segments. The AI uses RAG to retrieve relevant transcript segments and generate answers grounded in the actual podcast content.",
+    "update_frequency": "Continuous -- new episodes are indexed as they are published [uncertain]"
+  },
+  "risks_guardrails": {
+    "stated_disclaimers": "This is general information, not medical advice. Always consult a qualified professional for personal medical decisions. No doctor/patient relationship is formed through use of the tool.",
+    "data_use_policy_cited": "Dexa AI Privacy Policy and Terms of Service referenced on ai.hubermanlab.com/about. User searches are private by default; users can optionally share results publicly.",
+    "minors_policy": "Not explicitly stated [uncertain]",
+    "impersonation_safeguards": "Bot is clearly branded as 'Ask Huberman Lab powered by Dexa' rather than presenting as Andrew Huberman himself. Responses cite specific podcast episodes and timestamps rather than generating novel opinions.",
+    "regulatory_compliance_status": "Medical disclaimer present. No specific FTC AI disclosure or state AI law compliance documentation found publicly. [uncertain]"
+  },
+  "competitive": {
+    "competitive_moat_type": "Exclusive partnership with Huberman Lab for official AI search; proprietary corpus of 400+ podcast episode transcripts with time-stamped citations; Dexa's custom RAG infrastructure; integration directly on hubermanlab.com subdomain giving it official endorsement status; brand recognition as the #1 health podcast's AI tool.",
+    "meta_creator_ai_status": "No evidence of participation in Meta's Creator AI program [uncertain]",
+    "engagement_metrics_public": "As of February 2024: nearly 1 million queries answered, 50,000+ monthly site visitors (Dexa platform-wide, not Huberman-specific). No more recent public metrics found."
+  },
+  "verification": {
+    "confidence_level": "high",
+    "primary_source_url": "https://ai.hubermanlab.com/",
+    "corroborating_source_url": "https://techcrunch.com/2024/02/05/dexa-aims-to-get-more-out-of-podcasts-with-ai-powered-search/",
+    "last_verified_date": "2026-04-15"
+  },
+  "uncertain": [
+    "bot_identity.launch_date",
+    "functionality.memory_persistence",
+    "content_training.update_frequency",
+    "risks_guardrails.minors_policy",
+    "risks_guardrails.regulatory_compliance_status",
+    "competitive.meta_creator_ai_status"
+  ]
+}

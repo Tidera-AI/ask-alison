@@ -1,0 +1,83 @@
+{
+  "creator_profile": {
+    "name": "MrBeast (Jimmy Donaldson)",
+    "primary_niche": "Entertainment, challenge videos, philanthropy",
+    "main_platforms": ["YouTube", "Instagram", "TikTok", "X/Twitter"],
+    "audience_size_documented": {
+      "YouTube": "476 million subscribers (April 2026, via Social Blade / Wikipedia)",
+      "TikTok": "125 million followers (April 2026, via Social Blade)",
+      "Instagram": "65 million+ followers (estimated, April 2026)"
+    },
+    "tier_classification": "Tier A",
+    "tier_justification": "Most-subscribed individual YouTube creator globally with 476M+ subscribers. Mainstream household name with multi-platform mega-audiences across YouTube, TikTok, and Instagram. Launched consumer brands (Feastables, Beast Burger). Part of Meta's inaugural Creator AI chatbot program (2023). Co-founded ViewStats analytics platform."
+  },
+  "bot_identity": {
+    "bot_name": "Zach (Meta AI character)",
+    "positioning_tagline": "The big brother who will roast you -- because he cares",
+    "positioning_narrative_excerpts": [
+      "They made an AI version of me -- MrBeast's own Instagram post promoting the Meta AI character launch (October 2023)",
+      "Zach is the big brother who will roast you -- because he cares -- Meta's official character description at Meta Connect 2023",
+      "Chat with AI characters played by your favorite celebrities and influencers on Messenger, Instagram, and WhatsApp -- Meta's marketing copy for the Creator AI program"
+    ],
+    "launch_date": "2023-09",
+    "current_status": "Deprecated (retired by Meta in mid-2024 due to low user engagement)"
+  },
+  "jobs_to_be_done": {
+    "primary_jtbds": ["character_persona", "fan_qa", "roleplay"],
+    "secondary_jtbds": ["community_help"],
+    "jtbd_evidence_source": "Inference -- based on Meta's public marketing and UX observation of the Zach character's 'big brother' roasting persona and conversational chat interface"
+  },
+  "functionality": {
+    "modalities": ["text"],
+    "requires_login": true,
+    "memory_persistence": true,
+    "upload_support": false,
+    "tool_integrations": "None documented. The chatbot operated within Meta's messaging ecosystem (Messenger, Instagram DMs, WhatsApp) without external tool integrations.",
+    "knowledge_grounding_claimed": "Generic model -- Meta's Llama 2 large language model. No claim of being trained on MrBeast's specific content corpus. Celebrity provided voice recordings and filmed movements for persona development.",
+    "moderation_disclaimers": "Meta's standard AI chatbot disclaimers applied. Chatbot profiles were labeled as AI characters, not as the real person. Meta's general Terms of Use and Privacy Policy governed interactions.",
+    "human_handoff": "No human handoff mechanism documented",
+    "platform_infrastructure": "Meta Llama 2 (Meta's proprietary large language model), hosted across Meta's family of apps (Instagram, Messenger, WhatsApp)",
+    "voice_modality_details": "Text-only at launch. Meta recorded MrBeast's voice and filmed movements during development, but the chatbot responded only in text. Voice responses were planned for early 2024 but the program was discontinued before voice was shipped.",
+    "ai_agent_capabilities": "Purely conversational Q&A -- no action-taking capabilities (no booking, checkout, CRM, or workflow execution)"
+  },
+  "distribution": {
+    "access_url": "No longer available. Was accessible via Instagram (@zach.ai), Messenger, and WhatsApp during active period (Sept 2023 - mid 2024).",
+    "distribution_path_description": "MrBeast promoted the Zach character via his Instagram account -> users could search for @zach on Instagram/Messenger/WhatsApp -> direct chat with the AI character within Meta's messaging apps",
+    "link_in_bio_platform": "Not applicable -- distribution was entirely within Meta's native messaging platforms",
+    "social_to_bot_funnel": "MrBeast posted on Instagram promoting the AI character ('They made an AI version of me'). Meta also promoted the chatbots at Meta Connect 2023 and through media coverage. Users accessed the bot by searching for the character name within Instagram, Messenger, or WhatsApp."
+  },
+  "monetization": {
+    "pricing_model": "free",
+    "public_price": "Free to users. Meta reportedly paid participating celebrities up to $5 million for approximately 6 hours of work (likeness licensing). MrBeast's specific compensation was not publicly disclosed.",
+    "bundled_with": "None -- standalone AI character within Meta's messaging platforms",
+    "monetization_linkage_type": "sponsor_driven -- Meta funded the program as part of its AI platform strategy. No direct revenue generation from users.",
+    "list_building_integration": "No email capture or list building. User data was collected by Meta under its standard data policies.",
+    "revenue_model_detail": "MrBeast was compensated by Meta for licensing his likeness and voice for the AI character. Reports indicate Meta paid celebrities between $1 million and $5 million for approximately 6 hours of recording work. The chatbot was free to users with no subscription, per-minute, or upsell model. Revenue flowed from Meta to the creator, not from end users."
+  },
+  "content_training": {
+    "content_training_corpus": "Meta's Llama 2 general-purpose language model. The AI character was shaped by recorded voice sessions and filmed movements from MrBeast, plus Meta's persona engineering for the 'big brother who roasts you' character. No evidence of training on MrBeast's YouTube content, podcast transcripts, or specific creator methodology.",
+    "update_frequency": "Unknown -- the program was discontinued before any documented knowledge base refresh cycle"
+  },
+  "risks_guardrails": {
+    "stated_disclaimers": "AI characters were labeled as AI on their profiles within Meta's platforms. Meta's standard terms applied. The chatbot had a 'long-term memory' feature that retained conversation history across sessions.",
+    "data_use_policy_cited": "Meta's standard Terms of Use and Privacy Policy (https://www.meta.com/legal/privacy-policy/)",
+    "minors_policy": "Meta's standard age requirements for Instagram, Messenger, and WhatsApp applied (13+ for Instagram/Messenger, 16+ for WhatsApp in some regions). No MrBeast-specific minors policy documented. [uncertain]",
+    "impersonation_safeguards": "The character was named 'Zach' rather than 'MrBeast' to create separation between the AI persona and the real person. The AI profile was labeled as an AI character on Meta's platforms.",
+    "regulatory_compliance_status": "No specific FTC disclosures or state AI law compliance measures documented for this chatbot. The program launched before most US state AI chatbot regulations took effect and was discontinued by mid-2024. [uncertain]"
+  },
+  "competitive": {
+    "competitive_moat_type": "Brand recognition -- MrBeast is the most-subscribed individual YouTuber globally, providing massive name recognition. However, the Meta AI character had no proprietary methodology, exclusive content corpus, or community integration. The moat was entirely celebrity brand value within Meta's walled garden.",
+    "meta_creator_ai_status": "Yes -- MrBeast was one of 28 original participants in Meta's Creator AI chatbot program launched at Meta Connect in September 2023. His character 'Zach' was available on Instagram, Messenger, and WhatsApp. The program was discontinued by Meta in mid-2024 due to low user engagement.",
+    "engagement_metrics_public": "No specific engagement metrics (MAU, messages per session, retention) were publicly disclosed for the Zach character. Reports indicate that none of Meta's celebrity AI chatbots amassed particularly large followings, and users found the alternative personas 'weird and creepy,' leading Meta to discontinue the program."
+  },
+  "verification": {
+    "confidence_level": "high",
+    "primary_source_url": "https://about.fb.com/news/2023/09/introducing-ai-powered-assistants-characters-and-creative-tools/",
+    "corroborating_source_url": "https://variety.com/2023/digital/news/meta-ai-chatbots-snoop-dogg-mrbeast-tom-brady-kendall-jenner-charli-damelio-1235737740/",
+    "last_verified_date": "2026-04-15"
+  },
+  "uncertain": [
+    "minors_policy",
+    "regulatory_compliance_status"
+  ]
+}

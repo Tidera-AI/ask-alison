@@ -1,0 +1,109 @@
+{
+  "creator_profile": {
+    "name": "Rhonda Patrick",
+    "primary_niche": "Health science, nutrition, longevity, and disease prevention",
+    "main_platforms": [
+      "YouTube (FoundMyFitness)",
+      "Instagram",
+      "X (Twitter)",
+      "Podcast (FoundMyFitness on Apple Podcasts/Spotify)",
+      "FoundMyFitness.com"
+    ],
+    "audience_size_documented": {
+      "YouTube": "~429K subscribers (March 2026, via SocialBlade/NetWorthSpot)",
+      "Instagram": "~1M followers (April 2026, via Instagram @foundmyfitness)",
+      "X_Twitter": "~614K followers (April 2026, via x.com/foundmyfitness)",
+      "podcast_note": "FoundMyFitness podcast launched in 2013; estimated 180+ episodes across public and premium feeds"
+    },
+    "tier_classification": "Tier B",
+    "tier_justification": "Prominent science communicator with ~1M Instagram followers, ~429K YouTube subscribers, and ~614K X followers. PhD in biomedical science from University of Tennessee. Known for translating complex scientific research into practical health advice. Regular guest on major podcasts (Joe Rogan, Andrew Huberman). Runs FoundMyFitness.com with premium membership. Not a mega-influencer by raw follower count, but highly respected and influential within health/longevity niche."
+  },
+  "bot_identity": {
+    "bot_name": "Ask Rhonda Patrick (via Dexa AI)",
+    "positioning_tagline": "Ask questions and get answers powered by the knowledge of FoundMyFitness, with timestamped references to episodes.",
+    "positioning_narrative_excerpts": [
+      "Dexa AI just released a profoundly useful way to interface with all FoundMyFitness podcast episodes. Ask questions, and get summaries. Importantly, you can trace all AI generated summaries back to their source material via transcript. - Rhonda Patrick, May 2023",
+      "Where Curiosity Meets Credibility - Dexa AI platform tagline",
+      "Dexa unlocks the wisdom of experts like Andrew Huberman, Lex Fridman, Rhonda Patrick, Shane Parrish, and many others."
+    ],
+    "launch_date": "2023-05 (Rhonda Patrick endorsed Dexa AI on X/Twitter on May 19, 2023; Dexa platform itself founded in 2023 by Riley Tomasek)",
+    "current_status": "Active"
+  },
+  "jobs_to_be_done": {
+    "primary_jtbds": [
+      "ask_my_method - Ask health/nutrition/longevity questions and get answers grounded in FoundMyFitness podcast content",
+      "content_discovery - Search and navigate the full FoundMyFitness podcast library by topic or keyword",
+      "source_verification - Trace AI-generated answers back to specific podcast episodes with timestamps and transcripts"
+    ],
+    "secondary_jtbds": [
+      "pre_sale_education - Discover FoundMyFitness content which may lead to premium membership conversion",
+      "clip_extraction - Watch referenced podcast clips from within the conversation interface"
+    ],
+    "jtbd_evidence_source": "Stated (from Rhonda Patrick's X/Twitter endorsement and Dexa AI platform descriptions)"
+  },
+  "functionality": {
+    "modalities": [
+      "text"
+    ],
+    "requires_login": true,
+    "memory_persistence": "[uncertain] Not publicly documented; Dexa AI platform may retain conversation history per user session but no explicit memory/personalization feature documented",
+    "upload_support": "[uncertain] No upload functionality documented for Dexa AI",
+    "tool_integrations": "None documented. Dexa AI is a standalone platform. Not integrated with FoundMyFitness.com premium membership, Patreon, or other Rhonda Patrick properties.",
+    "knowledge_grounding_claimed": "Entire FoundMyFitness podcast library (180+ episodes), fully transcribed and indexed. AI answers include timestamped references to specific episodes and speakers. Dexa uses OpenAI embeddings and Whisper for transcription, with speaker diarization to identify who said what and when.",
+    "moderation_disclaimers": "Dexa AI provides AI-generated summaries with source citations. Users must agree to Terms of Use and Privacy Policy upon sign-in. Searches are private by default but can be publicly shared. No specific health/medical disclaimers documented on Dexa platform itself, though FoundMyFitness.com content generally includes standard informational disclaimers.",
+    "human_handoff": "No. Dexa AI is fully automated. No escalation path to Rhonda Patrick or her team. Premium membership on FoundMyFitness.com (separate product) offers monthly live Q&A sessions with Rhonda.",
+    "platform_infrastructure": "Dexa AI platform (dexa.ai). Built using OpenAI embeddings, Whisper transcription, and a custom trained model. Open-source LLM tooling available at github.com/dexaai/dexter. Raised $6M seed round in February 2024 co-led by Abstract Ventures and The General Partnership. Not a GPT Store product. Rhonda Patrick is one of 120+ podcasters indexed on Dexa.",
+    "voice_modality_details": "No voice input/output for the chatbot itself. However, Dexa links to audio/video clips from original podcast episodes within answers, allowing users to hear the original source material.",
+    "ai_agent_capabilities": "Q&A chatbot only. Answers questions by searching indexed podcast transcripts and generating summaries with citations. No autonomous actions, no booking, no recommendations engine beyond content retrieval. Users can ask follow-up questions in a chat-based interface."
+  },
+  "distribution": {
+    "access_url": "https://dexa.ai/foundmyfitness (primary) and https://dexa.ai/rhondapatrick (alternate URL)",
+    "distribution_path_description": "Social media (X, Instagram, YouTube) -> Rhonda Patrick's endorsement tweet / organic discovery on Dexa.ai -> dexa.ai/foundmyfitness -> sign in -> ask questions. Dexa AI is a third-party platform, not embedded within FoundMyFitness.com.",
+    "link_in_bio_platform": "FoundMyFitness.com (primary website). Dexa AI is not prominently featured in bio links; it was promoted via a single X/Twitter post in May 2023.",
+    "social_to_bot_funnel": "Minimal direct funnel. Rhonda Patrick posted once on X/Twitter (May 19, 2023) endorsing Dexa AI. No ongoing promotion observed. Users primarily discover the Dexa AI bot through the Dexa.ai platform itself or through organic search. FoundMyFitness.com drives traffic to its own premium membership, not to Dexa."
+  },
+  "monetization": {
+    "pricing_model": "freemium (via Dexa AI platform, not controlled by Rhonda Patrick)",
+    "public_price": "Dexa AI: Free tier available with limited queries; Pro plan at ~$10/month for priority responses and full access. FoundMyFitness Premium Membership (separate): starts at $15/month (yearly saves 20%), with a $250/month tier including monthly Google Hangout with Rhonda.",
+    "bundled_with": "Not bundled. Dexa AI is an independent third-party platform. FoundMyFitness premium membership is a separate product on foundmyfitness.com with its own benefits (Q&A sessions, The Aliquot private podcast, Science Digest).",
+    "monetization_linkage_type": "third_party_platform (Rhonda Patrick does not monetize the Dexa AI bot directly; Dexa AI monetizes through its own subscription. FoundMyFitness premium membership is a separate revenue stream.)",
+    "list_building_integration": "No integration between Dexa AI and FoundMyFitness email list or premium membership. FoundMyFitness.com has its own 30-day free trial funnel for premium membership.",
+    "revenue_model_detail": {
+      "dexa_ai_revenue": "Dexa AI monetizes independently via freemium subscription ($10/month Pro). Revenue accrues to Dexa AI Inc., not to Rhonda Patrick.",
+      "foundmyfitness_premium": "$15/month minimum (yearly saves 20%). $250/month premium tier with Google Hangout access. 30-day free trial available.",
+      "estimated_ai_revenue_to_creator": "[uncertain] Rhonda Patrick likely receives no direct revenue from Dexa AI. Any revenue-sharing arrangement between Dexa and indexed creators is not publicly documented."
+    }
+  },
+  "content_training": {
+    "content_training_corpus": "Full FoundMyFitness podcast library (180+ episodes, spanning 2013-present). All episodes are transcribed via Whisper with speaker diarization. Corpus includes interviews with leading scientists and researchers on topics including nutrition, aging, longevity, exercise physiology, sauna, fasting, supplements, and disease prevention. Does not include FoundMyFitness premium-only content (The Aliquot, Q&A sessions, Science Digest) or foundmyfitness.com articles.",
+    "update_frequency": "[uncertain] Dexa AI appears to index new episodes as they are published, but no explicit update cadence is documented. FoundMyFitness publishes episodes irregularly (not on a fixed schedule)."
+  },
+  "risks_guardrails": {
+    "stated_disclaimers": "Dexa AI presents AI-generated summaries with source citations and timestamps. No specific health/medical disclaimers observed on the Dexa platform itself. FoundMyFitness.com generally includes standard 'for informational purposes only, not medical advice' disclaimers on its own content.",
+    "data_use_policy_cited": "Dexa AI requires agreement to Terms of Use and Privacy Policy upon sign-in at dexa.ai/sign-in. Specific policy details for dexa.ai not retrieved; the platform states searches are private by default.",
+    "minors_policy": "[uncertain] No specific minors policy documented for Dexa AI or for the Rhonda Patrick bot specifically.",
+    "impersonation_safeguards": "Dexa AI answers are presented as AI-generated summaries citing podcast content, not as direct statements from Rhonda Patrick. The interface frames responses as 'based on FoundMyFitness' content rather than impersonating Rhonda. However, the URL dexa.ai/rhondapatrick and the 'Ask Rhonda Patrick' framing could create an impression of direct interaction.",
+    "regulatory_compliance_status": "[uncertain] No public statements found regarding FTC disclosure requirements, health information regulations (HIPAA not applicable to podcast content), or state AI laws. Notably, health/nutrition advice delivered via AI raises particular regulatory questions around scope of practice and medical advice disclaimers."
+  },
+  "competitive": {
+    "competitive_moat_type": "Domain expertise (PhD in biomedical science with deep research credibility), unique content corpus (hundreds of hours of science-dense podcast interviews with leading researchers), brand trust in health/longevity community, and FoundMyFitness premium membership ecosystem (separate from AI bot). However, the AI bot itself is on a third-party platform (Dexa) that Rhonda does not control, limiting her competitive moat around the AI product specifically.",
+    "meta_creator_ai_status": "[uncertain] No evidence found of Rhonda Patrick participating in Meta's Creator AI program for Instagram/Facebook/WhatsApp AI chatbot clones.",
+    "engagement_metrics_public": "[uncertain] No publicly disclosed engagement metrics for the Dexa AI Rhonda Patrick bot (MAU, messages per session, retention). Dexa AI as a platform indexes 120+ podcasts but does not publish per-creator usage data."
+  },
+  "verification": {
+    "confidence_level": "high",
+    "primary_source_url": "https://dexa.ai/foundmyfitness",
+    "corroborating_source_url": "https://x.com/foundmyfitness/status/1659707779869978625",
+    "last_verified_date": "2026-04-15"
+  },
+  "uncertain": [
+    "functionality.memory_persistence",
+    "functionality.upload_support",
+    "content_training.update_frequency",
+    "monetization.revenue_model_detail.estimated_ai_revenue_to_creator",
+    "risks_guardrails.minors_policy",
+    "risks_guardrails.regulatory_compliance_status",
+    "competitive.meta_creator_ai_status",
+    "competitive.engagement_metrics_public"
+  ]
+}

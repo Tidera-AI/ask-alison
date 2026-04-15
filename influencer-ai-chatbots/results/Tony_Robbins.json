@@ -1,0 +1,90 @@
+{
+  "creator_profile": {
+    "name": "Tony Robbins",
+    "primary_niche": "Self-help, personal development, life and business coaching",
+    "main_platforms": ["YouTube", "Instagram", "Facebook", "X/Twitter", "LinkedIn", "Podcast", "Website (tonyrobbins.com)"],
+    "audience_size_documented": "Instagram: ~8M followers (2025, via Socialveins); Facebook: ~6.7M followers (2025, via Facebook page); X/Twitter: ~3.1M followers (2025, via SPEAKRJ); YouTube: ~2.08M subscribers (2025, via youtubers.me); LinkedIn: 7M+ followers (2025, via ExeedDigitals). Combined cross-platform audience exceeds 25 million.",
+    "tier_classification": "Tier A",
+    "tier_justification": "Tony Robbins is a globally recognized self-help icon with 40+ years of mainstream visibility, best-selling books (Awaken the Giant Within, Unlimited Power, Money Master the Game), a Netflix documentary (I Am Not Your Guru), Fortune 500 coaching clients, and multi-platform audiences totaling 25M+. He has spoken to 100M+ people in 100+ countries. One of the most commercially ambitious creator AI products launched."
+  },
+  "bot_identity": {
+    "bot_name": "Tony Robbins AI",
+    "positioning_tagline": "Get 24/7 Guidance with Tony Robbins AI | Transform Your Life",
+    "positioning_narrative_excerpts": [
+      "Tony Robbins AI is a fully interactive experience trained on decades of Tony's most effective methods—from live events and best-selling books to frameworks like the Wheel of Life and the Gap Map. It speaks in Tony's own voice, delivers personalized answers, and helps you move forward with confidence and purpose.",
+      "Now available on iOS and Android, Tony Robbins AI allows users to ask their most pressing personal and professional questions and receive immediate, voice-guided feedback—straight from Mr. Robbins himself.",
+      "Available in 23 languages and trained on 4+ decades of Tony's most powerful tools, principles, and peak performance techniques."
+    ],
+    "launch_date": "2025-04-23",
+    "current_status": "Active"
+  },
+  "jobs_to_be_done": {
+    "primary_jtbds": [
+      "ask_my_method",
+      "accountability",
+      "course_teaching_assistant",
+      "fan_qa"
+    ],
+    "secondary_jtbds": [
+      "pre_sale_education",
+      "community_help",
+      "character_persona"
+    ],
+    "jtbd_evidence_source": "Stated — marketing copy and app description explicitly describe coaching on proprietary frameworks (Wheel of Life, Gap Map, 2mm Rule, Priming Rituals), accountability coaching, and personal Q&A."
+  },
+  "functionality": {
+    "modalities": ["text", "voice"],
+    "requires_login": true,
+    "memory_persistence": true,
+    "upload_support": "[uncertain]",
+    "tool_integrations": "No publicly documented external tool integrations (no calendar, CRM, or email capture mentioned). App is self-contained coaching experience.",
+    "knowledge_grounding_claimed": "Trained on 4+ decades of Tony Robbins' methodologies, including live event recordings, best-selling books, proprietary frameworks (Wheel of Life, Gap Map, 2mm Rule, Priming Rituals), peak performance techniques, and coaching content.",
+    "moderation_disclaimers": "The platform is not psychological counseling, relationship counseling, financial advising, estate planning, nor any other type of counseling or therapy sessions. Users are not purchasing the services of an individual live coach.",
+    "human_handoff": "No documented human handoff; support available via Tony Robbins Client Experience Support for billing/technical issues only.",
+    "platform_infrastructure": "Built by Steno.ai using their proprietary Steno Twin Engine, which includes custom fine-tuned large language model backends. Voice synthesis powered by ElevenLabs. App package ID: com.steno.ai.coachingai (StenoAI Inc.).",
+    "voice_modality_details": "Uses Tony Robbins' cloned voice via ElevenLabs voice synthesis technology. Voice-to-Voice Mode allows real-time spoken conversation that mimics a phone call. Users can also use text-based 'Chat with Tony' feature.",
+    "ai_agent_capabilities": "Primarily answers questions and provides coaching guidance. No documented action-taking capabilities (no booking, checkout, CRM integration, or workflow execution). Provides personalized coaching sessions with memory of past interactions."
+  },
+  "distribution": {
+    "access_url": "https://apps.apple.com/us/app/tony-robbins/id6740523783 (iOS); https://play.google.com/store/apps/details?id=com.steno.ai.coachingai (Android); https://go.tonyrobbins.com/tony-ai (web landing page)",
+    "distribution_path_description": "Social media posts and website banners -> tonyrobbins.com/programs/tony-ai or go.tonyrobbins.com/tony-ai landing page -> App Store / Google Play download -> $1 trial signup -> subscription",
+    "link_in_bio_platform": "Custom site (tonyrobbins.com)",
+    "social_to_bot_funnel": "Instagram, Facebook, X/Twitter, YouTube, LinkedIn, TikTok — posts and ads drive to tonyrobbins.com landing pages and app store links. LinkedIn post by Steno CEO Arman Assadi noted the app was 'going TikTok viral.' Press release distributed via PR Newswire amplified launch across news outlets."
+  },
+  "monetization": {
+    "pricing_model": "paid",
+    "public_price": "$1 for 14-day trial, then $99/month; annual plan $390/year ($32.50/month, 68% off monthly rate). Separate trial offer: $1 for 30-day trial then $39/month.",
+    "bundled_with": "Standalone product, not bundled with other courses or memberships",
+    "monetization_linkage_type": "direct_subscription",
+    "list_building_integration": "Email capture occurs at signup/account creation. No documented separate list-building mechanism within the chatbot itself.",
+    "revenue_model_detail": "Direct subscription revenue: $99/month or $390/year. Trial funnel: $1 for 14-day trial converts to monthly subscription. Alternative trial at $39/month also available. No setup fees. No per-minute charges. At scale, this is one of the most commercially ambitious creator AI products — with even modest adoption among Robbins' 25M+ audience, projected annual revenue potential is significant. App store data shows ~2,500 downloads in a recent 30-day period."
+  },
+  "content_training": {
+    "content_training_corpus": "4+ decades of Tony Robbins content: live event recordings, best-selling books (Awaken the Giant Within, Unlimited Power, Money Master the Game, Life Force), proprietary coaching frameworks (Wheel of Life, Gap Map, 2mm Rule, Priming Rituals), podcast episodes, video content, and peak performance techniques.",
+    "update_frequency": "[uncertain]"
+  },
+  "risks_guardrails": {
+    "stated_disclaimers": "The platform is not psychological counseling, relationship counseling, financial advising, estate planning, nor any other type of counseling or therapy. Users are not purchasing the services of an individual live coach or particular coaching sessions, but only unlimited access to the Platform. Users acknowledge they will not hold RRI or vendors responsible for any negligent actions or adverse results.",
+    "data_use_policy_cited": "Privacy Policy at tonyrobbins.com/privacy-policy; Terms of Service at tonyrobbins.com/terms-of-service; Tony Robbins AI-specific terms at tonyrobbins.com/terms/tony-robbins-ai",
+    "minors_policy": "[uncertain]",
+    "impersonation_safeguards": "Tony Robbins has filed a federal trademark lawsuit against YesChat for creating unauthorized AI chatbots using his name and likeness, indicating active brand protection. The official app is described as 'fully endorsed by Tony himself' to distinguish it from unauthorized clones.",
+    "regulatory_compliance_status": "[uncertain]"
+  },
+  "competitive": {
+    "competitive_moat_type": "Proprietary methodology (4+ decades of coaching frameworks), exclusive content corpus (live events, books, proprietary tools), voice clone (ElevenLabs-powered recreation of Tony's iconic voice and energy), massive brand recognition (globally known self-help icon), 23-language support, and partnership with Steno.ai's Twin Engine technology.",
+    "meta_creator_ai_status": "No evidence of participation in Meta's Creator AI program",
+    "engagement_metrics_public": "App Store rating: 4.55/5 stars based on ~930 ratings (Android). Approximately 2,500 downloads in a recent 30-day period. Users report 'huge breakthroughs' in first sessions. App went viral on TikTok according to Steno CEO."
+  },
+  "verification": {
+    "confidence_level": "high",
+    "primary_source_url": "https://www.prnewswire.com/news-releases/world-renowned-life-and-business-strategist-tony-robbins-launches-revolutionary-ai-coaching-app-302432048.html",
+    "corroborating_source_url": "https://www.eweek.com/news/tony-robbins-ai-app/",
+    "last_verified_date": "2026-04-15"
+  },
+  "uncertain": [
+    "upload_support",
+    "update_frequency",
+    "minors_policy",
+    "regulatory_compliance_status"
+  ]
+}

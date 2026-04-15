@@ -1,0 +1,174 @@
+topic: "How top influencers use AI chatbots (English-speaking markets)"
+
+items:
+  # Tier A — Mainstream Recognition
+  - name: "Alex Hormozi"
+    category: "Tier A"
+    description: "Business/fitness creator. ACQ AI costs $3K initiation + $299/month, trained on $31M in consulting work across 1,026+ businesses. Book launch pulled $103M with '$100M AI' bundled for $6K. Multi-platform (YouTube, IG, X)."
+
+  - name: "Tony Robbins"
+    category: "Tier A"
+    description: "Launched dedicated AI coaching app (April 2025) trained on decades of methodologies, speaking in cloned voice. $99/month after $1 trial. iOS and Android, 23-language support. One of the most commercially ambitious creator AI products."
+
+  - name: "Andrew Huberman"
+    category: "Tier A"
+    description: "Official AI-powered hub at ai.hubermanlab.com built with Dexa.ai. Free access, grounded in podcast transcripts with time-stamped citations. 6M+ YouTube subscribers in health/science."
+
+  - name: "Brendon Burchard"
+    category: "Tier A"
+    description: "brendon.ai trained on $200M+ of paid courses and seminars. 24/7 access via text, chat, or voice calls. Integrated into GrowthDay platform ($499/year)."
+
+  - name: "Mark Manson"
+    category: "Tier A"
+    description: "Author of 'The Subtle Art of Not Giving a F*ck.' Launched 'Purpose' app (December 2025) with AI entrepreneur Raj Singh. Billed as 'the world's first AI mentor' with sophisticated memory systems."
+
+  - name: "MrBeast (Jimmy Donaldson)"
+    category: "Tier A"
+    description: "YouTube mega-creator, 300M+ subscribers. Part of Meta's Creator AI chatbot program (2023). Former content strategist building AI tool for creator ideation/analytics."
+
+  - name: "Gary Vaynerchuk (GaryVee)"
+    category: "Tier A"
+    description: "Marketing/entrepreneurship creator. Early AI adopter, has discussed AI assistants publicly. Multi-platform presence."
+
+  - name: "Ali Abdaal"
+    category: "Tier A"
+    description: "Productivity/creator economy YouTuber. Multiple custom GPTs including GPS Coach (free 90-day planning tool) and Business Ideas GPT. Launched VoicePal app. Published 'I Tried AI as a Life Coach for 365 Days.'"
+
+  - name: "Steven Bartlett"
+    category: "Tier A"
+    description: "Host of 'The Diary of a CEO,' one of the world's most popular podcasts. Custom GPT on ChatGPT store. Publicly discussed AI agents as 'the most disruptive technology of our lifetime.'"
+
+  - name: "Iman Gadzhi"
+    category: "Tier A"
+    description: "Agency/education creator. Uses AI in course ecosystems. Large YouTube and social following."
+
+  # Tier B — Category Leaders
+  - name: "Seth Godin"
+    category: "Tier B"
+    description: "Marketing thought leader. AI chatbot trained on all 5,000,000+ words of his blog, freely accessible at seths.blog/bot. Also on Dexa.ai. Pioneering 'train on your entire body of work' approach."
+
+  - name: "Scott Galloway (Prof G)"
+    category: "Tier B"
+    description: "Digital twin chatbot using OpenAI GPT and Spirito.ai, trained on writings, speaking engagements, and hundreds of hours of podcasts. Also 'Prof G-PT' on GPT Store. Publicly discussed ethical risks of creator AI clones."
+
+  - name: "Lenny Rachitsky"
+    category: "Tier B"
+    description: "Product/tech newsletter creator. Lennybot built on Delphi.ai for product management Q&A. One of the earliest prominent newsletter creators to deploy a branded AI."
+
+  - name: "Codie Sanchez"
+    category: "Tier B"
+    description: "Business/investing creator. Built Codie.chat, AI tool for business buyers/builders, trained on raw podcast content and behind-the-scenes conversations."
+
+  - name: "Ramit Sethi"
+    category: "Tier B"
+    description: "Personal finance creator. Confirmed on Delphi.ai, AI persona handles thousands of weekly inquiries, generating seven-figure revenue."
+
+  - name: "Tom Bilyeu (Impact Theory)"
+    category: "Tier B"
+    description: "Deploys five-member AI 'department' for marketing and content. Custom GPTs capturing his voice with shared memory. Featured on Dexa.ai. Publicly stated he will 'never hire again' due to AI."
+
+  - name: "Rhonda Patrick (FoundMyFitness)"
+    category: "Tier B"
+    description: "Health/science creator. Featured on Dexa.ai with entire podcast library queryable via AI. Publicly endorsed the platform."
+
+  - name: "Lewis Howes (School of Greatness)"
+    category: "Tier B"
+    description: "Custom GPT on ChatGPT Store via Steno.ai, trained on all his content. Featured on Dexa.ai with podcast library."
+
+  - name: "Caryn Marjorie (CarynAI)"
+    category: "Tier B"
+    description: "Snapchat influencer who created AI voice clone chatbot via Forever Voices AI. Charged $1/minute, earned $72K in first week. Projected $5M/month. Pioneered 'AI companion/girlfriend' model for influencers."
+
+  - name: "Liam Ottley"
+    category: "Tier B"
+    description: "23-year-old AI automation agency creator from New Zealand. 713K+ YouTube subscribers, 280K+ Skool community. Founder of Morningside AI ($7M+ revenue). Teaches 'AI Automation Agency' model — builds chatbots as a service."
+
+  - name: "Natasha Willis (School of Bots)"
+    category: "Tier B"
+    description: "Co-founded School of Bots (2017). $65M+ revenue for clients including Russell Brunson, Jenna Kutcher, Amy Porterfield, Dean Graziosi, Mindvalley. Trained 14K+ businesses on AI chat funnels. Infrastructure layer behind many influencer chatbot implementations."
+
+  - name: "Jenna Kutcher"
+    category: "Tier B"
+    description: "Earned extra $1M/year using ManyChat automated chat funnels. Partners with Natasha Willis (School of Bots). Case study of DM automation as chatbot-adjacent revenue."
+
+  - name: "Russell Brunson"
+    category: "Tier B"
+    description: "ClickFunnels founder. Launched Marketing.AI chatbot for automated copy and content generation. Major ManyChat/School of Bots client."
+
+  - name: "Amy Porterfield"
+    category: "Tier B"
+    description: "Online courses/digital marketing. Custom-trained AI assistants in every module of Digital Course Academy — helps with sales copy, webinar talking points, tech simplification, and next steps."
+
+  - name: "Dan Koe"
+    category: "Tier B"
+    description: "Creator economy/philosophy creator. Known for AI-powered content systems."
+
+  - name: "Justin Welsh"
+    category: "Tier B"
+    description: "Solopreneur/LinkedIn creator. AI tools for content and lead generation."
+
+  - name: "Matt Wolfe"
+    category: "Tier B"
+    description: "AI/tech niche creator. Future Tools. Custom GPTs. Key voice in AI tooling discovery."
+
+  - name: "Dickie Bush / Nicolas Cole (Ship 30 for 30)"
+    category: "Tier B"
+    description: "Launched 'Write With AI' paid newsletter with ChatGPT and Claude prompts, grew to $100K+ ARR in first year. Also provide ChatGPT-as-writing-assistant training within Ship 30 for 30."
+
+  - name: "Thomas Frank"
+    category: "Tier B"
+    description: "Productivity/Notion creator. 'Productivity Coach' template enables Notion's Agent to act as personal productivity coach. AI-powered voice-to-Notion workflows using Whisper and ChatGPT."
+
+  - name: "Pat Flynn"
+    category: "Tier B"
+    description: "Smart Passive Income. Long-running creator educator, has explored AI assistants."
+
+  - name: "Sam Parr / Shaan Puri (My First Million)"
+    category: "Tier B"
+    description: "Podcast/business creators. Have discussed and launched AI tools."
+
+  - name: "Sahil Bloom"
+    category: "Tier B"
+    description: "Newsletter/finance creator. Explored AI tools for audience engagement."
+
+  - name: "Jay Clouse"
+    category: "Tier B"
+    description: "Creator Science podcast/newsletter. AI tools for creator education."
+
+  - name: "Tim Ferriss"
+    category: "Tier B"
+    description: "Author/podcaster. Custom GPTs reported from his content. Featured on Dexa.ai."
+
+  - name: "Greg Isenberg"
+    category: "Tier B"
+    description: "Startup/community builder. Late Checkout. AI community tools."
+
+  - name: "Marques Brownlee (MKBHD)"
+    category: "Tier B"
+    description: "Tech YouTuber. Potential AI integrations in tech review space."
+
+  # Platforms & Infrastructure (research for context)
+  - name: "Delphi.ai (Platform)"
+    category: "Platform"
+    description: "Raised $16M Series A led by Sequoia Capital (June 2025) with Anthropic's Anthology Fund. Enables creators to build AI clones. 2,000+ experts. Dominant creator-facing AI clone platform."
+
+  - name: "Dexa.ai (Platform)"
+    category: "Platform"
+    description: "AI-powered podcast knowledge hub with 120+ podcasts. Partners include Huberman, Seth Godin, Rhonda Patrick, Tom Bilyeu, Lewis Howes. Raised $6M. 'Knowledge chatbot from podcast content' category."
+
+  - name: "Coachvox.ai (Platform)"
+    category: "Platform"
+    description: "Founded by Jodie Cook. Enables coaches/thought leaders to create AI clones at $99/month. Self-serve lower-cost alternative to Delphi."
+
+  - name: "ManyChat (Platform)"
+    category: "Platform"
+    description: "Evolved into full multi-channel 'Agentic AI' platform in 2026. Supports Instagram, WhatsApp, Facebook, TikTok, SMS automation. School of Bots is training/implementation layer."
+
+  - name: "Meta Creator AI (Platform)"
+    category: "Platform"
+    description: "Meta's AI Studio program rolling out AI chatbot clones to Instagram/Facebook/WhatsApp influencers. Major distribution channel for creator AI."
+
+execution:
+  batch_size: 5
+  items_per_agent: 1
+  output_dir: ./results

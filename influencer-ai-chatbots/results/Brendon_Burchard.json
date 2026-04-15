@@ -1,0 +1,107 @@
+{
+  "creator_profile": {
+    "name": "Brendon Burchard",
+    "primary_niche": "High performance coaching, personal development, motivation, leadership, entrepreneurship",
+    "main_platforms": ["YouTube", "Instagram", "Podcast (Progress Mode with Brendon Burchard)", "GrowthDay app", "Facebook", "X/Twitter"],
+    "audience_size_documented": {
+      "social_media_total": "5M+ followers across platforms (per brendon.com, verified April 2026)",
+      "youtube_subscribers": "~2.3M subscribers (per Social Blade, verified April 2026)",
+      "instagram_followers": "~1M followers (per Instagram profile, verified April 2026)",
+      "email_newsletter": "3M+ subscribers to Progress Mode newsletter (per brendon.com)",
+      "podcast_downloads": "100M+ total downloads across podcast shows (per brendon.com)",
+      "online_course_students": "3M+ students have taken his online courses (per brendon.com)",
+      "video_views": "500M+ total video views (per brendon.com)"
+    },
+    "tier_classification": "Tier A",
+    "tier_justification": "Mainstream recognition as #1 New York Times bestselling author (The Motivation Manifesto, High Performance Habits), 5M+ social media followers, 3M+ email subscribers, 100M+ podcast downloads, 500M+ video views. Multi-platform large audience with $200M+ in course/seminar revenue. CEO of GrowthDay, a venture-backed personal development platform."
+  },
+  "bot_identity": {
+    "bot_name": "Brendon AI",
+    "positioning_tagline": "The World's #1 AI Life Coach",
+    "positioning_narrative_excerpts": [
+      "The AI Coach is trained on over $200M of Brendon's paid high-performance, entrepreneurship, marketing, and leadership courses and seminars, making it the most targeted, trained and valued AI Life Coach in the world today.",
+      "24/7 access via text message, chat, or voice phone calls. Brendon AI can help with achievement and human behavior change, write sales scripts, email copy, and funnel sequences used by Brendon himself across 30-plus 7-figure launches.",
+      "Delphi allows me to connect with more people than ever before, sharing strategies and insights that can truly transform lives. It's a digital platform that amplifies the impact of my work."
+    ],
+    "launch_date": "2024-04 [uncertain]",
+    "current_status": "Active"
+  },
+  "jobs_to_be_done": {
+    "primary_jtbds": [
+      "ask_my_method",
+      "course_teaching_assistant",
+      "accountability",
+      "fan_qa"
+    ],
+    "secondary_jtbds": [
+      "pre_sale_education",
+      "community_help",
+      "lead_qualification"
+    ],
+    "jtbd_evidence_source": "Stated — marketing copy explicitly describes coaching on high-performance frameworks, accountability, and copywriting assistance; community value-add inferred from GrowthDay integration"
+  },
+  "functionality": {
+    "modalities": ["text", "voice"],
+    "requires_login": true,
+    "memory_persistence": "Yes — Delphi platform supports ongoing personalized feedback and analytics on user interactions [uncertain]",
+    "upload_support": "Unknown [uncertain]",
+    "tool_integrations": "Integrated into GrowthDay platform (courses, journaling, habit tracking, community forums, live seminars). Delphi analytics dashboard for creator-side monitoring of popular topics and questions.",
+    "knowledge_grounding_claimed": "Trained on $200M+ of Brendon Burchard's paid courses, seminars, and coaching content spanning 25 years of high-performance, entrepreneurship, marketing, and leadership material. Includes content from 20+ blockbuster online courses and 30+ 7-figure product launches.",
+    "moderation_disclaimers": "Not explicitly documented in public marketing materials [uncertain]",
+    "human_handoff": "No public documentation of human handoff mechanism [uncertain]",
+    "platform_infrastructure": "Delphi.ai — Brendon Burchard is an investor in Delphi and one of their flagship creator partners. The Delphi platform powers the digital clone with text and voice capabilities. Video clone feature powered by Tavus integration within Delphi.",
+    "voice_modality_details": "Uses Brendon Burchard's cloned voice via Delphi.ai platform. Users can have real-time voice coaching calls where the clone speaks in Brendon's voice. Specific voice synthesis technology not publicly disclosed but delivered through Delphi's infrastructure.",
+    "ai_agent_capabilities": "Primarily answers questions and provides coaching advice. Can help write sales scripts, email copy, and funnel sequences. No documented booking, checkout, or CRM workflow capabilities."
+  },
+  "distribution": {
+    "access_url": "https://talk.brendon.ai/ (direct chat) and https://www.growthday.com/brendon-ai (via GrowthDay membership). Also available at https://www.delphi.ai/brendon-burchard/talk",
+    "distribution_path_description": "Instagram/YouTube/Podcast -> brendon.com or growthday.com -> GrowthDay membership signup -> Brendon AI within GrowthDay platform. Also accessible directly via talk.brendon.ai and brendon.ai/optin for lead capture.",
+    "link_in_bio_platform": "Custom site (brendon.com) and GrowthDay platform (growthday.com)",
+    "social_to_bot_funnel": "Instagram Reels promoting Brendon AI (e.g., 'BRENDON AI is here' reel, April 2024), LinkedIn posts demonstrating AI life coach, X/Twitter posts about digital clone capabilities, YouTube content driving to GrowthDay membership which includes Brendon AI access."
+  },
+  "monetization": {
+    "pricing_model": "bundled_with_membership",
+    "public_price": "$49/month or $499/year (GrowthDay Mastery membership). Brendon AI included as part of membership. Periodic promotions offering free AI access with membership purchase.",
+    "bundled_with": "GrowthDay Mastery Membership — includes 400+ classes, daily audio content, digital journal, life assessments, community access, live monthly seminars with Brendon Burchard, and Growth Vault ($5,000+ in courses).",
+    "monetization_linkage_type": "community_value_add, course_retention, list_building, upsell_to_1on1",
+    "list_building_integration": "Yes — brendon.ai/optin serves as lead capture page. GrowthDay membership signup captures email. Progress Mode newsletter (3M+ subscribers) feeds into GrowthDay funnel.",
+    "revenue_model_detail": "Brendon AI is bundled within GrowthDay Mastery membership at $49/month or $499/year. Not sold as standalone product. Serves as a high-value differentiator to drive membership retention and acquisition. Higher-tier offerings include ULTRA Mastermind (premium pricing with Lewis Howes), Certified High Performance Coach program, and Influencer Business Program. AI coaching adds perceived value exceeding $5,000 according to marketing materials. Estimated GrowthDay platform annual revenue not publicly disclosed."
+  },
+  "content_training": {
+    "content_training_corpus": "25 years of high-performance coaching content including: $200M+ worth of paid courses and seminars in high-performance, entrepreneurship, marketing, and leadership; 20+ blockbuster online courses (motivation, confidence, habits, leadership, high performance); live event recordings and seminar transcripts; copywriting and marketing frameworks from 30+ 7-figure product launches; books (High Performance Habits, The Motivation Manifesto, The Charge, The Millionaire Messenger, Life's Golden Ticket); podcast transcripts and video content.",
+    "update_frequency": "Unknown — Delphi analytics enable ongoing monitoring but refresh cadence not publicly disclosed [uncertain]"
+  },
+  "risks_guardrails": {
+    "stated_disclaimers": "Not explicitly documented in publicly accessible marketing materials [uncertain]",
+    "data_use_policy_cited": "GrowthDay Privacy Policy and Terms of Use referenced on growthday.com but specific AI data handling terms not publicly detailed [uncertain]",
+    "minors_policy": "Not publicly stated [uncertain]",
+    "impersonation_safeguards": "Clone is presented as 'Brendon AI' rather than Brendon Burchard himself. Delphi platform generally labels AI clones distinctly, but specific safeguard language not documented in marketing materials [uncertain]",
+    "regulatory_compliance_status": "No public statements found regarding FTC disclosure, state AI laws, or professional impersonation safeguards specific to Brendon AI [uncertain]"
+  },
+  "competitive": {
+    "competitive_moat_type": "Proprietary methodology (25 years of high-performance coaching IP), exclusive content corpus ($200M+ of paid course content), voice clone (speaks in Brendon's actual voice), platform lock-in (integrated into GrowthDay ecosystem with courses, community, journaling, and live events), brand recognition (#1 NYT bestselling author, world's #1 high-performance coach positioning), and Delphi investor relationship providing preferred platform access.",
+    "meta_creator_ai_status": "No evidence of participation in Meta's Creator AI program found [uncertain]",
+    "engagement_metrics_public": "No specific Brendon AI engagement metrics (MAU, messages per session, retention) publicly disclosed. GrowthDay app has ratings on Apple App Store and Google Play. Marketing claims 'thousands' of active GrowthDay members. Delphi blog describes the clone as 'popular especially with GrowthDay subscribers.' [uncertain]"
+  },
+  "verification": {
+    "confidence_level": "high",
+    "primary_source_url": "https://www.growthday.com/brendon-ai",
+    "corroborating_source_url": "https://www.delphi.ai/brendon-burchard/talk",
+    "last_verified_date": "2026-04-15"
+  },
+  "uncertain": [
+    "bot_identity.launch_date",
+    "functionality.memory_persistence",
+    "functionality.upload_support",
+    "functionality.moderation_disclaimers",
+    "functionality.human_handoff",
+    "content_training.update_frequency",
+    "risks_guardrails.stated_disclaimers",
+    "risks_guardrails.data_use_policy_cited",
+    "risks_guardrails.minors_policy",
+    "risks_guardrails.impersonation_safeguards",
+    "risks_guardrails.regulatory_compliance_status",
+    "competitive.meta_creator_ai_status",
+    "competitive.engagement_metrics_public"
+  ]
+}

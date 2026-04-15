@@ -510,7 +510,9 @@ function PureMultimodalInput({
             }
           }}
           placeholder={
-            editingMessage ? "Edit your message..." : "Ask anything..."
+            editingMessage
+              ? "Edit your message..."
+              : "Ask an etiquette question..."
           }
           ref={textareaRef}
           value={input}
@@ -535,7 +537,7 @@ function PureMultimodalInput({
               className={cn(
                 "h-7 w-7 rounded-xl transition-all duration-200",
                 input.trim()
-                  ? "bg-foreground text-background hover:opacity-85 active:scale-95"
+                  ? "bg-primary text-primary-foreground hover:opacity-85 active:scale-95"
                   : "bg-muted text-muted-foreground/25 cursor-not-allowed"
               )}
               data-testid="send-button"
@@ -805,7 +807,7 @@ function PureStopButton({
 }) {
   return (
     <Button
-      className="h-7 w-7 rounded-xl bg-foreground p-1 text-background transition-all duration-200 hover:opacity-85 active:scale-95 disabled:bg-muted disabled:text-muted-foreground/25 disabled:cursor-not-allowed"
+      className="h-7 w-7 rounded-xl bg-primary p-1 text-primary-foreground transition-all duration-200 hover:opacity-85 active:scale-95 disabled:bg-muted disabled:text-muted-foreground/25 disabled:cursor-not-allowed"
       data-testid="stop-button"
       onClick={(event) => {
         event.preventDefault();

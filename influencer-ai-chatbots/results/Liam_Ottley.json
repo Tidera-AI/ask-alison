@@ -1,0 +1,128 @@
+{
+  "creator_profile": {
+    "name": "Liam Ottley",
+    "primary_niche": "AI automation, AI agency education, AI entrepreneurship",
+    "main_platforms": [
+      "YouTube",
+      "Skool",
+      "X (Twitter)",
+      "LinkedIn",
+      "Instagram",
+      "Newsletter (Over The Shoulder / beehiiv)"
+    ],
+    "audience_size_documented": {
+      "YouTube": "~765K subscribers (April 2026, per AAA Accelerator website; other sources report 706K-750K depending on date)",
+      "Skool": "~332K members in AI Automation Agency Hub (April 2026, per Skool profile; other sources cite 280K-309K depending on date)",
+      "Instagram": "~36K followers (April 2026, per Instagram @liamottley)",
+      "X_Twitter": "[uncertain] Not confirmed from primary source; active poster at @liamottley_",
+      "LinkedIn": "[uncertain] Active presence at linkedin.com/in/liamottley; follower count not confirmed",
+      "TikTok": "~4K followers on @liamottleytiktoks (minor presence; not a primary platform)",
+      "cross_platform_note": "YouTube and Skool are the dominant platforms. Instagram, X, LinkedIn, and TikTok are secondary distribution channels with significantly smaller audiences."
+    },
+    "tier_classification": "Tier B",
+    "tier_justification": "Significant YouTube presence (~765K subscribers) and one of the largest free Skool communities (280K-332K members) in the AI education space. Founder of Morningside AI ($7M+ revenue claimed in 2024-2025) with a team of 40+ people. Self-described as '#1 AI business expert on YouTube.' Strong influence within the AI agency/automation niche but not mainstream crossover recognition. Smaller social footprint on Instagram (36K) and other platforms compared to Tier A creators. Age 23, New Zealand-born, now based in Auckland (previously Dubai)."
+  },
+  "bot_identity": {
+    "bot_name": "DoBot (built by Sho.ai); Agentive (Morningside AI platform, now shut down)",
+    "positioning_tagline": "DoBot: 'The ultimate teaching assistant that knows everything, forgets nothing, has infinite patience and is available 24/7.' Agentive: 'Create, Deploy & Manage AI Agents' \u2014 a no-code platform for building custom AI agents.",
+    "positioning_narrative_excerpts": [
+      "DoBot is a custom AI chatbot trained to think and behave like Liam, fed with course material from the Business Bootcamp including Q&A sessions and conversations designed to teach it how he would respond to problems.",
+      "AI persona chatbots will reshape the way creators engage with their audiences \u2014 users can now interact via voice or chat with their favorite content creators, mentors, or company managers 24/7.",
+      "Agentive is a platform from Morningside AI that helps businesses create and manage custom AI agents. These AI agents are first trained on a website and can then answer questions and perform tasks.",
+      "In 24 months, I went from selling $5k AI chatbots to $60k AI audits that lead to $250k+ development deals."
+    ],
+    "launch_date": "DoBot: ~2023 (built by Sho Rust / Sho.ai); Agentive: ~2024 (launched by Morningside AI, subsequently shut down); AI Persona Chatbot tutorials: August 2023 (YouTube live build of Ali Abdaal persona chatbot)",
+    "current_status": "DoBot: [uncertain] Current status unknown. Agentive: Shut down (website redirects users to morningside.ai for AI solutions). Liam's primary focus has shifted from chatbot products to AI transformation consulting (AITP model) and education (AAA Accelerator). No active consumer-facing personal AI chatbot identified as of April 2026."
+  },
+  "jobs_to_be_done": {
+    "primary_jtbds": [
+      "teach_chatbot_building - Teaches students how to build and sell AI chatbots as a service through AAA Accelerator and free Skool community",
+      "ai_agency_education - Provides roadmap and mentorship for starting an AI Automation Agency business",
+      "pre_sale_education - YouTube tutorials demonstrate chatbot builds live (e.g., $5,000 AI Persona Chatbot), establishing credibility and funneling to paid programs",
+      "course_teaching_assistant - DoBot was designed as an AI teaching assistant trained on Liam's course material to answer student questions 24/7"
+    ],
+    "secondary_jtbds": [
+      "community_help - Free Skool community (AI Automation Agency Hub) provides templates, resources, and peer networking for AI agency builders",
+      "lead_qualification - AAA Accelerator uses free alignment calls to qualify leads before disclosing pricing",
+      "thought_leadership - YouTube content, newsletter (Over The Shoulder), and X posts establish Liam as the authority on AI agency building"
+    ],
+    "jtbd_evidence_source": "Stated (from official marketing on aaaaccelerator.com, liamottley.com, Skool community descriptions, YouTube video titles, and LinkedIn posts)"
+  },
+  "functionality": {
+    "modalities": [
+      "text"
+    ],
+    "requires_login": "[uncertain] DoBot access requirements not publicly documented. Agentive required account creation. AAA Accelerator Skool community requires membership.",
+    "memory_persistence": "[uncertain] Not publicly documented for DoBot or Agentive.",
+    "upload_support": "[uncertain] Agentive supported website training (URL-based ingestion). DoBot upload capabilities not documented.",
+    "tool_integrations": "Agentive integrated with Bland.ai (voice calls), website chat widgets, and various business automation tools. Liam's tutorials reference Voiceflow, stack.ai, OpenAI API, ElevenLabs (voice generation), n8n (workflow automation), and Make.com as tools in the AI chatbot building stack. GitHub repo (wombyz/custom-knowledge-chatbot) demonstrates ChatGPT API integration with dynamic knowledge base access.",
+    "knowledge_grounding_claimed": "DoBot: Trained on Business Bootcamp course material, Q&A sessions, conversations, plus all books and videos Liam has consumed. AI Persona Chatbot demos: Trained on 150+ podcast transcripts (Hormozi example) and YouTube channel transcripts (Ali Abdaal example). Agentive: Trained on website content for each deployed agent.",
+    "moderation_disclaimers": "[uncertain] No specific moderation or disclaimer policies publicly documented for DoBot or Agentive.",
+    "human_handoff": "[uncertain] Not publicly documented. AAA Accelerator includes live mentorship calls, but unclear if any chatbot product escalates to human support.",
+    "platform_infrastructure": "DoBot: Built by Sho.ai (third-party custom development). Agentive: Custom-built SaaS platform by Morningside AI (now shut down). YouTube tutorial chatbots: Built using stack.ai, Voiceflow, OpenAI API, and other no-code/low-code tools. GitHub projects use Python with OpenAI API directly. Liam's approach emphasizes no-code and low-code tools for chatbot building.",
+    "voice_modality_details": "Liam has demonstrated voice AI integration using ElevenLabs for voice generation on AI persona chatbots (e.g., Alex Hormozi persona chatbot with voice). Agentive supported voice calls via Bland.ai integration. Liam has also done interviews about Voice AI (e.g., with thinkrr.ai). However, no active consumer-facing voice product identified.",
+    "ai_agent_capabilities": "Agentive (now shut down) supported autonomous task execution: booking hotels, arranging grocery deliveries, answering questions, AI lead qualification, and automated meeting scheduling. Morningside AI in 2026 specializes in Agentic AI \u2014 autonomous systems capable of making independent decisions, coordinating with other agents, and adapting actions in real-time. Liam's educational content teaches students to build AI agents with similar capabilities for client businesses."
+  },
+  "distribution": {
+    "access_url": "https://www.liamottley.com/ (personal site), https://www.aaaaccelerator.com/ (paid program), https://www.skool.com/ai-automation-agency-hub-8466 (free Skool community), https://www.morningside.ai/ (agency), https://agentivehub.com/ (Agentive, now shut down)",
+    "distribution_path_description": "YouTube (tutorials, live builds, case studies) -> description links to Skool community and liamottley.com -> free Skool community (60+ hours of content, 50+ templates) -> alignment call CTA for AAA Accelerator ($5K-$7K+) -> paid 6-month mentorship. Newsletter (Over The Shoulder on beehiiv) provides additional nurture channel. X and LinkedIn drive thought leadership traffic. Morningside AI (morningside.ai) serves as the B2B agency arm for enterprise AI consulting.",
+    "link_in_bio_platform": "Custom (liamottley.com). Instagram bio links to liamottley.com with '750k YT Founder, Morningside AI' branding.",
+    "social_to_bot_funnel": "Liam does not operate a direct social-to-chatbot funnel for consumers. His funnel is social-to-education: YouTube videos demonstrate chatbot building -> viewers join free Skool community -> community members are nurtured toward paid AAA Accelerator program. The chatbots he builds (DoBot, AI persona chatbots, Agentive agents) serve as proof-of-concept demonstrations and educational content rather than consumer-facing products with direct social funnels."
+  },
+  "monetization": {
+    "pricing_model": "education_program (AAA Accelerator), agency_services (Morningside AI), free_community (Skool Hub)",
+    "public_price": "AAA Accelerator: $5,000-$7,150 (pricing disclosed only during free alignment call; varies by source). Free Skool community: $0. Morningside AI consulting: $60K AI audits leading to $250K+ development deals (B2B enterprise pricing).",
+    "bundled_with": "AAA Accelerator includes 6 months of mentorship, community access, templates, and curriculum. Free Skool community includes 60+ hours of content and 50+ templates. Morningside AI packages consulting with custom AI development.",
+    "monetization_linkage_type": "education_funnel (free YouTube content -> free Skool community -> paid AAA Accelerator), agency_revenue (Morningside AI B2B consulting and development deals), thought_leadership (YouTube/newsletter builds authority that drives both education and agency revenue streams)",
+    "list_building_integration": "Newsletter 'Over The Shoulder' on beehiiv (morningsideai.beehiiv.com / overtheshoulder.co) captures email subscribers. Skool community captures members. AAA Accelerator alignment call captures qualified leads. YouTube channel serves as top-of-funnel content engine.",
+    "revenue_model_detail": {
+      "aaa_accelerator": "$5,000-$7,150 per student for 6-month mentorship program (no refund policy)",
+      "morningside_ai_consulting": "$60K AI audits + $250K+ development deals (AITP model)",
+      "morningside_ai_total_revenue": "$7M+ claimed in 2024-2025",
+      "free_skool_community": "$0 (lead generation and brand building)",
+      "agentive_saas": "Was a separate SaaS product; now shut down. Pricing details not preserved.",
+      "estimated_annual_ai_revenue": "[uncertain] Total revenue across all ventures not separately disclosed. $7M+ figure likely includes both AAA Accelerator education revenue and Morningside AI agency revenue combined."
+    }
+  },
+  "content_training": {
+    "content_training_corpus": "DoBot was trained on Business Bootcamp course material, Q&A sessions, and curated conversations plus all books and videos Liam has consumed. AI Persona Chatbot demos used YouTube transcripts (Ali Abdaal channel), 150+ podcast transcripts (Alex Hormozi), and other publicly available creator content. Agentive agents were trained on client website content. GitHub custom-knowledge-chatbot project demonstrates dynamic access to multiple knowledge bases (Hormozi, Buffett, Branson) with ChatGPT API fallback.",
+    "update_frequency": "[uncertain] Not publicly documented for any of Liam's chatbot products. Agentive is now shut down. DoBot update cadence unknown."
+  },
+  "risks_guardrails": {
+    "stated_disclaimers": "[uncertain] No specific disclaimers publicly documented for DoBot or Agentive. AAA Accelerator does not have a refund policy. Liam's YouTube content is educational/informational in nature but no explicit AI-specific disclaimers found.",
+    "data_use_policy_cited": "[uncertain] No specific data use or privacy policy publicly documented for DoBot or Agentive in search results. Morningside AI and AAA Accelerator likely have standard terms but not found in search results.",
+    "minors_policy": "[uncertain] Not specifically documented.",
+    "impersonation_safeguards": "[uncertain] DoBot was explicitly designed to 'think and behave like Liam.' AI Persona Chatbot demos (Hormozi, Ali Abdaal) were built as demonstrations without documented consent frameworks or impersonation safeguards. The use of real creators' content and personas raises impersonation and IP concerns, though these were presented as educational demonstrations.",
+    "regulatory_compliance_status": "[uncertain] No public statements found regarding FTC disclosure requirements, AI transparency laws, or professional impersonation safeguards specific to any of Liam's chatbot products."
+  },
+  "competitive": {
+    "competitive_moat_type": "First-mover advantage in AI Automation Agency education niche (coined the 'AAA' model in 2023), largest free Skool community in AI agency space (280K-332K members), substantial YouTube authority (~765K subscribers), real operating agency (Morningside AI, 40+ person team, $7M+ revenue) providing credibility and case studies, evolution to higher-ticket AITP consulting model ($60K audits -> $250K+ deals) as market commoditized basic chatbots, open-source educational resources (GitHub repos, 60+ hours free content) creating goodwill and trust.",
+    "meta_creator_ai_status": "[uncertain] No evidence found of participation in Meta's Creator AI program for Instagram/Facebook/WhatsApp AI chatbot clones.",
+    "engagement_metrics_public": "[uncertain] No publicly disclosed engagement metrics (MAU, messages per session, retention) found for DoBot or Agentive. YouTube channel analytics show 121K+ views on AI Persona Chatbot live build video. Skool community size (280K-332K) is the primary public engagement metric."
+  },
+  "verification": {
+    "confidence_level": "medium",
+    "primary_source_url": "https://www.liamottley.com/",
+    "corroborating_source_url": "https://ippei.com/aaa-accelerator/",
+    "last_verified_date": "2026-04-15"
+  },
+  "uncertain": [
+    "creator_profile.audience_size_documented.X_Twitter",
+    "creator_profile.audience_size_documented.LinkedIn",
+    "bot_identity.current_status (DoBot)",
+    "functionality.requires_login",
+    "functionality.memory_persistence",
+    "functionality.upload_support",
+    "functionality.moderation_disclaimers",
+    "functionality.human_handoff",
+    "monetization.revenue_model_detail.estimated_annual_ai_revenue",
+    "content_training.update_frequency",
+    "risks_guardrails.stated_disclaimers",
+    "risks_guardrails.data_use_policy_cited",
+    "risks_guardrails.minors_policy",
+    "risks_guardrails.impersonation_safeguards",
+    "risks_guardrails.regulatory_compliance_status",
+    "competitive.meta_creator_ai_status",
+    "competitive.engagement_metrics_public"
+  ]
+}

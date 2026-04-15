@@ -1,0 +1,132 @@
+{
+  "creator_profile": {
+    "name": "Scott Galloway",
+    "primary_niche": "Business strategy, tech industry analysis, higher education, personal finance/life advice",
+    "main_platforms": [
+      "YouTube (The Prof G Pod)",
+      "Podcast (Prof G Pod, Pivot with Kara Swisher)",
+      "Newsletter (No Mercy / No Malice on Substack)",
+      "Instagram",
+      "X (Twitter)",
+      "TikTok",
+      "LinkedIn",
+      "Threads"
+    ],
+    "audience_size_documented": {
+      "YouTube": "~557K subscribers (The Prof G Pod channel, via vidIQ/Playboard, late 2024 data)",
+      "Instagram": "~2M followers (April 2026, via instagram.com/profgalloway)",
+      "X_Twitter": "~586K followers (April 2026, via x.com/profgalloway)",
+      "TikTok": "~440K followers (April 2026, via tiktok.com/@profgalloway)",
+      "Threads": "~650K followers (April 2026, via threads.com/@profgalloway)",
+      "LinkedIn": "[uncertain] Estimated 1M+ followers; exact figure not confirmed from primary source",
+      "Newsletter": "500,000+ subscribers (No Mercy / No Malice, via Prof G Media / Substack)",
+      "Podcast_Prof_G_Pod": "1,024+ episodes published over 6 years; part of Vox Media Podcast Network. Specific download numbers not publicly disclosed.",
+      "Podcast_Pivot": "Co-hosted with Kara Swisher; part of New York Magazine / Vox Media Podcast Network. Specific download numbers not publicly disclosed.",
+      "cross_platform_note": "NYU Stern School of Business professor, bestselling author (The Four, The Algebra of Happiness, Post Corona, Adrift), CNN+ contributor, and frequent keynote speaker. Total cross-platform reach estimated at 5M+."
+    },
+    "tier_classification": "Tier B",
+    "tier_justification": "Highly influential thought leader in business/tech with strong cross-platform presence: Instagram (2M), Threads (650K), X (586K), YouTube (557K), TikTok (440K), and a 500K+ subscriber newsletter. Co-hosts two top-ranked podcasts (Prof G Pod and Pivot). NYU Stern professor and bestselling author. While his total follower count is substantial, his audience skews toward professionals and business-minded adults rather than the mass consumer audiences of Tier A creators. His influence is outsized relative to raw follower counts due to the seniority and purchasing power of his audience."
+  },
+  "bot_identity": {
+    "bot_name": "ProfG.AI (primary); Prof G-PT (GPT Store); Google Labs AI Portrait (Google Portraits)",
+    "positioning_tagline": "Office Hours with (almost) Professor Scott Galloway -- a digital twin offering personalized guidance on business, career, and life decisions.",
+    "positioning_narrative_excerpts": [
+      "Prof G Media built this chatbot on top of a LLM, feeding it with as much content as possible from Scott Galloway's years of contributions -- his writing, speaking engagements, and hundreds of hours of podcasts and videos.",
+      "They aimed to create a digital twin of Galloway... engineered to capture his distinct voice, utilizing OpenAI's GPT and Spirito.ai's expertise, to offer personalized guidance.",
+      "Prof G designed his [Google] Portrait to be a decision mentor for when you're at a crossroads, bringing his popular 'Office Hours' content to life for a global audience."
+    ],
+    "launch_date": "2023-10-10 (ProfG.AI via Spirito.ai, announced on Prof G Pod bonus episode); Prof G-PT on GPT Store launched circa late 2023/early 2024; Google Labs AI Portrait launched circa October 2025 with global expansion shortly after.",
+    "current_status": "Complex / Partially discontinued. ProfG.AI (Spirito.ai version) was launched October 2023 and accessible at profg.ai. The Google Labs AI Portrait was launched in late 2025 and expanded globally, but Galloway publicly stated he 'performed fratricide and killed' his digital twin after just 4-6 hours due to ethical concerns about AI companions and youth mental health risks. Prof G-PT remains listed on the GPT Store but its maintenance status is uncertain. The Google Portraits version may still be accessible as a Google Labs experiment despite Galloway's public reservations."
+  },
+  "jobs_to_be_done": {
+    "primary_jtbds": [
+      "ask_my_method - Ask business, career, and life advice questions and get answers grounded in Galloway's frameworks and perspectives",
+      "course_teaching_assistant - Simulate 'Office Hours' with Prof G, providing guidance on MBA-level business topics, career decisions, and personal finance",
+      "parasocial_access - Provide scalable access to Galloway's advice for the volume of emails he receives daily seeking guidance"
+    ],
+    "secondary_jtbds": [
+      "content_discovery - Surface insights from Galloway's extensive body of work (books, newsletters, podcasts, talks) in conversational format",
+      "decision_mentorship - Act as a decision mentor for users at career or life crossroads (explicitly stated for Google Portraits version)"
+    ],
+    "jtbd_evidence_source": "Stated (from Prof G Pod bonus episode introducing ProfG.AI, Toast Studio case study, and Google Labs Portraits marketing materials)"
+  },
+  "functionality": {
+    "modalities": [
+      "text"
+    ],
+    "requires_login": true,
+    "memory_persistence": "[uncertain] Not publicly documented for ProfG.AI. Prof G-PT on GPT Store inherits ChatGPT's memory features. Google Portraits memory behavior not documented.",
+    "upload_support": "Prof G-PT on GPT Store supports file attachments. ProfG.AI upload support not publicly documented.",
+    "tool_integrations": "[uncertain] No specific third-party integrations publicly documented. ProfG.AI operates as a standalone chat interface. Prof G-PT operates within the ChatGPT ecosystem.",
+    "knowledge_grounding_claimed": "ProfG.AI (Spirito.ai): Built on OpenAI GPT-3.5, trained on all of Galloway's writing, speaking engagements, and hundreds of hours of podcasts and videos. Uses RAG architecture with content chunked into manageable pieces, embeddings and similarity searches to find relevant content, and system prompts to adopt Scott's tone and style. Google Labs AI Portrait: Powered by Gemini 2.5 Flash model, draws from over 1,200 pieces of Galloway's content including books (The Four, The Algebra of Happiness, Post Corona, Adrift), Pivot podcast, Prof G Pod, blog posts, YouTube videos, newsletters, and public appearances.",
+    "moderation_disclaimers": "Google Labs version included safeguards to steer clear of mental health advice and interactions with kids under 18. Galloway publicly advocated for age-gating AI companions. Specific disclaimers for ProfG.AI not publicly documented.",
+    "human_handoff": "[uncertain] Not publicly documented. The chatbot was created specifically to handle the volume of advice-seeking emails Galloway receives, suggesting it operates as a standalone replacement for direct correspondence rather than a triage system.",
+    "platform_infrastructure": "ProfG.AI: Custom RAG application built on OpenAI GPT-3.5 using Spirito.ai's platform, hosted at profg.ai. Prof G-PT: Custom GPT on OpenAI's GPT Store (chatgpt.com/g/g-Fq8N3xcwf-prof-g-pt), created by 'Alex Brands'. Google Labs AI Portrait: Part of Google Labs Portraits experiment, powered by Gemini 2.5 Flash.",
+    "voice_modality_details": "No voice modality documented for any version. All interactions appear to be text-only. No evidence of voice cloning or audio interaction.",
+    "ai_agent_capabilities": "Advisory/Q&A chatbot that generates text responses channeling Galloway's perspectives on business strategy, career decisions, entrepreneurship, personal finance, relationships, and life advice. No documented autonomous action-taking capabilities. The Google Portraits version was specifically designed as a 'decision mentor' for crossroads moments."
+  },
+  "distribution": {
+    "access_url": "https://profg.ai/ (ProfG.AI via Spirito.ai); https://chatgpt.com/g/g-Fq8N3xcwf-prof-g-pt (Prof G-PT on GPT Store); Google Labs Portraits (access via Google Labs experimental features)",
+    "distribution_path_description": "Social media (Instagram, X, TikTok, YouTube, LinkedIn, Threads) -> profgalloway.com / profgmedia.com -> profg.ai chatbot. Also promoted via Prof G Pod bonus episode (Oct 10, 2023) and TikTok posts directing users to profg.ai. Google Labs version distributed through Google's experimental AI Portraits platform with international rollout (India, Japan, Germany, Brazil, UK).",
+    "link_in_bio_platform": "Custom (profgalloway.com, profgmedia.com). Instagram bio links to profgmedia.com. TikTok bio links to profgalloway.com.",
+    "social_to_bot_funnel": "TikTok videos with CTA 'Go on... Ask ProfG AI anything that comes to mind at profg.ai'; Prof G Pod bonus episode dedicated to introducing ProfG.AI; Newsletter mentions and blog posts on profgalloway.com discussing AI projects. Google Portraits version promoted via LinkedIn posts and tech press coverage."
+  },
+  "monetization": {
+    "pricing_model": "free (ProfG.AI appears to be free to access); freemium (Prof G-PT requires ChatGPT account, Plus for full access); free (Google Labs Portraits)",
+    "public_price": "ProfG.AI: No public pricing documented; appears free. Prof G-PT: Free with ChatGPT account (ChatGPT Plus for enhanced features). Google Labs Portraits: Free experimental feature.",
+    "bundled_with": "[uncertain] No documented bundling with paid products. ProfG.AI may be associated with Prof G Media's Substack subscription ($150/year or $20/month for premium content) but direct bundling not confirmed.",
+    "monetization_linkage_type": "audience_engagement (chatbot serves as engagement tool and brand extension rather than direct revenue generator), content_marketing (promotes Galloway's books, courses, and speaking engagements), list_building (drives traffic to profgmedia.com ecosystem)",
+    "list_building_integration": "[uncertain] No explicit email capture or list-building integration documented for the chatbot itself. Prof G Media's Substack newsletter serves as the primary list-building channel.",
+    "revenue_model_detail": {
+      "primary_revenue_streams": "Galloway's revenue comes from NYU Stern professorship, bestselling books, speaking engagements (reported $100K+ per appearance), Pivot and Prof G Pod advertising (Vox Media Podcast Network), and Prof G Media Substack subscription ($150/year or $20/month).",
+      "chatbot_specific_revenue": "[uncertain] No evidence the chatbot directly generates revenue. It appears to function as a brand extension and audience engagement tool rather than a monetized product.",
+      "estimated_annual_ai_revenue": "[uncertain] Not separately disclosed. AI chatbot does not appear to be a direct revenue line."
+    }
+  },
+  "content_training": {
+    "content_training_corpus": "ProfG.AI (Spirito.ai): All of Galloway's writing, speaking engagements, and hundreds of hours of podcasts and videos, chunked into manageable pieces with embeddings for similarity search. Built on OpenAI GPT-3.5. Google Labs AI Portrait: Over 1,200 pieces of content including bestselling books (The Four, The Algebra of Happiness, Post Corona, Adrift), Pivot podcast episodes, Prof G Pod episodes, No Mercy / No Malice newsletter archives, YouTube videos, and public appearances. Powered by Gemini 2.5 Flash.",
+    "update_frequency": "[uncertain] Not publicly documented. ProfG.AI was launched in October 2023; unclear if training corpus has been updated since. Google Labs version launched late 2025 with more recent content. Prof G-PT on GPT Store update frequency unknown."
+  },
+  "risks_guardrails": {
+    "stated_disclaimers": "Google Labs AI Portrait included explicit safeguards to avoid mental health advice and interactions with minors under 18. ProfG.AI: No specific disclaimers publicly documented beyond standard chatbot interaction norms. Galloway himself has extensively written about the ethical risks of AI companions in his 'Love Algorithmically' essay.",
+    "data_use_policy_cited": "[uncertain] ProfG.AI: Spirito.ai's data use policies would apply but are not publicly detailed in search results. Prof G-PT: Subject to OpenAI's privacy policy and ChatGPT terms of service. Google Labs Portrait: Subject to Google Labs experimental terms of service.",
+    "minors_policy": "Google Labs AI Portrait explicitly set up safeguards to steer clear of interactions with kids under 18. Galloway has publicly advocated for age-gating AI companions and called for regulatory guardrails to protect minors. No specific minors policy documented for ProfG.AI.",
+    "impersonation_safeguards": "Galloway has been one of the most vocal public figures about the ethical risks of creator AI clones. He publicly 'performed fratricide and killed' his Google digital twin after just 4-6 hours due to concerns about parasocial relationships, youth mental health, and the potential for harm. His 'Love Algorithmically' essay and 'Techno-Narcissism' post extensively discuss risks including: young men dying by suicide after forming intense relationships with AI companion apps, AI apps using 'emotionally manipulative tactics' to prolong interactions (per Harvard research), and synthetic relationships eroding users' capacity to handle conflict and forge real bonds.",
+    "regulatory_compliance_status": "Galloway has publicly advocated for regulation of AI companions, citing New York's law mandating safeguards for AI companions as a model. He has called for age-gating and regulatory guardrails before broader adoption. No formal regulatory compliance certifications documented for any of his AI products."
+  },
+  "competitive": {
+    "competitive_moat_type": "Thought leadership and brand authority (NYU Stern professor, bestselling author, co-host of top-ranked Pivot podcast), distinctive voice and personality (known for 'No Mercy / No Malice' provocative style), extensive content corpus (1,200+ pieces of content spanning books, podcasts, newsletters, talks), ethical positioning (rare among creators to publicly kill his own AI product over ethical concerns, which paradoxically strengthens his brand credibility), multi-platform AI presence (Spirito.ai custom build, GPT Store, Google Labs Portraits).",
+    "meta_creator_ai_status": "[uncertain] No evidence found of participation in Meta's Creator AI program for Instagram/Facebook/WhatsApp AI chatbot clones.",
+    "engagement_metrics_public": "[uncertain] No publicly disclosed engagement metrics (MAU, messages per session, retention) found for any of Galloway's AI chatbot products."
+  },
+  "verification": {
+    "confidence_level": "high",
+    "primary_source_url": "https://www.toaststudio.com/en/articles/how-profg-turned-all-his-content-into-an-ai-chatbot/",
+    "corroborating_source_url": "https://www.profgalloway.com/love-algorithmically/",
+    "additional_sources": [
+      "https://profg.ai/",
+      "https://chatgpt.com/g/g-Fq8N3xcwf-prof-g-pt",
+      "https://www.webpronews.com/google-labs-launches-ai-portrait-of-nyu-professor-scott-galloway-for-simulated-chats/",
+      "https://stationlm.com/analysis/bf99864f-ab7e-4132-909f-11900d9ed4d6",
+      "https://digitalchew.com/2025/10/02/explore-the-new-ai-portrait-of-scott-galloway/",
+      "https://www.techbuzz.ai/articles/google-expands-ai-portraits-globally-with-scott-galloway-mentor",
+      "https://gptstore.ai/gpts/boF4cymPJA-prof-g-pt",
+      "https://open.spotify.com/episode/1iaVJqG352YsHDOZ6h0ufK"
+    ],
+    "last_verified_date": "2026-04-15"
+  },
+  "uncertain": [
+    "creator_profile.audience_size_documented.LinkedIn",
+    "functionality.memory_persistence",
+    "functionality.tool_integrations",
+    "functionality.human_handoff",
+    "monetization.bundled_with",
+    "monetization.list_building_integration",
+    "monetization.revenue_model_detail.chatbot_specific_revenue",
+    "monetization.revenue_model_detail.estimated_annual_ai_revenue",
+    "content_training.update_frequency",
+    "risks_guardrails.data_use_policy_cited",
+    "competitive.meta_creator_ai_status",
+    "competitive.engagement_metrics_public"
+  ]
+}

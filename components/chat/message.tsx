@@ -117,7 +117,7 @@ const PurePreviewMessage = ({
       return (
         <MessageContent
           className={cn("text-[13px] leading-[1.65]", {
-            "w-fit max-w-[min(80%,56ch)] overflow-hidden break-words rounded-2xl rounded-br-lg border border-border/30 bg-gradient-to-br from-secondary to-muted px-3.5 py-2 shadow-[var(--shadow-card)]":
+            "w-fit max-w-[min(80%,56ch)] overflow-hidden break-words rounded-2xl rounded-br-lg border border-primary/15 bg-gradient-to-br from-secondary to-primary/[0.06] px-3.5 py-2 shadow-[var(--shadow-card)]":
               message.role === "user",
           })}
           data-testid="message-content"
@@ -352,8 +352,10 @@ const PurePreviewMessage = ({
       >
         {isAssistant && (
           <div className="flex h-[calc(13px*1.65)] shrink-0 items-center">
-            <div className="flex size-7 items-center justify-center rounded-lg bg-muted/60 text-muted-foreground ring-1 ring-border/50">
-              <SparklesIcon size={13} />
+            <div className="flex size-7 items-center justify-center rounded-full bg-primary/10 ring-1 ring-primary/20">
+              <span className="font-serif text-[10px] font-semibold text-primary">
+                EE
+              </span>
             </div>
           </div>
         )}
@@ -378,8 +380,10 @@ export const ThinkingMessage = () => {
     >
       <div className="flex items-start gap-3">
         <div className="flex h-[calc(13px*1.65)] shrink-0 items-center">
-          <div className="flex size-7 items-center justify-center rounded-lg bg-muted/60 text-muted-foreground ring-1 ring-border/50">
-            <SparklesIcon size={13} />
+          <div className="flex size-7 items-center justify-center rounded-full bg-primary/10 ring-1 ring-primary/20">
+            <span className="font-serif text-[10px] font-semibold text-primary">
+              EE
+            </span>
           </div>
         </div>
 

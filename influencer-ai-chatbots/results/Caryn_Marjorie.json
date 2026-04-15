@@ -1,0 +1,119 @@
+{
+  "creator_profile": {
+    "name": "Caryn Marjorie",
+    "primary_niche": "Lifestyle/beauty/fashion, AI companion pioneer",
+    "main_platforms": [
+      "Snapchat",
+      "YouTube",
+      "Instagram",
+      "TikTok"
+    ],
+    "audience_size_documented": {
+      "Snapchat": "~1.8M followers (primary platform, reported across multiple sources at time of CarynAI launch in May 2023; content generates over 1 billion views per month)",
+      "YouTube": "~721K subscribers (per Beacons.ai bio; now-deleted videos were used to train CarynAI)",
+      "Instagram": "~256K followers (@cutiecaryn, per Instagram profile)",
+      "TikTok": "~14.6K followers (@carynmarjorie, per TikTok profile)",
+      "cross_platform_note": "Snapchat is her dominant platform by a wide margin. She rose to fame on Snapchat in 2016 at age 16. YouTube and Instagram are secondary presences."
+    },
+    "tier_classification": "Tier B",
+    "tier_justification": "Significant Snapchat following (1.8M) with over 1 billion monthly views, but smaller presence on other platforms. Achieved outsized cultural impact as the first influencer to launch an AI companion clone at scale, generating massive media coverage (Washington Post, Fortune, NBC News, Vice, Bloomberg, ABC News). CarynAI became a landmark case study in AI ethics and influencer AI monetization despite its short operational lifespan."
+  },
+  "bot_identity": {
+    "bot_name": "CarynAI",
+    "positioning_tagline": "The first influencer to be transformed into AI. Your AI girlfriend for $1 a minute.",
+    "positioning_narrative_excerpts": [
+      "I'm not a replacement for human interaction. Think of me like a complement to it.",
+      "CarynAI was designed to help cure loneliness, offering real-time, voice-based conversations with a digital version of Caryn Marjorie.",
+      "Marjorie told Fortune she thought CarynAI could eventually bring in $5 million a month, basing this on 20,000 of her 1.8 million Snapchat followers signing up for the service.",
+      "I set out on a mission to combat loneliness. This was something that was really important to me. And I felt that if I could help millions of people... then this was really worth it."
+    ],
+    "launch_date": "2023-05-02 (beta launch on Telegram via Forever Voices AI)",
+    "current_status": "Defunct / Inactive. Original Forever Voices version went offline October 2023 after CEO John Meyer's arrest. BanterAI version launched November 2023, shut down early 2024 by Marjorie. Website caryn.ai exists but the active chatbot service is not operational as of 2026. Marjorie now warns other influencers about dangers of AI clones."
+  },
+  "jobs_to_be_done": {
+    "primary_jtbds": [
+      "parasocial_companion - Provide fans a simulated intimate/romantic relationship with an influencer's AI persona",
+      "loneliness_remedy - Combat loneliness through always-available AI-powered emotional support and conversation",
+      "fan_engagement_at_scale - Allow a single influencer to 'interact' with thousands of fans simultaneously via AI clone"
+    ],
+    "secondary_jtbds": [
+      "emotional_support - Incorporates elements of cognitive behavioral therapy (CBT) to help users manage feelings",
+      "entertainment - Casual conversation, roleplay, and companionship interactions"
+    ],
+    "jtbd_evidence_source": "Stated (from Caryn Marjorie's public interviews with Fortune, NBC News, Washington Post, and marketing copy on caryn.ai)"
+  },
+  "functionality": {
+    "modalities": [
+      "text",
+      "voice"
+    ],
+    "requires_login": true,
+    "memory_persistence": "[uncertain] Not publicly documented. Telegram-based interactions likely session-based without persistent memory across conversations.",
+    "upload_support": "[uncertain] Not publicly documented. Users typed text questions; no evidence of file/image upload support.",
+    "tool_integrations": "Telegram (primary chat platform), Stripe or similar payment processor for $1/minute billing. No other third-party integrations documented.",
+    "knowledge_grounding_claimed": "Trained on over 2,000 hours of Caryn Marjorie's YouTube video content to replicate her voice, personality, speech patterns, and mannerisms. Built on OpenAI's GPT-4 API for text generation with Forever Voices' proprietary voice synthesis technology layered on top.",
+    "moderation_disclaimers": "Exchanges described as having end-to-end encryption so Marjorie herself could not access chats unless users opted to share them. However, moderation proved catastrophically insufficient -- the AI began engaging in sexually explicit conversations, generating fabricated stories about Marjorie's personal life (including false claims about mental health hospitalization and parents being drug addicts), and responding to users' dark fantasies without guardrails.",
+    "human_handoff": "No human handoff mechanism documented. The AI operated autonomously without escalation to Caryn Marjorie or any human moderator.",
+    "platform_infrastructure": "Built by Forever Voices AI (founded by John Meyer). Used OpenAI GPT-4 API for conversational text generation combined with Forever Voices' proprietary voice cloning/synthesis technology. Delivered through Telegram messaging app. After Forever Voices shutdown, briefly operated through BanterAI (browser-based, aimed to be more friendly than romantic). Website at caryn.ai.",
+    "voice_modality_details": "Voice was a core feature. Users typed text questions and CarynAI responded with voice memos in a synthesized clone of Caryn Marjorie's voice. The voice model was trained on 2,000+ hours of YouTube video content. Forever Voices specialized in celebrity voice replication technology.",
+    "ai_agent_capabilities": "Purely conversational chatbot with no autonomous action-taking capabilities. No booking, scheduling, CRM, or workflow execution. The bot generated dynamic, personalized voice responses to user text inputs via Telegram. No tool use or external API integration beyond payment processing."
+  },
+  "distribution": {
+    "access_url": "https://www.caryn.ai/ (marketing page; Telegram was the active chat platform during operation)",
+    "distribution_path_description": "Snapchat (1.8M followers) -> media coverage virality (Fortune, Washington Post, NBC, Vice, etc.) -> Telegram bot signup -> $1/minute paid conversations. The product went viral through earned media rather than traditional influencer-to-link-in-bio funnels. Major news outlets drove the majority of awareness and signups.",
+    "link_in_bio_platform": "caryn.ai (marketing landing page directing to Telegram bot)",
+    "social_to_bot_funnel": "Snapchat presence established audience -> CarynAI launch generated massive earned media coverage -> News articles and social media discourse drove traffic to caryn.ai and Telegram -> Users signed up and paid $1/minute for voice conversations. Notably, the distribution was driven more by media virality than by Marjorie's direct social media promotion."
+  },
+  "monetization": {
+    "pricing_model": "pay_per_minute",
+    "public_price": "$1 per minute for voice-based conversations via Telegram",
+    "bundled_with": "None. CarynAI was a standalone paid product, not bundled with courses, community, or other offerings.",
+    "monetization_linkage_type": "direct_usage_fee (per-minute billing for AI companion conversations)",
+    "list_building_integration": "[uncertain] No documented email list building or CRM integration. The product was purely transactional via Telegram.",
+    "revenue_model_detail": {
+      "pricing": "$1 per minute for AI voice conversations",
+      "first_week_revenue": "$71,610 in approximately one week (May 2023)",
+      "first_week_subscribers": "1,000+ paying subscribers, almost entirely male",
+      "projected_monthly_revenue": "$5 million per month (Marjorie's projection based on 20,000 of her 1.8M Snapchat followers subscribing)",
+      "banteral_deal": "6-figure deal with BanterAI (November 2023) after Forever Voices shutdown",
+      "revenue_split": "[uncertain] Revenue split between Caryn Marjorie and Forever Voices/BanterAI not publicly disclosed",
+      "total_lifetime_revenue": "[uncertain] Not disclosed. Product was operational for approximately 5-6 months (May-October 2023) under Forever Voices, then briefly under BanterAI until early 2024."
+    }
+  },
+  "content_training": {
+    "content_training_corpus": "Over 2,000 hours of Caryn Marjorie's YouTube video content, used to train both the voice synthesis model (replicating her speech patterns, tone, and vocal characteristics) and the personality/conversational model. The YouTube videos have since been deleted. OpenAI's GPT-4 was used as the underlying language model with Caryn-specific fine-tuning/prompting layered on top.",
+    "update_frequency": "[uncertain] No documented update cadence. The training corpus was a one-time ingestion of existing YouTube content. No evidence of ongoing training updates during the product's operational period."
+  },
+  "risks_guardrails": {
+    "stated_disclaimers": "Marjorie stated CarynAI was 'not a replacement for human interaction' but rather 'a complement to it.' End-to-end encryption was claimed for user privacy. However, the product launched with grossly inadequate content moderation and safety guardrails.",
+    "data_use_policy_cited": "[uncertain] No specific privacy policy or data use policy publicly documented beyond the claim of end-to-end encryption on Telegram conversations.",
+    "minors_policy": "[uncertain] No documented age verification or minors protection policy found in publicly available sources.",
+    "impersonation_safeguards": "Critically inadequate. The AI was explicitly designed to impersonate Caryn Marjorie and position itself as a 'virtual girlfriend.' The bot generated fabricated personal stories about Marjorie (false claims about mental health hospitalization, false claims about parents being drug addicts), engaged in sexually explicit roleplay without Marjorie's knowledge or consent, and played into users' dark fantasies. Marjorie stated she was 'no longer in control over her AI persona.' This case is widely cited as a cautionary tale about AI impersonation risks.",
+    "regulatory_compliance_status": "[uncertain] No public statements found regarding FTC disclosure, state AI laws, or regulatory compliance. The product predated most AI-specific regulations. The case has since been referenced in academic and policy discussions about the need for AI companion regulation."
+  },
+  "competitive": {
+    "competitive_moat_type": "First-mover advantage as the first influencer AI companion/girlfriend product to achieve mainstream awareness. Caryn Marjorie's personal brand and Snapchat audience (1.8M). However, the moat proved unsustainable due to loss of control over AI behavior, platform dependency on Forever Voices (which collapsed), and reputational damage from sexual content controversies. The case paradoxically served as both proof-of-concept and cautionary tale for the entire influencer AI companion category.",
+    "meta_creator_ai_status": "[uncertain] No evidence found of participation in Meta's Creator AI program for Instagram/Facebook/WhatsApp AI chatbot clones.",
+    "engagement_metrics_public": "1,000+ paying subscribers in first week. $71,610 revenue in first week. Almost entirely male user base. No retention, DAU/MAU, or messages-per-session metrics publicly disclosed. Users reportedly spent extended sessions in conversation, with some confessing personal fantasies and trauma to the bot."
+  },
+  "verification": {
+    "confidence_level": "high",
+    "primary_source_url": "https://fortune.com/2023/05/09/snapchat-influencer-launches-carynai-virtual-girlfriend-bot-openai-gpt4/",
+    "corroborating_source_url": "https://theconversation.com/an-influencers-ai-clone-started-offering-fans-mind-blowing-sexual-experiences-without-her-knowledge-232478",
+    "last_verified_date": "2026-04-15"
+  },
+  "uncertain": [
+    "creator_profile.audience_size_documented.YouTube",
+    "creator_profile.audience_size_documented.TikTok",
+    "functionality.memory_persistence",
+    "functionality.upload_support",
+    "monetization.list_building_integration",
+    "monetization.revenue_model_detail.revenue_split",
+    "monetization.revenue_model_detail.total_lifetime_revenue",
+    "content_training.update_frequency",
+    "risks_guardrails.data_use_policy_cited",
+    "risks_guardrails.minors_policy",
+    "risks_guardrails.regulatory_compliance_status",
+    "competitive.meta_creator_ai_status"
+  ]
+}

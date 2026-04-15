@@ -1,0 +1,221 @@
+# Field definitions for: How top influencers use AI chatbots (English-speaking markets)
+
+fields:
+  # 1. Creator Profile
+  creator_profile:
+    name:
+      description: "Creator's full name or brand name"
+      detail_level: brief
+
+    primary_niche:
+      description: "Main content/business category (e.g., fitness, finance, productivity, marketing, self-help)"
+      detail_level: brief
+
+    main_platforms:
+      description: "Primary social/content platforms (YouTube, Instagram, TikTok, X, podcast, newsletter, etc.)"
+      detail_level: brief
+
+    audience_size_documented:
+      description: "Documented audience metrics with platform, number, and date of verification. Include source citation."
+      detail_level: moderate
+
+    tier_classification:
+      description: "Tier A (mainstream recognition / multi-platform large audience) or Tier B (category leader with 7-8 figure signals)"
+      detail_level: brief
+
+    tier_justification:
+      description: "Evidence-based justification for tier placement — metrics, citations, verified signals"
+      detail_level: moderate
+
+  # 2. Bot Identity & Positioning
+  bot_identity:
+    bot_name:
+      description: "Name of the AI chatbot/assistant product"
+      detail_level: brief
+
+    positioning_tagline:
+      description: "How the creator markets/describes the bot in one line"
+      detail_level: brief
+
+    positioning_narrative_excerpts:
+      description: "2-3 short excerpts from creator's own marketing copy showing how they sell the bot to fans"
+      detail_level: detailed
+
+    launch_date:
+      description: "When the bot was publicly launched or announced (YYYY-MM or YYYY-MM-DD)"
+      detail_level: brief
+
+    current_status:
+      description: "Active, beta, deprecated, paused, or unknown (as of verification date)"
+      detail_level: brief
+
+  # 3. Jobs-to-Be-Done (JTBDs)
+  jobs_to_be_done:
+    primary_jtbds:
+      description: "Tagged list of primary jobs the bot performs — e.g., fan_qa, ask_my_method, course_teaching_assistant, lead_qualification, paid_tier_unlock, roleplay, accountability, shopping_concierge, character_persona, community_help, pre_sale_education"
+      detail_level: moderate
+
+    secondary_jtbds:
+      description: "Additional/minor jobs the bot performs"
+      detail_level: brief
+
+    jtbd_evidence_source:
+      description: "Whether JTBDs are tagged from copy/UX observation (Stated) or inferred from product behavior (Inference)"
+      detail_level: brief
+
+  # 4. Functionality & Technical
+  functionality:
+    modalities:
+      description: "Supported interaction modes: text, voice, image, video"
+      detail_level: brief
+
+    requires_login:
+      description: "Whether authentication/account is required to use the bot"
+      detail_level: brief
+
+    memory_persistence:
+      description: "Whether the bot remembers past conversations or user context across sessions"
+      detail_level: brief
+
+    upload_support:
+      description: "Whether users can upload files, images, or other content"
+      detail_level: brief
+
+    tool_integrations:
+      description: "Connected tools — calendar, payments, email capture, Discord roles, CRM, Notion, etc."
+      detail_level: moderate
+
+    knowledge_grounding_claimed:
+      description: "What the AI is trained on as claimed by the creator — books, podcasts, courses, blog, consulting frameworks, generic model"
+      detail_level: moderate
+
+    moderation_disclaimers:
+      description: "Any stated disclaimers — 'not a human,' 'not medical/financial advice,' content moderation policies"
+      detail_level: moderate
+
+    human_handoff:
+      description: "Whether/how the bot escalates to a real human"
+      detail_level: brief
+
+    platform_infrastructure:
+      description: "Underlying AI platform powering the chatbot — OpenAI GPT, Anthropic Claude, Delphi.ai, Dexa.ai, Coachvox, ManyChat, custom build, etc."
+      detail_level: moderate
+
+    voice_modality_details:
+      description: "Whether the chatbot uses the creator's cloned voice vs text-only, and which voice technology (ElevenLabs, custom, etc.)"
+      detail_level: moderate
+
+    ai_agent_capabilities:
+      description: "Whether the bot merely answers questions or can take actions — booking, lead qualification, workflow execution, checkout, CRM integration"
+      detail_level: moderate
+
+  # 5. Distribution Mechanics
+  distribution:
+    access_url:
+      description: "Primary URL to access the bot (website, app store link, GPT store link, Discord invite)"
+      detail_level: brief
+
+    distribution_path_description:
+      description: "Documented path from social platform to bot — e.g., 'YouTube description -> link-in-bio -> Delphi chat'"
+      detail_level: moderate
+
+    link_in_bio_platform:
+      description: "Link-in-bio tool used (Stan, Beacons, Kajabi, Skool, Circle, Linktree, custom site)"
+      detail_level: brief
+
+    social_to_bot_funnel:
+      description: "Specific social platforms and CTAs used to drive traffic to the bot"
+      detail_level: moderate
+
+  # 6. Monetization
+  monetization:
+    pricing_model:
+      description: "free, freemium, paid, bundled_with_course, bundled_with_membership, per_minute, sponsor_driven"
+      detail_level: brief
+
+    public_price:
+      description: "Publicly listed price or 'not disclosed'"
+      detail_level: brief
+
+    bundled_with:
+      description: "What product/service the bot is bundled with (course name, membership, community, etc.)"
+      detail_level: brief
+
+    monetization_linkage_type:
+      description: "How the bot connects to revenue — direct_subscription, list_building, lead_qualification, upsell_to_1on1, course_retention, community_value_add, white_label"
+      detail_level: moderate
+
+    list_building_integration:
+      description: "Whether/how the bot captures email or builds a subscriber list"
+      detail_level: brief
+
+    revenue_model_detail:
+      description: "Granular revenue details — setup fees, monthly subscription, per-minute charges, bundled product value, affiliate/lead-gen attribution, estimated annual revenue from AI product"
+      detail_level: detailed
+
+  # 7. Content & Training
+  content_training:
+    content_training_corpus:
+      description: "What the AI was trained on — books, podcast transcripts, course material, blog posts, consulting frameworks, live event recordings, etc."
+      detail_level: moderate
+
+    update_frequency:
+      description: "How often the chatbot's knowledge base is refreshed — continuous, periodic, one-time, unknown"
+      detail_level: brief
+
+  # 8. Risks & Guardrails
+  risks_guardrails:
+    stated_disclaimers:
+      description: "Specific disclaimers stated in bot UI or marketing materials"
+      detail_level: moderate
+
+    data_use_policy_cited:
+      description: "Any referenced data/privacy policies or terms of service"
+      detail_level: brief
+
+    minors_policy:
+      description: "Stated age restrictions or policies regarding minor users"
+      detail_level: brief
+
+    impersonation_safeguards:
+      description: "Measures stated to prevent the bot from being mistaken for the real person"
+      detail_level: brief
+
+    regulatory_compliance_status:
+      description: "Whether the creator/platform has addressed emerging AI chatbot regulations — FTC disclosure, state AI laws, professional impersonation safeguards"
+      detail_level: moderate
+
+  # 9. Competitive & Strategic
+  competitive:
+    competitive_moat_type:
+      description: "What makes this creator's AI chatbot defensible — proprietary methodology, exclusive content corpus, voice clone, community integration, platform lock-in, brand recognition"
+      detail_level: moderate
+
+    meta_creator_ai_status:
+      description: "Whether the creator participates in Meta's Creator AI program (Instagram/Facebook/WhatsApp AI chatbot clones)"
+      detail_level: brief
+
+    engagement_metrics_public:
+      description: "Any publicly disclosed engagement data — MAU, messages per session, retention, NPS, app store reviews"
+      detail_level: moderate
+
+  # 10. Confidence & Verification
+  verification:
+    confidence_level:
+      description: "high (primary source verified), medium (secondary sources only), low (unverified/speculative)"
+      detail_level: brief
+
+    primary_source_url:
+      description: "Direct URL to the bot or creator's official announcement"
+      detail_level: brief
+
+    corroborating_source_url:
+      description: "Second source confirming the bot's existence and features"
+      detail_level: brief
+
+    last_verified_date:
+      description: "Date this entry was last verified (YYYY-MM-DD)"
+      detail_level: brief
+
+# Reserved
+uncertain: []

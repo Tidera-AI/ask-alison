@@ -1,0 +1,123 @@
+topic: "Claude Skills & Custom Instructions Tutorials for Non-Technical Users"
+
+fields:
+  basic_info:
+    - name: resource_name
+      description: "Name of the tutorial, guide, or resource"
+      detail_level: brief
+
+    - name: url
+      description: "Primary URL to access the resource"
+      detail_level: brief
+
+    - name: format
+      description: "Content format: video, article, docs, course, PDF, repo, thread"
+      detail_level: brief
+
+    - name: author
+      description: "Author or publishing organization"
+      detail_level: brief
+
+    - name: date_published
+      description: "Publication or last-updated date (YYYY-MM-DD or YYYY-MM)"
+      detail_level: brief
+
+  audience_fit:
+    - name: technical_level
+      description: "Target audience level: beginner, intermediate, advanced"
+      detail_level: brief
+
+    - name: assumes_terminal_knowledge
+      description: "Whether the resource assumes the reader knows how to use a terminal/CLI"
+      detail_level: brief
+
+    - name: assumes_coding_knowledge
+      description: "Whether the resource assumes the reader can write code"
+      detail_level: brief
+
+    - name: suitable_for_non_technical
+      description: "Overall suitability for a non-technical professional (yes/no/partial)"
+      detail_level: brief
+
+  content_coverage:
+    - name: covers_custom_instructions
+      description: "Whether the resource covers custom instructions / system prompts"
+      detail_level: brief
+
+    - name: covers_projects
+      description: "Whether the resource covers Claude Projects feature"
+      detail_level: brief
+
+    - name: covers_skills_slash_commands
+      description: "Whether the resource covers skills / slash commands"
+      detail_level: brief
+
+    - name: covers_desktop_app
+      description: "Whether the resource covers the Claude Desktop App (GUI)"
+      detail_level: brief
+
+    - name: covers_cowork
+      description: "Whether the resource covers Claude Cowork (visual agent feature)"
+      detail_level: brief
+
+  platform:
+    - name: platform_availability
+      description: "Which Claude platforms are covered: claude.ai (web), Desktop App, Claude Code (CLI), Cowork"
+      detail_level: moderate
+
+    - name: macos_specific
+      description: "Whether the resource is specifically about macOS setup/usage"
+      detail_level: brief
+
+  quality:
+    - name: step_by_step
+      description: "Whether the resource provides step-by-step instructions"
+      detail_level: brief
+
+    - name: includes_visuals
+      description: "Whether the resource includes screenshots, diagrams, or video"
+      detail_level: brief
+
+    - name: estimated_minutes
+      description: "Approximate time to consume the resource in minutes"
+      detail_level: brief
+
+    - name: production_quality
+      description: "Overall production quality: high, medium, low"
+      detail_level: brief
+
+    - name: has_templates_or_downloads
+      description: "Whether the resource includes downloadable templates or copy-paste examples"
+      detail_level: brief
+
+  cost:
+    - name: resource_cost
+      description: "Whether the resource itself is free or paid"
+      detail_level: brief
+
+    - name: claude_plan_required
+      description: "Claude plan needed for covered features: Free, Pro ($20/mo), Max ($100-200/mo)"
+      detail_level: brief
+
+  learning_path:
+    - name: interactivity_type
+      description: "Passive (read/watch) vs interactive (hands-on exercises, quizzes, certificates)"
+      detail_level: moderate
+
+    - name: prerequisite_resources
+      description: "IDs of other items in this research that should be completed first"
+      detail_level: moderate
+
+    - name: relevance_score
+      description: "Relevance to a non-technical user learning skills (1-5, where 5 is most relevant)"
+      detail_level: brief
+
+    - name: suggested_learning_phase
+      description: "When in the learning journey: week-1-2 (Projects/instructions) or week-2-4 (Skills)"
+      detail_level: brief
+
+    - name: last_verified_date
+      description: "Date when the resource was last confirmed accurate and accessible"
+      detail_level: brief
+
+uncertain: []

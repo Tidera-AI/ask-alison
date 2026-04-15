@@ -1,0 +1,141 @@
+{
+  "creator_profile": {
+    "name": "Steven Bartlett",
+    "primary_niche": "Business/entrepreneurship, self-development, podcasting",
+    "main_platforms": [
+      "YouTube",
+      "Instagram",
+      "TikTok",
+      "X (Twitter)",
+      "Spotify",
+      "Apple Podcasts",
+      "LinkedIn"
+    ],
+    "audience_size_documented": {
+      "YouTube": "~14M subscribers on The Diary of a CEO channel (April 2026, via Prolific North / Inc.com)",
+      "Instagram": "~4.8M followers (April 2026, via HypeAuditor @steven)",
+      "TikTok": "~4.8M followers (April 2026, via @steven TikTok profile)",
+      "X_Twitter": "~390K followers (April 2026, via x.com/StevenBartlett)",
+      "cross_platform_note": "First UK podcast to reach 1 billion views and listens across Apple, Spotify and YouTube. Spotify Wrapped ranked The Diary of a CEO as the #2 podcast globally in 2025 and #1 in the UK, overtaking Joe Rogan. Reported 35 million followers across podcast platforms and approximately 80 million across all content properties."
+    },
+    "tier_classification": "Tier A",
+    "tier_justification": "Hosts the world's #2 podcast by Spotify listenership (2025). First UK podcast to reach 1 billion views/listens. 14M YouTube subscribers, ~4.8M Instagram followers, ~4.8M TikTok followers. Youngest-ever Dragon on BBC's Dragon's Den. Founder of Steven.com (valued at $425M as of Oct 2025), Flight Story media company, and Flight Fund ($100M investment fund). Published bestselling book 'The Diary of a CEO: The 33 Laws of Business and Life.' Invested in SpaceX, Groq, Replit, Lovable, Whoop, MrBeast, and 40+ other companies. One of the most prominent creator-entrepreneurs globally."
+  },
+  "bot_identity": {
+    "bot_name": "Ask The Diary of a CEO (also: Steven Bartlett's Diary of a CEO)",
+    "positioning_tagline": "Get answers, find inspiration, and be more productive using knowledge from The Diary of a CEO.",
+    "positioning_narrative_excerpts": [
+      "A custom GPT that helps you get answers, find inspiration, and be more productive, drawing from the insights shared on The Diary of a CEO podcast.",
+      "Explore ideas, solve problems, and learn faster using the wisdom and frameworks discussed across hundreds of Diary of a CEO episodes.",
+      "[uncertain] No extensive marketing copy was found promoting the GPT as a standalone product; it appears to be a supplementary offering rather than a heavily marketed AI product."
+    ],
+    "launch_date": "[uncertain] Estimated late 2023 / early 2024, coinciding with OpenAI's GPT Store launch in January 2024. No specific launch announcement found.",
+    "current_status": "Active (available on ChatGPT GPT Store as of April 2026)"
+  },
+  "jobs_to_be_done": {
+    "primary_jtbds": [
+      "ask_my_method - Ask questions grounded in Steven Bartlett's business and life frameworks from The Diary of a CEO podcast episodes",
+      "fan_qa - Fans can explore topics and get answers in Bartlett's voice and perspective",
+      "content_discovery - Help listeners find relevant podcast episodes and insights across 500+ episodes"
+    ],
+    "secondary_jtbds": [
+      "pre_sale_education - Expose users to Bartlett's thinking and funnel them toward books, DOAC Circle membership, The Diary journal, and other products",
+      "lead_qualification - Indirect; GPT users are already engaged fans who may convert to paid community or product purchasers"
+    ],
+    "jtbd_evidence_source": "Inferred from GPT Store listings and Bartlett's broader product ecosystem. The GPTs do not appear to be heavily promoted as standalone products with explicit JTBD framing."
+  },
+  "functionality": {
+    "modalities": [
+      "text"
+    ],
+    "requires_login": true,
+    "login_note": "Requires a ChatGPT account (free tier may have limited access; ChatGPT Plus provides full GPT Store access)",
+    "memory_persistence": "[uncertain] Depends on ChatGPT platform defaults. No custom memory features documented for these GPTs.",
+    "upload_support": "[uncertain] Depends on ChatGPT platform capabilities. No custom upload features documented.",
+    "tool_integrations": "Standard ChatGPT GPT Store capabilities (web browsing, DALL-E, code interpreter depending on creator configuration). No custom third-party integrations documented.",
+    "knowledge_grounding_claimed": "[uncertain] Likely trained on transcripts or summaries of The Diary of a CEO podcast episodes and possibly Bartlett's book 'The 33 Laws of Business and Life.' Exact knowledge corpus not publicly disclosed.",
+    "moderation_disclaimers": "[uncertain] No specific moderation disclaimers found beyond standard OpenAI/ChatGPT usage policies.",
+    "human_handoff": "No. The GPT operates entirely within OpenAI's ChatGPT platform with no documented human handoff mechanism.",
+    "platform_infrastructure": "OpenAI GPT Store (ChatGPT Custom GPTs). Two separate GPTs exist: 'Ask The Diary of a CEO' (chatgpt.com/g/g-pTI2QilZi) and 'Steven Bartlett's Diary of a CEO' (chatgpt.com/g/g-U1RJMcJco). It is unclear whether both are official or if one is a third-party creation.",
+    "voice_modality_details": "No voice modality in the GPTs themselves. However, Bartlett has separately created an AI voice clone of himself via ElevenLabs for the '100 CEOs with Steven Bartlett' animated podcast series, and uses Wispr Flow for voice-to-text productivity.",
+    "ai_agent_capabilities": "Standard ChatGPT conversational Q&A. No autonomous agent capabilities (no booking, CRM, workflow execution). The GPTs are information retrieval and advisory chatbots within the ChatGPT ecosystem."
+  },
+  "distribution": {
+    "access_url": "https://chatgpt.com/g/g-pTI2QilZi-ask-the-diary-of-a-ceo and https://chatgpt.com/g/g-U1RJMcJco-steven-bartlett-s-diary-of-a-ceo",
+    "distribution_path_description": "GPTs are available directly via the ChatGPT GPT Store. No prominent social media promotion or dedicated landing page was found. Bartlett's primary digital funnel directs audiences toward DOAC Circle membership, The Diary journal product, books, and events rather than the GPTs specifically.",
+    "link_in_bio_platform": "Custom (stevenbartlett.com). Instagram bio links to stevenbartlett.com. DOAC shop at thediary.com. DOAC Circle at doaccircle.com. No link-in-bio placement found for the GPTs.",
+    "social_to_bot_funnel": "[uncertain] No dedicated social-to-GPT funnel was identified. The GPTs appear to be passive offerings in the ChatGPT Store rather than actively promoted products. Bartlett's main social funnel drives to: podcast episodes -> stevenbartlett.com -> DOAC Circle / The Diary products / books / events."
+  },
+  "monetization": {
+    "pricing_model": "free (via ChatGPT; requires ChatGPT account, full access with ChatGPT Plus subscription at $20/month)",
+    "public_price": "Free to use within ChatGPT (ChatGPT Plus subscription required for full GPT Store access at $20/month, paid to OpenAI not Bartlett)",
+    "bundled_with": "Not bundled with any Bartlett product. Separate from DOAC Circle membership, The Diary journal, book, and other paid offerings.",
+    "monetization_linkage_type": "brand_awareness_and_funnel (GPTs serve as brand touchpoints that may drive users to paid products like DOAC Circle, The Diary, books, and events)",
+    "list_building_integration": "No direct list building. The GPTs operate within OpenAI's platform and do not capture email addresses or contact information for Bartlett's team.",
+    "revenue_model_detail": {
+      "gpt_direct_revenue": "None. The GPTs are free offerings on OpenAI's platform.",
+      "indirect_revenue": "Brand reinforcement and content discovery that may funnel users to paid products.",
+      "doac_circle": "Paid membership community (price not publicly confirmed in search results; launched 2025 with initial 10,000 member cap). Includes exclusive episodes, BTS content, events, merch, and community access.",
+      "the_diary_journal": "Physical/digital journal product sold via thediary.com. Described as 'the world's first Diary that coaches you back' with 12-week self-development program and QR-code-linked online coaching.",
+      "book_revenue": "'The Diary of a CEO: The 33 Laws of Business and Life' (published 2023, bestseller).",
+      "broader_business_revenue": "Steven.com valued at $425M (Oct 2025). Flight Fund ($100M investment fund). Flight Story media company. Dragon's Den equity investments."
+    }
+  },
+  "content_training": {
+    "content_training_corpus": "[uncertain] Likely includes transcripts or summaries from The Diary of a CEO podcast (500+ episodes since 2017), and possibly content from 'The Diary of a CEO: The 33 Laws of Business and Life' book. Exact training corpus not publicly disclosed by the GPT creators.",
+    "update_frequency": "[uncertain] Not publicly documented. GPT Store custom GPTs can be updated by their creators at any time, but no update cadence has been stated."
+  },
+  "risks_guardrails": {
+    "stated_disclaimers": "[uncertain] No specific disclaimers found for the GPTs beyond standard OpenAI/ChatGPT terms of service.",
+    "data_use_policy_cited": "Standard OpenAI privacy policy and ChatGPT terms of service apply. No Bartlett-specific data use policy for the GPTs.",
+    "minors_policy": "[uncertain] Not specifically documented. Subject to OpenAI's standard age restrictions (13+ with parental consent, 18+ in some jurisdictions).",
+    "impersonation_safeguards": "[uncertain] Not specifically documented. The GPTs present information in the style of Bartlett's podcast content but it is unclear whether they include explicit disclaimers that responses are AI-generated and not personal advice from Steven Bartlett.",
+    "regulatory_compliance_status": "[uncertain] No public statements found regarding FTC disclosure requirements, UK ASA/CMA guidelines, or AI-specific regulations as they apply to the GPTs."
+  },
+  "competitive": {
+    "competitive_moat_type": "Brand strength (The Diary of a CEO is the world's #2 podcast). Massive content corpus (500+ episodes with world-class guests). First-mover in UK podcast AI translation (Spanish via Wondercraft/ElevenLabs). AI voice clone for '100 CEOs' series. However, the GPTs themselves have limited moat as they are standard ChatGPT custom GPTs without proprietary infrastructure.",
+    "meta_creator_ai_status": "[uncertain] No evidence found of participation in Meta's Creator AI program for Instagram/Facebook/WhatsApp AI chatbot clones.",
+    "engagement_metrics_public": "[uncertain] No publicly disclosed engagement metrics (MAU, messages per session, conversation count) found for either GPT. The ChatGPT GPT Store does not publicly display usage statistics.",
+    "broader_ai_initiatives": {
+      "100_ceos_podcast": "AI-generated animated documentary series using ElevenLabs voice cloning, Wondercraft, and Runway. Launched mid-2025 on YouTube and Apple Podcasts. Feed reportedly stopped after 4 episodes.",
+      "ai_translation": "Diary of a CEO episodes translated into Spanish and French using Wondercraft + ElevenLabs with human quality control. Announced September 2023.",
+      "wispr_flow_partnership": "Global partnership between Wispr Flow and The Diary of a CEO. Flight Fund invested in Wispr's $25M round. Bartlett uses Wispr Flow for voice-to-text productivity across all his businesses.",
+      "ai_investments": "Flight Fund invested in Groq (AI chip startup, seven-figure investment in 2024), Wondercraft (AI audio, $3M seed), Replit, Lovable, and other AI companies.",
+      "ai_agents_advocacy": "Publicly stated 'AI agents might be the most disruptive technology of our lifetime' (X post, May 2025). Hosted 'AI Agents Emergency Debate' episode on The Diary of a CEO with Daniel Priestley, Bret Weinstein, and Amjad Masad."
+    }
+  },
+  "verification": {
+    "confidence_level": "medium",
+    "confidence_notes": "The GPTs exist and are accessible on the ChatGPT Store, but their official/unofficial status is uncertain. Bartlett has not publicly promoted them as a core product. His primary AI initiatives are the '100 CEOs' AI-cloned podcast, AI translation of episodes, and AI investment portfolio rather than a consumer-facing AI chatbot.",
+    "primary_source_url": "https://chatgpt.com/g/g-pTI2QilZi-ask-the-diary-of-a-ceo",
+    "corroborating_source_url": "https://x.com/StevenBartlett/status/1921849602644275443",
+    "additional_sources": [
+      "https://chatgpt.com/g/g-U1RJMcJco-steven-bartlett-s-diary-of-a-ceo",
+      "https://dnyuz.com/2025/07/28/the-diary-of-a-ceo-star-steven-bartlett-is-using-ai-to-make-new-podcasts-hosted-by-a-virtual-version-of-himself/",
+      "https://wisprflow.ai/case-study/steven-bartlett",
+      "https://stevenbartlett.com/steven-bartlett-invests-in-seven-figure-investment-round-into-ai-audio-content-pioneer-wondercraft-ai/",
+      "https://www.inc.com/annabel-burba/spotify-diary-of-a-ceo-steven-bartlett-top-business-podcast/91274795",
+      "https://doaccircle.com/",
+      "https://stevenbartlett.com/the-diary"
+    ],
+    "last_verified_date": "2026-04-15"
+  },
+  "uncertain": [
+    "bot_identity.positioning_narrative_excerpts (third excerpt)",
+    "bot_identity.launch_date",
+    "functionality.memory_persistence",
+    "functionality.upload_support",
+    "functionality.knowledge_grounding_claimed",
+    "functionality.moderation_disclaimers",
+    "functionality.platform_infrastructure (official vs third-party GPT status unclear)",
+    "distribution.social_to_bot_funnel",
+    "content_training.content_training_corpus",
+    "content_training.update_frequency",
+    "risks_guardrails.stated_disclaimers",
+    "risks_guardrails.minors_policy",
+    "risks_guardrails.impersonation_safeguards",
+    "risks_guardrails.regulatory_compliance_status",
+    "competitive.meta_creator_ai_status",
+    "competitive.engagement_metrics_public"
+  ]
+}

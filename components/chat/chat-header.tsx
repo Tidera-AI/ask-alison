@@ -5,7 +5,6 @@ import Link from "next/link";
 import { memo } from "react";
 import { Button } from "@/components/ui/button";
 import { useSidebar } from "@/components/ui/sidebar";
-import { VercelIcon } from "./icons";
 import { VisibilitySelector, type VisibilityType } from "./visibility-selector";
 
 function PureChatHeader({
@@ -35,12 +34,14 @@ function PureChatHeader({
       </Button>
 
       <Link
-        className="flex size-8 items-center justify-center rounded-lg md:hidden"
-        href="https://vercel.com/templates/next.js/chatbot"
-        rel="noopener noreferrer"
-        target="_blank"
+        className="flex items-center gap-2 rounded-lg px-1 md:hidden"
+        href="/"
       >
-        <VercelIcon size={14} />
+        <span className="flex size-7 items-center justify-center rounded-full bg-primary/10 ring-1 ring-primary/20">
+          <span className="font-serif text-[11px] font-semibold text-primary">
+            EE
+          </span>
+        </span>
       </Link>
 
       {!isReadonly && (
@@ -50,19 +51,16 @@ function PureChatHeader({
         />
       )}
 
-      <Button
-        asChild
-        className="hidden rounded-lg bg-foreground px-4 text-background hover:bg-foreground/90 md:ml-auto md:flex"
-      >
-        <Link
-          href="https://vercel.com/templates/next.js/chatbot"
-          rel="noopener noreferrer"
-          target="_blank"
-        >
-          <VercelIcon size={16} />
-          Deploy with Vercel
-        </Link>
-      </Button>
+      <div className="hidden items-center gap-2 md:ml-auto md:flex">
+        <span className="flex size-7 items-center justify-center rounded-full bg-primary/10 ring-1 ring-primary/20">
+          <span className="font-serif text-[11px] font-semibold text-primary">
+            EE
+          </span>
+        </span>
+        <span className="text-[13px] font-medium tracking-tight text-foreground/70">
+          Elevate Etiquette
+        </span>
+      </div>
     </header>
   );
 }

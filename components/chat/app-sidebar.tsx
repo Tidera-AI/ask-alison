@@ -1,7 +1,6 @@
 "use client";
 
 import {
-  MessageSquareIcon,
   PanelLeftIcon,
   PenSquareIcon,
   TrashIcon,
@@ -72,10 +71,14 @@ export function AppSidebar() {
                 <SidebarMenuButton
                   asChild
                   className="size-8 !px-0 items-center justify-center group-data-[collapsible=icon]:group-hover/logo:opacity-0"
-                  tooltip="Chatbot"
+                  tooltip="Ask Alison"
                 >
                   <Link href="/" onClick={() => setOpenMobile(false)}>
-                    <MessageSquareIcon className="size-4 text-sidebar-foreground/50" />
+                    <span className="flex size-6 items-center justify-center rounded-full bg-primary/10 ring-1 ring-primary/20">
+                      <span className="font-serif text-[9px] font-semibold text-primary">
+                        EE
+                      </span>
+                    </span>
                   </Link>
                 </SidebarMenuButton>
                 <Tooltip>

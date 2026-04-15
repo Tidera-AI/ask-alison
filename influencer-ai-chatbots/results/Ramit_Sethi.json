@@ -1,0 +1,128 @@
+{
+  "creator_profile": {
+    "name": "Ramit Sethi",
+    "primary_niche": "Personal finance, money psychology, career development, online business education",
+    "main_platforms": [
+      "YouTube",
+      "Instagram",
+      "X (Twitter)",
+      "TikTok",
+      "Podcast (Money For Couples with Ramit Sethi)",
+      "Netflix (How to Get Rich)",
+      "Newsletter (iwillteachyoutoberich.com)",
+      "MasterClass"
+    ],
+    "audience_size_documented": {
+      "YouTube": "~1.03M subscribers (April 2026, via SocialBlade)",
+      "Instagram": "~942K followers (April 2026, via instagram.com/ramit)",
+      "X_Twitter": "~299K followers (April 2026, via x.com/ramit)",
+      "TikTok": "~176K followers (April 2026, via tiktok.com/@ramit.sethi)",
+      "Threads": "~213K followers (April 2026, via threads.com/@ramit)",
+      "Facebook": "~197K followers (April 2026, via facebook.com/IWT)",
+      "email_newsletter": "~850,000+ subscribers (iwillteachyoutoberich.com)",
+      "cross_platform_note": "Over 1 million monthly readers at iwillteachyoutoberich.com. Company claims to have helped over 50 million people take control of their money, careers, and lives."
+    },
+    "tier_classification": "Tier B",
+    "tier_justification": "Major personal finance creator with ~1M YouTube subscribers, ~942K Instagram followers, Netflix show (How to Get Rich), NYT bestselling author (I Will Teach You to Be Rich), MasterClass instructor, and 850K+ email subscribers. Founder of IWT and GrowthLab. Estimated net worth $25-27M. Over 42,000 paying course students. Strong brand but smaller social following than Tier A creators. Revenue estimated at $20M+/year from email marketing alone."
+  },
+  "bot_identity": {
+    "bot_name": "Ramit Sethi Digital Mind (on Delphi.ai)",
+    "positioning_tagline": "Talk to Ramit Sethi's AI - get personal finance guidance from the author of I Will Teach You to Be Rich, 24/7.",
+    "positioning_narrative_excerpts": [
+      "Ramit Sethi of I Will Teach You To Be Rich deployed his AI persona to handle thousands of weekly inquiries.",
+      "These aren't experiments -- they're seven-figure revenue engines powered by Delphi.",
+      "An interactive version of you that sounds like you, thinks like you, and responds the way you would.",
+      "Your Digital Mind is trained specifically on your content library -- connecting your YouTube channel, your podcast feed, your existing articles, or uploading your materials directly."
+    ],
+    "launch_date": "[uncertain] Estimated 2023-2024 (Delphi.ai founded 2022; Ramit Sethi listed as a featured creator on Delphi since at least mid-2024 based on press coverage, but exact launch date not publicly documented)",
+    "current_status": "Active"
+  },
+  "jobs_to_be_done": {
+    "primary_jtbds": [
+      "ask_my_method - Ask personal finance questions and get answers grounded in Ramit Sethi's Rich Life philosophy (conscious spending, automation, guilt-free money management)",
+      "course_teaching_assistant - Implementation guidance on automating finances, negotiating salary, investing, and building an online business",
+      "pre_sale_education - Provide value-first interactions that funnel users toward IWT premium courses and programs"
+    ],
+    "secondary_jtbds": [
+      "lead_qualification - Identify users who could benefit from IWT premium programs ($297-$1,499+ courses)",
+      "scalable_1on1 - Handle thousands of weekly inquiries that Ramit cannot personally answer, extending his expertise 24/7",
+      "content_repurposing - Make Ramit's book, podcast, Netflix show, and course content accessible in conversational format"
+    ],
+    "jtbd_evidence_source": "Stated (from Delphi.ai marketing copy, Fast Company coverage, and iwillteachyoutoberich.com)"
+  },
+  "functionality": {
+    "modalities": [
+      "text",
+      "voice"
+    ],
+    "requires_login": "[uncertain] Delphi.ai Digital Minds typically allow limited free interactions; full access may require account creation or payment depending on creator configuration",
+    "memory_persistence": "[uncertain] Delphi platform supports contact management (up to 1,000 on Builder plan), suggesting some conversation memory, but specifics for Ramit's implementation not documented",
+    "upload_support": "[uncertain] Not publicly documented for end-user interactions. Creator side supports content uploads for training.",
+    "tool_integrations": "Delphi platform supports multi-channel deployment: SMS, WhatsApp, Slack, Discord, Zoom, website embed. Product recommendation workflows available on paid Delphi plans. No specific third-party integrations (CRM, payment) documented for Ramit's implementation.",
+    "knowledge_grounding_claimed": "Trained on Ramit Sethi's content library including the book I Will Teach You to Be Rich, the Money For Couples podcast, YouTube channel content, articles from iwillteachyoutoberich.com, and potentially course materials. Delphi Digital Minds are trained exclusively on the creator's content and learn their unique communication style, values, and expertise.",
+    "moderation_disclaimers": "Delphi platform-level: AI responses are generated content, not direct personal advice from the creator. Delphi Terms of Use and Privacy Policy apply. Creator content ownership retained by creator.",
+    "human_handoff": "[uncertain] Not publicly documented. IWT offers premium coaching and programs ($30-$300/hour), but whether the AI escalates to human advisors is not confirmed.",
+    "platform_infrastructure": "Hosted on Delphi.ai (delphi.ai/ramitsethi). Delphi uses proprietary Digital Mind technology. Cerebras partnership for inference speed. Data encrypted with AES-256, TLS 1.2+ for transit. Training data stored in private index, not shared or used to train external models.",
+    "voice_modality_details": "Delphi platform supports real-time voice calling in any modern browser with AI-driven voice synthesis that captures tone, pace, and personality. Based on ~30 second voice recording from creator. Available in 40+ languages.",
+    "ai_agent_capabilities": "Primarily a conversational Q&A chatbot that provides personal finance guidance based on Ramit Sethi's methodology. Delphi platform supports product recommendations and custom workflows (on paid plans). No documented autonomous action-taking capabilities (no booking, CRM integration, or financial transaction execution)."
+  },
+  "distribution": {
+    "access_url": "https://www.delphi.ai/ramitsethi",
+    "distribution_path_description": "Social media (YouTube, IG, X, TikTok) -> iwillteachyoutoberich.com -> email list capture -> Delphi AI chatbot as supplementary engagement tool. Also discoverable through Delphi.ai explore page. Ramit's primary funnel drives to email list and course sales; the Delphi AI serves as an always-on extension of his expertise.",
+    "link_in_bio_platform": "Custom (iwillteachyoutoberich.com). Instagram bio links to iwillteachyoutoberich.com. LinkedIn profile links to iwillteachyoutoberich.com.",
+    "social_to_bot_funnel": "YouTube channel -> description links to iwillteachyoutoberich.com; Instagram @ramit -> bio link to iwillteachyoutoberich.com; X @ramit -> profile links to iwillteachyoutoberich.com; Podcast (Money for Couples) -> mentions IWT resources; Netflix (How to Get Rich) -> drives awareness to IWT brand. The Delphi AI chatbot is positioned as part of the broader IWT ecosystem rather than the primary CTA in social content."
+  },
+  "monetization": {
+    "pricing_model": "[uncertain] Likely freemium (Delphi platform supports free interactions with optional paid access, paywalls, superchat, and membership tiers, but Ramit's specific configuration is not publicly documented)",
+    "public_price": "[uncertain] Delphi platform allows creators to set custom pricing. Ramit's specific pricing for AI interactions not publicly documented. Delphi platform pricing for creators: Free, Builder ($79/mo), Scaler ($299/mo), Immortal (custom). Delphi takes up to 20% of subscription revenue from end-user monetization.",
+    "bundled_with": "Part of the broader IWT (I Will Teach You to Be Rich) ecosystem which includes 18+ online courses ($29/mo to $1,499 one-time), the I Will Teach You to Be Rich book, Money for Couples book, coaching programs ($30-$300/hour), GrowthLab business courses, and MasterClass ($10/mo).",
+    "monetization_linkage_type": "lead_generation (AI chatbot drives awareness and engagement toward premium IWT courses and programs), scalable_expertise (handles thousands of weekly inquiries that would otherwise require human staff), brand_extension (reinforces Ramit's thought leadership and keeps audience engaged between product launches)",
+    "list_building_integration": "iwillteachyoutoberich.com captures email/contact info through free resources, quizzes, and mini-courses. Delphi platform supports contact management. The AI chatbot likely serves as an additional touchpoint in the broader email-centric marketing funnel that generates $20M+/year.",
+    "revenue_model_detail": {
+      "ai_chatbot_revenue": "Described as part of a 'seven-figure revenue engine' powered by Delphi, though specific AI-only revenue not separately disclosed.",
+      "iwt_course_revenue": "18+ courses ranging from $29/mo to $1,499 one-time. Over 42,000 paying students.",
+      "email_marketing_revenue": "$20M+/year from email marketing alone (per Encharge case study)",
+      "books": "NYT bestseller I Will Teach You to Be Rich (multiple editions), Money for Couples, I Will Teach You to Be Rich Journal",
+      "masterclass": "Financial Wellness course on MasterClass platform ($10/mo billed annually)",
+      "coaching": "$30-$300/hour for coaching, $2,000+ for live events and masterminds",
+      "estimated_total_revenue": "[uncertain] Estimated $25M-$50M+/year across all revenue streams based on public reporting"
+    }
+  },
+  "content_training": {
+    "content_training_corpus": "Trained on Ramit Sethi's content library via Delphi's Digital Mind technology, which ingests content from connected sources. Likely includes: I Will Teach You to Be Rich book content, Money for Couples book, iwillteachyoutoberich.com articles and blog posts, YouTube channel videos (1,000+ videos), Money for Couples podcast episodes, and potentially select course materials. Delphi supports training on up to 1M words (free), 5M words (Builder), 12M words (Scaler), or unlimited (Immortal).",
+    "update_frequency": "[uncertain] Delphi platform supports continuous content syncing from connected sources (YouTube, podcast feeds, articles). Actual update cadence for Ramit's Digital Mind not publicly documented."
+  },
+  "risks_guardrails": {
+    "stated_disclaimers": "Delphi platform-level disclaimers apply: AI-generated responses are not direct personal advice from the creator. Delphi Terms of Use state that the platform provides information for general purposes only. Ramit Sethi's own content frequently includes disclaimers that his advice is educational and not personalized financial advice.",
+    "data_use_policy_cited": "Delphi Privacy Policy (delphi.ai/privacy). User intellectual property remains exclusively theirs. Training data stored in private index and not shared or used to train external models. All stored customer data protected with AES-256 encryption. Data in transit encrypted using TLS 1.2+. Delphi may create aggregated, de-identified data for business analysis.",
+    "minors_policy": "[uncertain] Not specifically documented for Ramit Sethi's Digital Mind. Delphi platform Terms of Use likely include age restrictions but specifics not confirmed in search results.",
+    "impersonation_safeguards": "[uncertain] Delphi's Digital Identity Protection features exist at the platform level. The Digital Mind is explicitly positioned as an AI clone, not the real person. However, the conversational nature may blur the line for users who perceive it as direct advice from Ramit Sethi.",
+    "regulatory_compliance_status": "[uncertain] No public statements found regarding FTC disclosure requirements, state AI laws, or financial advice disclaimers specific to the Delphi AI implementation. Personal finance advice carries regulatory sensitivity (not a registered financial advisor). Delphi Trust Center exists at trust.delphi.ai."
+  },
+  "competitive": {
+    "competitive_moat_type": "Proprietary methodology (Rich Life framework, conscious spending plan, automation-first finance), exclusive content corpus (850K+ email subscriber content library, 18+ courses, 2 books, Netflix show, 1,000+ YouTube videos), brand recognition (Ramit Sethi is one of the most recognized personal finance creators in the US with Netflix visibility), email list dominance (850K+ subscribers generating $20M+/year), Delphi platform partnership (seven-figure revenue from AI persona).",
+    "meta_creator_ai_status": "[uncertain] No evidence found of participation in Meta's Creator AI program for Instagram/Facebook/WhatsApp AI chatbot clones.",
+    "engagement_metrics_public": "Thousands of weekly inquiries handled by AI persona (per Delphi marketing). No publicly disclosed engagement metrics (MAU, messages per session, retention, NPS) found for the Delphi AI specifically."
+  },
+  "verification": {
+    "confidence_level": "medium-high",
+    "primary_source_url": "https://www.delphi.ai/ramitsethi",
+    "corroborating_source_url": "https://www.fastcompany.com/91356476/delphi-ai-digital-mind",
+    "last_verified_date": "2026-04-15"
+  },
+  "uncertain": [
+    "bot_identity.launch_date",
+    "functionality.requires_login",
+    "functionality.memory_persistence",
+    "functionality.upload_support",
+    "functionality.human_handoff",
+    "monetization.pricing_model",
+    "monetization.public_price",
+    "monetization.revenue_model_detail.estimated_total_revenue",
+    "content_training.update_frequency",
+    "risks_guardrails.minors_policy",
+    "risks_guardrails.impersonation_safeguards",
+    "risks_guardrails.regulatory_compliance_status",
+    "competitive.meta_creator_ai_status"
+  ]
+}

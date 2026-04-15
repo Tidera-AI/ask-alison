@@ -1,0 +1,134 @@
+topic: "Claude Skills & Custom Instructions Tutorials for Non-Technical Users"
+description: >
+  Research tutorials, guides, and educational resources for teaching a non-technical
+  client how to use Claude Desktop App custom instructions/Projects (weeks 1-2) and
+  Claude Code skills/slash commands (weeks 2-4) on macOS.
+
+items:
+  # --- Original Framework (1-10) ---
+  - id: 1
+    name: "Anthropic Official Claude Code Docs — Skills"
+    description: "Primary documentation on creating and using skills/slash commands"
+
+  - id: 2
+    name: "Claude Desktop App Projects"
+    description: "Built-in Projects feature with custom instructions (zero-config starting point)"
+
+  - id: 3
+    name: "Claude Desktop App for macOS"
+    description: "Platform-specific setup, installation, and features"
+
+  - id: 4
+    name: "Community YouTube Tutorials — Claude Projects"
+    description: "Video walkthroughs of Projects and custom instructions"
+
+  - id: 5
+    name: "Community YouTube Tutorials — Claude Code Skills"
+    description: "Video walkthroughs of slash commands and skill creation"
+
+  - id: 6
+    name: "Anthropic Blog Posts / Announcements"
+    description: "Official posts explaining Projects, skills, and workflows"
+
+  - id: 7
+    name: "Claude Code Skills Directory / Examples"
+    description: "Community-shared skills and templates users can copy"
+
+  - id: 8
+    name: "Step-by-Step Written Guides (Blogs)"
+    description: "Non-technical blog posts walking through setup"
+
+  - id: 9
+    name: "Claude Prompt Library"
+    description: "Anthropic's official prompt examples (foundation for custom instructions)"
+
+  - id: 10
+    name: "Twitter/X Threads & Tutorials"
+    description: "Bite-sized walkthroughs from the Claude community"
+
+  # --- Supplementary Items from Web Research (11-27) ---
+  - id: 11
+    name: "Anthropic Academy (Skilljar)"
+    description: "Free official 13-course platform with certificates; Claude 101 ideal for beginners"
+    url: "https://anthropic.skilljar.com/"
+
+  - id: 12
+    name: "Claude Cowork Tutorials & Guides"
+    description: "Visual, no-code agent in Desktop App for knowledge workers — primary non-technical entry"
+
+  - id: 13
+    name: "Anthropic Official Skills Building Guide (33-page PDF)"
+    description: "Comprehensive official guide covering skill fundamentals, planning, testing, distribution"
+    url: "https://resources.anthropic.com/hubfs/The-Complete-Guide-to-Building-Skill-for-Claude.pdf"
+
+  - id: 14
+    name: "Anthropic Official Skills Repository"
+    description: "17 production-ready example skills on GitHub — installable directly as templates"
+    url: "https://github.com/anthropics/skills"
+
+  - id: 15
+    name: "CC for Everyone (Free Hands-On Course)"
+    description: "6-8 hour free course, learn-by-doing inside Claude Code, explicitly for non-technical people"
+    url: "https://ccforeveryone.com/"
+
+  - id: 16
+    name: "Pietro Montaldo — Claude Skills 2.0 Guide for Non-Techies"
+    description: "10-chapter guide with walkthrough videos for non-technical professionals"
+    url: "https://pietromontaldo.substack.com/p/claude-skills-20-my-full-guide-for"
+
+  - id: 17
+    name: "JD Hodges — Custom Instructions Real Examples"
+    description: "Practical blog with copy-paste templates for Projects and CLAUDE.md"
+    url: "https://www.jdhodges.com/blog/claude-ai-custom-instructions-a-real-example-that-actually-works/"
+
+  - id: 18
+    name: "The AI Corner — Claude Best Practices 2026 Power User Guide"
+    description: "Context engineering, persistent systems, voice profiles, skills as workflows"
+    url: "https://www.the-ai-corner.com/p/claude-best-practices-power-user-guide-2026"
+
+  - id: 19
+    name: "CLAUDE.md Guides (Builder.io, Anthropic Blog, Stulberg)"
+    description: "How to write custom instruction files for Claude Code"
+
+  - id: 20
+    name: "Anthropic Help Center — Skills Documentation"
+    description: "Official GUI-based skills walkthrough accessible to non-technical users"
+    url: "https://support.claude.com/en/articles/12512180-use-skills-in-claude"
+
+  - id: 21
+    name: "Awesome Claude Skills Directories"
+    description: "Curated community catalogs of pre-built installable skills"
+
+  - id: 22
+    name: "FindSkill.ai — RODES Framework Custom Instructions Guide"
+    description: "Beginner-friendly template framework with 10 copy-paste templates"
+    url: "https://findskill.ai/blog/custom-instructions-guide/"
+
+  - id: 23
+    name: "Michael Crist — Non-Technical Person's Complete Guide to Claude Code"
+    description: "Substack post specifically for non-developers"
+    url: "https://michaelcrist.substack.com/p/claude-code"
+
+  - id: 24
+    name: "macOS-Specific Setup & Installation Guides"
+    description: "Step-by-step installation guides with screenshots and troubleshooting"
+
+  - id: 25
+    name: "Learn Claude (ReadTheDocs)"
+    description: "Open-source structured tutorial site with progressive lessons"
+    url: "https://learn-claude.readthedocs.io/"
+
+  - id: 26
+    name: "Lenny's Newsletter — Claude Cowork for Non-Engineers"
+    description: "High-credibility walkthrough aimed at product managers"
+    url: "https://www.lennysnewsletter.com/p/this-week-on-how-i-ai-claude-cowork"
+
+  - id: 27
+    name: "The AI Corner — Everything Claude Shipped in 2026"
+    description: "Feature timeline for understanding which tutorials are current"
+    url: "https://www.the-ai-corner.com/p/everything-claude-shipped-2026-complete-guide"
+
+execution:
+  batch_size: 3
+  items_per_agent: 3
+  output_dir: "./results"

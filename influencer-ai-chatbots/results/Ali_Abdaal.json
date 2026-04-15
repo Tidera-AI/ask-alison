@@ -1,0 +1,138 @@
+{
+  "creator_profile": {
+    "name": "Ali Abdaal",
+    "primary_niche": "Productivity, creator economy, entrepreneurship, personal development",
+    "main_platforms": [
+      "YouTube",
+      "Instagram",
+      "TikTok",
+      "X (Twitter)",
+      "Podcast (Deep Dive with Ali Abdaal)",
+      "Newsletter (LifeNotes)"
+    ],
+    "audience_size_documented": {
+      "YouTube": "~6.57M subscribers (April 2026, via SocialBlade)",
+      "Instagram": "~1.1M followers (April 2026, via Instagram @aliabdaal)",
+      "TikTok": "~380K followers (April 2026, via TikTok @aliabdaal)",
+      "X_Twitter": "~357K followers (April 2026, via x.com/AliAbdaal)",
+      "newsletter": "~550K subscribers (LifeNotes newsletter, as of April 2025 estimate)",
+      "podcast": "Deep Dive podcast, hit #1 on Apple Podcasts Education charts, 443K+ subscribers referenced on site",
+      "cross_platform_note": "8M+ total followers across all social media platforms (per aliabdaal.com, January 2026)"
+    },
+    "tier_classification": "Tier A",
+    "tier_justification": "One of the world's most-followed productivity creators with 6.57M YouTube subscribers, 1.1M Instagram followers, and 8M+ total cross-platform reach. Sunday Times and New York Times bestselling author (Feel-Good Productivity, 250K+ copies sold). Former doctor turned full-time creator/entrepreneur. Runs multiple courses (Part-Time YouTuber Academy, Lifestyle Business Academy, LifeOS). Newsletter generates $1.5M+/year in revenue. Built and launched VoicePal app. Prolific custom GPT creator with multiple free tools as lead magnets."
+  },
+  "bot_identity": {
+    "bot_name": "Multiple bots: GPS Coach GPT (primary), Business Ideas GPT, Craft Skills GPT, Revenue Mapping Coach GPT, Ask Ali Abdaal GPT",
+    "positioning_tagline": "GPS Coach: 'Choose one goal. Put together a simple 90-day plan. Map out a tiny system to actually follow through.'",
+    "positioning_narrative_excerpts": [
+      "GPS Coach: 'A completely free AI model. This guided Goal Coach CustomGPT will help you choose one goal, put together a simple 90-day plan, and map out a tiny system to actually follow through.'",
+      "Business Ideas GPT: 'Go from no idea / too many ideas to a clear $2k-$20k service business in under an hour. This custom GPT walks you through the exact frameworks I use inside Lifestyle Business Academy.'",
+      "VoicePal: 'Think of it as Voice Notes but on steroids - record a rambly voicenote and transform it into structured bullet points, memos, Slack messages or anything else. The AI Tool That Saves Me 8 Hours a Week.'"
+    ],
+    "launch_date": "VoicePal beta: 2023-12-14 (closed beta to 5,000 users, announced on X). VoicePal official launch: 2024-08 (announced on LinkedIn/Instagram). Custom GPTs (GPS Coach, Business Ideas, etc.): [uncertain] estimated late 2023 to early 2024 following OpenAI GPT Store launch in January 2024. GPS Coach updated for 2026 as '2026 Goal Coach by Ali Abdaal'.",
+    "current_status": "Active (all custom GPTs remain live; VoicePal actively maintained on iOS and Android with ongoing feature updates)"
+  },
+  "jobs_to_be_done": {
+    "primary_jtbds": [
+      "ask_my_method - GPS Coach applies Ali's GPS (Goal-Plan-System) framework to help users set and execute on a single 90-day goal",
+      "course_teaching_assistant - Business Ideas GPT walks users through Lifestyle Business Academy frameworks to identify a high-ticket service business",
+      "lead_qualification - All custom GPTs require email signup, feeding users into the LifeNotes newsletter funnel and course upsell pipeline",
+      "fan_qa - Ask Ali Abdaal GPT lets fans explore Ali's ideas on productivity, business, and learning",
+      "skill_discovery - Craft Skills GPT interviews users to identify skills that could become a business"
+    ],
+    "secondary_jtbds": [
+      "pre_sale_education - Revenue Mapping Coach GPT helps users understand how their skills map to revenue, warming them for course enrollment",
+      "content_creation_assistant - VoicePal transforms voice recordings into polished written content (articles, tweets, newsletters, journal entries)",
+      "life_coaching - AI life coaching experiment (365-day YouTube video) demonstrated using AI as a reflective life coach with prompts, personas, and memory-based deep dives"
+    ],
+    "jtbd_evidence_source": "Stated (from official landing pages at aliabdaal.com/gps-coach/, aliabdaal.com/business-ideas-gpt/, aliabdaal.com/craft-skills/, aliabdaal.com/revenue-mapping-coach/; VoicePal marketing on X, LinkedIn, TikTok, App Store)"
+  },
+  "functionality": {
+    "modalities": [
+      "text (custom GPTs)",
+      "voice-to-text (VoicePal)"
+    ],
+    "requires_login": true,
+    "login_details": "Custom GPTs: require ChatGPT account (free tier sufficient for GPT Store access) plus email signup on aliabdaal.com to receive the GPT link. VoicePal: requires app download and account creation.",
+    "memory_persistence": "Custom GPTs: standard ChatGPT conversation memory (within session). VoicePal: persistent recording library with saved transcripts and transformations.",
+    "upload_support": "[uncertain] Custom GPTs: standard ChatGPT file upload capabilities. VoicePal: voice recording upload/capture natively supported.",
+    "tool_integrations": "Custom GPTs: standard ChatGPT ecosystem (no documented third-party integrations). VoicePal: standalone iOS/Android app with AI transcription and transformation pipeline.",
+    "knowledge_grounding_claimed": "GPS Coach: grounded in Ali's GPS (Goal-Plan-System) framework from his productivity content and courses. Business Ideas GPT: trained on frameworks from Lifestyle Business Academy for identifying service businesses. Craft Skills GPT: uses interview methodology to identify monetizable skills. Revenue Mapping Coach: maps skills/roles to revenue generation strategies. Ask Ali Abdaal: grounded in Ali's published content on productivity, business, and personal development.",
+    "moderation_disclaimers": "[uncertain] No specific moderation disclaimers documented for the custom GPTs beyond standard OpenAI/ChatGPT usage policies. VoicePal has standard App Store terms.",
+    "human_handoff": "No direct human handoff from chatbots. The funnel routes users to email newsletter (LifeNotes) and course offerings (Lifestyle Business Academy, Part-Time YouTuber Academy, LifeOS) for deeper human-facilitated engagement.",
+    "platform_infrastructure": "Custom GPTs: Built on OpenAI's GPT Store platform (ChatGPT custom GPTs). VoicePal: Native iOS/Android app with proprietary AI transcription and transformation engine, available on Apple App Store and Google Play.",
+    "voice_modality_details": "Custom GPTs: no voice modality (text-only chat). VoicePal: core product is voice-first - users record spoken audio which is transcribed, cleaned (removes filler words), summarized, and transformed into structured written formats (articles, tweets, journal entries, memos, Slack messages, etc.).",
+    "ai_agent_capabilities": "Custom GPTs: guided conversational agents that walk users through structured frameworks (goal-setting, business ideation, skill discovery, revenue mapping). No autonomous action-taking capabilities. VoicePal: automated voice-to-text pipeline with one-tap transformation into multiple content formats. No booking, CRM, or workflow automation capabilities documented."
+  },
+  "distribution": {
+    "access_url": "GPS Coach: https://aliabdaal.com/gps-coach/ (landing page) and https://go.aliabdaal.com/gpscoach (direct GPT link). Business Ideas GPT: https://aliabdaal.com/business-ideas-gpt/. Craft Skills GPT: https://aliabdaal.com/craft-skills/. Revenue Mapping Coach: https://aliabdaal.com/revenue-mapping-coach/. Ask Ali Abdaal: https://chatgpt.com/g/g-FXMVOOh4S-ask-ali-abdaal. VoicePal: https://apps.apple.com/us/app/voicepal-your-ai-ghostwriter/id6471552007",
+    "distribution_path_description": "YouTube videos -> description links to aliabdaal.com landing pages -> email signup form -> email with GPT link + auto-subscribe to LifeNotes newsletter. Also promoted via TikTok, Instagram, LinkedIn, and X posts. GPS Coach specifically promoted through 'I Tried AI as a Life Coach for 365 Days' video and related content. VoicePal promoted through dedicated YouTube videos, TikTok clips, and LinkedIn posts.",
+    "link_in_bio_platform": "Custom (aliabdaal.com). Instagram bio and other platforms link to aliabdaal.com which serves as the central hub.",
+    "social_to_bot_funnel": "YouTube videos (6.57M subs) mention free GPT tools in video content -> description links to aliabdaal.com/gps-coach/ etc. -> landing page with email capture form -> user submits email -> receives GPT access link via email + added to LifeNotes newsletter (~550K subscribers) -> newsletter promotes courses (Lifestyle Business Academy, LifeOS, Part-Time YouTuber Academy). The custom GPTs serve as lead magnets in a content-to-email-to-course funnel."
+  },
+  "monetization": {
+    "pricing_model": "freemium_lead_magnet (custom GPTs are free but gated behind email signup; VoicePal is freemium with paid subscription)",
+    "public_price": "Custom GPTs: Free (email signup required). VoicePal: Free tier available; Premium at $9.99/month or $79.99/year (discounted to $8.99/month in some promotions).",
+    "bundled_with": "Custom GPTs are standalone free tools but serve as lead magnets for: LifeNotes newsletter, Lifestyle Business Academy (pricing undisclosed, application-based), Part-Time YouTuber Academy ($995-$4,995 depending on tier), LifeOS course ($197-$297+ depending on tier and promotions). VoicePal is a separate standalone product.",
+    "monetization_linkage_type": "lead_magnet_to_newsletter (custom GPTs capture emails for LifeNotes), newsletter_to_course_upsell (newsletter promotes paid courses), freemium_app (VoicePal has free-to-paid conversion), content_marketing (all tools reinforce Ali's brand and methodology)",
+    "list_building_integration": "All custom GPT landing pages (aliabdaal.com/gps-coach/, /business-ideas-gpt/, /craft-skills/, /revenue-mapping-coach/) require email submission before delivering the GPT link. Users are auto-subscribed to LifeNotes weekly newsletter. Newsletter consistently generates $1.5M+/year in revenue through course promotions.",
+    "revenue_model_detail": {
+      "custom_gpts": "Free (no direct revenue; serve as email lead magnets)",
+      "voicepal_app": "$9.99/month or $79.99/year subscription after free tier",
+      "newsletter_revenue": "$1.5M+/year from LifeNotes newsletter (per Ali's public statements)",
+      "courses": "Part-Time YouTuber Academy: $995-$4,995 per enrollment. Lifestyle Business Academy: undisclosed (application-based). LifeOS: $197+ per enrollment (3,000+ students).",
+      "book": "Feel-Good Productivity: Sunday Times and NYT bestseller, 250K+ copies sold",
+      "estimated_annual_ai_revenue": "[uncertain] VoicePal app revenue not publicly disclosed. Custom GPTs generate no direct revenue but contribute to an estimated multi-million dollar annual course and newsletter revenue pipeline."
+    }
+  },
+  "content_training": {
+    "content_training_corpus": "GPS Coach: Ali's GPS (Goal-Plan-System) productivity framework from his YouTube content, courses, and Feel-Good Productivity book. Business Ideas GPT: frameworks from Lifestyle Business Academy for identifying high-ticket service businesses. Craft Skills GPT: skill identification methodology. Revenue Mapping Coach: revenue mapping frameworks. Ask Ali Abdaal: broad corpus of Ali's published content on productivity, entrepreneurship, and personal development. VoicePal: no creator-specific training corpus; uses general AI models for transcription and text transformation.",
+    "update_frequency": "GPS Coach updated at least annually (rebranded as '2026 Goal Coach by Ali Abdaal' for 2026). Other GPTs: [uncertain] no documented update cadence. VoicePal: actively maintained with ongoing feature updates (per TikTok and LinkedIn posts referencing 'always adding new features')."
+  },
+  "risks_guardrails": {
+    "stated_disclaimers": "[uncertain] No specific disclaimers documented for custom GPTs beyond standard OpenAI/ChatGPT terms of use. VoicePal has standard App Store terms and privacy policy. Ali's 'I Tried AI as a Life Coach' video frames AI coaching as supplementary, not a replacement for professional coaching.",
+    "data_use_policy_cited": "[uncertain] Email signups on aliabdaal.com are subject to Ali Abdaal Ltd's privacy policy. VoicePal app has its own privacy policy on the App Store. No specific data use policies documented for the custom GPT interactions beyond OpenAI's standard policies.",
+    "minors_policy": "[uncertain] Not specifically documented. Standard OpenAI age requirements (13+) apply to custom GPTs. VoicePal App Store listing does not specify age restrictions beyond standard app store policies.",
+    "impersonation_safeguards": "[uncertain] 'Ask Ali Abdaal' GPT is explicitly positioned as an AI representation of Ali's ideas, but no documented safeguards against users mistaking it for direct communication with Ali Abdaal. Other GPTs are positioned as tools/coaches rather than Ali's persona directly.",
+    "regulatory_compliance_status": "[uncertain] No public statements found regarding FTC disclosure requirements, UK ASA compliance, or AI-specific regulations for any of Ali's AI products."
+  },
+  "competitive": {
+    "competitive_moat_type": "Proprietary methodology (GPS framework, Feel-Good Productivity system, Lifestyle Business Academy frameworks), massive audience reach (8M+ cross-platform followers), bestselling author credibility (NYT/Sunday Times bestseller), multi-product ecosystem (courses + newsletter + app + GPTs creating reinforcing flywheel), email list scale (550K+ newsletter subscribers), first-mover advantage among productivity creators in custom GPT space, standalone app (VoicePal) providing platform independence from OpenAI.",
+    "meta_creator_ai_status": "[uncertain] No evidence found of participation in Meta's Creator AI program for Instagram/Facebook/WhatsApp AI chatbot clones.",
+    "engagement_metrics_public": "YouTube: 3.75M views/month, 4.03% engagement rate (April 2026, via HypeAuditor). VoicePal: [uncertain] no public download or MAU figures. Custom GPTs: [uncertain] no public usage metrics disclosed."
+  },
+  "verification": {
+    "confidence_level": "high",
+    "confidence_notes": "Ali Abdaal's custom GPTs and VoicePal are well-documented through his official website, social media channels, and third-party reviews. The main uncertainty is around specific launch dates for individual custom GPTs and internal engagement/revenue metrics.",
+    "primary_source_url": "https://aliabdaal.com/gps-coach/",
+    "corroborating_source_url": "https://aliabdaal.com/business-ideas-gpt/",
+    "additional_sources": [
+      "https://aliabdaal.com/craft-skills/",
+      "https://aliabdaal.com/revenue-mapping-coach/",
+      "https://chatgpt.com/g/g-FXMVOOh4S-ask-ali-abdaal",
+      "https://apps.apple.com/us/app/voicepal-your-ai-ghostwriter/id6471552007",
+      "https://aliabdaal.com/videos/i-tried-ai-as-a-life-coach-for-365-days-heres-what-i-learned/",
+      "https://x.com/AliAbdaal/status/1735354260169089244",
+      "https://www.linkedin.com/posts/ali-abdaal_weve-just-officially-launched-voicepal-activity-7229892016577376259-nvUx",
+      "https://socialblade.com/youtube/handle/aliabdaal",
+      "https://hardlyhamilton.com/2024/12/20/voicepal-review-ali-abdaal-blog-writing/",
+      "https://navid.me/voicepal-review/"
+    ],
+    "last_verified_date": "2026-04-15"
+  },
+  "uncertain": [
+    "bot_identity.launch_date (exact dates for individual custom GPTs not confirmed)",
+    "functionality.upload_support",
+    "functionality.moderation_disclaimers",
+    "monetization.revenue_model_detail.estimated_annual_ai_revenue",
+    "content_training.update_frequency (for non-GPS Coach GPTs)",
+    "risks_guardrails.stated_disclaimers",
+    "risks_guardrails.data_use_policy_cited",
+    "risks_guardrails.minors_policy",
+    "risks_guardrails.impersonation_safeguards",
+    "risks_guardrails.regulatory_compliance_status",
+    "competitive.meta_creator_ai_status",
+    "competitive.engagement_metrics_public (VoicePal and custom GPT metrics)"
+  ]
+}

@@ -1,0 +1,91 @@
+{
+  "creator_profile": {
+    "name": "Mark Manson",
+    "primary_niche": "Self-help / personal development",
+    "main_platforms": ["YouTube", "Instagram", "Newsletter", "Podcast (Solved)", "markmanson.net"],
+    "audience_size_documented": "YouTube: ~2.7M subscribers; Instagram: ~2M followers; Facebook: ~1.1M followers; Newsletter ('Your Next Breakthrough'): ~650K subscribers. Sources: Instagram bio, YouTube channel page, Nathan Barry creator business breakdown. Verified April 2026.",
+    "tier_classification": "Tier A",
+    "tier_justification": "3x #1 New York Times bestselling author; 'The Subtle Art of Not Giving a F*ck' has sold over 20 million copies worldwide; multi-platform audience totaling approximately 6.5M+ across YouTube, Instagram, Facebook, and newsletter; reported ~$2.5M/year creator business revenue; mainstream media recognition (Fast Company, TechRadar, Puck, Maria Shriver's Sunday Paper). Sources: PRNewswire press release (Dec 2025), Nathan Barry podcast breakdown, Instagram bio."
+  },
+  "bot_identity": {
+    "bot_name": "Purpose",
+    "positioning_tagline": "The world's first AI mentor -- align with what matters",
+    "positioning_narrative_excerpts": [
+      "Purpose is the first AI platform built from the ground up specifically optimized for personal growth, with sophisticated memory systems that track behavior patterns, and a challenge-based approach designed to inspire real transformation.",
+      "Unlike ChatGPT's 'yes man' approach, Purpose provides directional feedback and gently points out blind spots -- it's an insightful, safety-first mentor that challenges you gently and remembers your history and patterns.",
+      "At $19.99 per month, Purpose makes previously costly guidance available to anyone ready to improve their lives. Over 41% of users rate its value as 'life-changing.'"
+    ],
+    "launch_date": "2025-12-04",
+    "current_status": "Active"
+  },
+  "jobs_to_be_done": {
+    "primary_jtbds": [
+      "ask_my_method",
+      "accountability",
+      "course_teaching_assistant"
+    ],
+    "secondary_jtbds": [
+      "fan_qa",
+      "community_help"
+    ],
+    "jtbd_evidence_source": "Stated and Inference. Marketing copy explicitly describes the mentoring, self-discovery assessments, and challenge system. Fan Q&A and community help roles inferred from product behavior (chat anytime, reflect on tough moments, plan next steps)."
+  },
+  "functionality": {
+    "modalities": ["text"],
+    "requires_login": true,
+    "memory_persistence": true,
+    "upload_support": "[uncertain]",
+    "tool_integrations": "No publicly documented third-party tool integrations (no calendar, CRM, email capture, etc. mentioned). The app includes an internal 'journey log' that summarizes user progress over time.",
+    "knowledge_grounding_claimed": "Grounded in Mark Manson's published philosophy from 'The Subtle Art of Not Giving a F*ck' and other bestselling works; incorporates cognitive behavioral therapy (CBT) research and established psychological frameworks; personalized assessments that reveal core values and behavioral patterns.",
+    "moderation_disclaimers": "Purpose is not a clinical or medical service -- it is a personal-growth mentoring tool. If you're in danger or need urgent help, call 911 (US) or your local emergency number. For emotional support, contact your country's crisis hotline. The team positions it explicitly as coaching, not therapy.",
+    "human_handoff": "No public documentation of human handoff mechanism. Crisis situations direct users to emergency services and crisis hotlines rather than escalating to a human within the app.",
+    "platform_infrastructure": "Custom-built proprietary platform using a multi-model routing system. Raj Singh describes a 'proprietary blend' of major US foundation models -- including Anthropic Claude, OpenAI GPT, and Google Gemini -- with each routed to specific tasks based on comparative strengths. One model handles conversational flow, another evaluates quantitative signals, and a third generates summaries for the running 'journey' log. Custom memory layer stores durable personal details without re-inserting full transcripts into every prompt. Source: Diginomica interview with Raj Singh.",
+    "voice_modality_details": "No voice or voice clone features documented. The app appears to be text-only chat-based interaction. [uncertain]",
+    "ai_agent_capabilities": "Primarily answers questions and provides structured reflection prompts. Includes an Intelligent Challenge System that provides directional feedback and points out blind spots. Tracks behavior patterns, goals, and blind spots over time via the memory architecture. Offers guided assessments on various life areas. Does not appear to take external actions (no booking, checkout, CRM integration)."
+  },
+  "distribution": {
+    "access_url": "https://purpose.app/ and iOS App Store (https://apps.apple.com/us/app/purpose-your-ai-mentor/id6749098156)",
+    "distribution_path_description": "Instagram/YouTube bio -> markmanson.net or purpose.app directly -> web app or iOS App Store download. Mark Manson promotes Purpose via his Instagram bio (lists himself as 'Founder & Chief Growth Officer of @purpose.app'), YouTube content, newsletter, and his personal website markmanson.net which features dedicated articles about Purpose.",
+    "link_in_bio_platform": "Custom website (markmanson.net) with direct links to purpose.app. Instagram bio links directly to purpose.app.",
+    "social_to_bot_funnel": "Instagram bio CTA linking to @purpose.app; YouTube video descriptions and channel content; markmanson.net blog posts ('Purpose, the Untold Story', 'The Problem With AI Life Coaching -- and My Solution'); newsletter ('Your Next Breakthrough') promotion; Solved podcast mentions."
+  },
+  "monetization": {
+    "pricing_model": "paid",
+    "public_price": "$19.99/month with 7-day free trial",
+    "bundled_with": "Standalone product, not bundled with existing course or membership",
+    "monetization_linkage_type": "direct_subscription",
+    "list_building_integration": "[uncertain]",
+    "revenue_model_detail": "Direct consumer subscription at $19.99/month (~$240/year per user). 7-day free trial to reduce friction. Singh and Manson chose not to raise early venture capital to avoid engagement-maximizing incentives. The stated goal is for users to gain clarity and ultimately rely on the app less over time. No publicly disclosed user count, ARR, or revenue figures specific to Purpose. Mark Manson's broader creator business generates approximately $2.5M/year (per Nathan Barry breakdown), but Purpose revenue is not broken out."
+  },
+  "content_training": {
+    "content_training_corpus": "Mark Manson's published works including 'The Subtle Art of Not Giving a F*ck' (20M+ copies sold), 'Everything is F*cked: A Book About Hope', and 'Will'; his blog content from markmanson.net; cognitive behavioral therapy (CBT) research and established psychological frameworks. The app's philosophy is rooted in embracing life's struggles rather than toxic positivity.",
+    "update_frequency": "[uncertain]"
+  },
+  "risks_guardrails": {
+    "stated_disclaimers": "Purpose is not a clinical or medical service -- it is a personal-growth mentoring tool. If you're in danger or need urgent help, call 911 (US) or your local emergency number. For emotional support, contact your country's crisis hotline. Positioned explicitly as coaching, not a clinical or therapeutic relationship.",
+    "data_use_policy_cited": "Privacy policy available at https://markmanson.net/app/ios/privacy_policy.html. Data secured in transit and at rest with restricted access. Company states it never sells personal data. Users can delete account and data anytime from Settings. Claims compliance with strictest regulations around safety and privacy worldwide.",
+    "minors_policy": "[uncertain]",
+    "impersonation_safeguards": "The AI is presented as 'your AI mentor' rather than as Mark Manson himself. Marketing materials frame it as 'co-created with Mark Manson' rather than being Mark Manson. The app name is 'Purpose' not 'Mark Manson AI.' [uncertain]",
+    "regulatory_compliance_status": "Claims to comply with 'the strictest regulations around safety and privacy around the world.' Singh and Manson explicitly position the product as coaching rather than therapy to avoid clinical regulatory territory. No specific mention of FTC AI disclosure compliance or state AI laws. [uncertain]"
+  },
+  "competitive": {
+    "competitive_moat_type": "Proprietary methodology (Manson's philosophy and frameworks); exclusive content corpus (3 bestselling books, 15+ years of blog content); custom multi-model AI architecture with proprietary memory layer; brand recognition (20M+ book copies sold); co-founder technical expertise (Raj Singh's AI background with Go Moment/Tempo AI); deliberate anti-engagement design philosophy (no VC funding to avoid engagement-maximizing incentives).",
+    "meta_creator_ai_status": "No evidence of participation in Meta's Creator AI program",
+    "engagement_metrics_public": "Over 41% of Purpose users rate its value as 'life-changing' when asked how helpful Purpose has been. Mixed App Store reviews -- some users report it being more helpful than two years of therapy, others found assessments overly generalized. No publicly disclosed MAU, messages per session, retention, or NPS data."
+  },
+  "verification": {
+    "confidence_level": "high",
+    "primary_source_url": "https://purpose.app/",
+    "corroborating_source_url": "https://www.prnewswire.com/news-releases/bestselling-author-mark-manson-launches-purpose-an-ai-mentor-redefining-self-help-for-a-new-generation-302632443.html",
+    "last_verified_date": "2026-04-15"
+  },
+  "uncertain": [
+    "functionality.upload_support",
+    "functionality.voice_modality_details",
+    "monetization.list_building_integration",
+    "content_training.update_frequency",
+    "risks_guardrails.minors_policy",
+    "risks_guardrails.impersonation_safeguards",
+    "risks_guardrails.regulatory_compliance_status"
+  ]
+}

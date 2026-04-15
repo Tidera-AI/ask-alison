@@ -1,0 +1,131 @@
+{
+  "creator_profile": {
+    "name": "Lewis Howes",
+    "primary_niche": "Personal development, lifestyle entrepreneurship, mindset coaching",
+    "main_platforms": [
+      "YouTube",
+      "Instagram",
+      "Podcast (The School of Greatness)",
+      "TikTok",
+      "X (Twitter)",
+      "LinkedIn",
+      "Facebook"
+    ],
+    "audience_size_documented": {
+      "YouTube": "~4.85M subscribers (December 2025, via HypeAuditor)",
+      "Instagram": "~4.76M followers (March 2026, via HypeAuditor)",
+      "TikTok": "~2.1M followers (April 2026, via TikTok @lewis)",
+      "X_Twitter": "[uncertain] Not confirmed from primary source; estimated mid-hundreds-of-thousands based on platform presence",
+      "LinkedIn": "[uncertain] Significant presence (3x NYT Bestselling Author listed), exact count not confirmed",
+      "podcast_downloads": "500M+ total downloads (per lewishowes.com and multiple corroborating sources)",
+      "cross_platform_note": "Total audience across Instagram, YouTube, and TikTok approximately 11.6M users as of early 2026"
+    },
+    "tier_classification": "Tier B",
+    "tier_justification": "Multi-platform creator with ~11.6M combined followers across YouTube (4.85M), Instagram (4.76M), and TikTok (2.1M). 3x New York Times bestselling author (The School of Greatness, The Mask of Masculinity, The Greatness Mindset). Host of one of the top podcasts globally with 500M+ downloads. Recognized by the White House and President Obama as one of the top 100 entrepreneurs under 30. Former professional football player and two-sport All-American. Estimated net worth $14-17M. Annual income estimated at ~$2.5M. While audience size is comparable to Tier A creators, Lewis Howes operates primarily as a personal brand coach/author rather than running a portfolio-scale business conglomerate, placing him in Tier B."
+  },
+  "bot_identity": {
+    "bot_name": "Lewis Howes (The School of Greatness) by Steno.ai (GPT Store) / Lewis AI (Delphi.ai)",
+    "positioning_tagline": "Lewis Howes (Steno GPT): AI with access to all Lewis Howes content. Lewis AI (Delphi): 'What's on your mind today? Let's figure out how to unlock your greatness together.'",
+    "positioning_narrative_excerpts": [
+      "Steno GPT: 'Chat with The School of Greatness & Lewis Howes and ask anything, read podcast summaries and show notes, and get transcripts.' Access to all Lewis Howes content via AI-powered Custom GPT.",
+      "Delphi Lewis AI: 'I'm Lewis AI. What's on your mind today? Let's figure out how to unlock your greatness together.' Positioned as a personal 24/7 Greatness Coach.",
+      "Dexa.ai: The School of Greatness podcast is indexed and searchable on Dexa's AI-powered podcast search platform, allowing users to ask questions across episode transcripts with timestamped source citations."
+    ],
+    "launch_date": "Steno GPT: ~early 2024 (GPT Store launched January 2024; exact date for Lewis Howes GPT not confirmed). Delphi AI: [uncertain] exact launch date not publicly documented. Dexa.ai: ~2023-2024 (Dexa launched in 2023).",
+    "current_status": "Active (all three AI presences appear to be live as of April 2026)"
+  },
+  "jobs_to_be_done": {
+    "primary_jtbds": [
+      "ask_my_method - Ask questions about Lewis Howes' frameworks on greatness, mindset, and personal development and receive AI-generated answers grounded in his podcast content and books",
+      "content_discovery - Search and explore 500M+ downloads worth of School of Greatness podcast episodes, get summaries, show notes, and transcripts",
+      "coaching_assistant - Get 24/7 personal greatness coaching via Delphi AI clone that mirrors Lewis Howes' voice, expertise, and coaching style"
+    ],
+    "secondary_jtbds": [
+      "pre_sale_education - Exposure to Lewis Howes' methodology before purchasing paid coaching programs ($10K/year Greatness Coaching, Masterclass, etc.)",
+      "community_engagement - Extend creator-fan interaction beyond podcast consumption via conversational AI",
+      "lead_qualification - Warm up potential customers for Greatness Coaching Program, online courses, and book purchases"
+    ],
+    "jtbd_evidence_source": "Inferred from GPT Store listing (Steno.ai), Delphi.ai profile page, Dexa.ai platform description, and Lewis Howes' website programs page"
+  },
+  "functionality": {
+    "modalities": [
+      "text (Steno GPT, Dexa.ai)",
+      "text + voice (Delphi.ai via ElevenLabs voice cloning)"
+    ],
+    "requires_login": "Steno GPT: Yes (ChatGPT Plus subscription required). Delphi.ai: [uncertain] likely free tier available with limitations. Dexa.ai: Free access with optional account creation.",
+    "memory_persistence": "[uncertain] Steno GPT: Inherits ChatGPT memory features if enabled. Delphi.ai: Not publicly documented. Dexa.ai: No persistent memory (search-based).",
+    "upload_support": "[uncertain] Steno GPT: Inherits ChatGPT file upload capabilities. Delphi.ai: Not publicly documented. Dexa.ai: No upload support.",
+    "tool_integrations": "Steno GPT: Integrated within ChatGPT ecosystem. Delphi.ai: Deployable via website embed, SMS, voice calls, and messaging platforms. Dexa.ai: Web-based search with timestamped podcast links. No documented CRM, calendar, or workflow integrations specific to Lewis Howes.",
+    "knowledge_grounding_claimed": "Steno GPT: Trained on all Lewis Howes content including 1700+ episodes of The School of Greatness podcast (500M+ downloads), episode transcripts, show notes, and summaries via Steno.ai's AI Twin platform. Delphi.ai: Trained on creator's documents, audio recordings, social media posts, and websites to mirror Lewis Howes' expertise and personality. Dexa.ai: Full podcast transcript library with speaker diarization and timestamped indexing. Books (The School of Greatness, The Greatness Mindset, The Mask of Masculinity, Make Money Easy) may be included in Steno/Delphi training but this is not explicitly confirmed.",
+    "moderation_disclaimers": "[uncertain] No specific moderation disclaimers found for any of the three AI implementations. Steno GPT inherits OpenAI's usage policies. Delphi.ai's platform states that each clone is trained strictly on the creator's own material, with user data never pooled to train broader models.",
+    "human_handoff": "[uncertain] No documented human handoff mechanism for any of the three AI bots. Lewis Howes' Greatness Coaching program ($10K/year) provides human coaching separately.",
+    "platform_infrastructure": "Steno GPT: Built on OpenAI GPT-4 via Steno.ai's AI Twin platform, distributed through ChatGPT GPT Store. Delphi.ai: Delphi's proprietary platform with ElevenLabs voice cloning integration, deployable across web, SMS, and voice. Dexa.ai: Dexa's proprietary AI-powered podcast search platform built on transcript analysis with speaker diarization.",
+    "voice_modality_details": "Delphi.ai: Voice interaction available via ElevenLabs partnership. Users can speak to Lewis AI and hear responses in a voice clone. Requires 10-second audio sample to create voice clone. Can be deployed to a dedicated phone number. Steno GPT and Dexa.ai: No voice interaction documented.",
+    "ai_agent_capabilities": "All three implementations are primarily Q&A/advisory chatbots. No autonomous action-taking capabilities documented (no booking, CRM integration, workflow execution, or e-commerce transactions). Steno GPT generates text responses from podcast content. Delphi AI provides conversational coaching responses. Dexa.ai provides search results with citations."
+  },
+  "distribution": {
+    "access_url": "Steno GPT: https://chatgpt.com (search 'Lewis Howes Steno' in GPT Store). Delphi.ai: https://www.delphi.ai/lewishowes/talk. Dexa.ai: https://dexa.ai (School of Greatness indexed in podcast library).",
+    "distribution_path_description": "Social media (YouTube, Instagram, TikTok, X, LinkedIn) -> lewishowes.com -> programs/courses/podcast page. GPT Store: Discoverable via ChatGPT GPT Store search or direct link. Delphi.ai: Discoverable via Delphi explore page or direct URL. Dexa.ai: Discoverable via Dexa's podcast search platform. No evidence of prominent direct promotion of AI chatbots from Lewis Howes' main social channels or website \u2014 these appear to be platform-distributed rather than creator-promoted.",
+    "link_in_bio_platform": "Custom website (lewishowes.com). Instagram bio links to lewishowes.com. No dedicated link-in-bio aggregator (Linktree, Beacons) detected.",
+    "social_to_bot_funnel": "[uncertain] No documented direct social-to-bot funnel observed. Lewis Howes' social media primarily drives to lewishowes.com, podcast episodes, coaching programs, and book sales. The AI chatbots appear to be third-party platform integrations (Steno/GPT Store, Delphi, Dexa) rather than centrally promoted products in his funnel."
+  },
+  "monetization": {
+    "pricing_model": "freemium (Dexa.ai is free; Delphi.ai likely has free tier with paid upgrades; Steno GPT requires ChatGPT Plus at $20/month but no additional fee for the GPT itself)",
+    "public_price": "Steno GPT: Free to use with ChatGPT Plus subscription ($20/month paid to OpenAI, not to Lewis Howes). Delphi.ai: [uncertain] Likely free to interact with Lewis AI clone; Delphi's creator plans range from free to $399/month but this is the creator's cost, not the end-user's. Dexa.ai: Free.",
+    "bundled_with": "Not explicitly bundled with paid products. Lewis Howes' separate paid offerings include: Greatness Coaching Program ($10,000/year), ULTRA Mastermind with Brendon Burchard (via GrowthDay), online courses at programs.lewishowes.com, books (The School of Greatness, The Greatness Mindset, The Mask of Masculinity, Make Money Easy).",
+    "monetization_linkage_type": "indirect_lead_gen (AI chatbots serve as awareness and engagement tools that expose users to Lewis Howes' methodology, potentially driving them toward paid coaching programs, courses, and books. No direct revenue from the AI bots themselves.)",
+    "list_building_integration": "[uncertain] No documented email capture or list building integration within any of the three AI chatbot implementations. Lewis Howes' main list building occurs through lewishowes.com, webinar funnels, and course landing pages (e.g., info.lewishowes.com).",
+    "revenue_model_detail": {
+      "steno_gpt_revenue": "No direct revenue to Lewis Howes from Steno GPT. Steno.ai provides the AI Twin platform; users pay OpenAI for ChatGPT Plus. Steno.ai may have a revenue-share or licensing arrangement with Lewis Howes, but this is not publicly documented.",
+      "delphi_ai_revenue": "[uncertain] Delphi.ai allows creators to monetize via paid memberships, conversations, and product promotions. Whether Lewis Howes has enabled paid access to his Delphi clone is not publicly documented.",
+      "dexa_ai_revenue": "No direct revenue to Lewis Howes from Dexa.ai. Dexa indexes podcast content and provides free search.",
+      "primary_revenue_streams": "Lewis Howes' primary revenue comes from podcast sponsorships/advertising (~$2.5M/year estimated), online courses ($2M+/year), coaching programs ($10K/year per member), book sales, and speaking engagements. AI chatbots are not a documented revenue center.",
+      "estimated_annual_ai_revenue": "[uncertain] Not separately disclosed. AI chatbot revenue, if any, is likely negligible compared to core business revenue streams."
+    }
+  },
+  "content_training": {
+    "content_training_corpus": "Steno GPT: All Lewis Howes content including 1700+ episodes of The School of Greatness podcast (500M+ downloads), episode transcripts, show notes, and summaries processed through Steno.ai's AI Twin platform. Delphi.ai: Creator-uploaded documents, audio recordings, social media posts, and website content trained to mirror Lewis Howes' expertise and personality. Dexa.ai: Full podcast transcript library with speaker diarization and timestamped indexing. Books (The School of Greatness, The Greatness Mindset, The Mask of Masculinity, Make Money Easy) may be included in Steno/Delphi training but this is not explicitly confirmed.",
+    "update_frequency": "[uncertain] Steno GPT: Likely updated as new podcast episodes are published via Steno.ai's platform, but no explicit refresh cadence documented. Delphi.ai: Not publicly documented. Dexa.ai: Appears to add new episodes as they are published, but update frequency not explicitly stated."
+  },
+  "risks_guardrails": {
+    "stated_disclaimers": "[uncertain] No specific disclaimers found for Lewis Howes' AI chatbots. Steno GPT inherits OpenAI's standard terms of service and usage policies. Delphi.ai's platform states that each clone is trained strictly on the creator's own material, with user data never pooled to train broader models. Dexa.ai provides source citations with timestamped links to original podcast episodes.",
+    "data_use_policy_cited": "Steno GPT: Subject to OpenAI's privacy policy and Steno.ai's terms of service. Delphi.ai: States that creators retain full ownership and control of their data, and user data is never pooled to train broader models. Dexa.ai: Subject to Dexa's privacy policy. No Lewis Howes-specific data use policy documented for any AI implementation.",
+    "minors_policy": "[uncertain] Not specifically documented for any of the three AI implementations. Subject to respective platform policies (OpenAI requires 13+, Delphi.ai and Dexa.ai policies not specified).",
+    "impersonation_safeguards": "[uncertain] Steno GPT: Clearly labeled as 'by Steno.ai' in GPT Store, distinguishing it from Lewis Howes himself. Delphi.ai: Only verified individuals can create Delphi clones, providing authenticity verification, but the voice cloning feature creates a realistic impersonation that could blur lines between AI and human advice. No explicit 'I am an AI, not Lewis Howes' disclaimers documented.",
+    "regulatory_compliance_status": "[uncertain] No public statements found regarding FTC disclosure requirements, state AI laws, or professional coaching/advice liability specific to Lewis Howes' AI chatbots."
+  },
+  "competitive": {
+    "competitive_moat_type": "Multi-platform AI presence (rare among creators \u2014 active on Steno/GPT Store, Delphi.ai, and Dexa.ai simultaneously). Massive content corpus (1700+ podcast episodes, 500M+ downloads, 4 books). Brand recognition as 3x NYT bestselling author and top-tier podcast host. Voice clone capability via Delphi/ElevenLabs adds differentiation. However, AI chatbots are not centrally promoted or monetized as core products, limiting competitive moat relative to creators who have built custom AI platforms (e.g., Hormozi's ACQ AI).",
+    "meta_creator_ai_status": "[uncertain] No evidence found of participation in Meta's Creator AI program for Instagram/Facebook/WhatsApp AI chatbot clones.",
+    "engagement_metrics_public": "[uncertain] No publicly disclosed engagement metrics (MAU, messages per session, retention, ratings) found for any of Lewis Howes' AI chatbot implementations."
+  },
+  "verification": {
+    "confidence_level": "medium",
+    "primary_source_url": "https://www.delphi.ai/lewishowes/talk",
+    "corroborating_source_url": "https://www.gptshunter.com/gpt-store/MGEwZjAyMDM1NjI2MTgwOTE3",
+    "last_verified_date": "2026-04-15"
+  },
+  "uncertain": [
+    "creator_profile.audience_size_documented.X_Twitter",
+    "creator_profile.audience_size_documented.LinkedIn",
+    "bot_identity.launch_date (exact dates for all three platforms)",
+    "functionality.requires_login (Delphi.ai specifics)",
+    "functionality.memory_persistence",
+    "functionality.upload_support",
+    "functionality.moderation_disclaimers",
+    "functionality.human_handoff",
+    "distribution.social_to_bot_funnel",
+    "monetization.public_price (Delphi.ai end-user pricing)",
+    "monetization.list_building_integration",
+    "monetization.revenue_model_detail.steno_gpt_revenue",
+    "monetization.revenue_model_detail.delphi_ai_revenue",
+    "monetization.revenue_model_detail.estimated_annual_ai_revenue",
+    "content_training.update_frequency",
+    "risks_guardrails.stated_disclaimers",
+    "risks_guardrails.minors_policy",
+    "risks_guardrails.impersonation_safeguards",
+    "risks_guardrails.regulatory_compliance_status",
+    "competitive.meta_creator_ai_status",
+    "competitive.engagement_metrics_public"
+  ]
+}

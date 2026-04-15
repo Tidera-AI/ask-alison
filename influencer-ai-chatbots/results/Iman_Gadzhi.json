@@ -1,0 +1,126 @@
+{
+  "creator_profile": {
+    "name": "Iman Gadzhi",
+    "primary_niche": "Digital marketing, agency building, online education, digital product creation",
+    "main_platforms": [
+      "YouTube",
+      "Instagram",
+      "TikTok",
+      "X (Twitter)",
+      "LinkedIn",
+      "Whop"
+    ],
+    "audience_size_documented": {
+      "YouTube": "~5.84M subscribers (April 2026, via SocialBlade/vidIQ)",
+      "Instagram": "~2.5M-3M followers (April 2026, via Instagram @imangadzhi; HypeAuditor reports 2.46M)",
+      "TikTok": "~4M followers on @realimangadzhi; additional accounts @imangadzhi (~532K) and @imangadzhiextended (~377K)",
+      "X_Twitter": "~818K followers (April 2026, via x.com/GadzhiIman)",
+      "cross_platform_note": "LinkedIn profile also active with significant engagement. YouTube channel has ~176M total views across 468+ videos."
+    },
+    "tier_classification": "Tier A",
+    "tier_justification": "Multi-platform mainstream recognition with millions of followers across YouTube (5.84M), Instagram (2.5M+), TikTok (4M+), and X (818K). Founder of Educate.io, co-owner and investor in Whop (processing $1B+ in annual payments, backed by Peter Thiel and Insight Partners). Built a reported $30M-$40M digital empire by age 25. His Monetise digital product has generated $10M+ in revenue. Consistent content creator with significant cross-platform influence in the entrepreneurship and digital marketing space."
+  },
+  "bot_identity": {
+    "bot_name": "Synthesise AI / Ghostwriter OS (AI tool suite, not a single conversational chatbot)",
+    "positioning_tagline": "Your done-for-you system to launch and monetise a digital product business, powered by AI.",
+    "positioning_narrative_excerpts": [
+      "Let my AI System build you a Profitable Digital Product Business - done for you.",
+      "Synthesise AI finds profitable niches and builds your entire digital product for you - even if you have no prior experience.",
+      "Ghostwriter OS is programmed by legendary copywriters for marketers who want instant results. It maps out your full funnel - landing pages, sales pages, emails, upsells - all in minutes, all designed to convert."
+    ],
+    "launch_date": "2025-09-29 (Monetise 2.0 with Synthesise AI and Ghostwriter OS launched during Make Money Online Challenge 2.0, September 28-30, 2025; original Monetise launched earlier)",
+    "current_status": "Active"
+  },
+  "jobs_to_be_done": {
+    "primary_jtbds": [
+      "course_teaching_assistant - Synthesise AI guides users through niche selection and digital product creation step-by-step",
+      "ai_content_generation - Ghostwriter OS creates sales pages, emails, ad copy, and full marketing funnels automatically",
+      "lead_qualification - Synthesise AI identifies profitable niches and validates product-market fit",
+      "paid_tier_unlock - AI tools gated behind Monetise subscription ($999-$1,995)"
+    ],
+    "secondary_jtbds": [
+      "community_help - AI tools integrated into Monetise private community ecosystem with 6,000+ members",
+      "product_builder - Synthesise AI generates MVP digital product outlines and structures",
+      "marketing_automation - Ghostwriter OS tests hooks, angles, guarantees, CTAs, and page formats automatically"
+    ],
+    "jtbd_evidence_source": "Stated (from official marketing on monetise-us.com, Whop case study, Facebook video ads, and Ghostwriter OS website)"
+  },
+  "functionality": {
+    "modalities": [
+      "text"
+    ],
+    "requires_login": true,
+    "memory_persistence": "[uncertain] Not publicly documented; tools appear session-based",
+    "upload_support": "[uncertain] Not publicly documented",
+    "tool_integrations": "Flozy Pro (digital product hosting, selling, and delivery platform), Whop (community and commerce platform), GoHighLevel (marketing automation - affiliate partnership). Ghostwriter OS processes input via OpenAI's ChatGPT model.",
+    "knowledge_grounding_claimed": "Ghostwriter OS is trained on winning campaigns, battle-tested funnels, and high-performing copy from expert copywriters. Synthesise AI uses AI to analyze niches and generate digital product frameworks. Specific training corpus details beyond 'expert copywriters' and 'winning campaigns' not publicly disclosed.",
+    "moderation_disclaimers": "Monetise program states it does not provide investment, legal, tax, or financial advice and all materials are for educational purposes only. Revenue guarantees ($15K Revenue Guarantee) come with personal coaching caveat and depend on individual effort, skills, and market conditions. 7-day full refund guarantee offered.",
+    "human_handoff": "Yes - Monetise includes daily coaching calls with expert coaches, weekly group calls, and personal coaching support from student success managers. The AI tools do not directly escalate to humans, but the broader ecosystem includes extensive human coaching.",
+    "platform_infrastructure": "Ghostwriter OS is operated by IAG Services FZCO (Iman's holding company) and processes user input via OpenAI's ChatGPT model. Hosted at ghostwriteros.ai. Synthesise AI hosted at synthesise.ai. Both distributed through Whop marketplace. Digital Launchpad available as iOS and Android app via Educate.io.",
+    "voice_modality_details": "No voice modality documented. Both Synthesise AI and Ghostwriter OS are text-based AI tools. No evidence of voice cloning or audio interaction.",
+    "ai_agent_capabilities": "Synthesise AI: Niche discovery, product ideation, MVP digital product outline generation, market validation. Ghostwriter OS: Full funnel copywriting (landing pages, sales pages, emails, upsells, ad copy), hook/angle/CTA testing, sales page generation. Neither tool appears to have autonomous action-taking capabilities (no booking, CRM integration, or workflow execution). They are generative AI tools rather than conversational chatbots."
+  },
+  "distribution": {
+    "access_url": "https://synthesise.ai/ (Synthesise AI), https://ghostwriteros.ai/ (Ghostwriter OS), https://whop.com/monetise/ (Monetise on Whop), https://monetise-us.com/ (Monetise landing page)",
+    "distribution_path_description": "Social media (YouTube, IG, TikTok, X) -> link in bio / iman-gadzhi.com -> Make Money Online Challenge free event (3-day virtual) -> Monetise 2.0 upsell during Day 2 -> Whop purchase page. AI tools (Synthesise AI, Ghostwriter OS) are bundled within Monetise subscription, not sold standalone.",
+    "link_in_bio_platform": "Custom (iman-gadzhi.com). Instagram bio links to personal website. Also uses event.monetise.com and join.digital-launchpad.com for specific funnels.",
+    "social_to_bot_funnel": "YouTube videos (5.84M subs) -> description links and CTAs to free challenge or Monetise; Instagram @imangadzhi -> bio link to iman-gadzhi.com; TikTok @realimangadzhi (4M followers) -> viral short-form content driving to Monetise; Facebook video ads promoting 'done-for-you AI system'; LinkedIn posts about AI and business -> links to programs. Free 3-day Make Money Online Challenge serves as primary top-of-funnel conversion event."
+  },
+  "monetization": {
+    "pricing_model": "bundled_with_course (AI tools are not sold standalone; included in Monetise subscription)",
+    "public_price": "$999/year (12-month subscription) or $1,995 (full price, also available in monthly payments). Some sources reference a $1,500 Synthesise AI upsell tier. Digital Launchpad entry tier: $37.99/month or $269.99/year.",
+    "bundled_with": "Monetise 2.0 bundle (includes Synthesise AI, Ghostwriter OS, Flozy Pro, Personal Brand Blueprint, Monetise Mania competition access, private community, daily coaching calls, $15K Revenue Guarantee coaching)",
+    "monetization_linkage_type": "course_retention (AI tools increase perceived value and stickiness of Monetise program), lead_generation (free Make Money Online Challenge generates leads for Monetise upsell), community_value_add (tools enhance community member experience)",
+    "list_building_integration": "Free 3-day Make Money Online Challenge captures email/contact info. Whop community serves as ongoing engagement platform. GoHighLevel partnership provides marketing automation infrastructure for members.",
+    "revenue_model_detail": {
+      "monetise_subscription": "$999/year (12-month) or $1,995 (full access with monthly payment option)",
+      "digital_launchpad": "$37.99/month or $269.99/year (entry-level product, separate from AI tools)",
+      "whop_co_ownership": "Equity stake in Whop platform (processing $1B+ annually); Gadzhi is both seller and platform co-owner",
+      "gohighlevel_affiliate": "Top affiliate for GoHighLevel; earns commissions on referrals",
+      "estimated_total_digital_product_revenue": "$10M+ (per Whop case study for Monetise product alone)",
+      "estimated_annual_ai_revenue": "[uncertain] Not separately disclosed. AI tool revenue is commingled with overall Monetise subscription revenue."
+    }
+  },
+  "content_training": {
+    "content_training_corpus": "Ghostwriter OS: Trained on winning marketing campaigns, battle-tested sales funnels, and high-performing copy from expert copywriters. Uses OpenAI's ChatGPT as underlying model. Synthesise AI: Niche analysis data, digital product frameworks, and market research methodologies. Specific proprietary datasets not publicly disclosed beyond marketing claims of 'legendary copywriters' and 'winning campaigns.'",
+    "update_frequency": "[uncertain] Not publicly documented. Monetise 2.0 launch in September 2025 represented a major update cycle. Ongoing update cadence for AI tools not specified."
+  },
+  "risks_guardrails": {
+    "stated_disclaimers": "Monetise program does not provide investment, legal, tax, or financial advice. All materials are for educational purposes only. $15K Revenue Guarantee is not a money-back guarantee - it is a coaching commitment for up to 3 years, dependent on individual effort, skills, and market conditions. 7-day full refund guarantee on initial purchase.",
+    "data_use_policy_cited": "Ghostwriter OS Privacy Policy at ghostwriteros.ai/privacy-policy. Operated by IAG Services FZCO. User input processed by OpenAI's ChatGPT model; data not stored locally but OpenAI may process input. No third-party marketing data sharing without explicit consent. EEA/UK data rights (access, correction, deletion, objection, restriction, portability) documented. Educate.io has separate terms at educate.io/policy/terms. Monetise challenge privacy policy at event.monetise.com/policy/privacy.",
+    "minors_policy": "[uncertain] Not specifically documented in publicly available materials for the AI tools. Educate.io terms may contain age restrictions but specific AI tool minors policy not found.",
+    "impersonation_safeguards": "[uncertain] AI tools are positioned as productivity tools (niche finder, copywriter) rather than as digital clones of Iman Gadzhi himself. Marketing says 'my AI system' but does not claim the tools speak as Iman or impersonate him. This reduces impersonation risk compared to persona-based AI chatbots.",
+    "regulatory_compliance_status": "[uncertain] No public statements found regarding FTC disclosure requirements, state AI laws, or EU AI Act compliance specific to Synthesise AI or Ghostwriter OS. IAG Services FZCO is registered in the UAE (FZCO = Free Zone Company). EEA/UK GDPR rights referenced in Ghostwriter OS privacy policy."
+  },
+  "competitive": {
+    "competitive_moat_type": "Platform co-ownership (Whop co-owner gives distribution advantage and platform-level lock-in), ecosystem bundling (AI tools + coaching + community + challenges create high switching costs), brand recognition (5.84M YouTube subscribers, one of the most recognized young entrepreneurs), proprietary AI training (Ghostwriter OS trained on expert copywriter data and winning campaigns), multi-product stack (Educate.io, Digital Launchpad, Monetise, Flozy, Ghostwriter OS, Synthesise AI create an integrated ecosystem).",
+    "meta_creator_ai_status": "[uncertain] No evidence found of participation in Meta's Creator AI program for Instagram/Facebook/WhatsApp AI chatbot clones.",
+    "engagement_metrics_public": "[uncertain] No publicly disclosed engagement metrics (MAU, messages per session, retention) found for Synthesise AI or Ghostwriter OS specifically. Monetise community has 6,000+ members. Whop case study references $10M+ in revenue for Monetise product."
+  },
+  "verification": {
+    "confidence_level": "medium-high",
+    "confidence_note": "Iman Gadzhi's AI tools (Synthesise AI and Ghostwriter OS) are productivity/generative AI tools bundled into his Monetise program, NOT a conversational AI chatbot or digital persona clone. They are well-documented AI-powered tools for niche finding and copywriting, but differ from the 'creator AI chatbot' pattern seen with other influencers. No evidence of a conversational 'Ask Iman' style chatbot was found.",
+    "primary_source_url": "https://whop.com/blog/iman-gadzhi-case-study/",
+    "corroborating_source_url": "https://ghostwriteros.ai/",
+    "additional_sources": [
+      "https://synthesise.ai/",
+      "https://monetise-us.com/",
+      "https://www.openpr.com/news/4202824/monetise-2-0-launches-during-iman-gadzhi-s-free-three-day",
+      "https://www.globenewswire.com/news-release/2025/04/02/3053917/0/en/Whop-Levels-Up-with-Iman-Gadzhi-as-Co-Owner-and-Investor.html",
+      "https://ghostwriteros.ai/privacy-policy",
+      "https://www.gohighlevel.com/iman-gadzhi"
+    ],
+    "last_verified_date": "2026-04-15"
+  },
+  "uncertain": [
+    "functionality.memory_persistence",
+    "functionality.upload_support",
+    "content_training.update_frequency",
+    "risks_guardrails.minors_policy",
+    "risks_guardrails.impersonation_safeguards",
+    "risks_guardrails.regulatory_compliance_status",
+    "competitive.meta_creator_ai_status",
+    "competitive.engagement_metrics_public",
+    "monetization.revenue_model_detail.estimated_annual_ai_revenue"
+  ]
+}

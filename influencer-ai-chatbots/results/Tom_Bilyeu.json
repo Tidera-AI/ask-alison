@@ -1,0 +1,138 @@
+{
+  "creator_profile": {
+    "name": "Tom Bilyeu",
+    "primary_niche": "Entrepreneurship, mindset/personal development, AI for business",
+    "main_platforms": [
+      "YouTube",
+      "Instagram",
+      "Facebook",
+      "X (Twitter)",
+      "TikTok",
+      "LinkedIn",
+      "Threads",
+      "Podcast (Impact Theory on Spotify/Apple/iHeart)"
+    ],
+    "audience_size_documented": {
+      "YouTube": "~4.62M subscribers (April 2026, via SocialBlade/HypeAuditor)",
+      "Instagram": "~2M followers (April 2026, via Instagram @tombilyeu)",
+      "Facebook": "~1.2M followers (April 2026, via facebook.com/tombilyeu)",
+      "X_Twitter": "~223K followers (April 2026, via x.com/TomBilyeu)",
+      "TikTok": "~315K followers (April 2026, via TikTok @tombilyeu)",
+      "LinkedIn": "~62K followers (April 2026, via LinkedIn /in/tombilyeu)",
+      "cross_platform_note": "Combined social reach approximately 8.4M across all platforms. Impact Theory podcast has over 1 billion views across original content."
+    },
+    "tier_classification": "Tier B",
+    "tier_justification": "Co-founder of Quest Nutrition (sold for $1B in 2019 to Simply Good Foods Co.). Founder of Impact Theory and Impact Theory Studios. YouTube channel at 4.62M subscribers with over 1 billion content views. Estimated personal net worth $400-470M. Highly influential in the entrepreneurship and personal development space but not at the cross-cultural mainstream recognition level of Tier A creators. Active AI evangelist with custom GPTs and AI masterclasses driving significant audience engagement."
+  },
+  "bot_identity": {
+    "bot_name": "Multiple: Zero to Launch GPT, Physics of Scaling GPT, Tom Bilyeu Business Mentor GPT, plus internal five-member AI 'department' (custom GPTs for marketing/content)",
+    "positioning_tagline": "Free CustomGPTs -- AI-powered assistants personally trained by Tom Bilyeu on his proven frameworks, giving instant clarity, validation, and a precise execution roadmap in minutes.",
+    "positioning_narrative_excerpts": [
+      "I built this entire system into a free custom GPT. It walks you through finding your idea, validating it, and building a plan.",
+      "Want to test and destroy industry assumptions in 30 minutes? I've built a custom GPT that helps you validate any business idea fast.",
+      "7 AI tools that could've saved me $6,000,000 if I'd had them 3 years ago. Here's the exact AI tech stack my team and I use daily: 1. Custom GPTs (ChatGPT Plus) -- Your personal PhD-level team for $20/month.",
+      "I've spent a year obsessively testing AI tools at Impact Theory. We cut legal costs by 80%. We 10X'd our research capabilities. We scaled content production without losing quality.",
+      "What if you could build a 5-person AI team that finds and captures opportunities for $100/month?"
+    ],
+    "launch_date": "[uncertain] Custom GPTs publicly promoted throughout 2025; The Next Wave podcast episode (detailing five-member AI department) aired circa late 2025. Zero to Launch GPT and Physics of Scaling GPT promoted via social media from mid-2025 onward.",
+    "current_status": "Active"
+  },
+  "jobs_to_be_done": {
+    "primary_jtbds": [
+      "ask_my_method - Validate business ideas using Tom's Zero to Founder framework (Zero to Launch GPT)",
+      "course_teaching_assistant - Identify revenue plateau causes and get execution roadmaps using Physics of Scaling framework (Physics of Scaling GPT)",
+      "pre_sale_education - Free GPTs serve as lead magnets funneling users to Zero to Founder ($119/mo) and Founders Circle programs",
+      "content_creation_automation - Internal five-member AI department automates marketing, content production, interview prep, and writing intros"
+    ],
+    "secondary_jtbds": [
+      "lead_qualification - GPTs provide done-for-you research and action-based launch plans, qualifying users for paid programs",
+      "community_help - AI tools integrated into Zero to Founder Skool community as member resources",
+      "competitive_intelligence - AI team trained to find and capture market opportunities"
+    ],
+    "jtbd_evidence_source": "Stated (from official social media posts on X, Threads, Facebook, LinkedIn; The Next Wave podcast interview; tombilyeu.com landing pages for Zero to Launch GPT and Physics of Scaling GPT)"
+  },
+  "functionality": {
+    "modalities": [
+      "text"
+    ],
+    "requires_login": true,
+    "login_detail": "Requires ChatGPT Plus ($20/month) or ChatGPT Pro ($200/month) subscription to access custom GPTs via OpenAI's GPT Store. Tom personally uses the Pro version.",
+    "memory_persistence": "Yes - Tom creates a shared memory document uploaded into all GPT projects. He maintains a list of memories in memory entry format so the GPT recognizes him across all projects. He stated the GPT recognizes him 'at least in a faux way' across everything.",
+    "upload_support": "Yes - Tom uploads extensive training documents into each GPT. He has hit the limit of how many documents ChatGPT allows uploading, which led him to break tasks into smaller specialized GPTs.",
+    "tool_integrations": "ChatGPT Plus/Pro (primary platform for custom GPTs), Grok (used for fact-checking), Dexa.ai (Impact Theory podcast indexed and searchable via AI). Tom's '7 AI tools' tech stack includes custom GPTs as tool #1, though the full list of all 7 tools was not fully enumerated in search results.",
+    "knowledge_grounding_claimed": "Zero to Launch GPT: Trained on Tom's Zero to Founder framework with done-for-you research and launch plan generation. Physics of Scaling GPT: Trained on 100,000s of data points from group coaching sessions, uses first-principles decision framework for identifying revenue plateau causes (people, product, or process). Internal GPTs: Each given a personality, set of objectives, and core training documents capturing Tom's voice and methodology. All grounded in 20+ years of entrepreneurial experience including building a $1B company. Dexa.ai: Full transcript corpus of Impact Theory podcast episodes (1,000+ episodes since 2016).",
+    "moderation_disclaimers": "[uncertain] No specific AI-related disclaimers found for Tom's custom GPTs. GPTs are hosted on OpenAI's platform and inherit ChatGPT's standard content policies.",
+    "human_handoff": "[uncertain] No documented human handoff mechanism within the free GPTs. Founders Circle program offers biweekly access to Tom directly, suggesting paid escalation path from AI to human.",
+    "platform_infrastructure": "OpenAI ChatGPT GPT Store (custom GPTs). Zero to Launch GPT accessible via chatgpt.com/g/ link and tombilyeu.com/zero-to-launch-gpt redirect. Physics of Scaling GPT accessible via tombilyeu.com/scalinggpt redirect. Tom Bilyeu Business Mentor GPT at chatgpt.com/g/g-t2S9xYrGC-tom-bilyeu-business-mentor. Dexa.ai hosts a separate AI-powered Q&A interface for Impact Theory podcast content at dexa.ai/impacttheory.",
+    "voice_modality_details": "No voice modality documented for the custom GPTs. Text-only interaction via ChatGPT interface.",
+    "ai_agent_capabilities": "The five-member internal AI 'department' handles specific tasks: interview prep, writing intros to interviews, deep research dives, marketing automation, and content creation. Tom does not let the five agents work fully autonomously -- he doesn't trust AI to that level. Each GPT is given a personality, objectives, and core training documents but operates under human direction. The public-facing GPTs (Zero to Launch, Physics of Scaling) generate business validation reports, execution roadmaps, and coaching-style diagnostics. No autonomous action-taking (no booking, CRM integration, or workflow execution documented)."
+  },
+  "distribution": {
+    "access_url": "https://tombilyeu.com/zero-to-launch-gpt (Zero to Launch GPT), https://tombilyeu.com/scalinggpt (Physics of Scaling GPT), https://chatgpt.com/g/g-t2S9xYrGC-tom-bilyeu-business-mentor (Business Mentor GPT), https://dexa.ai/impacttheory (Dexa AI Q&A)",
+    "distribution_path_description": "Social media (YouTube, Instagram, X, Threads, Facebook, LinkedIn, TikTok) -> social posts with direct links to GPTs and masterclass signups -> tombilyeu.com landing pages -> ChatGPT GPT Store links -> free GPT interaction -> funnel to Zero to Founder Skool community ($119/mo) and Founders Circle (higher-touch coaching). Free AI masterclasses serve as additional conversion events.",
+    "link_in_bio_platform": "Custom (tombilyeu.com). Instagram bio links to tombilyeu.com. Individual GPT landing pages at tombilyeu.com/zero-to-launch-gpt and tombilyeu.com/scalinggpt.",
+    "social_to_bot_funnel": "X/Threads posts with direct GPT links and masterclass signups (e.g., 'I built this entire system into a free custom GPT'); YouTube Impact Theory episodes discuss AI strategy driving curiosity; Facebook/LinkedIn long-form posts about AI tools (e.g., '7 AI tools that could've saved me $6M') include GPT links; Free AI masterclasses (promoted across all platforms) serve as conversion events to paid programs. Dexa.ai provides passive discovery through podcast search."
+  },
+  "monetization": {
+    "pricing_model": "freemium_funnel (free GPTs as lead magnets -> paid community/coaching programs)",
+    "public_price": "Custom GPTs are free (require ChatGPT Plus at $20/mo or Pro at $200/mo for access). Zero to Founder Skool community at $119/month (or $99/month billed quarterly). Founders Circle is higher-touch coaching with biweekly Tom access (price not publicly listed). Free AI masterclasses serve as top-of-funnel.",
+    "bundled_with": "Zero to Founder community ($119/mo) includes custom-built AI tools, 30-day launch formula, coaching, virtual events, and community access on Skool. Founders Circle includes 12 bi-weekly sessions with domain experts in AI, ops, finance, sales, marketing plus biweekly access to Tom.",
+    "monetization_linkage_type": "lead_generation (free GPTs build trust and demonstrate methodology), course_retention (AI tools embedded in Zero to Founder membership increase stickiness), masterclass_conversion (free AI masterclasses convert to paid programs), content_marketing (AI-focused social posts drive audience growth and program signups)",
+    "list_building_integration": "Free AI masterclass signups capture email/contact info. Skool community (skool.com/tom-bilyeu) provides ongoing engagement. Social media posts with buff.ly tracked links funnel to registration pages.",
+    "revenue_model_detail": {
+      "custom_gpts": "Free (hosted on OpenAI GPT Store, requires user's own ChatGPT subscription)",
+      "zero_to_founder": "$119/month or $99/month billed quarterly on Skool platform",
+      "founders_circle": "[uncertain] Price not publicly listed; described as higher-touch coaching with biweekly Tom access and domain expert sessions",
+      "ai_masterclasses": "Free (lead generation events)",
+      "dexa_ai": "Free (Dexa.ai is a third-party platform, not monetized by Tom directly)",
+      "estimated_annual_ai_revenue": "[uncertain] Not separately disclosed. AI tools are integrated into broader Impact Theory business model. Revenue is commingled with course/community/coaching/content revenue streams."
+    }
+  },
+  "content_training": {
+    "content_training_corpus": "Zero to Launch GPT: Tom's Zero to Founder framework, business idea validation methodology, and launch planning system. Physics of Scaling GPT: 100,000s of data points from group coaching sessions, first-principles decision framework, revenue plateau diagnostics (people/product/process). Internal AI department GPTs: Extensive core training documents capturing Tom's voice, 20+ years of entrepreneurial experience (Quest Nutrition $1B exit, Impact Theory), custom personality profiles and objectives for each of five specialized roles. Tom uploads documents to the point of hitting ChatGPT's upload limits. Dexa.ai: Full transcript corpus of Impact Theory podcast episodes (1,000+ episodes since 2016).",
+    "update_frequency": "[uncertain] Not publicly documented. Tom's social posts suggest ongoing iteration and refinement of GPTs. The shared memory document approach implies continuous updates as new interactions occur. Physics of Scaling GPT references ongoing coaching session data."
+  },
+  "risks_guardrails": {
+    "stated_disclaimers": "[uncertain] No specific AI-related disclaimers found for Tom's custom GPTs. GPTs are hosted on OpenAI's platform and inherit ChatGPT's standard content policies and disclaimers. The Physics of Scaling GPT positions advice as framework-based diagnostics, not personalized professional advice.",
+    "data_use_policy_cited": "[uncertain] No specific data use policy found for the custom GPTs. Users interact through OpenAI's ChatGPT platform, which has its own privacy policy. Impact Theory and tombilyeu.com likely have standard website privacy policies but none were found specific to AI tool usage.",
+    "minors_policy": "[uncertain] Not specifically documented. ChatGPT's platform requires users to be 13+ (18+ in some jurisdictions).",
+    "impersonation_safeguards": "[uncertain] The Tom Bilyeu Business Mentor GPT on ChatGPT explicitly uses his name and likeness. The free GPTs are positioned as 'personally trained by Tom Bilyeu' which creates implicit endorsement. No documented safeguards distinguishing AI output from Tom's personal advice. Third-party clone GPTs also exist on the GPT Store.",
+    "regulatory_compliance_status": "[uncertain] No public statements found regarding FTC disclosure requirements, state AI laws, or professional impersonation safeguards specific to Tom's GPTs or AI tools."
+  },
+  "competitive": {
+    "competitive_moat_type": "Proprietary methodology (Zero to Founder framework, Physics of Scaling framework grounded in 100,000s of coaching data points), billion-dollar entrepreneurial credibility (Quest Nutrition $1B exit), massive content corpus (1,000+ Impact Theory podcast episodes indexed on Dexa.ai), operational AI expertise (year-long internal testing showing 80% legal cost reduction and 10X research capability at Impact Theory), shared memory system across GPTs creating persistent context, community lock-in (Zero to Founder on Skool with integrated AI tools).",
+    "meta_creator_ai_status": "[uncertain] No evidence found of participation in Meta's Creator AI program for Instagram/Facebook/WhatsApp AI chatbot clones.",
+    "engagement_metrics_public": "[uncertain] No publicly disclosed engagement metrics (MAU, messages per session, retention) for the custom GPTs. Impact Theory podcast has 1B+ total views. Zero to Founder Skool community membership numbers not publicly disclosed."
+  },
+  "verification": {
+    "confidence_level": "high",
+    "primary_source_url": "https://tombilyeu.com/zero-to-launch-gpt",
+    "corroborating_source_url": "https://podscan.fm/podcasts/the-next-wave-ai-and-the-future-of-technology/episodes/how-tom-bilyeu-uses-ai-why-hell-never-hire-again",
+    "additional_sources": [
+      "https://tombilyeu.com/scalinggpt",
+      "https://dexa.ai/impacttheory",
+      "https://x.com/TomBilyeu/status/1930249358856925195",
+      "https://x.com/TomBilyeu/status/1920589082733801910",
+      "https://www.thenextwave.show/how-tom-bilyeu-uses-ai-why-hell-never-hire-again/",
+      "https://chatgpt.com/g/g-t2S9xYrGC-tom-bilyeu-business-mentor",
+      "https://www.skool.com/tom-bilyeu/about",
+      "https://tombilyeu.com/thefounderscircle"
+    ],
+    "last_verified_date": "2026-04-15"
+  },
+  "uncertain": [
+    "bot_identity.launch_date",
+    "functionality.moderation_disclaimers",
+    "functionality.human_handoff",
+    "monetization.revenue_model_detail.founders_circle",
+    "monetization.revenue_model_detail.estimated_annual_ai_revenue",
+    "content_training.update_frequency",
+    "risks_guardrails.stated_disclaimers",
+    "risks_guardrails.data_use_policy_cited",
+    "risks_guardrails.minors_policy",
+    "risks_guardrails.impersonation_safeguards",
+    "risks_guardrails.regulatory_compliance_status",
+    "competitive.meta_creator_ai_status",
+    "competitive.engagement_metrics_public"
+  ]
+}

@@ -1,0 +1,127 @@
+{
+  "creator_profile": {
+    "name": "Codie Sanchez",
+    "primary_niche": "Business acquisition, entrepreneurship, boring businesses investing",
+    "main_platforms": [
+      "YouTube",
+      "Instagram",
+      "X (Twitter)",
+      "TikTok",
+      "LinkedIn",
+      "Newsletter (Contrarian Thinking)",
+      "Podcast (BigDeal / Contrarian Thinking Podcast)"
+    ],
+    "audience_size_documented": {
+      "YouTube": "~2M subscribers (April 2026, via vidIQ/HypeAuditor)",
+      "Instagram": "~3M followers (April 2026, via Instagram @codiesanchez)",
+      "X_Twitter": "~700K followers (April 2026, via x.com/Codie_Sanchez)",
+      "TikTok": "~2M followers (April 2026, via TikTok @realcodiesanchez)",
+      "LinkedIn": "~540K followers (April 2026, via LinkedIn)",
+      "Facebook": "~1.1M followers (April 2026, via Facebook @codiesanchezbiz)",
+      "Newsletter": "1M+ weekly readers (Contrarian Thinking newsletter, per LinkedIn profile)",
+      "cross_platform_note": "Codie Sanchez reported 12M+ total followers across Contrarian Thinking brand as of early 2025, growing from 0 in 2020 to 12M+ by 2025."
+    },
+    "tier_classification": "Tier B",
+    "tier_justification": "Multi-platform creator with millions of followers across YouTube (~2M), Instagram (~3M), TikTok (~2M), X (~700K), LinkedIn (~540K), and 1M+ newsletter subscribers. Founder of Contrarian Thinking media company and holding company investing in 'boring businesses.' NYT bestselling author (Main Street Millionaire). Investor in and user of Delphi AI platform. Strong brand in the Entrepreneurship Through Acquisition (ETA) niche but not at the mainstream cultural saturation level of Tier A creators."
+  },
+  "bot_identity": {
+    "bot_name": "Codie.chat (AI Codie)",
+    "positioning_tagline": "Codie Sanchez's contrarian brain, paired with the power of AI. Drop any question and get answers pulled straight from her playbooks, trimmed of fluff, primed for profit.",
+    "positioning_narrative_excerpts": [
+      "You can literally text or call 'Codie' to discuss business anytime.",
+      "It contains tens of thousands of pages of Codie's brainpower and expertise on buying and scaling businesses.",
+      "AI Codie gives advice like she would because it's trained on how she thinks.",
+      "We built it not to coddle you, but to arm you.",
+      "AI isn't the end of human intelligence -- it's the beginning of leveraged intelligence."
+    ],
+    "launch_date": "2025-06-20 (announced via Contrarian Thinking blog post 'We Built an AI Codie'). Delphi AI clone predates this and has been available separately via delphi.ai/codie-sanchez.",
+    "current_status": "Active"
+  },
+  "jobs_to_be_done": {
+    "primary_jtbds": [
+      "ask_my_method - Ask business buying and scaling questions grounded in Codie's frameworks and playbooks",
+      "pre_sale_education - Get practical guidance on acquiring, building, and growing boring businesses",
+      "course_teaching_assistant - Implementation support for business acquisition strategies"
+    ],
+    "secondary_jtbds": [
+      "lead_qualification - Qualify and educate potential Contrarian Thinking community members",
+      "community_help - Supplement Contrarian Thinking ecosystem with on-demand AI-powered advice",
+      "brand_extension - Scale Codie's personal expertise and availability beyond 1:1 interactions"
+    ],
+    "jtbd_evidence_source": "Stated (from official Contrarian Thinking blog post 'We Built an AI Codie' and codie.chat landing page copy)"
+  },
+  "functionality": {
+    "modalities": [
+      "text",
+      "voice"
+    ],
+    "requires_login": false,
+    "memory_persistence": "[uncertain] Not publicly documented. Delphi AI platform may support session memory but specifics for Codie.chat are not confirmed.",
+    "upload_support": "[uncertain] Not publicly documented.",
+    "tool_integrations": "[uncertain] No specific third-party integrations publicly documented. Codie.chat appears to operate as a standalone chat/call interface. Delphi AI clone exists separately at delphi.ai/codie-sanchez.",
+    "knowledge_grounding_claimed": "Tens of thousands of pages of Codie's expertise on buying and scaling businesses. Hours of raw podcast tape including hot mic moments, behind-the-scenes banter, and unfiltered conversations. Trained on how Codie thinks, not just what she says. The second version deliberately incorporated unpolished, raw content to sound more natural and less 'AI-like.'",
+    "moderation_disclaimers": "[uncertain] No specific disclaimers found on codie.chat landing page. Delphi AI platform has its own Terms of Service and Privacy Policy that apply to AI clone interactions.",
+    "human_handoff": "[uncertain] Not publicly documented. No evidence of escalation to human team members from the chatbot itself.",
+    "platform_infrastructure": "Built on Delphi AI digital cloning platform (delphi.ai). Delphi was founded by Dara Ladjevardian and Samuel Spelsberg, launched November 2022. Funded by Founders Fund, Lux Capital, and Balaji Srinivasan. Codie Sanchez is both a user and investor in Delphi (participated in creator-focused funding round alongside Tiago Forte, Matthew Hussey, Nas Daily). Delphi uses verified digital cloning -- only verified individuals can create clones, trained strictly on creator's own material. Codie.chat domain serves as the branded access point.",
+    "voice_modality_details": "Voice/call capability is available through Delphi AI platform. Users can have text-based typed sessions or voice calls with simulated voice. The AI was specifically refined using raw podcast audio content to produce more natural-sounding responses.",
+    "ai_agent_capabilities": "Primarily a conversational Q&A chatbot focused on business acquisition and scaling advice. Generates answers based on Codie's playbooks and thinking approach. No documented autonomous action-taking capabilities (no booking, CRM integration, or workflow execution). Designed to 'arm' users with knowledge rather than execute tasks on their behalf."
+  },
+  "distribution": {
+    "access_url": "https://www.codie.chat/ (primary branded access point) and https://www.delphi.ai/codie-sanchez/talk (Delphi AI clone page)",
+    "distribution_path_description": "Social media (YouTube, IG, X, TikTok, LinkedIn) -> link in bio / codiesanchez.com / contrarianthinking.co -> codie.chat landing page -> free chat or call interaction. Also accessible via Delphi AI platform directly. Newsletter (Contrarian Thinking) serves as an additional distribution channel to 1M+ readers.",
+    "link_in_bio_platform": "Custom (codiesanchez.com and contrarianthinking.co). Instagram bio links to codiesanchez.com.",
+    "social_to_bot_funnel": "YouTube videos -> description links to contrarianthinking.co and codiesanchez.com; Instagram @codiesanchez -> bio link; X/Twitter @Codie_Sanchez -> posts mentioning AI tools and codie.chat; Newsletter (Contrarian Thinking) -> blog post 'We Built an AI Codie' directly promoting the tool; LinkedIn posts about AI and business buying reference the tool."
+  },
+  "monetization": {
+    "pricing_model": "free (codie.chat is offered as a free tool with no documented paywall)",
+    "public_price": "Free. No premium pricing tiers documented for codie.chat itself.",
+    "bundled_with": "Part of the broader Contrarian Thinking ecosystem which includes: Contrarian Community ($10,000/year one-time membership), Small Biz Buying Course ($2,000), Investor Operating System ($150), Build Your Newsletter Into a Business ($1,250), and the Contrarian Academy.",
+    "monetization_linkage_type": "lead_generation (free AI tool drives awareness and trust, funneling users toward paid Contrarian Thinking courses, community membership, and events), brand_building (positions Codie as accessible and innovative), community_value_add (supplements paid community offerings)",
+    "list_building_integration": "Contrarian Thinking newsletter captures email subscribers (1M+ readers). Codie.chat serves as a top-of-funnel engagement tool that can drive users toward newsletter signup and paid offerings. No documented direct email capture within codie.chat itself.",
+    "revenue_model_detail": {
+      "codie_chat": "Free -- no direct revenue from the AI chatbot",
+      "contrarian_community": "$10,000/year one-time annual membership (increased from $8,000). 1,100+ members worldwide.",
+      "small_biz_buying_course": "$2,000 one-time",
+      "investor_operating_system": "$150 one-time",
+      "newsletter_course": "$1,250 one-time (Build Your Newsletter Into a Business)",
+      "newsletter_revenue": "[uncertain] Contrarian Thinking newsletter with 1M+ readers likely generates significant sponsorship/advertising revenue but specific figures not disclosed",
+      "estimated_annual_ai_revenue": "N/A -- codie.chat is a free lead generation tool, not a direct revenue product"
+    }
+  },
+  "content_training": {
+    "content_training_corpus": "Tens of thousands of pages of Codie's expertise on buying and scaling businesses. Hours of raw podcast tape (including hot mic moments, behind-the-scenes banter, and unfiltered conversations). The initial version was deemed too polished and 'AI-like,' so the team (led by 'Chadwick') deliberately trained the second version on unpolished, raw content to achieve a more natural conversational feel. Content covers business acquisition, boring businesses, scaling strategies, and contrarian thinking frameworks.",
+    "update_frequency": "[uncertain] Not publicly documented. The blog post describes iterating from a first version (too polished) to a second version (trained on raw podcast content), suggesting active refinement, but no explicit refresh cadence stated."
+  },
+  "risks_guardrails": {
+    "stated_disclaimers": "[uncertain] No specific disclaimers found on codie.chat landing page. The Contrarian Thinking blog post describes the tool as giving advice 'like she would' which could blur the line between AI-generated guidance and personal professional advice.",
+    "data_use_policy_cited": "Delphi AI Privacy Policy (delphi.ai/privacy-policy) and Terms of Service (delphi.ai/terms) apply. Delphi states that only verified individuals can create clones, trained strictly on the creator's own material. User data is never pooled to train broader models. Creators retain full ownership and control of their data.",
+    "minors_policy": "Delphi AI does not knowingly collect or solicit Personal Data from children under 13 years of age (or 16 if in EU/UK), per Delphi's Privacy Policy.",
+    "impersonation_safeguards": "[uncertain] The tool is explicitly positioned as 'AI Codie' giving advice 'like she would,' which inherently blurs the line between AI and the real person. Delphi's verified digital cloning platform requires creator authorization, providing some safeguard against unauthorized clones. No specific disclaimers about the AI not being the real Codie Sanchez were found in search results.",
+    "regulatory_compliance_status": "[uncertain] No public statements found regarding FTC disclosure requirements, state AI laws, or professional advice liability specific to codie.chat. Delphi AI has a Washington State Consumer Health Data Privacy Policy for compliance with the Washington My Health My Data Act."
+  },
+  "competitive": {
+    "competitive_moat_type": "Proprietary content corpus (tens of thousands of pages of business buying expertise plus raw podcast content), personal brand authority (NYT bestselling author, 12M+ cross-platform followers), investor relationship with platform provider (Codie is both a user and investor in Delphi AI), ecosystem lock-in (codie.chat feeds into Contrarian Thinking newsletter, courses, and $10K/year community), niche specialization (one of the most recognized voices in the 'boring businesses' / Entrepreneurship Through Acquisition movement).",
+    "meta_creator_ai_status": "[uncertain] No evidence found of participation in Meta's Creator AI program for Instagram/Facebook/WhatsApp AI chatbot clones.",
+    "engagement_metrics_public": "[uncertain] No publicly disclosed engagement metrics (MAU, messages per session, retention, NPS) found for codie.chat or the Delphi AI clone."
+  },
+  "verification": {
+    "confidence_level": "high",
+    "primary_source_url": "https://contrarianthinking.co/we-built-an-ai-codie/",
+    "corroborating_source_url": "https://www.codie.chat/",
+    "last_verified_date": "2026-04-15"
+  },
+  "uncertain": [
+    "functionality.memory_persistence",
+    "functionality.upload_support",
+    "functionality.tool_integrations",
+    "functionality.moderation_disclaimers",
+    "functionality.human_handoff",
+    "content_training.update_frequency",
+    "monetization.revenue_model_detail.newsletter_revenue",
+    "risks_guardrails.stated_disclaimers",
+    "risks_guardrails.impersonation_safeguards",
+    "risks_guardrails.regulatory_compliance_status",
+    "competitive.meta_creator_ai_status",
+    "competitive.engagement_metrics_public"
+  ]
+}

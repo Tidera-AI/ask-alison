@@ -1,0 +1,112 @@
+{
+  "creator_profile": {
+    "name": "Alex Hormozi",
+    "primary_niche": "Business/entrepreneurship, fitness (earlier career)",
+    "main_platforms": ["YouTube", "Instagram", "X (Twitter)", "TikTok", "Podcast (The Game w/ Alex Hormozi on Spotify)"],
+    "audience_size_documented": {
+      "YouTube": "~3.87M subscribers (April 2026, via SocialBlade/HypeAuditor)",
+      "Instagram": "~5M followers (April 2026, via Instagram @hormozi)",
+      "X_Twitter": "~960K followers (April 2026, via x.com/AlexHormozi)",
+      "TikTok": "[uncertain] Estimated multi-million; exact figure not confirmed from primary source",
+      "cross_platform_note": "Reported 4.5M new subscribers and 3B impressions across platforms in 12-month period leading to Aug 2025 book launch"
+    },
+    "tier_classification": "Tier A",
+    "tier_justification": "Multi-platform mainstream recognition with millions of followers across YouTube (3.87M), Instagram (5M), X (960K). Co-founder of Skool.com. Managing Partner of Acquisition.com portfolio reportedly doing $200M+/yr. $100M Money Models book launch generated ~$87M+ in single-day sales and broke the Guinness World Record for fastest-selling non-fiction book (2.9M copies in one day, Aug 16, 2025). Consistent multi-platform content creator with 250+ pieces of content per week."
+  },
+  "bot_identity": {
+    "bot_name": "ACQ AI",
+    "positioning_tagline": "Alex Hormozi's brain, in your pocket. A personal AI business advisor trained on proven strategies for scaling to $100M+.",
+    "positioning_narrative_excerpts": [
+      "A Custom AI that's like having his entire team & all his private data, at your fingertips, 24/7.",
+      "Unlike other AI tools that give you information, ACQ AI gives you implementation. It contains more exclusive business data & hands-on implementation experience than most people see in their entire careers.",
+      "Trained on $31,000,000 in consulting work across 1,026+ businesses. This data has never been in any book."
+    ],
+    "launch_date": "2025-08 (bundled with $100M Money Models book launch on August 16, 2025; also available standalone via shop.acquisition.com)",
+    "current_status": "Active"
+  },
+  "jobs_to_be_done": {
+    "primary_jtbds": [
+      "ask_my_method - Ask business questions and get answers grounded in Hormozi's frameworks ($100M Offers, Leads, Models)",
+      "course_teaching_assistant - Implementation guidance from playbooks and consulting data",
+      "pre_sale_education - Cold call scripts, objection handling, pricing models, sales funnels",
+      "paid_tier_unlock - Premium AI access behind $3K initiation + $299/mo paywall"
+    ],
+    "secondary_jtbds": [
+      "lead_qualification - Offer design and constraint analysis for business scaling",
+      "community_help - Integrated into ACQ Vantage founders community as member resource"
+    ],
+    "jtbd_evidence_source": "Stated (from official marketing copy on shop.acquisition.com and launch materials)"
+  },
+  "functionality": {
+    "modalities": ["text"],
+    "requires_login": true,
+    "memory_persistence": "[uncertain] Not publicly documented",
+    "upload_support": "[uncertain] Not publicly documented",
+    "tool_integrations": "[uncertain] No specific third-party integrations publicly documented. ACQ AI appears to operate as a standalone chat interface within the acquisition.com ecosystem. It is also available as a member resource within the ACQ Vantage community on Skool.",
+    "knowledge_grounding_claimed": "Trained on $31M in consulting work across 1,026+ businesses, all three Hormozi books ($100M Offers, $100M Leads, $100M Money Models), 12 implementation playbooks, notes and data from 226+ private one-on-one business consultations, and 50,000+ hours of consulting (per ACQ Vantage marketing). Includes constraint analyses, diagnostic sessions, offer designs, and funnel optimization strategies.",
+    "moderation_disclaimers": "Terms & Conditions page exists at ai.acquisition.com/terms-conditions. Content described as 'for informational purposes only.' Acquisition.com states it does not take responsibility for interruptions, delays, or unavailability of site content.",
+    "human_handoff": "[uncertain] Not publicly documented. ACQ Vantage VIP tier ($3K/mo) includes direct access to advisory team, but unclear if ACQ AI itself escalates to humans.",
+    "platform_infrastructure": "[uncertain] Described as a 'Custom AI' — underlying LLM provider not publicly disclosed. Hosted at ai.acquisition.com. Not a GPT Store product (separate unofficial clones exist on ChatGPT). Likely a custom-built RAG application, but specific technology stack (OpenAI, Anthropic, etc.) is not confirmed.",
+    "voice_modality_details": "No voice modality documented. ACQ AI appears to be text-only. No evidence of voice cloning or audio interaction.",
+    "ai_agent_capabilities": "Primarily an advisory/Q&A chatbot that generates implementation-ready outputs: cold call scripts, objection handling guides, voicemail/SMS follow-up templates, proposal emails, pricing models, offer designs with SLAs, and full sales funnels. No documented autonomous action-taking capabilities (no booking, CRM integration, or workflow execution)."
+  },
+  "distribution": {
+    "access_url": "https://ai.acquisition.com/ (chat interface) and https://shop.acquisition.com/pages/acq-ai (purchase page)",
+    "distribution_path_description": "Social media (YouTube, IG, X, TikTok) -> link in bio / acquisition.com -> book launch registration page or shop.acquisition.com/pages/acq-ai -> purchase ACQ AI standalone ($3K + $299/mo) OR purchase $100M Money Models bundle ($5,998 for book + playbooks + ACQ AI + workshop). Also distributed through ACQ Vantage community on Skool as a member benefit.",
+    "link_in_bio_platform": "Custom (acquisition.com). Instagram bio links to acquisition.com. Also uses register.acq.com for book launch funnels.",
+    "social_to_bot_funnel": "YouTube videos and shorts -> description links to acquisition.com; Instagram @hormozi -> bio link to acquisition.com with CTA 'Get your free scaling roadmap'; X/Twitter @AlexHormozi -> pinned posts and links to acquisition.com; Podcast (The Game) -> mentions and links to acquisition.com resources. Book launch specifically used 'link in bio or register.acq.com' CTA across all platforms."
+  },
+  "monetization": {
+    "pricing_model": "paid (standalone subscription) and bundled_with_course (as part of $100M Money Models bundle)",
+    "public_price": "$3,000 initiation fee + $299/month after first 30 days (standalone). $5,998 for the $100M Money Models bundle (book + 12 playbooks + ACQ AI + live workshop). $18,000 one-time advisory upsell also offered during book launch.",
+    "bundled_with": "$100M Money Models book bundle ($5,998), ACQ Vantage founders community (Premium at $8,000/year, VIP at $3,000/month)",
+    "monetization_linkage_type": "direct_subscription (standalone ACQ AI), course_retention (bundled with book/playbooks to increase perceived value), community_value_add (included in ACQ Vantage membership), upsell_to_1on1 ($18K advisory upsell during launch)",
+    "list_building_integration": "Book launch registration at register.acq.com captures email/contact info. ACQ Vantage community on Skool serves as ongoing engagement and retention channel.",
+    "revenue_model_detail": {
+      "standalone_acq_ai": "$3,000 initiation + $299/month recurring after 30 days",
+      "book_bundle": "$5,998 one-time for $100M Money Models + 12 playbooks + ACQ AI access + live workshop",
+      "advisory_upsell": "$18,000 one-time (offered during book launch)",
+      "acq_vantage_premium": "$8,000/year (includes ACQ AI as member benefit)",
+      "acq_vantage_vip": "$3,000/month (includes ACQ AI + direct advisor access)",
+      "book_launch_revenue": "~$87M in single-day revenue on Aug 16, 2025. Estimated 10,000+ customers at $6K bundle + meaningful take-rate on $18K upsell. Total launch weekend reportedly exceeded $100M.",
+      "estimated_annual_ai_revenue": "[uncertain] Not separately disclosed. AI product revenue is commingled with book/community/advisory revenue streams."
+    }
+  },
+  "content_training": {
+    "content_training_corpus": "Three books ($100M Offers, $100M Leads, $100M Money Models), 12 implementation playbooks, $31M worth of consulting data across 1,026+ businesses, 226+ private one-on-one business consultation notes, 50,000+ hours of consulting work, constraint analyses, diagnostic sessions, offer designs, and funnel optimization strategies. Also includes unpublished SOPs (per ACQ Vantage marketing).",
+    "update_frequency": "[uncertain] Not publicly documented. Marketing references '2 years of consulting' data as of ACQ Vantage launch, suggesting periodic updates, but no explicit refresh cadence stated."
+  },
+  "risks_guardrails": {
+    "stated_disclaimers": "Content is 'for informational purposes only.' Acquisition.com does not take responsibility for interruptions, delays, or unavailability of site content. Terms & Conditions available at ai.acquisition.com/terms-conditions.",
+    "data_use_policy_cited": "Acquisition Privacy Policy referenced in Terms & Conditions. Acquisition.com states it does not sell personal information to other companies. Users can withdraw consent at any time. Consent is not a condition of any purchase.",
+    "minors_policy": "[uncertain] Not specifically documented in publicly available search results.",
+    "impersonation_safeguards": "[uncertain] Not specifically documented. Marketing explicitly positions ACQ AI as 'what Alex would do in your business' which blurs the line between AI advisor and personal advice from Alex Hormozi himself.",
+    "regulatory_compliance_status": "[uncertain] No public statements found regarding FTC disclosure requirements, state AI laws, or professional impersonation safeguards specific to ACQ AI."
+  },
+  "competitive": {
+    "competitive_moat_type": "Proprietary methodology ($100M framework across Offers/Leads/Models), exclusive content corpus ($31M in consulting data across 1,026+ businesses that has 'never been in any book'), brand recognition (Alex Hormozi is one of the most recognized business influencers globally), community integration (ACQ Vantage founders network of verified $1M+ entrepreneurs on Skool), platform lock-in (deep integration with acquisition.com ecosystem including books, playbooks, community, and advisory services).",
+    "meta_creator_ai_status": "[uncertain] No evidence found of participation in Meta's Creator AI program for Instagram/Facebook/WhatsApp AI chatbot clones.",
+    "engagement_metrics_public": "[uncertain] No publicly disclosed engagement metrics (MAU, messages per session, retention, NPS) found for ACQ AI specifically. ACQ Vantage marketing states ACQ AI is 'rated #1 by members' but no quantitative data provided."
+  },
+  "verification": {
+    "confidence_level": "high",
+    "primary_source_url": "https://shop.acquisition.com/pages/acq-ai",
+    "corroborating_source_url": "https://newsletter.autogpt.net/p/hormozi-ai-move",
+    "last_verified_date": "2026-04-15"
+  },
+  "uncertain": [
+    "creator_profile.audience_size_documented.TikTok",
+    "functionality.memory_persistence",
+    "functionality.upload_support",
+    "functionality.tool_integrations",
+    "functionality.human_handoff",
+    "functionality.platform_infrastructure",
+    "monetization.revenue_model_detail.estimated_annual_ai_revenue",
+    "content_training.update_frequency",
+    "risks_guardrails.minors_policy",
+    "risks_guardrails.impersonation_safeguards",
+    "risks_guardrails.regulatory_compliance_status",
+    "competitive.meta_creator_ai_status",
+    "competitive.engagement_metrics_public"
+  ]
+}

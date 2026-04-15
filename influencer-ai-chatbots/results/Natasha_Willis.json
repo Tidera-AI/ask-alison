@@ -1,0 +1,126 @@
+{
+  "creator_profile": {
+    "name": "Natasha Willis",
+    "primary_niche": "Chatbot marketing, conversational marketing, Instagram DM automation, AI chat funnels",
+    "main_platforms": [
+      "Instagram",
+      "LinkedIn",
+      "Facebook",
+      "YouTube",
+      "Podcast guest (Amy Porterfield, Jenna Kutcher, Creator Science, Melissa Ambrosini, DigitalMarketer)"
+    ],
+    "audience_size_documented": {
+      "Instagram": "~56K followers (@natashatwillis, April 2026)",
+      "LinkedIn": "[uncertain] Not publicly documented; profile at linkedin.com/in/natashatakahashi lists $90M+ in Sales, 4K Clients Served",
+      "Facebook": "[uncertain] Exact follower count not confirmed from primary source",
+      "cross_platform_note": "Natasha Willis is primarily known as an infrastructure/agency figure rather than a mass-audience content creator. Her influence is B2B \u2014 she builds the chatbot systems behind major influencers rather than cultivating a large personal following. Instagram bio claims $97M generated and 4K+ clients served."
+    },
+    "tier_classification": "Tier B",
+    "tier_justification": "Tier B reflects Willis's outsized industry influence despite a modest personal social following (~56K Instagram). She is the infrastructure layer behind many of the largest influencer chatbot implementations in the creator economy. Co-founded School of Bots in 2017, generated $65M-$97M+ in client revenue (figures vary by source/timeframe), trained 14K-17K+ marketers in 30 countries, served 4K+ clients including Russell Brunson, Jenna Kutcher, Amy Porterfield, Dean Graziosi, Mindvalley, ClickFunnels, and Foundr. Regularly consulted by ManyChat and Meta (for partners like Under Armour and Nike). Spoken at 150+ events alongside Gary Vaynerchuk and Richard Branson. Featured in Forbes and Entrepreneur. Her influence is felt through the chatbot systems she builds for others rather than through her own audience size."
+  },
+  "bot_identity": {
+    "bot_name": "AI Chat Funnel System (School of Bots)",
+    "positioning_tagline": "Grow Your Revenue With Our $56M AI Chat Funnel System \u2014 proven for clients like ClickFunnels, Mindvalley, Foundr, and 2000+ more.",
+    "positioning_narrative_excerpts": [
+      "School of Bots helps online businesses generate highly qualified leads and more sales on Instagram DM, Messenger, and WhatsApp using Chat Funnels.",
+      "When somebody does something on Instagram to my profile as a creator or a business, then I can automatically reply in this way to them.",
+      "At the most basic level, automated DMs work like this: a social media account will say something like 'Comment RECIPE' in their post. Then when you comment, an automated bot instantly sends you the recipe inside your DMs.",
+      "The system is 100% approved by Meta, Instagram and Facebook, and is based on user permission and adheres to the terms of service for these platforms."
+    ],
+    "launch_date": "2017 (School of Bots founded; E-HUB training platform launched circa 2020; AI Chat Funnel System branding introduced by 2024)",
+    "current_status": "Active"
+  },
+  "jobs_to_be_done": {
+    "primary_jtbds": [
+      "lead_generation - Automated Instagram DM and Messenger funnels that capture emails and qualify leads when users comment trigger keywords on posts",
+      "course_teaching_assistant - Training 14K-17K+ marketers on how to build and deploy chatbot funnels via courses, certifications, and templates",
+      "done_for_you_implementation - Building and managing chatbot campaigns for high-profile clients (Russell Brunson, Jenna Kutcher, Amy Porterfield, Mindvalley, etc.)",
+      "pre_sale_education - Automated conversational sequences that educate prospects and drive them toward purchase decisions"
+    ],
+    "secondary_jtbds": [
+      "list_building - Collecting email subscribers via chat funnels (e.g., 52,000 new emails in one year for Jenna Kutcher, 36,057 new subscribers for Amy Porterfield)",
+      "platform_consulting - Consulting for ManyChat and Meta on chatbot strategies for their highest-spending partners (Under Armour, Nike)",
+      "agency_certification - E-HUB certification program and BotWork job marketplace connecting certified chatbot builders with employers"
+    ],
+    "jtbd_evidence_source": "Stated (from official marketing copy on schoolofbots.co, go.schoolofbots.co/welcome, podcast interviews on Creator Science, Amy Porterfield, Jenna Kutcher, and Melissa Ambrosini shows, and ManyChat partnership page)"
+  },
+  "functionality": {
+    "modalities": [
+      "text"
+    ],
+    "requires_login": false,
+    "memory_persistence": "[uncertain] ManyChat-based automations have conversation history within the platform, but persistence details depend on ManyChat's infrastructure rather than School of Bots proprietary systems",
+    "upload_support": "[uncertain] Not publicly documented for the chat funnels themselves",
+    "tool_integrations": "ManyChat (primary automation platform), Meta/Instagram API (DM automation), Facebook Messenger API, WhatsApp Business API, SMS platforms, email marketing platforms (for list building integrations). School of Bots builds on top of ManyChat's infrastructure rather than operating a proprietary chatbot platform.",
+    "knowledge_grounding_claimed": "Chat funnels are built using School of Bots' proprietary frameworks including the DM Domination System and Prime and Convert Formula. Templates and automation flows are designed from experience serving 4K+ clients and generating $65M-$97M+ in client revenue. The system includes 50+ lesson courses, 10+ plug-and-play Instagram DM automation templates, and proven funnel architectures.",
+    "moderation_disclaimers": "The system is described as '100% approved by Meta, Instagram and Facebook' and 'based on user permission and adheres to the terms of service for these platforms.' Automations are triggered by user-initiated actions (e.g., commenting a keyword) rather than unsolicited outreach.",
+    "human_handoff": "[uncertain] Not explicitly documented, but done-for-you client implementations likely involve human oversight. The training programs teach businesses to manage their own chatbot systems, implying human involvement in the loop.",
+    "platform_infrastructure": "School of Bots does NOT operate a proprietary chatbot platform. They are a training, consulting, and done-for-you agency that builds on top of ManyChat as the primary automation platform. ManyChat connects to Instagram DM, Facebook Messenger, WhatsApp, and SMS. School of Bots provides the strategy, templates, funnel architecture, and implementation expertise. This positions them as the intelligence/methodology layer rather than a technology platform.",
+    "voice_modality_details": "No voice modality documented. All documented automations are text-based (DMs, Messenger, WhatsApp, SMS).",
+    "ai_agent_capabilities": "School of Bots' chat funnels are primarily rule-based automation flows built on ManyChat rather than LLM-powered AI agents. The 'AI Chat Funnel System' branding references their methodology applied to AI-era marketing, but the core product is keyword-triggered automation sequences (e.g., 'Comment RECIPE to get the recipe in your DMs') with branching logic, not generative AI chatbots. [uncertain] Whether they have integrated LLM-based AI into their newer offerings (post-2024) is not confirmed from available sources."
+  },
+  "distribution": {
+    "access_url": "https://schoolofbots.co/ (main site), https://go.schoolofbots.co/welcome (sales page for AI Chat Funnel System), https://manychat.com/meet-natasha-willis (ManyChat partnership page)",
+    "distribution_path_description": "School of Bots operates a multi-channel distribution model: (1) B2B agency services \u2014 direct client engagements with influencers/brands like Russell Brunson, Jenna Kutcher, Amy Porterfield, Mindvalley, ClickFunnels, Foundr, Under Armour, Nike; (2) Training/courses \u2014 The Instagram DM Automation Playbook (50+ lessons), E-HUB certification platform, templates and frameworks; (3) Speaking/podcast appearances \u2014 150+ stages, guest on major podcasts (Amy Porterfield, Jenna Kutcher, Creator Science, Melissa Ambrosini, DigitalMarketer); (4) ManyChat/Meta consulting \u2014 hired by ManyChat to train their customers, consulted by Meta for highest-spending partners.",
+    "link_in_bio_platform": "Custom (schoolofbots.co). Instagram @natashatwillis bio links to School of Bots resources.",
+    "social_to_bot_funnel": "Natasha Willis practices what she teaches \u2014 her own Instagram uses keyword-triggered DM automation to capture leads (e.g., 'Comment [keyword] to get [resource]'). Podcast appearances -> schoolofbots.co -> course enrollment or agency inquiry. ManyChat events/webinars -> lead capture -> training program enrollment. Speaking engagements -> brand awareness -> client/student acquisition."
+  },
+  "monetization": {
+    "pricing_model": "multi-tier (courses, done-for-you agency services, consulting, certification)",
+    "public_price": "The Instagram DM Automation Playbook: $397 (official price per course listing). Agency/done-for-you services: [uncertain] Custom pricing not publicly disclosed. E-HUB platform: [uncertain] Pricing not confirmed from primary sources.",
+    "bundled_with": "E-HUB certification platform includes courses, templates, BotWork job marketplace, virtual coworking space, and Badge of Completion. The Instagram DM Automation Playbook includes bonuses: DM Domination System, Prime and Convert Formula, 10+ plug-and-play templates, Agency Partner Network access.",
+    "monetization_linkage_type": "course_sales (training programs and playbooks), agency_services (done-for-you chatbot implementation for high-profile clients), consulting_fees (ManyChat and Meta consulting), certification_revenue (E-HUB certification program), speaking_fees (150+ events)",
+    "list_building_integration": "School of Bots practices its own methodology \u2014 using keyword-triggered DM automation on Instagram to capture email subscribers and funnel prospects into course enrollment. The entire business model is built around demonstrating the same list-building approach they teach.",
+    "revenue_model_detail": {
+      "course_playbook": "$397 for The Instagram DM Automation Playbook (50+ lessons)",
+      "ehub_certification": "[uncertain] Pricing not publicly disclosed for E-HUB platform access and certification",
+      "agency_services": "[uncertain] Custom pricing for done-for-you chatbot implementations for clients like Russell Brunson, Amy Porterfield, Mindvalley, etc.",
+      "consulting": "[uncertain] Custom pricing for ManyChat and Meta consulting engagements",
+      "speaking_fees": "[uncertain] Fees for 150+ speaking engagements not publicly disclosed",
+      "client_revenue_generated": "$65M-$97M+ in revenue generated for clients (figure has grown over time: $30M cited early, $56M on sales page, $70M in 2024 podcast, $87M at ManyChat 2025 Summit, $90M+ on LinkedIn, $97M on Instagram bio as of April 2026)",
+      "estimated_annual_company_revenue": "[uncertain] School of Bots' own revenue not publicly disclosed. Tracxn lists them as a company but financials are not public."
+    }
+  },
+  "content_training": {
+    "content_training_corpus": "School of Bots' chatbot funnels are NOT trained on content in the LLM sense. They are rule-based ManyChat automation flows built from: proprietary frameworks (DM Domination System, Prime and Convert Formula), experience from 4K+ client implementations, 50+ lesson curriculum, 10+ plug-and-play templates, and strategies developed from serving clients like Russell Brunson, Jenna Kutcher, Amy Porterfield, Dean Graziosi, Mindvalley, ClickFunnels, and Foundr. The 'training' is in the methodology and funnel architecture, not in an AI model's knowledge base.",
+    "update_frequency": "[uncertain] Course content appears to be updated periodically based on platform changes (e.g., when Instagram launched DM automation via ManyChat in 2021, when WhatsApp was added). No explicit update cadence stated."
+  },
+  "risks_guardrails": {
+    "stated_disclaimers": "Terms of Use, Privacy Policy, and Website Disclaimer available at go.schoolofbots.co/terms-conditions-privacy-policy. Information is 'for educational and informational purposes only and is not intended as legal, financial, tax, medical, health, or any other professional advice.' Includes earnings disclaimer: 'success stories and testimonials are for illustration purposes, results may vary and are not guaranteed, past performance does not necessarily indicate future results.' Company disclaims liability for errors, omissions, or damages.",
+    "data_use_policy_cited": "Privacy Policy referenced at go.schoolofbots.co/terms-conditions-privacy-policy. Specific data handling practices for chat funnel user data (the end-users who interact with chatbots built by School of Bots clients) are governed by ManyChat's privacy policy and Meta's platform policies rather than School of Bots directly.",
+    "minors_policy": "[uncertain] Not specifically documented in publicly available sources. ManyChat and Meta platform terms govern age requirements for users interacting with DM automations.",
+    "impersonation_safeguards": "[uncertain] When School of Bots builds chatbot funnels for influencers like Amy Porterfield or Russell Brunson, the automated messages appear to come from the influencer's account. Whether there are explicit disclosures that messages are automated (vs. personally sent by the influencer) is not confirmed from available sources. Meta's platform policies require some level of disclosure for automated messaging.",
+    "regulatory_compliance_status": "School of Bots states their system is '100% approved by Meta, Instagram and Facebook' and 'based on user permission and adheres to the terms of service for these platforms.' Automations are triggered by user-initiated actions (commenting keywords). [uncertain] No specific FTC, GDPR, or state AI law compliance statements found beyond the general terms of service page."
+  },
+  "competitive": {
+    "competitive_moat_type": "Infrastructure/methodology provider \u2014 School of Bots is the hidden layer behind many influencer chatbot implementations. Their moat is: (1) Deep client relationships with top-tier influencers and brands (Russell Brunson, Amy Porterfield, Jenna Kutcher, Mindvalley, ClickFunnels, Foundr, Under Armour, Nike); (2) ManyChat and Meta consulting relationships (hired by both platforms); (3) Proprietary frameworks and templates refined across 4K+ client implementations and $65M-$97M+ in generated revenue; (4) Training ecosystem with 14K-17K+ trained marketers and E-HUB certification creating a network effect; (5) First-mover advantage \u2014 founded in 2017, one of the earliest chatbot marketing training companies; (6) 150+ speaking engagements building thought leadership.",
+    "meta_creator_ai_status": "[uncertain] No evidence found of participation in Meta's Creator AI program for AI chatbot clones. School of Bots' relationship with Meta is as a consultant for Meta's highest-spending advertising partners, not as a Creator AI participant.",
+    "engagement_metrics_public": "[uncertain] No publicly disclosed engagement metrics for School of Bots' own chatbot funnels or for client implementations. Case study results include: Foundr conversion rate increase from 23% to 70% ($60K revenue), Amy Porterfield 36,057 new email subscribers and $2.8M revenue in 12 months with 19 chat funnels, Jenna Kutcher 52,000 new emails in one year and $1.4M additional revenue from chat funnels, Mindvalley 800% increase in lead generation via Instagram DM."
+  },
+  "verification": {
+    "confidence_level": "high",
+    "primary_source_url": "https://schoolofbots.co/",
+    "corroborating_source_url": "https://podcast.creatorscience.com/natasha-willis/",
+    "last_verified_date": "2026-04-15"
+  },
+  "uncertain": [
+    "creator_profile.audience_size_documented.LinkedIn",
+    "creator_profile.audience_size_documented.Facebook",
+    "functionality.memory_persistence",
+    "functionality.upload_support",
+    "functionality.human_handoff",
+    "functionality.ai_agent_capabilities",
+    "monetization.public_price (agency and E-HUB pricing)",
+    "monetization.revenue_model_detail.ehub_certification",
+    "monetization.revenue_model_detail.agency_services",
+    "monetization.revenue_model_detail.consulting",
+    "monetization.revenue_model_detail.speaking_fees",
+    "monetization.revenue_model_detail.estimated_annual_company_revenue",
+    "content_training.update_frequency",
+    "risks_guardrails.minors_policy",
+    "risks_guardrails.impersonation_safeguards",
+    "risks_guardrails.regulatory_compliance_status",
+    "competitive.meta_creator_ai_status",
+    "competitive.engagement_metrics_public"
+  ]
+}
