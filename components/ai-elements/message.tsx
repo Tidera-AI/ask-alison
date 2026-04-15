@@ -1,16 +1,17 @@
 "use client";
 
 import type { ComponentPropsWithoutRef } from "react";
+import { Streamdown } from "streamdown";
 import { cn } from "@/lib/utils";
 
 export function MessageResponse({
   children,
   className,
   ...props
-}: ComponentPropsWithoutRef<"div">) {
+}: ComponentPropsWithoutRef<"div"> & { children: string }) {
   return (
-    <div className={cn("prose prose-sm max-w-none", className)} {...props}>
-      {children}
+    <div className={cn("prose prose-sm max-w-none dark:prose-invert", className)} {...props}>
+      <Streamdown>{children}</Streamdown>
     </div>
   );
 }

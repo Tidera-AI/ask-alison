@@ -20,17 +20,15 @@ export function useAutoResume({
 }: UseAutoResumeParams) {
   const { dataStream } = useDataStream();
 
+  // Stream resumption is disabled because the server does not persist
+  // streams or expose a GET /api/chat/:id/stream endpoint.  Calling
+  // resumeStream() would hit a 404 in production.
   useEffect(() => {
     if (!autoResume) {
       return;
     }
-
-    const mostRecentMessage = initialMessages.at(-1);
-
-    if (mostRecentMessage?.role === "user") {
-      resumeStream();
-    }
-  }, [autoResume, initialMessages.at, resumeStream]);
+    // no-op: server does not support stream resumption
+  }, [autoResume]);
 
   useEffect(() => {
     if (!dataStream) {
