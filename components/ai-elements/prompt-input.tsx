@@ -74,7 +74,7 @@ export function PromptInputSubmit({ children, className, status: _status, varian
 
   return (
     <button
-      className={cn("flex items-center justify-center", className)}
+      className={cn("flex cursor-pointer items-center justify-center", className)}
       onClick={(e) => {
         props.onClick?.(e);
         if (!e.defaultPrevented && !props.disabled) {

@@ -35,7 +35,7 @@ export function MessageAction({
   ...props
 }: ComponentPropsWithoutRef<"button"> & { tooltip?: string }) {
   return (
-    <button className={cn("flex items-center justify-center rounded-md p-1", className)} type="button" {...props}>
+    <button className={cn("flex cursor-pointer items-center justify-center rounded-md p-1", className)} type="button" {...props}>
       {children}
     </button>
   );
