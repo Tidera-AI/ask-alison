@@ -11,9 +11,9 @@ export async function PATCH(request: Request) {
   await getOrCreateSessionUserId();
 
   const body = await request.json();
-  const { chatId, messageId, isUpvoted } = body;
+  const { chatId, messageId, type } = body;
 
-  if (!chatId || !messageId || typeof isUpvoted !== "boolean") {
+  if (!chatId || !messageId || (type !== "up" && type !== "down")) {
     return Response.json({ error: "Invalid request" }, { status: 400 });
   }
 
