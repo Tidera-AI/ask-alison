@@ -530,7 +530,7 @@ function PureMultimodalInput({
             />
           </PromptInputTools>
 
-          {status === "submitted" ? (
+          {status === "submitted" || status === "streaming" ? (
             <StopButton setMessages={setMessages} stop={stop} />
           ) : (
             <PromptInputSubmit
@@ -812,7 +812,22 @@ function PureStopButton({
       onClick={(event) => {
         event.preventDefault();
         stop();
-        setMessages((messages) => messages);
+        setMessages((msgs) => {
+          const lastMsg = msgs.at(-1);
+          if (!lastMsg || lastMsg.role === "user") {
+            return [
+              ...msgs,
+              {
+                id: `stopped-${Date.now()}`,
+                role: "assistant" as const,
+                parts: [
+                  { type: "text" as const, text: "*Generation stopped.*" },
+                ],
+              },
+            ];
+          }
+          return msgs;
+        });
       }}
     >
       <StopIcon size={14} />
