@@ -20,8 +20,12 @@ export async function getOrCreateSessionUserId(): Promise<string> {
 
   cookieStore.set(SESSION_COOKIE_NAME, userId, {
     httpOnly: true,
-    secure: true,
-    sameSite: "none",
+    // In local dev we typically run over http, so `secure: true` would prevent
+    // the cookie from being set and we'd generate a new user id on every request.
+    secure: process.env.NODE_ENV === "production",
+    // This is a first-party cookie used for anonymous sessions; `lax` is the
+    // safest default and avoids Safari/localhost issues with SameSite=None.
+    sameSite: "lax",
     maxAge: SESSION_MAX_AGE,
     path: "/",
   });

@@ -61,6 +61,14 @@ function PureMessages({
 
   return (
     <div className="relative flex-1 bg-background">
+      {isLoading && (
+        <div className="pointer-events-none absolute inset-0 z-10 flex items-center justify-center bg-background/60 px-4 backdrop-blur-[1px]">
+          <div className="flex items-center gap-3 rounded-xl border border-border/60 bg-card/80 px-4 py-2 text-[13px] text-muted-foreground shadow-[var(--shadow-float)]">
+            <div className="size-4 animate-spin rounded-full border-2 border-muted-foreground/30 border-t-muted-foreground/80" />
+            <span>Loading conversation…</span>
+          </div>
+        </div>
+      )}
       {messages.length === 0 && !isLoading && (
         // Layout invariant: on short viewports (e.g. iPhone SE 375x667) the
         // sticky composer fills most of the height, leaving this Messages
