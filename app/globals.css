@@ -110,8 +110,7 @@
   --sidebar-border: var(--ee-light-gray);
   --sidebar-ring: var(--ee-ocean-blue);
 
-  --shadow-card:
-    0 1px 3px rgb(61 58 55 / 0.08), 0 1px 1px rgb(0 0 0 / 0.02);
+  --shadow-card: 0 1px 3px rgb(61 58 55 / 0.08), 0 1px 1px rgb(0 0 0 / 0.02);
   --shadow-float:
     0 8px 24px -6px rgb(61 58 55 / 0.12), 0 2px 8px -2px rgb(0 0 0 / 0.03);
   --shadow-composer: 0 1px 2px rgb(61 58 55 / 0.06);
@@ -125,8 +124,7 @@
   --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
 
   /* Elevate Etiquette typography — Butler (display serif) + Jost (sans) */
-  --font-serif:
-    var(--font-butler), Georgia, "Times New Roman", serif;
+  --font-serif: var(--font-butler), Georgia, "Times New Roman", serif;
   --font-sans:
     var(--font-jost), ui-sans-serif, system-ui, -apple-system, "Segoe UI",
     Helvetica, Arial, sans-serif;
@@ -219,7 +217,7 @@
     font-weight: 300;
     font-size: 32px;
     letter-spacing: -0.02em;
-    line-height: 1.10;
+    line-height: 1.1;
   }
   h2 {
     font-family: var(--font-serif);
@@ -233,20 +231,20 @@
     font-weight: 500;
     font-size: 18px;
     letter-spacing: 0;
-    line-height: 1.30;
+    line-height: 1.3;
   }
   h4 {
     font-family: var(--font-sans);
     font-weight: 500;
     font-size: 16px;
     letter-spacing: 0.005em;
-    line-height: 1.40;
+    line-height: 1.4;
   }
   h5,
   h6 {
     font-family: var(--font-sans);
     font-weight: 500;
-    line-height: 1.40;
+    line-height: 1.4;
   }
 
   @media (min-width: 768px) {
@@ -283,8 +281,8 @@
   p {
     font-family: var(--font-sans);
     font-size: 16px;
-    letter-spacing: 0.010em;
-    line-height: 1.80;
+    letter-spacing: 0.01em;
+    line-height: 1.8;
   }
 }
 
@@ -301,15 +299,15 @@
   font-weight: 400;
   font-style: italic;
   font-size: 20px;
-  letter-spacing: -0.010em;
+  letter-spacing: -0.01em;
   line-height: 1.55;
 }
 @utility text-eyebrow {
   font-family: var(--font-sans);
   font-weight: 600;
   font-size: 11px;
-  letter-spacing: 0.200em;
-  line-height: 1.50;
+  letter-spacing: 0.2em;
+  line-height: 1.5;
   text-transform: uppercase;
 }
 @utility text-body-small {
@@ -317,29 +315,29 @@
   font-weight: 400;
   font-size: 14px;
   letter-spacing: 0.015em;
-  line-height: 1.70;
+  line-height: 1.7;
 }
 @utility text-caption {
   font-family: var(--font-sans);
   font-weight: 400;
   font-size: 12px;
-  letter-spacing: 0.040em;
-  line-height: 1.60;
+  letter-spacing: 0.04em;
+  line-height: 1.6;
 }
 @utility text-button {
   font-family: var(--font-sans);
   font-weight: 600;
   font-size: 12px;
-  letter-spacing: 0.160em;
-  line-height: 1.00;
+  letter-spacing: 0.16em;
+  line-height: 1;
   text-transform: uppercase;
 }
 @utility text-nav {
   font-family: var(--font-sans);
   font-weight: 500;
   font-size: 15px;
-  letter-spacing: 0.120em;
-  line-height: 1.00;
+  letter-spacing: 0.12em;
+  line-height: 1;
   text-transform: uppercase;
 }
 
