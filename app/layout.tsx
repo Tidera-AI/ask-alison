@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Playfair_Display } from "next/font/google";
+import { Geist_Mono, Jost } from "next/font/google";
+import localFont from "next/font/local";
 import { ThemeProvider } from "@/components/theme-provider";
 import { TooltipProvider } from "@/components/ui/tooltip";
 
@@ -16,10 +17,11 @@ export const viewport = {
   maximumScale: 1,
 };
 
-const geist = Geist({
+const jost = Jost({
   subsets: ["latin"],
   display: "swap",
-  variable: "--font-geist",
+  weight: ["400", "500", "600"],
+  variable: "--font-jost",
 });
 
 const geistMono = Geist_Mono({
@@ -28,14 +30,25 @@ const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
 });
 
-const playfair = Playfair_Display({
-  subsets: ["latin"],
+const butler = localFont({
+  src: [
+    {
+      path: "../public/fonts/butler/butler-light.woff2",
+      weight: "300",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/butler/butler-roman.woff2",
+      weight: "400",
+      style: "normal",
+    },
+  ],
   display: "swap",
-  variable: "--font-playfair",
+  variable: "--font-butler",
 });
 
-const LIGHT_THEME_COLOR = "hsl(350deg 30% 97%)";
-const DARK_THEME_COLOR = "hsl(350deg 15% 10%)";
+const LIGHT_THEME_COLOR = "#f8f2ee";
+const DARK_THEME_COLOR = "#3d3a37";
 const THEME_COLOR_SCRIPT = `\
 (function() {
   var html = document.documentElement;
@@ -61,7 +74,7 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      className={`${geist.variable} ${geistMono.variable} ${playfair.variable}`}
+      className={`${jost.variable} ${geistMono.variable} ${butler.variable}`}
       lang="en"
       suppressHydrationWarning
     >

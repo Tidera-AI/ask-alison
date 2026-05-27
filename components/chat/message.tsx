@@ -352,7 +352,7 @@ const PurePreviewMessage = ({
         {isAssistant && (
           <div className="flex h-[calc(13px*1.65)] shrink-0 items-center">
             <div className="flex size-7 items-center justify-center rounded-full bg-primary/10 ring-1 ring-primary/20">
-              <span className="font-serif text-[10px] font-semibold text-primary">
+              <span className="font-serif text-[11px] font-normal text-primary">
                 EE
               </span>
             </div>

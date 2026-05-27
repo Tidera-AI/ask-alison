@@ -81,7 +81,7 @@ export function AppSidebar() {
                 >
                   <Link href="/" onClick={() => setOpenMobile(false)}>
                     <span className="flex size-8 items-center justify-center rounded-full bg-primary/10 ring-1 ring-primary/20">
-                      <span className="font-serif text-xs font-semibold text-primary">
+                      <span className="font-serif text-[13px] font-normal text-primary">
                         EE
                       </span>
                     </span>

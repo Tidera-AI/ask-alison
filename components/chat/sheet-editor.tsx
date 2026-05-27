@@ -50,9 +50,9 @@ const PureSpreadsheetEditor = ({ content, saveContent }: SheetEditorProps) => {
       frozen: true,
       width: 50,
       renderCell: ({ rowIdx }: { rowIdx: number }) => rowIdx + 1,
-      cellClass: "border-t border-r dark:bg-neutral-950 dark:text-neutral-50",
+      cellClass: "border-t border-r dark:bg-background dark:text-foreground",
       headerCellClass:
-        "border-t border-r dark:bg-neutral-900 dark:text-neutral-50",
+        "border-t border-r dark:bg-card dark:text-foreground",
     };
 
     const dataColumns = Array.from({ length: MIN_COLS }, (_, i) => ({
@@ -60,10 +60,10 @@ const PureSpreadsheetEditor = ({ content, saveContent }: SheetEditorProps) => {
       name: String.fromCharCode(65 + i),
       renderEditCell: textEditor,
       width: 120,
-      cellClass: cn("border-t dark:bg-neutral-950 dark:text-neutral-50", {
+      cellClass: cn("border-t dark:bg-background dark:text-foreground", {
         "border-l": i !== 0,
       }),
-      headerCellClass: cn("border-t dark:bg-neutral-900 dark:text-neutral-50", {
+      headerCellClass: cn("border-t dark:bg-card dark:text-foreground", {
         "border-l": i !== 0,
       }),
     }));

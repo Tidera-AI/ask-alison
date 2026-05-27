@@ -9,13 +9,13 @@ export const Greeting = () => {
         initial={{ opacity: 0, scale: 0.8 }}
         transition={{ delay: 0.2, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
       >
-        <span className="font-serif text-base font-semibold tracking-tight text-primary sm:text-xl">
+        <span className="font-serif text-base font-normal tracking-tight text-primary sm:text-xl">
           EE
         </span>
       </motion.div>
       <motion.div
         animate={{ opacity: 1, y: 0 }}
-        className="text-center font-serif text-xl tracking-tight text-foreground sm:text-2xl md:text-3xl"
+        className="text-center font-serif font-light text-2xl tracking-tight text-foreground sm:text-3xl md:text-4xl"
         initial={{ opacity: 0, y: 10 }}
         transition={{ delay: 0.35, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
       >

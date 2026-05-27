@@ -5,6 +5,7 @@ import Link from "next/link";
 import { memo } from "react";
 import { Button } from "@/components/ui/button";
 import { useSidebar } from "@/components/ui/sidebar";
+import { ThemeToggle } from "@/components/theme-toggle";
 import { VisibilitySelector, type VisibilityType } from "./visibility-selector";
 
 function PureChatHeader({
@@ -38,7 +39,7 @@ function PureChatHeader({
         href="/"
       >
         <span className="flex size-7 items-center justify-center rounded-full bg-primary/10 ring-1 ring-primary/20">
-          <span className="font-serif text-[11px] font-semibold text-primary">
+          <span className="font-serif text-[12px] font-normal text-primary">
             EE
           </span>
         </span>
@@ -51,15 +52,18 @@ function PureChatHeader({
         />
       )}
 
-      <div className="hidden items-center gap-2 md:ml-auto md:flex">
-        <span className="flex size-7 items-center justify-center rounded-full bg-primary/10 ring-1 ring-primary/20">
-          <span className="font-serif text-[11px] font-semibold text-primary">
-            EE
+      <div className="ml-auto flex items-center gap-2">
+        <ThemeToggle />
+        <div className="hidden items-center gap-2 md:flex">
+          <span className="flex size-7 items-center justify-center rounded-full bg-primary/10 ring-1 ring-primary/20">
+            <span className="font-serif text-[11px] font-semibold text-primary">
+              EE
+            </span>
           </span>
-        </span>
-        <span className="text-[13px] font-medium tracking-tight text-foreground/70">
-          Elevate Etiquette
-        </span>
+          <span className="text-[13px] font-medium tracking-tight text-foreground/70">
+            Elevate Etiquette
+          </span>
+        </div>
       </div>
     </header>
   );
