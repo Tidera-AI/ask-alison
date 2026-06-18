@@ -16,7 +16,8 @@
     "db:check": "drizzle-kit check",
     "db:up": "drizzle-kit up",
     "test": "export PLAYWRIGHT=True && pnpm exec playwright test",
-    "ingest": "tsx scripts/ingest.ts"
+    "ingest": "tsx scripts/ingest.ts",
+    "ingest:book": "tsx scripts/ingest-book.ts"
   },
   "dependencies": {
     "@ai-sdk/openai": "^3.0.52",

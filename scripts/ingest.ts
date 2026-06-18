@@ -1,10 +1,10 @@
-import { createHash } from "node:crypto";
 import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { openai } from "@ai-sdk/openai";
 import { createClient } from "@supabase/supabase-js";
 import { embedMany } from "ai";
 import { chunkText } from "../lib/rag/chunker";
+import { contentHash } from "../lib/rag/hash";
 
 const SUPABASE_URL = process.env.SUPABASE_URL as string;
 const SUPABASE_SERVICE_ROLE_KEY = process.env
@@ -56,10 +56,6 @@ const sources: ContentSource[] = [
     title: "Knowledge Base",
   },
 ];
-
-function contentHash(text: string): string {
-  return createHash("sha256").update(text).digest("hex").slice(0, 16);
-}
 
 async function embedBatch(texts: string[]): Promise<number[][]> {
   const batchSize = 100;

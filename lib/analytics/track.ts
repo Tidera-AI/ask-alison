@@ -19,3 +19,34 @@ export async function trackQuestion(event: AnalyticsEvent): Promise<void> {
     console.error("Failed to track analytics:", error.message);
   }
 }
+
+interface RetrievalScore {
+  id: string;
+  source: string;
+  similarity: number;
+  rrf_score: number;
+}
+
+interface RetrievalEvent {
+  chat_id: string;
+  query_text: string;
+  rewritten_query: string | null;
+  chunk_ids: string[];
+  scores: RetrievalScore[];
+}
+
+// Records which chunks were surfaced for a query, plus their scores, for
+// retrieval traceability. Best-effort — never blocks the chat response.
+export async function trackRetrieval(event: RetrievalEvent): Promise<void> {
+  const { error } = await supabase.from("retrieval_analytics").insert({
+    chat_id: event.chat_id,
+    query_text: event.query_text,
+    rewritten_query: event.rewritten_query,
+    chunk_ids: event.chunk_ids,
+    scores: event.scores,
+  });
+
+  if (error) {
+    console.error("Failed to track retrieval analytics:", error.message);
+  }
+}
