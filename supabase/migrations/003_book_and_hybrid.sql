@@ -1,6 +1,12 @@
 -- Phase 1: Book source + hybrid (RRF) search.
 -- Additive only — existing rows and the original match_content_chunks RPC keep working.
 
+-- 0. The GIN index build over the fts column needs more memory than the
+--    Supabase free-tier default (maintenance_work_mem = 32MB). Raise it for
+--    this session so `create index ... using gin(fts)` doesn't fail with
+--    "memory required is N MB, maintenance_work_mem is 32 MB" (SQLSTATE 54000).
+set maintenance_work_mem = '128MB';
+
 -- 1. Allow the `book` source. The inline check constraint from 001 is named
 --    content_chunk_source_check by Postgres convention; drop + re-add it.
 alter table public.content_chunk
