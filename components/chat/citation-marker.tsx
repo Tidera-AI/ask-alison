@@ -7,8 +7,9 @@ import {
   HoverCardContent,
   HoverCardTrigger,
 } from "@/components/ui/hover-card";
+import { buildSourceIndex, resolveCitation } from "@/lib/markdown/citations";
 import type { ChatSource } from "@/lib/rag/format";
-import { cn } from "@/lib/utils";
+import { cn, safeExternalUrl } from "@/lib/utils";
 
 interface CitationMarkerProps {
   index: number;
@@ -19,6 +20,7 @@ interface CitationMarkerProps {
 // underlying source on hover. Book sources have no URL, so the trigger is only
 // a link when one is available.
 function CitationMarker({ index, source }: CitationMarkerProps) {
+  const href = safeExternalUrl(source.url);
   const trigger = (
     <sup
       className={cn(
@@ -34,8 +36,8 @@ function CitationMarker({ index, source }: CitationMarkerProps) {
   return (
     <HoverCard closeDelay={80} openDelay={80}>
       <HoverCardTrigger asChild>
-        {source.url ? (
-          <a href={source.url} rel="noreferrer" target="_blank">
+        {href ? (
+          <a href={href} rel="noreferrer" target="_blank">
             {trigger}
           </a>
         ) : (
@@ -49,10 +51,10 @@ function CitationMarker({ index, source }: CitationMarkerProps) {
           <BookIcon className="mt-0.5 size-4 shrink-0 text-primary" />
           <div className="min-w-0 space-y-1">
             <p className="font-medium text-xs leading-snug">{source.label}</p>
-            {source.url ? (
+            {href ? (
               <a
                 className="text-muted-foreground text-xs underline underline-offset-2 hover:text-foreground"
-                href={source.url}
+                href={href}
                 rel="noreferrer"
                 target="_blank"
               >
@@ -75,19 +77,15 @@ type CiteProps = ComponentProps<"cite"> & { node?: CiteNode };
 // produced by rehypeInlineCitations. Unknown indices fall back to the literal
 // marker text so a hallucinated [9] never throws.
 export function createCitationComponents(sources: ChatSource[]) {
-  const byIndex = new Map(sources.map((source) => [source.index, source]));
+  const byIndex = buildSourceIndex(sources);
 
   return {
     cite: ({ node, children }: CiteProps) => {
-      const raw = node?.properties?.dataIndex;
-      const index = typeof raw === "string" ? Number.parseInt(raw, 10) : raw;
-      const source = typeof index === "number" ? byIndex.get(index) : undefined;
-
-      if (!source || typeof index !== "number") {
+      const resolved = resolveCitation(byIndex, node?.properties?.dataIndex);
+      if (!resolved) {
         return <>{children}</>;
       }
-
-      return <CitationMarker index={index} source={source} />;
+      return <CitationMarker index={resolved.index} source={resolved.source} />;
     },
   };
 }

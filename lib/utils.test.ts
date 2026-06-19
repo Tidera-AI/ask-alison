@@ -1,5 +1,30 @@
 import { describe, expect, it, vi } from "vitest";
-import { fetcher } from "./utils";
+import { fetcher, safeExternalUrl } from "./utils";
+
+describe("safeExternalUrl", () => {
+  it("returns undefined for empty values", () => {
+    expect(safeExternalUrl(null)).toBeUndefined();
+    expect(safeExternalUrl(undefined)).toBeUndefined();
+    expect(safeExternalUrl("")).toBeUndefined();
+  });
+
+  it("allows http and https URLs", () => {
+    expect(safeExternalUrl("https://example.com/a")).toBe(
+      "https://example.com/a"
+    );
+    expect(safeExternalUrl("http://example.com")).toBe("http://example.com");
+  });
+
+  it("allows site-relative URLs", () => {
+    expect(safeExternalUrl("/blog/post")).toBe("/blog/post");
+  });
+
+  it("rejects dangerous schemes", () => {
+    expect(safeExternalUrl("javascript:alert(1)")).toBeUndefined();
+    expect(safeExternalUrl("data:text/html,<script>")).toBeUndefined();
+    expect(safeExternalUrl("vbscript:msgbox")).toBeUndefined();
+  });
+});
 
 describe("fetcher", () => {
   it("returns parsed JSON for successful responses", async () => {

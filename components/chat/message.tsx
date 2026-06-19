@@ -3,7 +3,7 @@ import type { UseChatHelpers } from "@ai-sdk/react";
 import type { Vote } from "@/lib/db/schema";
 import type { ChatSource } from "@/lib/rag/format";
 import type { ChatMessage } from "@/lib/types";
-import { cn, sanitizeText } from "@/lib/utils";
+import { cn, safeExternalUrl, sanitizeText } from "@/lib/utils";
 import { MessageContent, MessageResponse } from "../ai-elements/message";
 import { Shimmer } from "../ai-elements/shimmer";
 import {
@@ -138,7 +138,7 @@ const PurePreviewMessage = ({
           <SourcesContent>
             {sources.map((source) => (
               <Source
-                href={source.url ?? undefined}
+                href={safeExternalUrl(source.url)}
                 key={source.id}
                 title={`[${source.index}] ${source.label}`}
               />
