@@ -1,5 +1,8 @@
+import { timingSafeEqual } from "node:crypto";
 import { createClient } from "@supabase/supabase-js";
 import { embedMany, gateway } from "ai";
+import { chunkText } from "@/lib/rag/chunker";
+import { contentHash } from "@/lib/rag/hash";
 
 const EMBEDDING_MODEL = gateway.textEmbeddingModel(
   "openai/text-embedding-3-small"
@@ -10,43 +13,16 @@ const supabase = createClient(
   process.env.SUPABASE_SERVICE_ROLE_KEY ?? ""
 );
 
-// Simple word-based chunker (inline to avoid import issues)
-function chunkText(
-  text: string,
-  opts?: { maxTokens?: number; overlapTokens?: number }
-) {
-  const maxTokens = opts?.maxTokens ?? 600;
-  const overlapTokens = opts?.overlapTokens ?? 75;
-  const words = text.split(/\s+/).filter((w) => w.length > 0);
-  const maxWords = Math.floor(maxTokens / 1.3);
-  const overlapWords = Math.floor(overlapTokens / 1.3);
-
-  if (words.length <= maxWords) {
-    return [words.join(" ")];
+// Constant-time comparison against the dedicated INGEST_SECRET. Avoids both
+// timing leaks and the previous practice of reusing the service-role key.
+function isAuthorized(provided: string | null): boolean {
+  const expected = process.env.INGEST_SECRET;
+  if (!expected || !provided) {
+    return false;
   }
-
-  const chunks: string[] = [];
-  let start = 0;
-  while (start < words.length) {
-    const end = Math.min(start + maxWords, words.length);
-    chunks.push(words.slice(start, end).join(" "));
-    if (end >= words.length) {
-      break;
-    }
-    start = end - overlapWords;
-  }
-  return chunks;
-}
-
-function contentHash(text: string): string {
-  // Simple hash using built-in
-  let hash = 0;
-  for (let i = 0; i < text.length; i++) {
-    const chr = text.charCodeAt(i);
-    hash = (hash << 5) - hash + chr;
-    hash |= 0;
-  }
-  return Math.abs(hash).toString(16).padStart(8, "0").slice(0, 16);
+  const a = Buffer.from(provided);
+  const b = Buffer.from(expected);
+  return a.length === b.length && timingSafeEqual(a, b);
 }
 
 async function embedBatch(texts: string[]): Promise<number[][]> {
@@ -66,9 +42,8 @@ async function embedBatch(texts: string[]): Promise<number[][]> {
 }
 
 export async function POST(request: Request) {
-  // Simple auth check — require a secret header
-  const authHeader = request.headers.get("x-ingest-secret");
-  if (authHeader !== (process.env.SUPABASE_SERVICE_ROLE_KEY ?? "").slice(-10)) {
+  // Require the dedicated INGEST_SECRET via header (constant-time compare).
+  if (!isAuthorized(request.headers.get("x-ingest-secret"))) {
     return Response.json({ error: "Unauthorized" }, { status: 401 });
   }
 

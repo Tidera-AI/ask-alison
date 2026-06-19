@@ -3,7 +3,7 @@ import { generateText, streamText } from "ai";
 import { DEFAULT_CHAT_MODEL_ID } from "@/lib/ai/models";
 import { buildSystemPrompt, titlePrompt } from "@/lib/ai/prompts";
 import { getLanguageModel, getTitleModel } from "@/lib/ai/providers";
-import { trackQuestion } from "@/lib/analytics/track";
+import { trackQuestion, trackRetrieval } from "@/lib/analytics/track";
 import {
   getChatById,
   getMessagesByChatId,
@@ -12,8 +12,10 @@ import {
   saveMessage,
   updateChatTitle,
 } from "@/lib/db/queries";
+import { buildRetrievalQuery } from "@/lib/rag/query-rewrite";
 import {
   formatChunksForPrompt,
+  hasBookSource,
   retrieveRelevantChunks,
 } from "@/lib/rag/retrieval";
 import { getOrCreateSessionUserId } from "@/lib/session/anonymous";
@@ -61,8 +63,20 @@ export async function POST(request: Request) {
       content: userText,
     });
 
-    // RAG: retrieve relevant content chunks
-    const chunks = await retrieveRelevantChunks(userText);
+    // Conversation history (the just-saved user message is the final entry;
+    // exclude it when building the retrieval query so we fold in prior turns).
+    const previousMessages = await getMessagesByChatId(chatId);
+    const conversationHistory = previousMessages.slice(-10).map((m) => ({
+      role: m.role as "user" | "assistant",
+      content: m.content,
+    }));
+    const priorTurns = conversationHistory.slice(0, -1);
+
+    // Fold recent conversation into a standalone retrieval query for follow-ups.
+    const retrievalQuery = await buildRetrievalQuery(userText, priorTurns);
+
+    // RAG: hybrid retrieval over the retrieval query.
+    const chunks = await retrieveRelevantChunks(retrievalQuery);
     const context = formatChunksForPrompt(chunks);
 
     // Track analytics (fire and forget)
@@ -77,15 +91,26 @@ export async function POST(request: Request) {
       /* fire and forget */
     });
 
-    // Get conversation history for context
-    const previousMessages = await getMessagesByChatId(chatId);
-    const conversationHistory = previousMessages.slice(-10).map((m) => ({
-      role: m.role as "user" | "assistant",
-      content: m.content,
-    }));
+    trackRetrieval({
+      chat_id: chatId,
+      query_text: userText,
+      rewritten_query: retrievalQuery === userText ? null : retrievalQuery,
+      chunk_ids: chunks.map((c) => c.id),
+      scores: chunks.map((c) => ({
+        id: c.id,
+        source: c.source,
+        similarity: c.similarity,
+        rrf_score: c.rrfScore,
+      })),
+    }).catch(() => {
+      /* fire and forget */
+    });
 
-    // Build system prompt with retrieved context
-    const systemPrompt = buildSystemPrompt(context);
+    // Build system prompt with retrieved context; cite the book only when
+    // book chunks were actually retrieved.
+    const systemPrompt = buildSystemPrompt(context, {
+      hasBookContext: hasBookSource(chunks),
+    });
 
     const result = streamText({
       model: getLanguageModel(DEFAULT_CHAT_MODEL_ID),

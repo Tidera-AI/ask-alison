@@ -69,3 +69,46 @@ pnpm dev
 ```
 
 Your app template should now be running on [localhost:3000](http://localhost:3000).
+
+## Content ingestion & hybrid retrieval
+
+Retrieval uses **hybrid search** (full-text + vector, fused with Reciprocal Rank
+Fusion) over the `content_chunk` table via the `match_content_chunks_hybrid`
+RPC. The original vector-only `match_content_chunks` RPC is retained for
+rollback. Apply `supabase/migrations/003_book_and_hybrid.sql` to enable it.
+
+### Article/blog content
+
+```bash
+pnpm ingest            # local: embeds files in ./content and inserts rows
+# or, against the deployed endpoint (requires INGEST_SECRET, see below):
+INGEST_SECRET=… tsx scripts/ingest-remote.ts
+```
+
+### Book ingestion (`Was It Something I Said?`)
+
+`scripts/ingest-book.ts` is **dry-run by default** — it never writes to the DB
+until you pass `--commit`. Always review the extracted chunks first.
+
+```bash
+# 1. Dry run — writes chunks + metadata to tmp/book-chunks.json for review
+pnpm ingest:book ~/Downloads/"Was It Something I Said_watermarked.pdf"
+
+# 2. Eyeball tmp/book-chunks.json (chapter/section/page metadata, no watermark
+#    text, sane page ranges), tuning CLEAN_PATTERNS / CHAPTER_REGEX if needed
+
+# 3. Commit to a staging target first, then production once evals pass
+SUPABASE_URL=… SUPABASE_SERVICE_ROLE_KEY=… OPENAI_API_KEY=… \
+  pnpm ingest:book ~/Downloads/"Was It Something I Said_watermarked.pdf" --commit
+```
+
+Each chunk is embedded with an Anthropic-style contextual header
+(`From <book>, Chapter N, "…", on <section>.`) prepended before embedding; the
+clean display text is stored separately in `content`. Book rows carry chapter,
+section, page, and `content_version` metadata used for rich source labels.
+
+### Ingest endpoint security
+
+`POST /api/ingest` is gated by a dedicated **`INGEST_SECRET`** (constant-time
+compared), set in your environment — it no longer reuses the service-role key.
+Generate one with `openssl rand -base64 32`.

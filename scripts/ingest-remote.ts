@@ -6,7 +6,7 @@ const SECRET = process.env.INGEST_SECRET ?? "";
 
 if (!SECRET) {
   console.error(
-    "Set INGEST_SECRET to the last 10 chars of your SUPABASE_SERVICE_ROLE_KEY"
+    "Set INGEST_SECRET to the dedicated ingest secret configured on the server"
   );
   process.exit(1);
 }
