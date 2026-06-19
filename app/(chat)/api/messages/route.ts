@@ -25,13 +25,40 @@ export async function GET(request: Request) {
 
   const messages = await getMessagesByChatId(chatId);
 
-  // Convert DB messages to the UIMessage-like format the client expects
-  const uiMessages = messages.map((m) => ({
-    id: m.id,
-    role: m.role,
-    parts: [{ type: "text" as const, text: m.content }],
-    createdAt: m.created_at,
-  }));
+  // Convert DB messages to the UIMessage-like format the client expects.
+  // Reconstruct the sources/notice data part from the persisted `sources`:
+  //   [..]  -> "Used N sources" panel + inline citations
+  //   []    -> graceful "no context" notice
+  //   null  -> legacy message, nothing extra
+  const uiMessages = messages.map((m) => {
+    const parts: Array<{
+      type: string;
+      id?: string;
+      text?: string;
+      data?: unknown;
+    }> = [];
+
+    if (m.role === "assistant" && Array.isArray(m.sources)) {
+      if (m.sources.length > 0) {
+        parts.push({ type: "data-sources", id: "sources", data: m.sources });
+      } else {
+        parts.push({
+          type: "data-notice",
+          id: "notice",
+          data: { kind: "no-context" },
+        });
+      }
+    }
+
+    parts.push({ type: "text" as const, text: m.content });
+
+    return {
+      id: m.id,
+      role: m.role,
+      parts,
+      createdAt: m.created_at,
+    };
+  });
 
   return Response.json({
     messages: uiMessages,

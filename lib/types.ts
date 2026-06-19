@@ -36,6 +36,7 @@ export type CustomUIDataTypes = {
   finish: null;
   "chat-title": string;
   sources: ChatSource[];
+  notice: { kind: "no-context" };
 };
 
 export type ChatMessage = UIMessage<

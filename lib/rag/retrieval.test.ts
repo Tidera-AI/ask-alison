@@ -129,6 +129,7 @@ describe("chunksToSources", () => {
     ]);
     expect(source).toEqual([
       {
+        index: 1,
         id: "a",
         label: "Etiquette Blog (blog)",
         source: "blog",
@@ -137,7 +138,17 @@ describe("chunksToSources", () => {
     ]);
   });
 
-  it("de-duplicates chunks that share a display label", () => {
+  it("assigns 1-based indices in order to align with prompt numbering", () => {
+    const sources = chunksToSources([
+      chunk({ id: "a" }),
+      chunk({ id: "b" }),
+      chunk({ id: "c" }),
+    ]);
+    expect(sources.map((s) => s.index)).toEqual([1, 2, 3]);
+    expect(sources.map((s) => s.id)).toEqual(["a", "b", "c"]);
+  });
+
+  it("keeps every chunk (no de-duplication) so indices stay aligned", () => {
     const meta = {
       book_title: "Was It Something I Said?",
       chapter_number: 3,
@@ -147,8 +158,8 @@ describe("chunksToSources", () => {
       chunk({ id: "a", source: "book", metadata: meta }),
       chunk({ id: "b", source: "book", metadata: meta }),
     ]);
-    expect(sources).toHaveLength(1);
-    expect(sources[0].id).toBe("a");
+    expect(sources).toHaveLength(2);
+    expect(sources.map((s) => s.index)).toEqual([1, 2]);
   });
 
   it("preserves a null url", () => {

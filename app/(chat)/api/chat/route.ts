@@ -119,15 +119,23 @@ export async function POST(request: Request) {
       hasBookContext: hasBookSource(chunks),
     });
 
-    // De-duplicated citations to surface beneath the answer in the UI.
+    // Citations to surface beneath the answer, numbered to match the inline
+    // [n] markers the model emits (see formatChunksForPrompt numbering).
     const sources = chunksToSources(chunks);
 
     const stream = createUIMessageStream<ChatMessage>({
       execute: ({ writer }) => {
-        // Emit sources first so they render above the streamed answer. Only
-        // when something was actually retrieved (off-topic queries get none).
+        // Emit sources first so they render above the streamed answer. When
+        // nothing relevant was retrieved, emit a notice so the UI can frame the
+        // reply as general guidance rather than a book-grounded answer.
         if (sources.length > 0) {
           writer.write({ type: "data-sources", id: "sources", data: sources });
+        } else {
+          writer.write({
+            type: "data-notice",
+            id: "notice",
+            data: { kind: "no-context" },
+          });
         }
 
         const result = streamText({
@@ -135,12 +143,14 @@ export async function POST(request: Request) {
           system: systemPrompt,
           messages: conversationHistory,
           onFinish: async ({ text }) => {
-            // Save assistant response
+            // Save assistant response with its sources so the citations and
+            // notice survive a reload. [] explicitly records "no context".
             await saveMessage({
               id: randomUUID(),
               chat_id: chatId,
               role: "assistant",
               content: text,
+              sources,
             });
 
             // Generate title for new chats

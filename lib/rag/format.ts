@@ -84,35 +84,29 @@ export function hasBookSource(chunks: RetrievedChunk[]): boolean {
 }
 
 // Lightweight, serializable source descriptor surfaced to the chat UI so the
-// assistant can show "Used N sources" beneath book-grounded answers.
+// assistant can show "Used N sources" beneath book-grounded answers and render
+// inline `[n]` citation markers.
 export interface ChatSource {
+  /** 1-based position; matches the [Source n] numbering used in the prompt. */
+  index: number;
   id: string;
   label: string;
   source: string;
   url: string | null;
 }
 
-// Convert retrieved chunks into UI sources, de-duplicating by display label so
-// several chunks from the same chapter collapse into a single citation.
+// Convert retrieved chunks into UI sources. Kept 1:1 and in order with the
+// chunks so the index lines up with the `[Source n]` labels the model sees in
+// formatChunksForPrompt — that alignment is what makes inline [n] markers point
+// at the right source.
 export function chunksToSources(chunks: RetrievedChunk[]): ChatSource[] {
-  const seen = new Set<string>();
-  const sources: ChatSource[] = [];
-
-  for (const chunk of chunks) {
-    const label = chunkSourceLabel(chunk);
-    if (seen.has(label)) {
-      continue;
-    }
-    seen.add(label);
-    sources.push({
-      id: chunk.id,
-      label,
-      source: chunk.source,
-      url: chunk.url,
-    });
-  }
-
-  return sources;
+  return chunks.map((chunk, i) => ({
+    index: i + 1,
+    id: chunk.id,
+    label: chunkSourceLabel(chunk),
+    source: chunk.source,
+    url: chunk.url,
+  }));
 }
 
 // Default cosine-similarity floor below which a chunk is treated as off-topic.

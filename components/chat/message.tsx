@@ -1,6 +1,7 @@
 "use client";
 import type { UseChatHelpers } from "@ai-sdk/react";
 import type { Vote } from "@/lib/db/schema";
+import type { ChatSource } from "@/lib/rag/format";
 import type { ChatMessage } from "@/lib/types";
 import { cn, sanitizeText } from "@/lib/utils";
 import { MessageContent, MessageResponse } from "../ai-elements/message";
@@ -24,6 +25,7 @@ import { DocumentPreview } from "./document-preview";
 import { MessageActions } from "./message-actions";
 import { MessageReasoning } from "./message-reasoning";
 import { PreviewAttachment } from "./preview-attachment";
+import { SourceNotice } from "./source-notice";
 import { Weather } from "./weather";
 
 const PurePreviewMessage = ({
@@ -100,6 +102,13 @@ const PurePreviewMessage = ({
     { text: "", isStreaming: false, rendered: false }
   ) ?? { text: "", isStreaming: false, rendered: false };
 
+  // Sources travel as a separate data part; pull them out once so the text
+  // renderer can resolve inline [n] markers against them.
+  const messageSources = message.parts?.reduce<ChatSource[] | undefined>(
+    (acc, part) => (part.type === "data-sources" ? part.data : acc),
+    undefined
+  );
+
   const parts = message.parts?.map((part, index) => {
     const { type } = part;
     const key = `message-${message.id}-part-${index}`;
@@ -131,12 +140,19 @@ const PurePreviewMessage = ({
               <Source
                 href={source.url ?? undefined}
                 key={source.id}
-                title={source.label}
+                title={`[${source.index}] ${source.label}`}
               />
             ))}
           </SourcesContent>
         </Sources>
       );
+    }
+
+    if (type === "data-notice") {
+      if (part.data?.kind !== "no-context") {
+        return null;
+      }
+      return <SourceNotice key={key} />;
     }
 
     if (type === "text") {
@@ -149,7 +165,9 @@ const PurePreviewMessage = ({
           data-testid="message-content"
           key={key}
         >
-          <MessageResponse>{sanitizeText(part.text)}</MessageResponse>
+          <MessageResponse sources={isAssistant ? messageSources : undefined}>
+            {sanitizeText(part.text)}
+          </MessageResponse>
         </MessageContent>
       );
     }

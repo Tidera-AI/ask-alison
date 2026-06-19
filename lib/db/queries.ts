@@ -1,4 +1,11 @@
+import type { ChatSource } from "@/lib/rag/format";
 import { supabase } from "./supabase";
+
+// PostgREST raises PGRST204 when a column is absent from its schema cache —
+// used to degrade gracefully before migration 004 (message.sources) is applied.
+function isUnknownColumnError(error: { code?: string } | null): boolean {
+  return error?.code === "PGRST204";
+}
 
 // --- User ---
 
@@ -108,19 +115,35 @@ export async function saveMessage({
   chat_id,
   role,
   content,
+  sources = null,
 }: {
   id: string;
   chat_id: string;
   role: "user" | "assistant";
   content: string;
+  sources?: ChatSource[] | null;
 }) {
   const { error } = await supabase
     .from("message")
-    .insert({ id, chat_id, role, content });
+    .insert({ id, chat_id, role, content, sources });
 
-  if (error) {
-    throw new Error(`Failed to save message: ${error.message}`);
+  if (!error) {
+    return;
   }
+
+  // Before migration 004 adds the `sources` column, retry without it so chat
+  // keeps working (citations simply won't persist until the migration runs).
+  if (isUnknownColumnError(error)) {
+    const { error: retryError } = await supabase
+      .from("message")
+      .insert({ id, chat_id, role, content });
+    if (retryError) {
+      throw new Error(`Failed to save message: ${retryError.message}`);
+    }
+    return;
+  }
+
+  throw new Error(`Failed to save message: ${error.message}`);
 }
 
 export async function saveMessages(
