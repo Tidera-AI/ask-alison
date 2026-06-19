@@ -7,9 +7,10 @@ import {
   type RetrievedChunk,
 } from "./format";
 
-export type { ChunkMetadata, RetrievedChunk } from "./format";
+export type { ChatSource, ChunkMetadata, RetrievedChunk } from "./format";
 export {
   chunkSourceLabel,
+  chunksToSources,
   filterByRelevance,
   formatChunksForPrompt,
   hasBookSource,

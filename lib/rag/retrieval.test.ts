@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import {
   chunkSourceLabel,
+  chunksToSources,
   filterByRelevance,
   formatChunksForPrompt,
   hasBookSource,
@@ -114,5 +115,43 @@ describe("filterByRelevance", () => {
   it("uses the default floor when none is given", () => {
     expect(filterByRelevance([chunk({ similarity: 0.5 })])).toHaveLength(1);
     expect(filterByRelevance([chunk({ similarity: 0.01 })])).toHaveLength(0);
+  });
+});
+
+describe("chunksToSources", () => {
+  it("returns an empty array for no chunks", () => {
+    expect(chunksToSources([])).toEqual([]);
+  });
+
+  it("maps a chunk to a serializable source with its display label", () => {
+    const source = chunksToSources([
+      chunk({ id: "a", source: "blog", title: "Etiquette Blog", url: "/blog" }),
+    ]);
+    expect(source).toEqual([
+      {
+        id: "a",
+        label: "Etiquette Blog (blog)",
+        source: "blog",
+        url: "/blog",
+      },
+    ]);
+  });
+
+  it("de-duplicates chunks that share a display label", () => {
+    const meta = {
+      book_title: "Was It Something I Said?",
+      chapter_number: 3,
+      chapter_title: "The Apology",
+    };
+    const sources = chunksToSources([
+      chunk({ id: "a", source: "book", metadata: meta }),
+      chunk({ id: "b", source: "book", metadata: meta }),
+    ]);
+    expect(sources).toHaveLength(1);
+    expect(sources[0].id).toBe("a");
+  });
+
+  it("preserves a null url", () => {
+    expect(chunksToSources([chunk({ url: null })])[0].url).toBeNull();
   });
 });

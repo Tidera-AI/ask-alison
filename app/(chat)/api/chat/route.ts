@@ -1,5 +1,10 @@
 import { randomUUID } from "node:crypto";
-import { generateText, streamText } from "ai";
+import {
+  createUIMessageStream,
+  createUIMessageStreamResponse,
+  generateText,
+  streamText,
+} from "ai";
 import { DEFAULT_CHAT_MODEL_ID } from "@/lib/ai/models";
 import { buildSystemPrompt, titlePrompt } from "@/lib/ai/prompts";
 import { getLanguageModel, getTitleModel } from "@/lib/ai/providers";
@@ -14,11 +19,13 @@ import {
 } from "@/lib/db/queries";
 import { buildRetrievalQuery } from "@/lib/rag/query-rewrite";
 import {
+  chunksToSources,
   formatChunksForPrompt,
   hasBookSource,
   retrieveRelevantChunks,
 } from "@/lib/rag/retrieval";
 import { getOrCreateSessionUserId } from "@/lib/session/anonymous";
+import type { ChatMessage } from "@/lib/types";
 import { chatRequestSchema, extractMessageText } from "./schema";
 
 export async function POST(request: Request) {
@@ -112,32 +119,47 @@ export async function POST(request: Request) {
       hasBookContext: hasBookSource(chunks),
     });
 
-    const result = streamText({
-      model: getLanguageModel(DEFAULT_CHAT_MODEL_ID),
-      system: systemPrompt,
-      messages: conversationHistory,
-      onFinish: async ({ text }) => {
-        // Save assistant response
-        await saveMessage({
-          id: randomUUID(),
-          chat_id: chatId,
-          role: "assistant",
-          content: text,
+    // De-duplicated citations to surface beneath the answer in the UI.
+    const sources = chunksToSources(chunks);
+
+    const stream = createUIMessageStream<ChatMessage>({
+      execute: ({ writer }) => {
+        // Emit sources first so they render above the streamed answer. Only
+        // when something was actually retrieved (off-topic queries get none).
+        if (sources.length > 0) {
+          writer.write({ type: "data-sources", id: "sources", data: sources });
+        }
+
+        const result = streamText({
+          model: getLanguageModel(DEFAULT_CHAT_MODEL_ID),
+          system: systemPrompt,
+          messages: conversationHistory,
+          onFinish: async ({ text }) => {
+            // Save assistant response
+            await saveMessage({
+              id: randomUUID(),
+              chat_id: chatId,
+              role: "assistant",
+              content: text,
+            });
+
+            // Generate title for new chats
+            if (!existingChat) {
+              const titleResult = await generateText({
+                model: getTitleModel(),
+                system: titlePrompt,
+                messages: [{ role: "user" as const, content: userText }],
+              });
+              await updateChatTitle(chatId, titleResult.text.trim());
+            }
+          },
         });
 
-        // Generate title for new chats
-        if (!existingChat) {
-          const titleResult = await generateText({
-            model: getTitleModel(),
-            system: titlePrompt,
-            messages: [{ role: "user" as const, content: userText }],
-          });
-          await updateChatTitle(chatId, titleResult.text.trim());
-        }
+        writer.merge(result.toUIMessageStream());
       },
     });
 
-    return result.toUIMessageStreamResponse();
+    return createUIMessageStreamResponse({ stream });
   } catch (error) {
     console.error("Chat API error:", error);
     return Response.json(

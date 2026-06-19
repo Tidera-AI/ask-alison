@@ -6,6 +6,12 @@ import { cn, sanitizeText } from "@/lib/utils";
 import { MessageContent, MessageResponse } from "../ai-elements/message";
 import { Shimmer } from "../ai-elements/shimmer";
 import {
+  Source,
+  Sources,
+  SourcesContent,
+  SourcesTrigger,
+} from "../ai-elements/sources";
+import {
   Tool,
   ToolContent,
   ToolHeader,
@@ -110,6 +116,27 @@ const PurePreviewMessage = ({
         );
       }
       return null;
+    }
+
+    if (type === "data-sources") {
+      const sources = part.data;
+      if (!sources?.length) {
+        return null;
+      }
+      return (
+        <Sources key={key}>
+          <SourcesTrigger count={sources.length} />
+          <SourcesContent>
+            {sources.map((source) => (
+              <Source
+                href={source.url ?? undefined}
+                key={source.id}
+                title={source.label}
+              />
+            ))}
+          </SourcesContent>
+        </Sources>
+      );
     }
 
     if (type === "text") {
