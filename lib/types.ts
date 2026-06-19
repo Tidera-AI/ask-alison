@@ -1,6 +1,7 @@
 import type { InferUITool, UIMessage } from "ai";
 import { z } from "zod";
 import type { ArtifactKind } from "@/components/chat/artifact";
+import type { ChatSource } from "@/lib/rag/format";
 
 export const messageMetadataSchema = z.object({
   createdAt: z.string(),
@@ -34,6 +35,8 @@ export type CustomUIDataTypes = {
   clear: null;
   finish: null;
   "chat-title": string;
+  sources: ChatSource[];
+  notice: { kind: "no-context" };
 };
 
 export type ChatMessage = UIMessage<

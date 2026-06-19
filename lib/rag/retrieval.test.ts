@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import {
   chunkSourceLabel,
+  chunksToSources,
   filterByRelevance,
   formatChunksForPrompt,
   hasBookSource,
@@ -114,5 +115,54 @@ describe("filterByRelevance", () => {
   it("uses the default floor when none is given", () => {
     expect(filterByRelevance([chunk({ similarity: 0.5 })])).toHaveLength(1);
     expect(filterByRelevance([chunk({ similarity: 0.01 })])).toHaveLength(0);
+  });
+});
+
+describe("chunksToSources", () => {
+  it("returns an empty array for no chunks", () => {
+    expect(chunksToSources([])).toEqual([]);
+  });
+
+  it("maps a chunk to a serializable source with its display label", () => {
+    const source = chunksToSources([
+      chunk({ id: "a", source: "blog", title: "Etiquette Blog", url: "/blog" }),
+    ]);
+    expect(source).toEqual([
+      {
+        index: 1,
+        id: "a",
+        label: "Etiquette Blog (blog)",
+        source: "blog",
+        url: "/blog",
+      },
+    ]);
+  });
+
+  it("assigns 1-based indices in order to align with prompt numbering", () => {
+    const sources = chunksToSources([
+      chunk({ id: "a" }),
+      chunk({ id: "b" }),
+      chunk({ id: "c" }),
+    ]);
+    expect(sources.map((s) => s.index)).toEqual([1, 2, 3]);
+    expect(sources.map((s) => s.id)).toEqual(["a", "b", "c"]);
+  });
+
+  it("keeps every chunk (no de-duplication) so indices stay aligned", () => {
+    const meta = {
+      book_title: "Was It Something I Said?",
+      chapter_number: 3,
+      chapter_title: "The Apology",
+    };
+    const sources = chunksToSources([
+      chunk({ id: "a", source: "book", metadata: meta }),
+      chunk({ id: "b", source: "book", metadata: meta }),
+    ]);
+    expect(sources).toHaveLength(2);
+    expect(sources.map((s) => s.index)).toEqual([1, 2]);
+  });
+
+  it("preserves a null url", () => {
+    expect(chunksToSources([chunk({ url: null })])[0].url).toBeNull();
   });
 });

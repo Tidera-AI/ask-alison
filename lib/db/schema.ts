@@ -15,6 +15,8 @@ export type DBMessage = {
   role: "user" | "assistant";
   content: string;
   parts: unknown;
+  // Persisted RAG citations (see migration 004). Null for legacy/user messages.
+  sources: unknown;
   createdAt: Date;
 };
 

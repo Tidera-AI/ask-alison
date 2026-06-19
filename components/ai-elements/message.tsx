@@ -1,17 +1,36 @@
 "use client";
 
 import type { ComponentPropsWithoutRef } from "react";
-import { Streamdown } from "streamdown";
+import { defaultRehypePlugins, Streamdown } from "streamdown";
+import { createCitationComponents } from "@/components/chat/citation-marker";
+import type { ChatSource } from "@/lib/rag/format";
+import { rehypeInlineCitations } from "@/lib/markdown/rehype-inline-citations";
 import { cn } from "@/lib/utils";
 
 export function MessageResponse({
   children,
   className,
+  sources,
   ...props
-}: ComponentPropsWithoutRef<"div"> & { children: string }) {
+}: ComponentPropsWithoutRef<"div"> & {
+  children: string;
+  sources?: ChatSource[];
+}) {
+  // Only enable inline-citation rendering when the message has sources to
+  // point at; otherwise leave Streamdown's defaults completely untouched.
+  const hasSources = Boolean(sources && sources.length > 0);
+  const rehypePlugins = hasSources
+    ? [...Object.values(defaultRehypePlugins), rehypeInlineCitations]
+    : undefined;
+  const components = hasSources
+    ? createCitationComponents(sources as ChatSource[])
+    : undefined;
+
   return (
     <div className={cn("prose prose-sm max-w-none dark:prose-invert", className)} {...props}>
-      <Streamdown>{children}</Streamdown>
+      <Streamdown components={components} rehypePlugins={rehypePlugins}>
+        {children}
+      </Streamdown>
     </div>
   );
 }

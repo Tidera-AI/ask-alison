@@ -80,6 +80,25 @@ export function sanitizeText(text: string) {
   return text.replace('<has_function_call>', '');
 }
 
+// Only allow http(s) URLs to be used as link targets. Source URLs come from the
+// trusted ingestion table, but this guards against a stored `javascript:` (or
+// other scheme) href slipping through into a hand-rendered anchor.
+export function safeExternalUrl(
+  url: string | null | undefined
+): string | undefined {
+  if (!url) {
+    return undefined;
+  }
+  try {
+    const parsed = new URL(url, 'https://example.com');
+    return parsed.protocol === 'http:' || parsed.protocol === 'https:'
+      ? url
+      : undefined;
+  } catch {
+    return undefined;
+  }
+}
+
 export function getTextFromMessage(message: ChatMessage | UIMessage): string {
   return message.parts
     .filter((part) => part.type === 'text')

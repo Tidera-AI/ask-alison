@@ -1,3 +1,4 @@
+import { dbMessagesToUiMessages } from "@/lib/chat/history";
 import { getChatById, getMessagesByChatId } from "@/lib/db/queries";
 import { getOrCreateSessionUserId } from "@/lib/session/anonymous";
 
@@ -25,13 +26,9 @@ export async function GET(request: Request) {
 
   const messages = await getMessagesByChatId(chatId);
 
-  // Convert DB messages to the UIMessage-like format the client expects
-  const uiMessages = messages.map((m) => ({
-    id: m.id,
-    role: m.role,
-    parts: [{ type: "text" as const, text: m.content }],
-    createdAt: m.created_at,
-  }));
+  // Convert DB rows to the UIMessage-like format the client expects, rebuilding
+  // the sources/notice data part from the persisted `sources` column.
+  const uiMessages = dbMessagesToUiMessages(messages);
 
   return Response.json({
     messages: uiMessages,
