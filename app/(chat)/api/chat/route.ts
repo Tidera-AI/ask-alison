@@ -7,8 +7,16 @@ import {
 } from "ai";
 import { DEFAULT_CHAT_MODEL_ID } from "@/lib/ai/models";
 import { buildSystemPrompt, titlePrompt } from "@/lib/ai/prompts";
-import { getLanguageModel, getTitleModel } from "@/lib/ai/providers";
-import { trackQuestion, trackRetrieval } from "@/lib/analytics/track";
+import {
+  EVAL_MODEL_ID,
+  getLanguageModel,
+  getTitleModel,
+} from "@/lib/ai/providers";
+import {
+  trackQuestion,
+  trackResponseEval,
+  trackRetrieval,
+} from "@/lib/analytics/track";
 import {
   getChatById,
   getMessagesByChatId,
@@ -17,6 +25,7 @@ import {
   saveMessage,
   updateChatTitle,
 } from "@/lib/db/queries";
+import { evaluateResponse } from "@/lib/rag/eval";
 import { buildRetrievalQuery } from "@/lib/rag/query-rewrite";
 import {
   chunksToSources,
@@ -27,6 +36,10 @@ import {
 import { getOrCreateSessionUserId } from "@/lib/session/anonymous";
 import type { ChatMessage } from "@/lib/types";
 import { chatRequestSchema, extractMessageText } from "./schema";
+
+// Off by default: each graded answer costs an extra (cheap) grader call. Enable
+// deliberately where that cost is acceptable, e.g. for a pre-launch eval run.
+const RESPONSE_EVAL_ENABLED = process.env.RESPONSE_EVAL_ENABLED === "true";
 
 export async function POST(request: Request) {
   const body = await request.json();
@@ -145,13 +158,35 @@ export async function POST(request: Request) {
           onFinish: async ({ text }) => {
             // Save assistant response with its sources so the citations and
             // notice survive a reload. [] explicitly records "no context".
+            const assistantMessageId = randomUUID();
             await saveMessage({
-              id: randomUUID(),
+              id: assistantMessageId,
               chat_id: chatId,
               role: "assistant",
               content: text,
               sources,
             });
+
+            // Off-path response grading. Only when enabled and the answer was
+            // actually grounded in retrieved chunks — a no-context refusal has
+            // nothing to be faithful to. Runs after the user already has their
+            // answer; failures degrade to null scores inside evaluateResponse.
+            if (RESPONSE_EVAL_ENABLED && chunks.length > 0) {
+              const scores = await evaluateResponse({
+                question: userText,
+                answer: text,
+                chunks,
+              });
+              await trackResponseEval({
+                chat_id: chatId,
+                message_id: assistantMessageId,
+                question: userText,
+                faithfulness: scores.faithfulness,
+                relevance: scores.relevance,
+                chunks_evaluated: chunks.length,
+                model: EVAL_MODEL_ID,
+              });
+            }
 
             // Generate title for new chats
             if (!existingChat) {

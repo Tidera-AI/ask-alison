@@ -50,3 +50,33 @@ export async function trackRetrieval(event: RetrievalEvent): Promise<void> {
     console.error("Failed to track retrieval analytics:", error.message);
   }
 }
+
+interface ResponseEvalEvent {
+  chat_id: string;
+  message_id: string;
+  question: string;
+  faithfulness: number | null;
+  relevance: number | null;
+  chunks_evaluated: number;
+  model: string;
+}
+
+// Records a grader's faithfulness/relevance scores for one answer. Best-effort,
+// runs off the user's hot path — never blocks or surfaces to the chat.
+export async function trackResponseEval(
+  event: ResponseEvalEvent
+): Promise<void> {
+  const { error } = await supabase.from("response_analytics").insert({
+    chat_id: event.chat_id,
+    message_id: event.message_id,
+    question: event.question,
+    faithfulness: event.faithfulness,
+    relevance: event.relevance,
+    chunks_evaluated: event.chunks_evaluated,
+    model: event.model,
+  });
+
+  if (error) {
+    console.error("Failed to track response eval:", error.message);
+  }
+}
