@@ -7,13 +7,19 @@ import {
   type RetrievedChunk,
 } from "./format";
 
-export type { ChatSource, ChunkMetadata, RetrievedChunk } from "./format";
+export type {
+  ChatSource,
+  ChunkMetadata,
+  RelevanceBand,
+  RetrievedChunk,
+} from "./format";
 export {
   chunkSourceLabel,
   chunksToSources,
   filterByRelevance,
   formatChunksForPrompt,
   hasBookSource,
+  relevanceBand,
 } from "./format";
 
 // Raw row shape returned by the match_content_chunks_hybrid RPC.

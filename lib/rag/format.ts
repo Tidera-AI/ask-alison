@@ -66,6 +66,23 @@ export function chunkSourceLabel(chunk: RetrievedChunk): string {
   return parts.join(", ");
 }
 
+// Coarse relevance band derived from cosine similarity. Surfaced in the prompt
+// so the model can hedge when its grounding is weak rather than stating a
+// loosely-matched passage with full confidence. text-embedding-3-small matches
+// cluster ~0.3–0.6 for on-topic content; retrieval already drops anything below
+// DEFAULT_MIN_SIMILARITY (~0.2), so "low" here means "kept, but borderline".
+export type RelevanceBand = "high" | "moderate" | "low";
+
+export function relevanceBand(similarity: number): RelevanceBand {
+  if (similarity >= 0.45) {
+    return "high";
+  }
+  if (similarity >= 0.3) {
+    return "moderate";
+  }
+  return "low";
+}
+
 export function formatChunksForPrompt(chunks: RetrievedChunk[]): string {
   if (chunks.length === 0) {
     return "No relevant content found in Alison's published writings.";
@@ -74,7 +91,9 @@ export function formatChunksForPrompt(chunks: RetrievedChunk[]): string {
   return chunks
     .map(
       (chunk, i) =>
-        `[Source ${i + 1}: ${chunkSourceLabel(chunk)}]:\n${chunk.content}`
+        `[Source ${i + 1}: ${chunkSourceLabel(chunk)}] (relevance: ${relevanceBand(
+          chunk.similarity
+        )}):\n${chunk.content}`
     )
     .join("\n\n---\n\n");
 }
