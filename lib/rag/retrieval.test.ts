@@ -6,6 +6,7 @@ import {
   formatChunksForPrompt,
   hasBookSource,
   type RetrievedChunk,
+  relevanceBand,
 } from "./format";
 
 function chunk(overrides: Partial<RetrievedChunk> = {}): RetrievedChunk {
@@ -80,6 +81,34 @@ describe("formatChunksForPrompt", () => {
     expect(out).toContain("[Source 1: Elevate Etiquette Blog (blog)]");
     expect(out).toContain("[Source 2: Evie (evie)]");
     expect(out).toContain("---");
+  });
+
+  it("annotates each source with its relevance band", () => {
+    const out = formatChunksForPrompt([
+      chunk({ similarity: 0.8 }),
+      chunk({ id: "x", source: "evie", title: "Evie", similarity: 0.25 }),
+    ]);
+    expect(out).toContain(
+      "[Source 1: Elevate Etiquette Blog (blog)] (relevance: high):"
+    );
+    expect(out).toContain("[Source 2: Evie (evie)] (relevance: low):");
+  });
+});
+
+describe("relevanceBand", () => {
+  it("classifies strong cosine matches as high", () => {
+    expect(relevanceBand(0.45)).toBe("high");
+    expect(relevanceBand(0.9)).toBe("high");
+  });
+
+  it("classifies mid-range matches as moderate", () => {
+    expect(relevanceBand(0.3)).toBe("moderate");
+    expect(relevanceBand(0.44)).toBe("moderate");
+  });
+
+  it("classifies borderline (kept-but-weak) matches as low", () => {
+    expect(relevanceBand(0.29)).toBe("low");
+    expect(relevanceBand(0.2)).toBe("low");
   });
 });
 
