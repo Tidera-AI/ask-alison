@@ -5,17 +5,40 @@
 
 ## Status Snapshot
 
-The chatbot is built and shipped (v3.2.0, rebranded). The RAG foundation works for text
-sources. None of the architecture review's 7 recommendations are implemented yet — that is
-the remaining work.
+**Shipped and live in production (updated 2026-06-24).** Phases 1–5 are merged to `main` and
+the book *Was It Something I Said?* is ingested in the prod Supabase corpus, answering live
+queries with chapter-level citations. Only Phase 6 (a formal eval suite) and a few optional
+tuning items remain. See [Completion Status](#completion-status) below.
 
 | Area | Current state | File |
 |------|---------------|------|
-| Schema | `vector(1536)`, ivfflat cosine index, vector-only `match_content_chunks` RPC. `source` enum lacks `book`. No `metadata`/`fts`. | `supabase/migrations/001_initial.sql` |
-| Retrieval | Embeds only latest message, vector-only, top-6, threshold 0.3. Source label is `title (source)`. | `lib/rag/retrieval.ts` |
-| Ingestion | `scripts/ingest.ts` (paragraph chunker, sha256). Duplicate word-based chunker + weak djb2 hash in the API route. | `scripts/ingest.ts`, `app/(chat)/api/ingest/route.ts` |
-| Prompt | Strict grounded prompt; mentions the book as a *recommendation* but has no book-citation/source-formatting rules. | `lib/ai/prompts.ts` |
-| Book PDF | **Not in repo.** Lives at `~/Downloads/Was It Something I Said_watermarked.pdf` (320 pp, ~89k words, extracts cleanly). | — |
+| Schema | `vector(1536)` + hybrid RRF. `source` enum includes `book`; `metadata jsonb` + generated `fts` + GIN index added. `match_content_chunks_hybrid` RPC live (old RPC kept for rollback). | `supabase/migrations/003_book_and_hybrid.sql` |
+| Retrieval | Hybrid RRF via `match_content_chunks_hybrid`, ~12 candidates → best 8, relevance floor, conversation-aware query rewrite, metadata-rich chunks, rich book source labels. | `lib/rag/retrieval.ts`, `lib/rag/query-rewrite.ts` |
+| Ingestion | `scripts/ingest-book.ts` — structure/Q&A-aware `book-chunker`, contextual headers, sha256, dry-run default + `--commit` (`pnpm ingest:book`). API-route chunker/hash canonicalized to shared impls. | `scripts/ingest-book.ts`, `lib/rag/book-chunker.ts` |
+| Prompt | Book-citation rules: name the specific chapter, ~6-word quote cap, Amazon link, content funneling to other writing, sensitive-topic care. Cites book only when book chunks retrieved. | `lib/ai/prompts.ts` |
+| Eval | Off-path faithfulness/relevance grading (Haiku via gateway) → `response_analytics`. | `lib/rag/eval.ts`, `supabase/migrations/005_response_eval.sql` |
+| Citations UI | Sources panel, inline `[n]` markers, graceful refusals, persisted to `message.sources`. | `supabase/migrations/004_message_sources.sql` |
+| Book PDF | **Not in repo.** Lives at `~/Downloads/Was It Something I Said_watermarked.pdf` (320 pp, ~89k words). Already ingested to prod. | — |
+
+### Completion Status
+
+| Phase | Status | Shipped via |
+|-------|--------|-------------|
+| 1 — Data model migration | ✅ Done | PR #2 (`003`), PR #3 (mem fix) |
+| 2 — Book ingestion script | ✅ Done | PR #2 |
+| 2b — Staging/prod ingestion | ✅ Done | corpus live in prod Supabase |
+| 3 — Retrieval upgrade | ✅ Done | PR #2, PR #6 (relevance band) |
+| 4 — Prompt rules | ✅ Done | PR #4, PR #9 |
+| 5 — Security fix (`INGEST_SECRET`) | ✅ Done | PR #2 |
+| 6 — Eval + verify | ◐ Partial | PR #7 ships off-path faithfulness/relevance eval (`response_analytics`); the formal promptfoo suite is **not** built |
+
+**Migrations applied to Supabase:** 003, 004, 005.
+
+**Remaining / optional (not blockers):**
+- Phase 6 formal **promptfoo suite** (20–30 etiquette Qs, follow-ups, source-conflict, insufficient-context) — not built.
+- **Retrieval tuning** — the book under-surfaces on some on-topic queries (e.g. apology queries returned zero book chunks).
+- **Citation-label enrichment** — generic source titles ("Substack Newsletter", "Evie Magazine").
+- **Optional ingestion** — Instagram/TikTok captions and additional Drive articles are not ingested.
 
 ## Decisions Locked
 
@@ -122,8 +145,13 @@ extraction be eyeballed before any DB writes.
 
 ## Detailed Todo List
 
+> **Historical (2026-06-24).** Phases 0–5 are complete and merged — see the
+> [Completion Status](#completion-status) table above for the authoritative state. The
+> per-item checkboxes below are kept as a record of the original build breakdown; only the
+> Phase 6 promptfoo items and the optional tuning notes at the top remain genuinely open.
+
 ### Phase 0 — Pre-work / discovery
-- [ ] Confirm deployed Supabase pgvector version (decide ivfflat vs HNSW for any new index).
+- [x] Confirm deployed Supabase pgvector version (decide ivfflat vs HNSW for any new index).
 - [ ] Dump the live `content_chunk` table definition + current `source` check constraint.
 - [ ] Run `pdftotext -layout ~/Downloads/"Was It Something I Said_watermarked.pdf" tmp/book-raw.txt` and inspect output.
 - [ ] Catalogue the exact repeated watermark / footer / distribution lines to strip.
