@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ask Alison — Open-Source Patterns to Borrow</title>
+<style>
+  :root {
+    --bg: #faf8f5;
+    --card: #ffffff;
+    --ink: #2a2722;
+    --muted: #6b6358;
+    --line: #e7e0d6;
+    --accent: #9c6b3f;
+    --accent-soft: #f0e6da;
+    --gold: #c79a4b;
+    --green: #4f7a52;
+    --code-bg: #f4efe8;
+    --shadow: 0 1px 3px rgba(60,45,30,.06), 0 8px 24px rgba(60,45,30,.05);
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font: 16px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 980px; margin: 0 auto; padding: 0 24px 96px; }
+
+  header.hero {
+    background: linear-gradient(135deg, #2a2722 0%, #4a3f33 100%);
+    color: #f7f1e8;
+    padding: 56px 24px 48px;
+    margin-bottom: 40px;
+  }
+  header.hero .inner { max-width: 980px; margin: 0 auto; }
+  .eyebrow {
+    text-transform: uppercase;
+    letter-spacing: .18em;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--gold);
+    margin: 0 0 14px;
+  }
+  header.hero h1 { margin: 0 0 14px; font-size: 38px; line-height: 1.15; font-weight: 700; }
+  header.hero p { margin: 0; max-width: 680px; color: #d9cfc1; font-size: 17px; }
+  .meta-row { margin-top: 24px; display: flex; flex-wrap: wrap; gap: 10px; }
+  .pill {
+    background: rgba(255,255,255,.08);
+    border: 1px solid rgba(255,255,255,.14);
+    border-radius: 999px;
+    padding: 5px 14px;
+    font-size: 13px;
+    color: #e8dfd2;
+  }
+
+  nav.toc {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 22px 26px;
+    margin-bottom: 40px;
+    box-shadow: var(--shadow);
+  }
+  nav.toc h2 { margin: 0 0 14px; font-size: 13px; text-transform: uppercase; letter-spacing: .12em; color: var(--muted); }
+  nav.toc ol { margin: 0; padding-left: 0; list-style: none; counter-reset: toc; }
+  nav.toc li { counter-increment: toc; margin: 8px 0; padding-left: 38px; position: relative; }
+  nav.toc li::before {
+    content: counter(toc);
+    position: absolute; left: 0; top: -1px;
+    width: 26px; height: 26px;
+    background: var(--accent-soft); color: var(--accent);
+    border-radius: 8px; font-size: 13px; font-weight: 700;
+    display: grid; place-items: center;
+  }
+  nav.toc a { color: var(--ink); text-decoration: none; font-weight: 500; }
+  nav.toc a:hover { color: var(--accent); }
+  nav.toc .sub { color: var(--muted); font-weight: 400; font-size: 14px; }
+
+  section.gap {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 32px 34px;
+    margin-bottom: 28px;
+    box-shadow: var(--shadow);
+  }
+  .gap-head { display: flex; align-items: flex-start; gap: 16px; margin-bottom: 6px; }
+  .rank {
+    flex: none;
+    width: 46px; height: 46px;
+    border-radius: 12px;
+    background: var(--accent-soft);
+    color: var(--accent);
+    font-size: 20px; font-weight: 700;
+    display: grid; place-items: center;
+  }
+  .gap-head h2 { margin: 0; font-size: 23px; line-height: 1.25; }
+  .gap-head .tag {
+    display: inline-block; margin-top: 6px;
+    font-size: 12.5px; color: var(--muted);
+    background: var(--code-bg); border: 1px solid var(--line);
+    padding: 2px 10px; border-radius: 6px;
+  }
+  .lead { color: var(--muted); margin: 4px 0 22px; }
+
+  table { width: 100%; border-collapse: collapse; margin: 14px 0 18px; font-size: 14.5px; }
+  th, td { text-align: left; padding: 11px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { font-size: 12px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); font-weight: 600; }
+  tr:last-child td { border-bottom: none; }
+  td.repo { font-weight: 600; white-space: nowrap; }
+  td.repo a { color: var(--accent); text-decoration: none; }
+  td.repo a:hover { text-decoration: underline; }
+  .stars { font-variant-numeric: tabular-nums; color: var(--muted); white-space: nowrap; }
+  .lic { white-space: nowrap; }
+  .badge {
+    display: inline-block; font-size: 11.5px; font-weight: 600;
+    padding: 2px 8px; border-radius: 5px;
+  }
+  .badge.mit { background: #e6f0e7; color: #3c6340; }
+  .badge.apache { background: #e7edf5; color: #3a5a86; }
+  .badge.other { background: #f3ece1; color: #8a6a3c; }
+
+  code, .mono { font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, monospace; font-size: 13.5px; background: var(--code-bg); padding: 1px 6px; border-radius: 5px; }
+  .rec {
+    border-left: 3px solid var(--accent);
+    background: var(--accent-soft);
+    padding: 14px 18px; border-radius: 0 10px 10px 0;
+    margin-top: 6px;
+  }
+  .rec strong { color: var(--accent); }
+  .warn { color: #9a5a2a; font-weight: 600; }
+
+  section.top3 {
+    background: linear-gradient(135deg, #fbf6ee 0%, #f5ece0 100%);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 32px 34px;
+    box-shadow: var(--shadow);
+  }
+  section.top3 h2 { margin: 0 0 20px; font-size: 23px; }
+  .top3 ol { counter-reset: t; list-style: none; margin: 0; padding: 0; }
+  .top3 li { counter-increment: t; position: relative; padding: 14px 0 14px 56px; border-bottom: 1px solid var(--line); }
+  .top3 li:last-child { border-bottom: none; }
+  .top3 li::before {
+    content: counter(t); position: absolute; left: 0; top: 12px;
+    width: 38px; height: 38px; border-radius: 10px;
+    background: var(--accent); color: #fff;
+    font-size: 17px; font-weight: 700; display: grid; place-items: center;
+  }
+  .top3 li b { color: var(--ink); }
+  .top3 li .mono { background: #fff; }
+
+  footer { text-align: center; color: var(--muted); font-size: 13px; margin-top: 44px; }
+  a.src { color: var(--accent); }
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="inner">
+    <p class="eyebrow">Ask Alison · Research Brief</p>
+    <h1>Open-Source Patterns to Borrow</h1>
+    <p>Verified GitHub repos and reference implementations mapped to the five outstanding gaps from the codebase audit. Core RAG is already shipped — this covers what's left.</p>
+    <div class="meta-row">
+      <span class="pill">Next.js · Vercel AI SDK · Supabase pgvector · Claude</span>
+      <span class="pill">5 parallel research agents (Exa)</span>
+      <span class="pill">Audited 2026-06-19</span>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <nav class="toc">
+    <h2>The five gaps</h2>
+    <ol>
+      <li><a href="#g1">Embeddable pop-up widget</a> <span class="sub">— §9, form-factor mismatch</span></li>
+      <li><a href="#g2">Lead capture: email + PDF transcript + newsletter</a> <span class="sub">— §7, biggest build</span></li>
+      <li><a href="#g3">Analytics dashboard</a> <span class="sub">— §8</span></li>
+      <li><a href="#g4">Voice / compliance eval harness</a> <span class="sub">— §6, pre-launch stress test</span></li>
+      <li><a href="#g5">RAG polish · source allow-list · multilingual</a> <span class="sub">— §4 / §5 / §11</span></li>
+    </ol>
+  </nav>
+
+  <!-- GAP 1 -->
+  <section class="gap" id="g1">
+    <div class="gap-head">
+      <div class="rank">1</div>
+      <div>
+        <h2>Embeddable pop-up widget</h2>
+        <span class="tag">§9 · form-factor mismatch</span>
+      </div>
+    </div>
+    <p class="lead">You have a full-page app; the client needs a corner chat bubble on a WordPress site.</p>
+    <table>
+      <thead><tr><th>Repo</th><th>Stars</th><th>License</th><th>Borrow</th></tr></thead>
+      <tbody>
+        <tr><td class="repo"><a href="https://github.com/chatwoot/chatwoot">chatwoot/chatwoot</a></td><td class="stars">~32.5k</td><td class="lic"><span class="badge mit">MIT</span></td><td>The canonical <strong>iframe + postMessage launcher</strong> architecture + CSS isolation</td></tr>
+        <tr><td class="repo"><a href="https://github.com/Mintplex-Labs/anythingllm-embed">Mintplex-Labs/anythingllm-embed</a></td><td class="stars">50k+ parent</td><td class="lic"><span class="badge mit">MIT</span></td><td><span class="mono">data-*</span> config schema + public-embed session limits / abuse model</td></tr>
+        <tr><td class="repo"><a href="https://github.com/Open-Chat-Widget/openchatwidget">Open-Chat-Widget/openchatwidget</a></td><td class="stars">new</td><td class="lic"><span class="badge mit">MIT</span></td><td><strong>AI-SDK-native</strong>; drop-in widget pointed at your existing <span class="mono">/api/chat</span></td></tr>
+        <tr><td class="repo"><a href="https://github.com/OvidijusParsiunas/deep-chat">OvidijusParsiunas/deep-chat</a></td><td class="stars">~3.6k</td><td class="lic"><span class="badge mit">MIT</span></td><td>Web Component (Shadow DOM) — Vercel's own recommendation for embedding</td></tr>
+        <tr><td class="repo"><a href="https://github.com/helixml/chat-widget">helixml/chat-widget</a></td><td class="stars">small</td><td class="lic"><span class="badge mit">MIT</span></td><td>Dual-distribution: React component <strong>+</strong> self-contained IIFE script</td></tr>
+      </tbody>
+    </table>
+    <div class="rec"><strong>Recommended:</strong> keep your page as-is, expose <span class="mono">/embed?token=…</span>, and wrap it in an <strong>iframe behind a tiny IIFE launcher script</strong> (Chatwoot architecture + Helix's bundling). Hard CSS/JS isolation from the WP theme for free, zero UI rewrite. Add a WordPress-plugin delivery mode (Papaya pattern) so the client installs it no-code.</div>
+  </section>
+
+  <!-- GAP 2 -->
+  <section class="gap" id="g2">
+    <div class="gap-head">
+      <div class="rank">2</div>
+      <div>
+        <h2>Lead capture: email + PDF transcript + newsletter</h2>
+        <span class="tag">§7 · biggest build · explicit client ask</span>
+      </div>
+    </div>
+    <p class="lead">Recommended stack: <span class="mono">@react-pdf/renderer</span> <span class="mono">renderToBuffer()</span> in a Server Action → pass the Buffer to <strong>Resend</strong> as an attachment with a <strong>React Email</strong> body.</p>
+    <table>
+      <thead><tr><th>Bucket</th><th>Repo</th><th>License</th><th>Borrow</th></tr></thead>
+      <tbody>
+        <tr><td>PDF</td><td class="repo"><a href="https://github.com/sidchigo/ProposalGen">sidchigo/ProposalGen</a></td><td class="lic"><span class="badge mit">MIT</span></td><td>Next.js App Router + react-pdf, closest match. <span class="warn">Gotcha:</span> add <span class="mono">serverExternalPackages: ['@react-pdf/renderer']</span> to <span class="mono">next.config</span> (next.js&nbsp;#61313 — breaks in RSC otherwise)</td></tr>
+        <tr><td>Email</td><td class="repo"><a href="https://github.com/resend/resend-examples">resend/resend-examples</a></td><td class="lic"><span class="badge mit">MIT</span></td><td><span class="mono">send-attachment/</span> route — canonical <span class="mono">attachments: [&#123; filename, content &#125;]</span> wiring</td></tr>
+        <tr><td>Email</td><td class="repo"><a href="https://github.com/resend/react-email">resend/react-email</a></td><td class="lic"><span class="badge mit">MIT</span></td><td>18.4k★ template lib for the transcript email body (skills already installed locally)</td></tr>
+        <tr><td>Newsletter</td><td class="repo"><a href="https://github.com/loudmu/newsLetter">loudmu/newsLetter</a></td><td class="lic"><span class="badge mit">MIT</span></td><td><strong>Exact stack</strong> (Next 14 + Resend + Supabase + Server Actions). Double-opt-in schema, near copy-paste</td></tr>
+        <tr><td>Newsletter</td><td class="repo"><a href="https://github.com/frank-mendez/nextjs-blog-cms">frank-mendez/nextjs-blog-cms</a></td><td class="lic"><span class="badge mit">MIT</span></td><td>Signed-token confirm/unsubscribe routes; <span class="mono">newsletter_sends</span> queue + cron dispatch</td></tr>
+        <tr><td>Substack</td><td class="repo"><a href="https://github.com/Tammilore/substack-subscriber">Tammilore/substack-subscriber</a></td><td class="lic"><span class="badge mit">MIT</span></td><td>No official Substack API — simplest drop-in <span class="mono">subscribe(email, url)</span> respecting their double-opt-in</td></tr>
+        <tr><td>CRM</td><td class="repo"><a href="https://github.com/dome317/lead-intelligence-bot">dome317/lead-intelligence-bot</a></td><td class="lic"><span class="badge other">—</span></td><td>Claude streaming + webhook-to-CRM routing (HubSpot/Salesforce) for later Salesforce angle</td></tr>
+      </tbody>
+    </table>
+    <div class="rec"><strong>Recommended:</strong> generate the transcript with <span class="mono">renderToBuffer(&lt;TranscriptDocument/&gt;)</span> in a Server Action (no Puppeteer/Chromium → stays on Vercel serverless), pass the Buffer straight into Resend, body authored in React Email. Gate after the first free answer, store leads in Supabase as source-of-truth, push confirmed emails to Substack, route to Salesforce later.</div>
+  </section>
+
+  <!-- GAP 3 -->
+  <section class="gap" id="g3">
+    <div class="gap-head">
+      <div class="rank">3</div>
+      <div>
+        <h2>Analytics dashboard</h2>
+        <span class="tag">§8</span>
+      </div>
+    </div>
+    <p class="lead">Don't adopt a monolith (Langfuse/PostHog) — compose three layers on your existing Supabase tables.</p>
+    <table>
+      <thead><tr><th>Layer</th><th>Repo</th><th>License</th><th>Borrow</th></tr></thead>
+      <tbody>
+        <tr><td>Capture</td><td class="repo"><a href="https://github.com/buigiathanh/Open-Analytics">buigiathanh/Open-Analytics</a></td><td class="lic"><span class="badge mit">MIT</span></td><td><strong>Next.js 16 + Supabase</strong>, cookieless tracker already captures device / geo / session-duration</td></tr>
+        <tr><td>Capture</td><td class="repo"><a href="https://github.com/umami-software/umami">umami-software/umami</a></td><td class="lic"><span class="badge mit">MIT</span></td><td>Salted-hash session-id pattern (GDPR-safe, no cookies); device/OS/country derivation</td></tr>
+        <tr><td>Gap analysis</td><td class="repo"><a href="https://github.com/aashirpersonal/semantic-coverage">aashirpersonal/semantic-coverage</a></td><td class="lic"><span class="badge mit">MIT</span></td><td>Query-vs-corpus embedding density → "blind spots" = <strong>what's asked but not covered</strong></td></tr>
+        <tr><td>Gap analysis</td><td class="repo"><a href="https://github.com/567-labs/kura">567-labs/kura</a></td><td class="lic"><span class="badge mit">MIT</span></td><td>Anthropic CLIO-style cluster-and-label: "what are people asking" without exposing PII</td></tr>
+        <tr><td>Dashboard UI</td><td class="repo"><a href="https://github.com/Kiranism/next-shadcn-dashboard-starter">Kiranism/next-shadcn-dashboard-starter</a></td><td class="lic"><span class="badge other">OSS</span></td><td>~6.5k★ App Router + shadcn + Recharts + filterable data tables (swap Clerk → Supabase Auth)</td></tr>
+        <tr><td>Dashboard UI</td><td class="repo"><a href="https://github.com/kjanat/livegraphs-static">kjanat/livegraphs-static</a></td><td class="lic"><span class="badge other">AGPL</span></td><td>Chatbot-specific schema + chart inventory (questions, category, sentiment, geo) — pattern only</td></tr>
+      </tbody>
+    </table>
+    <div class="rec"><strong>Recommended:</strong> lift the tracker + ingest from Open-Analytics, harden session-id with Umami's salted-hash, run a scheduled batch job for content-gap analysis (start with simple unanswered-question SQL on your retrieval scores), and scaffold the admin view from the shadcn starter.</div>
+  </section>
+
+  <!-- GAP 4 -->
+  <section class="gap" id="g4">
+    <div class="gap-head">
+      <div class="rank">4</div>
+      <div>
+        <h2>Voice / compliance eval harness</h2>
+        <span class="tag">§6 · pre-launch stress test</span>
+      </div>
+    </div>
+    <p class="lead">Two-layer system: a TS-native runner + borrowed scorers for voice, grounding, safety, and graceful refusal.</p>
+    <table>
+      <thead><tr><th>Role</th><th>Repo</th><th>Stars</th><th>Borrow</th></tr></thead>
+      <tbody>
+        <tr><td>Runner</td><td class="repo"><a href="https://github.com/mattpocock/evalite">mattpocock/evalite</a></td><td class="stars">~1.4k</td><td><strong>Vitest-based</strong>; <span class="mono">wrapAISDKModel</span> traces every Claude call; <span class="mono">--threshold</span> = CI gate</td></tr>
+        <tr><td>Scorers</td><td class="repo"><a href="https://github.com/braintrustdata/autoevals">braintrustdata/autoevals</a></td><td class="stars">~0.9k</td><td>Real TS package; <span class="mono">Factuality</span>/<span class="mono">ClosedQA</span> for grounding + custom model-graded voice scorer</td></tr>
+        <tr><td>Metrics ref</td><td class="repo"><a href="https://github.com/confident-ai/deepeval">confident-ai/deepeval</a></td><td class="stars">~16.2k</td><td><strong>G-Eval</strong> rubric-to-judge pattern for persona/voice scoring (port to TS)</td></tr>
+        <tr><td>Safety gen</td><td class="repo"><a href="https://github.com/confident-ai/deepteam">confident-ai/deepteam</a></td><td class="stars">~1.8k</td><td>Auto-generate sensitive/adversarial prompts (self-harm, PII, off-topic) — exactly your §6 concern</td></tr>
+        <tr><td>Red-team gate</td><td class="repo"><a href="https://github.com/promptfoo/promptfoo">promptfoo/promptfoo</a></td><td class="stars">~22.4k</td><td>The one tool spanning all four axes; used by Anthropic. Declarative YAML + CI thresholds</td></tr>
+      </tbody>
+    </table>
+    <div class="rec"><strong>Recommended:</strong> evalite (runner) + autoevals / G-Eval (voice + grounding scorers) + DeepTeam (safety test generation) + promptfoo (broad red-team gate over the deployed endpoint).</div>
+  </section>
+
+  <!-- GAP 5 -->
+  <section class="gap" id="g5">
+    <div class="gap-head">
+      <div class="rank">5</div>
+      <div>
+        <h2>RAG polish · source allow-list · multilingual</h2>
+        <span class="tag">§4 / §5 / §11</span>
+      </div>
+    </div>
+    <p class="lead">Reference architectures closest to your stack, plus the two specific sub-features.</p>
+    <table>
+      <thead><tr><th>Area</th><th>Repo</th><th>License</th><th>Borrow</th></tr></thead>
+      <tbody>
+        <tr><td>Reference</td><td class="repo"><a href="https://github.com/RexOwenDev/rag-chat-app">RexOwenDev/rag-chat-app</a></td><td class="lic"><span class="badge mit">MIT</span></td><td><strong>Near-exact stack</strong>: Next.js 16 + Supabase pgvector + Claude via AI SDK + hybrid RRF. Mine <span class="mono">lib/rag/</span> split, <span class="mono">cited_chunk_ids</span>, async eval, SSRF/injection guards. <span class="warn">0★ portfolio — reference, not dependency</span></td></tr>
+        <tr><td>Reference</td><td class="repo"><a href="https://github.com/vercel/ai-sdk-rag-starter">vercel/ai-sdk-rag-starter</a></td><td class="lic"><span class="badge other">Vercel</span></td><td>Officially-maintained "right way" baseline to sanity-check against</td></tr>
+        <tr><td>Reference</td><td class="repo"><a href="https://github.com/onyx-dot-app/onyx">onyx-dot-app/onyx</a></td><td class="lic"><span class="badge mit">MIT</span></td><td>Gold-standard production agentic RAG; PII-removal hooks + RBAC patterns (inspiration)</td></tr>
+        <tr><td>Allow-list</td><td class="repo"><a href="https://github.com/taladari/rag-firewall">taladari/rag-firewall</a></td><td class="lic"><span class="badge other">OSS</span></td><td>Per-source allowlist/denylist + trust-rerank at <strong>retrieval time</strong> — fits §5 tabloid exclusions</td></tr>
+        <tr><td>Multilingual</td><td class="repo"><a href="https://github.com/onyx-dot-app/onyx">Onyx multilingual PR #40</a></td><td class="lic"><span class="badge mit">MIT</span></td><td>Translate query→EN for retrieval, answer back in user's language <strong>preserving <span class="mono">[n]</span> citation markers</strong> (maps 1:1 to your setup)</td></tr>
+        <tr><td>i18n (UI)</td><td class="repo"><a href="https://github.com/amannn/next-intl">amannn/next-intl</a></td><td class="lic"><span class="badge mit">MIT</span></td><td>De-facto App Router i18n: Server Components, ICU messages, <span class="mono">[locale]</span> routing, RTL</td></tr>
+      </tbody>
+    </table>
+    <div class="rec"><strong>Recommended:</strong> enforce source control at retrieval time (rag-firewall + a policy schema like Waxell's <span class="mono">blocked_sources</span> / <span class="mono">min_relevance_score</span> / <span class="mono">max_single_source_ratio</span>), not at ingest.</div>
+  </section>
+
+  <!-- TOP 3 -->
+  <section class="top3">
+    <h2>Top 3 to clone / study first</h2>
+    <p class="lead" style="margin-top:-8px">By priority × stack-fit.</p>
+    <ol>
+      <li><b><span class="mono">loudmu/newsLetter</span> + <span class="mono">resend-examples</span></b> — unblocks the biggest explicit ask (lead capture) on your exact stack.</li>
+      <li><b>Chatwoot iframe-launcher pattern</b> — solves the form-factor mismatch (widget) with zero UI rewrite.</li>
+      <li><b><span class="mono">RexOwenDev/rag-chat-app</span></b> — a near-mirror of your stack to harvest citation / eval / security patterns across several gaps at once.</li>
+    </ol>
+  </section>
+
+  <footer>
+    Compiled from 5 parallel Exa research agents · <a class="src" href="chatbot-requirements-from-meetings.md">chatbot-requirements-from-meetings.md</a> · ask-alison-2 · 2026-06-19
+  </footer>
+
+</div>
+</body>
+</html>

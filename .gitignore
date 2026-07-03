@@ -29,3 +29,6 @@ content/
 
 # Ingestion dry-run artifacts
 tmp/
+
+# Supabase CLI temp files
+supabase/.temp/
