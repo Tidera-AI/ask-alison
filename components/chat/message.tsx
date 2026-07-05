@@ -4,7 +4,9 @@ import type { Vote } from "@/lib/db/schema";
 import type { ChatSource } from "@/lib/rag/format";
 import type { ChatMessage } from "@/lib/types";
 import { cn, safeExternalUrl, sanitizeText } from "@/lib/utils";
+import { isAssistantTextPartStreaming } from "@/lib/chat/text-part-streaming";
 import { MessageContent, MessageResponse } from "../ai-elements/message";
+import { StreamingTextReveal } from "./streaming-text";
 import { Shimmer } from "../ai-elements/shimmer";
 import {
   Source,
@@ -156,6 +158,8 @@ const PurePreviewMessage = ({
     }
 
     if (type === "text") {
+      const text = sanitizeText(part.text);
+
       return (
         <MessageContent
           className={cn("text-[13px] leading-[1.65]", {
@@ -165,9 +169,19 @@ const PurePreviewMessage = ({
           data-testid="message-content"
           key={key}
         >
-          <MessageResponse sources={isAssistant ? messageSources : undefined}>
-            {sanitizeText(part.text)}
-          </MessageResponse>
+          {isAssistant ? (
+            <StreamingTextReveal
+              isStreaming={isAssistantTextPartStreaming(
+                part,
+                isAssistant,
+                isLoading
+              )}
+              sources={messageSources}
+              text={text}
+            />
+          ) : (
+            <MessageResponse>{text}</MessageResponse>
+          )}
         </MessageContent>
       );
     }

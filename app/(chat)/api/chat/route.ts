@@ -3,6 +3,7 @@ import {
   createUIMessageStream,
   createUIMessageStreamResponse,
   generateText,
+  smoothStream,
   streamText,
 } from "ai";
 import { DEFAULT_CHAT_MODEL_ID } from "@/lib/ai/models";
@@ -155,6 +156,10 @@ export async function POST(request: Request) {
           model: getLanguageModel(DEFAULT_CHAT_MODEL_ID),
           system: systemPrompt,
           messages: conversationHistory,
+          experimental_transform: smoothStream({
+            chunking: "word",
+            delayInMs: null,
+          }),
           onFinish: async ({ text }) => {
             // Save assistant response with its sources so the citations and
             // notice survive a reload. [] explicitly records "no context".
