@@ -26,8 +26,8 @@ export interface UiMessage {
 
 // Rebuild the sources/notice data part from the persisted `sources` value:
 //   [..]  -> "Used N sources" panel + inline citations
-//   []    -> graceful "no context" notice
-//   null  -> legacy message, nothing extra
+//   []    -> graceful "no context" notice (searched, nothing relevant)
+//   null  -> no notice (skipped retrieval or legacy message)
 function sourcesPart(row: DbMessageRow): UiMessagePart | null {
   if (row.role !== "assistant" || !Array.isArray(row.sources)) {
     return null;

@@ -29,6 +29,7 @@ import {
 } from "@/lib/db/queries";
 import { evaluateResponse } from "@/lib/rag/eval";
 import { generateEmbedding } from "@/lib/rag/embeddings";
+import { shouldSkipRetrieval } from "@/lib/rag/pleasantry-classify";
 import {
   buildRetrievalQuery,
   type ConversationTurn,
@@ -112,15 +113,17 @@ export async function POST(request: Request) {
   try {
     const userId = await getOrCreateSessionUserId();
 
-    // First message: retrieval query is userText — start embedding during DB setup.
     const earlyEmbeddingPromise = isFirstMessage
       ? generateEmbedding(userText)
       : null;
 
-    const bootstrapResults = await Promise.all([
-      getOrCreateUser(userId),
-      getChatById(chatId),
-      isFirstMessage ? Promise.resolve([]) : getMessagesByChatId(chatId),
+    const [bootstrapResults, skipRetrieval] = await Promise.all([
+      Promise.all([
+        getOrCreateUser(userId),
+        getChatById(chatId),
+        isFirstMessage ? Promise.resolve([]) : getMessagesByChatId(chatId),
+      ]),
+      shouldSkipRetrieval(userText),
     ]);
     const existingChat = bootstrapResults[1];
     let priorMessages = bootstrapResults[2];
@@ -145,7 +148,9 @@ export async function POST(request: Request) {
     const userMessageId = randomUUID();
 
     const [retrievalQuery] = await Promise.all([
-      buildRetrievalQuery(userText, priorTurns),
+      skipRetrieval
+        ? Promise.resolve("")
+        : buildRetrievalQuery(userText, priorTurns),
       saveMessage({
         id: userMessageId,
         chat_id: chatId,
@@ -155,7 +160,7 @@ export async function POST(request: Request) {
     ]);
 
     let precomputedEmbedding: number[] | undefined;
-    if (priorTurns.length === 0 && earlyEmbeddingPromise) {
+    if (!skipRetrieval && priorTurns.length === 0 && earlyEmbeddingPromise) {
       precomputedEmbedding = await earlyEmbeddingPromise;
     } else if (earlyEmbeddingPromise) {
       earlyEmbeddingPromise.catch(() => {
@@ -163,9 +168,11 @@ export async function POST(request: Request) {
       });
     }
 
-    const chunks = await retrieveRelevantChunks(retrievalQuery, {
-      ...(precomputedEmbedding ? { queryEmbedding: precomputedEmbedding } : {}),
-    });
+    const chunks = skipRetrieval
+      ? []
+      : await retrieveRelevantChunks(retrievalQuery, {
+          ...(precomputedEmbedding ? { queryEmbedding: precomputedEmbedding } : {}),
+        });
     const context = formatChunksForPrompt(chunks);
 
     trackQuestion({
@@ -182,7 +189,8 @@ export async function POST(request: Request) {
     trackRetrieval({
       chat_id: chatId,
       query_text: userText,
-      rewritten_query: retrievalQuery === userText ? null : retrievalQuery,
+      rewritten_query:
+        !skipRetrieval && retrievalQuery !== userText ? retrievalQuery : null,
       chunk_ids: chunks.map((c) => c.id),
       scores: chunks.map((c) => ({
         id: c.id,
@@ -204,7 +212,7 @@ export async function POST(request: Request) {
       execute: ({ writer }) => {
         if (sources.length > 0) {
           writer.write({ type: "data-sources", id: "sources", data: sources });
-        } else {
+        } else if (!skipRetrieval) {
           writer.write({
             type: "data-notice",
             id: "notice",
@@ -227,7 +235,7 @@ export async function POST(request: Request) {
               chat_id: chatId,
               role: "assistant",
               content: text,
-              sources,
+              sources: skipRetrieval ? null : sources,
             });
 
             if (RESPONSE_EVAL_ENABLED && chunks.length > 0) {
