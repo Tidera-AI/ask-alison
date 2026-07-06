@@ -88,7 +88,11 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
     string | null
   >(null);
 
-  const { data: chatData, error: chatError, isLoading } = useSWR(
+  const {
+    data: chatData,
+    error: chatError,
+    isLoading,
+  } = useSWR(
     shouldFetchMessages
       ? `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/messages?chatId=${chatId}`
       : null,
@@ -240,8 +244,7 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
     : false;
   const isChatInaccessible =
     shouldFetchMessages && latchedInaccessibleId === chatId;
-  const canShowComposer =
-    !isReadonly && (!shouldFetchMessages || !!chatData);
+  const canShowComposer = !isReadonly && (!shouldFetchMessages || !!chatData);
 
   useEffect(() => {
     if (isChatInaccessible) {
