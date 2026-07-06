@@ -7,6 +7,7 @@ import type { ChatMessage } from "@/lib/types";
 import { cn } from "@/lib/utils";
 import { useDataStream } from "./data-stream-provider";
 import { Greeting } from "./greeting";
+import { ChatInaccessible } from "./chat-inaccessible";
 import { PreviewMessage, ThinkingMessage } from "./message";
 
 type MessagesProps = {
@@ -18,6 +19,7 @@ type MessagesProps = {
   setMessages: UseChatHelpers<ChatMessage>["setMessages"];
   regenerate: UseChatHelpers<ChatMessage>["regenerate"];
   isReadonly: boolean;
+  isChatInaccessible?: boolean;
   isArtifactVisible: boolean;
   isLoading?: boolean;
   selectedModelId: string;
@@ -33,6 +35,7 @@ function PureMessages({
   setMessages,
   regenerate,
   isReadonly,
+  isChatInaccessible = false,
   isArtifactVisible,
   isLoading,
   selectedModelId: _selectedModelId,
@@ -61,13 +64,7 @@ function PureMessages({
 
   return (
     <div className="relative flex-1 bg-background">
-      {messages.length === 0 && !isLoading && (
-        // Layout invariant: on short viewports (e.g. iPhone SE 375x667) the
-        // sticky composer fills most of the height, leaving this Messages
-        // area as low as ~180px. `overflow-hidden` clips the flex-centered
-        // Greeting content so it cannot bleed into the suggestion buttons
-        // below; `z-0` is a secondary guard so the composer (z-1,
-        // bg-background) always paints on top if anything does escape.
+      {messages.length === 0 && !isLoading && !isChatInaccessible && (
         <div className="pointer-events-none absolute inset-0 z-0 flex items-center justify-center overflow-hidden px-4">
           <Greeting />
         </div>
@@ -75,7 +72,8 @@ function PureMessages({
       <div
         className={cn(
           "absolute inset-0 touch-pan-y overflow-y-auto",
-          messages.length > 0 ? "bg-background" : "bg-transparent"
+          messages.length > 0 ? "bg-background" : "bg-transparent",
+          isChatInaccessible && messages.length === 0 && "pointer-events-none"
         )}
         ref={messagesContainerRef}
         style={isArtifactVisible ? { scrollbarWidth: "none" } : undefined}
@@ -115,6 +113,12 @@ function PureMessages({
           />
         </div>
       </div>
+
+      {isChatInaccessible && messages.length === 0 && !isLoading && (
+        <div className="absolute inset-0 z-10 flex items-center justify-center px-4">
+          <ChatInaccessible />
+        </div>
+      )}
 
       <button
         aria-label="Scroll to bottom"

@@ -49,6 +49,27 @@ const nextConfig: NextConfig = {
     inlineCss: true,
     turbopackFileSystemCacheForDev: true,
   },
+  async headers() {
+    const frameAncestors = [
+      "'self'",
+      "https://elevateetiquette.com",
+      "https://www.elevateetiquette.com",
+    ].join(" ");
+
+    return [
+      {
+        source: "/(.*)",
+        headers: [
+          { key: "X-Content-Type-Options", value: "nosniff" },
+          { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+          {
+            key: "Content-Security-Policy",
+            value: `frame-ancestors ${frameAncestors}`,
+          },
+        ],
+      },
+    ];
+  },
 };
 
 export default withBotId(nextConfig);

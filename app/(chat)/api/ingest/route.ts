@@ -1,20 +1,38 @@
 import { timingSafeEqual } from "node:crypto";
 import { createClient } from "@supabase/supabase-js";
 import { embedMany, gateway } from "ai";
+import { z } from "zod";
 import { chunkText } from "@/lib/rag/chunker";
 import { contentHash } from "@/lib/rag/hash";
+import { logSecurityEvent } from "@/lib/security/audit-log";
 
 const EMBEDDING_MODEL = gateway.textEmbeddingModel(
   "openai/text-embedding-3-small"
 );
+
+const ALLOWED_SOURCES = [
+  "blog",
+  "substack",
+  "evie",
+  "instagram",
+  "knowledge_base",
+  "book",
+] as const;
+
+const MAX_CONTENT_BYTES = 512_000;
+const MAX_TITLE_LENGTH = 200;
+
+const ingestSchema = z.object({
+  content: z.string().min(1).max(MAX_CONTENT_BYTES),
+  source: z.enum(ALLOWED_SOURCES),
+  title: z.string().min(1).max(MAX_TITLE_LENGTH),
+});
 
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL ?? process.env.SUPABASE_URL ?? "",
   process.env.SUPABASE_SERVICE_ROLE_KEY ?? ""
 );
 
-// Constant-time comparison against the dedicated INGEST_SECRET. Avoids both
-// timing leaks and the previous practice of reusing the service-role key.
 function isAuthorized(provided: string | null): boolean {
   const expected = process.env.INGEST_SECRET;
   if (!expected || !provided) {
@@ -42,29 +60,29 @@ async function embedBatch(texts: string[]): Promise<number[][]> {
 }
 
 export async function POST(request: Request) {
-  // Require the dedicated INGEST_SECRET via header (constant-time compare).
   if (!isAuthorized(request.headers.get("x-ingest-secret"))) {
     return Response.json({ error: "Unauthorized" }, { status: 401 });
   }
 
-  const body = await request.json();
-  const { content, source, title } = body as {
-    content: string;
-    source: string;
-    title: string;
-  };
-
-  if (!content || !source || !title) {
-    return Response.json(
-      { error: "Missing content, source, or title" },
-      { status: 400 }
-    );
+  let body: unknown;
+  try {
+    body = await request.json();
+  } catch {
+    logSecurityEvent("ingest_rejected", { reason: "invalid_json" });
+    return Response.json({ error: "Invalid JSON body" }, { status: 400 });
   }
+
+  const parsed = ingestSchema.safeParse(body);
+  if (!parsed.success) {
+    logSecurityEvent("ingest_rejected", { reason: "validation_failed" });
+    return Response.json({ error: "Invalid ingest payload" }, { status: 400 });
+  }
+
+  const { content, source, title } = parsed.data;
 
   const chunks = chunkText(content, { maxTokens: 600, overlapTokens: 75 });
   const hashes = chunks.map((c) => contentHash(c));
 
-  // Check which chunks already exist
   const { data: existing } = await supabase
     .from("content_chunk")
     .select("content_hash")
@@ -103,7 +121,7 @@ export async function POST(request: Request) {
     const { error } = await supabase.from("content_chunk").insert(batch);
     if (error) {
       return Response.json(
-        { error: `Insert failed: ${error.message}`, inserted },
+        { error: "Insert failed", inserted },
         { status: 500 }
       );
     }

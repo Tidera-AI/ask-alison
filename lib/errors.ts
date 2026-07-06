@@ -4,7 +4,8 @@ export type ErrorType =
   | "forbidden"
   | "not_found"
   | "rate_limit"
-  | "offline";
+  | "offline"
+  | "internal";
 
 export type Surface =
   | "chat"
@@ -83,6 +84,11 @@ export function getMessageByErrorCode(errorCode: ErrorCode): string {
   switch (errorCode) {
     case "bad_request:api":
       return "The request couldn't be processed. Please check your input and try again.";
+    case "bad_request:chat":
+      return "Please enter a message before sending.";
+
+    case "internal:chat":
+      return "Something went wrong while processing your message. Please try again.";
 
     case "bad_request:activate_gateway":
       return "AI Gateway requires a valid credit card on file to service requests. Please visit https://vercel.com/d?to=%2F%5Bteam%5D%2F%7E%2Fai%3Fmodal%3Dadd-credit-card to add a card and unlock your free credits.";
@@ -95,9 +101,9 @@ export function getMessageByErrorCode(errorCode: ErrorCode): string {
     case "rate_limit:chat":
       return "You've reached the message limit. Come back in 1 hour to continue chatting.";
     case "not_found:chat":
-      return "The requested chat was not found. Please check the chat ID and try again.";
+      return "This chat is private or no longer available.";
     case "forbidden:chat":
-      return "This chat belongs to another user. Please check the chat ID and try again.";
+      return "This chat is private. Ask the owner to set it to public if you'd like to view it.";
     case "unauthorized:chat":
       return "You need to sign in to view this chat. Please sign in and try again.";
     case "offline:chat":
@@ -131,6 +137,8 @@ function getStatusCodeByType(type: ErrorType) {
       return 429;
     case "offline":
       return 503;
+    case "internal":
+      return 500;
     default:
       return 500;
   }

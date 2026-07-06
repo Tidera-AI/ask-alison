@@ -7,7 +7,7 @@ const messagePartSchema = z.object({
 });
 
 export const chatRequestSchema = z.object({
-  id: z.string(),
+  id: z.string().uuid(),
   message: z.object({
     role: z.literal("user"),
     content: z.string().min(1).max(2000).optional(),

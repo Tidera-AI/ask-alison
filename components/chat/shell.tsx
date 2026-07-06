@@ -40,6 +40,8 @@ export function ChatShell() {
     setInput,
     visibilityType,
     isReadonly,
+    isChatInaccessible,
+    canShowComposer,
     isLoading,
     votes,
     currentModelId,
@@ -89,6 +91,7 @@ export function ChatShell() {
               addToolApprovalResponse={addToolApprovalResponse}
               chatId={chatId}
               isArtifactVisible={isArtifactVisible}
+              isChatInaccessible={isChatInaccessible}
               isLoading={isLoading}
               isReadonly={isReadonly}
               messages={messages}
@@ -107,8 +110,8 @@ export function ChatShell() {
               votes={votes}
             />
 
-            <div className="sticky bottom-0 z-1 mx-auto flex w-full max-w-4xl gap-2 border-t-0 bg-background px-4 pb-3 md:pb-4">
-              {!isReadonly && (
+            <div className="sticky bottom-0 z-1 mx-auto flex w-full max-w-4xl flex-col gap-2 border-t-0 bg-background px-4 pb-3 md:pb-4">
+              {!canShowComposer ? null : (
                 <MultimodalInput
                   attachments={attachments}
                   chatId={chatId}

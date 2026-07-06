@@ -41,6 +41,8 @@ type ActiveChatContextValue = {
   setInput: Dispatch<SetStateAction<string>>;
   visibilityType: VisibilityType;
   isReadonly: boolean;
+  isChatInaccessible: boolean;
+  canShowComposer: boolean;
   isLoading: boolean;
   votes: Vote[] | undefined;
   currentModelId: string;
@@ -72,6 +74,7 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
   prevPathnameRef.current = pathname;
 
   const chatId = chatIdFromUrl ?? newChatIdRef.current;
+  const shouldFetchMessages = !isNewChat;
 
   const [currentModelId, setCurrentModelId] = useState(DEFAULT_CHAT_MODEL);
   const currentModelIdRef = useRef(currentModelId);
@@ -81,21 +84,28 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
 
   const [input, setInput] = useState("");
   const [showCreditCardAlert, setShowCreditCardAlert] = useState(false);
+  const [latchedInaccessibleId, setLatchedInaccessibleId] = useState<
+    string | null
+  >(null);
 
-  const { data: chatData, isLoading } = useSWR(
-    isNewChat
-      ? null
-      : `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/messages?chatId=${chatId}`,
+  const { data: chatData, error: chatError, isLoading } = useSWR(
+    shouldFetchMessages
+      ? `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/messages?chatId=${chatId}`
+      : null,
     fetcher,
-    { revalidateOnFocus: false }
+    {
+      revalidateOnFocus: false,
+      revalidateOnReconnect: false,
+      shouldRetryOnError: false,
+    }
   );
 
-  const initialMessages: ChatMessage[] = isNewChat
-    ? []
-    : (chatData?.messages ?? []);
-  const visibility: VisibilityType = isNewChat
-    ? "private"
-    : (chatData?.visibility ?? "private");
+  const initialMessages: ChatMessage[] = shouldFetchMessages
+    ? (chatData?.messages ?? [])
+    : [];
+  const visibility: VisibilityType = shouldFetchMessages
+    ? (chatData?.visibility ?? "private")
+    : "private";
 
   const {
     messages,
@@ -210,7 +220,33 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
   }, [chatData, isNewChat]);
 
   const hasAppendedQueryRef = useRef(false);
+
   useEffect(() => {
+    if (!shouldFetchMessages) {
+      setLatchedInaccessibleId(null);
+      return;
+    }
+    if (chatData) {
+      setLatchedInaccessibleId(null);
+      return;
+    }
+    if (chatError && !isLoading) {
+      setLatchedInaccessibleId(chatId);
+    }
+  }, [shouldFetchMessages, chatData, chatError, isLoading, chatId]);
+
+  const isReadonly = shouldFetchMessages
+    ? (chatData?.isReadonly ?? false)
+    : false;
+  const isChatInaccessible =
+    shouldFetchMessages && latchedInaccessibleId === chatId;
+  const canShowComposer =
+    !isReadonly && (!shouldFetchMessages || !!chatData);
+
+  useEffect(() => {
+    if (isChatInaccessible) {
+      return;
+    }
     const params = new URLSearchParams(window.location.search);
     const query = params.get("query");
     if (query && !hasAppendedQueryRef.current) {
@@ -225,16 +261,14 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
         parts: [{ type: "text", text: query }],
       });
     }
-  }, [sendMessage, chatId]);
+  }, [sendMessage, chatId, isChatInaccessible]);
 
   useAutoResume({
-    autoResume: !isNewChat && !!chatData,
+    autoResume: shouldFetchMessages && !!chatData,
     initialMessages,
     resumeStream,
     setMessages,
   });
-
-  const isReadonly = isNewChat ? false : (chatData?.isReadonly ?? false);
 
   const { data: votes } = useSWR<Vote[]>(
     !isReadonly && messages.length >= 2
@@ -258,7 +292,9 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
       setInput,
       visibilityType: visibility,
       isReadonly,
-      isLoading: !isNewChat && isLoading,
+      isChatInaccessible,
+      canShowComposer,
+      isLoading: shouldFetchMessages && isLoading,
       votes,
       currentModelId,
       setCurrentModelId,
@@ -277,7 +313,9 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
       input,
       visibility,
       isReadonly,
-      isNewChat,
+      isChatInaccessible,
+      canShowComposer,
+      shouldFetchMessages,
       isLoading,
       votes,
       currentModelId,
