@@ -25,7 +25,6 @@ import {
 import { toast } from "sonner";
 import useSWR, { useSWRConfig } from "swr";
 import { useLocalStorage, useWindowSize } from "usehooks-ts";
-import { deleteChatFromHistory } from "@/components/chat/sidebar-history";
 import {
   ModelSelector,
   ModelSelectorContent,
@@ -37,6 +36,7 @@ import {
   ModelSelectorName,
   ModelSelectorTrigger,
 } from "@/components/ai-elements/model-selector";
+import { deleteChatFromHistory } from "@/components/chat/sidebar-history";
 import {
   type ChatModel,
   chatModels,

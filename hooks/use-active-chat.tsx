@@ -192,10 +192,7 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
       setClientChatSaved(false);
       return;
     }
-    if (
-      messages.length > 0 &&
-      (status === "ready" || status === "error")
-    ) {
+    if (messages.length > 0 && (status === "ready" || status === "error")) {
       setClientChatSaved(true);
     }
   }, [status, isClientGeneratedChat, messages.length]);

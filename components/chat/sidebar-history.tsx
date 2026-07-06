@@ -25,7 +25,7 @@ import {
   useSidebar,
 } from "@/components/ui/sidebar";
 import { ChatbotError } from "@/lib/errors";
-import { fetchWithErrorHandlers, fetcher } from "@/lib/utils";
+import { fetcher, fetchWithErrorHandlers } from "@/lib/utils";
 
 type Chat = {
   id: string;

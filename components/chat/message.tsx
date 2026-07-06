@@ -1,12 +1,11 @@
 "use client";
 import type { UseChatHelpers } from "@ai-sdk/react";
+import { isAssistantTextPartStreaming } from "@/lib/chat/text-part-streaming";
 import type { Vote } from "@/lib/db/schema";
 import type { ChatSource } from "@/lib/rag/format";
 import type { ChatMessage } from "@/lib/types";
 import { cn, safeExternalUrl, sanitizeText } from "@/lib/utils";
-import { isAssistantTextPartStreaming } from "@/lib/chat/text-part-streaming";
 import { MessageContent, MessageResponse } from "../ai-elements/message";
-import { StreamingTextReveal } from "./streaming-text";
 import { Shimmer } from "../ai-elements/shimmer";
 import {
   Source,
@@ -28,6 +27,7 @@ import { MessageActions } from "./message-actions";
 import { MessageReasoning } from "./message-reasoning";
 import { PreviewAttachment } from "./preview-attachment";
 import { SourceNotice } from "./source-notice";
+import { StreamingTextReveal } from "./streaming-text";
 import { Weather } from "./weather";
 
 const PurePreviewMessage = ({
