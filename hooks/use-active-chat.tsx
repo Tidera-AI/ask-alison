@@ -72,6 +72,11 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
   prevPathnameRef.current = pathname;
 
   const chatId = chatIdFromUrl ?? newChatIdRef.current;
+  const isClientGeneratedChat =
+    chatIdFromUrl !== null && chatIdFromUrl === newChatIdRef.current;
+  const [clientChatSaved, setClientChatSaved] = useState(false);
+  const shouldFetchMessages =
+    !isNewChat && !(isClientGeneratedChat && !clientChatSaved);
 
   const [currentModelId, setCurrentModelId] = useState(DEFAULT_CHAT_MODEL);
   const currentModelIdRef = useRef(currentModelId);
@@ -83,19 +88,19 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
   const [showCreditCardAlert, setShowCreditCardAlert] = useState(false);
 
   const { data: chatData, isLoading } = useSWR(
-    isNewChat
-      ? null
-      : `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/messages?chatId=${chatId}`,
+    shouldFetchMessages
+      ? `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/messages?chatId=${chatId}`
+      : null,
     fetcher,
     { revalidateOnFocus: false }
   );
 
-  const initialMessages: ChatMessage[] = isNewChat
-    ? []
-    : (chatData?.messages ?? []);
-  const visibility: VisibilityType = isNewChat
-    ? "private"
-    : (chatData?.visibility ?? "private");
+  const initialMessages: ChatMessage[] = shouldFetchMessages
+    ? (chatData?.messages ?? [])
+    : [];
+  const visibility: VisibilityType = shouldFetchMessages
+    ? (chatData?.visibility ?? "private")
+    : "private";
 
   const {
     messages,
@@ -143,7 +148,12 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
             id: request.id,
             ...(isToolApprovalContinuation
               ? { messages: request.messages }
-              : { message: lastMessage }),
+              : {
+                  message: lastMessage,
+                  isFirstMessage:
+                    !isToolApprovalContinuation &&
+                    request.messages.length === 1,
+                }),
             selectedChatModel: currentModelIdRef.current,
             selectedVisibilityType: visibility,
             ...request.body,
@@ -176,6 +186,19 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
   if (isNewChat && !loadedChatIds.current.has(newChatIdRef.current)) {
     loadedChatIds.current.add(newChatIdRef.current);
   }
+
+  useEffect(() => {
+    if (!isClientGeneratedChat) {
+      setClientChatSaved(false);
+      return;
+    }
+    if (
+      messages.length > 0 &&
+      (status === "ready" || status === "error")
+    ) {
+      setClientChatSaved(true);
+    }
+  }, [status, isClientGeneratedChat, messages.length]);
 
   useEffect(() => {
     if (loadedChatIds.current.has(chatId)) {
@@ -228,13 +251,15 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
   }, [sendMessage, chatId]);
 
   useAutoResume({
-    autoResume: !isNewChat && !!chatData,
+    autoResume: shouldFetchMessages && !!chatData,
     initialMessages,
     resumeStream,
     setMessages,
   });
 
-  const isReadonly = isNewChat ? false : (chatData?.isReadonly ?? false);
+  const isReadonly = shouldFetchMessages
+    ? (chatData?.isReadonly ?? false)
+    : false;
 
   const { data: votes } = useSWR<Vote[]>(
     !isReadonly && messages.length >= 2
@@ -258,7 +283,7 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
       setInput,
       visibilityType: visibility,
       isReadonly,
-      isLoading: !isNewChat && isLoading,
+      isLoading: shouldFetchMessages && isLoading,
       votes,
       currentModelId,
       setCurrentModelId,
@@ -277,7 +302,7 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
       input,
       visibility,
       isReadonly,
-      isNewChat,
+      shouldFetchMessages,
       isLoading,
       votes,
       currentModelId,
