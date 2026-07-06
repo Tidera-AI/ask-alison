@@ -3,7 +3,11 @@
 import { generateText, type UIMessage } from "ai";
 import { titlePrompt } from "@/lib/ai/prompts";
 import { getTitleModel } from "@/lib/ai/providers";
-import { deleteChatById, updateChatVisibilityById } from "@/lib/db/queries";
+import {
+  deleteChatById,
+  getChatById,
+  updateChatVisibilityById,
+} from "@/lib/db/queries";
 import { getOrCreateSessionUserId } from "@/lib/session/anonymous";
 import { getTextFromMessage } from "@/lib/utils";
 
@@ -24,6 +28,13 @@ export async function generateTitleFromUserMessage({
 }
 
 export async function deleteChatByIdAction(chatId: string) {
+  const userId = await getOrCreateSessionUserId();
+  const chat = await getChatById(chatId);
+
+  if (!chat || chat.user_id !== userId) {
+    return;
+  }
+
   await deleteChatById(chatId);
 }
 

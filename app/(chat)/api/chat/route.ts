@@ -19,6 +19,7 @@ import {
   trackRetrieval,
 } from "@/lib/analytics/track";
 import {
+  deleteChatById,
   getChatById,
   getMessagesByChatId,
   getOrCreateUser,
@@ -67,6 +68,26 @@ function buildConversationHistory(
   const priorTurns = conversationHistory.slice(0, -1);
 
   return { conversationHistory, priorTurns };
+}
+
+export async function DELETE(request: Request) {
+  const { searchParams } = new URL(request.url);
+  const chatId = searchParams.get("id");
+
+  if (!chatId) {
+    return Response.json({ error: "id is required" }, { status: 400 });
+  }
+
+  const userId = await getOrCreateSessionUserId();
+  const chat = await getChatById(chatId);
+
+  if (!chat || chat.user_id !== userId) {
+    return Response.json({ error: "Chat not found" }, { status: 404 });
+  }
+
+  await deleteChatById(chatId);
+
+  return Response.json({ success: true });
 }
 
 export async function POST(request: Request) {
