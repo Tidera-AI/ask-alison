@@ -24,7 +24,8 @@ import {
   SidebarMenu,
   useSidebar,
 } from "@/components/ui/sidebar";
-import { fetcher } from "@/lib/utils";
+import { ChatbotError } from "@/lib/errors";
+import { fetchWithErrorHandlers, fetcher } from "@/lib/utils";
 
 type Chat = {
   id: string;
@@ -105,19 +106,10 @@ export function getChatHistoryPaginationKey(
   return `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/history?ending_before=${firstChatFromPage.id}&limit=${PAGE_SIZE}`;
 }
 
-export async function deleteChatFromHistory(
+async function removeChatFromHistoryCache(
   globalMutate: ReturnType<typeof useSWRConfig>["mutate"],
   chatId: string
-): Promise<boolean> {
-  const response = await fetch(
-    `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/chat?id=${chatId}`,
-    { method: "DELETE" }
-  );
-
-  if (!response.ok) {
-    return false;
-  }
-
+) {
   const historyKey = unstable_serialize(getChatHistoryPaginationKey);
   await globalMutate(
     historyKey,
@@ -132,8 +124,29 @@ export async function deleteChatFromHistory(
     },
     { revalidate: false }
   );
+}
 
-  return true;
+export async function deleteChatFromHistory(
+  globalMutate: ReturnType<typeof useSWRConfig>["mutate"],
+  chatId: string
+): Promise<{ ok: true } | { ok: false; message: string }> {
+  const url = `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/chat?id=${chatId}`;
+
+  try {
+    await fetchWithErrorHandlers(url, { method: "DELETE" });
+  } catch (error) {
+    if (error instanceof ChatbotError && error.type === "not_found") {
+      await removeChatFromHistoryCache(globalMutate, chatId);
+      return { ok: false, message: "Chat not found." };
+    }
+    if (error instanceof ChatbotError) {
+      return { ok: false, message: error.message };
+    }
+    return { ok: false, message: "Failed to delete chat." };
+  }
+
+  await removeChatFromHistoryCache(globalMutate, chatId);
+  return { ok: true };
 }
 
 export function SidebarHistory() {
@@ -175,14 +188,14 @@ export function SidebarHistory() {
     setShowDeleteDialog(false);
     setDeleteId(null);
 
-    const success = await deleteChatFromHistory(globalMutate, chatToDelete);
-    if (success) {
+    const result = await deleteChatFromHistory(globalMutate, chatToDelete);
+    if (result.ok) {
       if (isCurrentChat) {
         router.replace("/");
       }
       toast.success("Chat deleted");
     } else {
-      toast.error("Failed to delete chat");
+      toast.error(result.message);
     }
   };
 

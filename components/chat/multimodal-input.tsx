@@ -182,12 +182,12 @@ function PureMultimodalInput({
           action: {
             label: "Delete",
             onClick: async () => {
-              const success = await deleteChatFromHistory(globalMutate, chatId);
-              if (success) {
+              const result = await deleteChatFromHistory(globalMutate, chatId);
+              if (result.ok) {
                 router.push("/");
                 toast.success("Chat deleted");
               } else {
-                toast.error("Failed to delete chat");
+                toast.error(result.message);
               }
             },
           },

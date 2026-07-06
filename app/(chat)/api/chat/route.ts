@@ -40,6 +40,7 @@ import {
   hasBookSource,
   retrieveRelevantChunks,
 } from "@/lib/rag/retrieval";
+import { ChatbotError } from "@/lib/errors";
 import { getOrCreateSessionUserId } from "@/lib/session/anonymous";
 import type { ChatMessage } from "@/lib/types";
 import { chatRequestSchema, extractMessageText } from "./schema";
@@ -76,14 +77,18 @@ export async function DELETE(request: Request) {
   const chatId = searchParams.get("id");
 
   if (!chatId) {
-    return Response.json({ error: "id is required" }, { status: 400 });
+    return new ChatbotError("bad_request:api").toResponse();
   }
 
   const userId = await getOrCreateSessionUserId();
   const chat = await getChatById(chatId);
 
-  if (!chat || chat.user_id !== userId) {
-    return Response.json({ error: "Chat not found" }, { status: 404 });
+  if (!chat) {
+    return new ChatbotError("not_found:chat").toResponse();
+  }
+
+  if (chat.user_id !== userId) {
+    return new ChatbotError("forbidden:chat").toResponse();
   }
 
   await deleteChatById(chatId);
@@ -96,18 +101,14 @@ export async function POST(request: Request) {
   const parsed = chatRequestSchema.safeParse(body);
 
   if (!parsed.success) {
-    return new Response(JSON.stringify({ error: "Invalid request" }), {
-      status: 400,
-    });
+    return new ChatbotError("bad_request:api").toResponse();
   }
 
   const { id: chatId, message, isFirstMessage = false } = parsed.data;
   const userText = extractMessageText(message);
 
   if (!userText) {
-    return new Response(JSON.stringify({ error: "Message text is required" }), {
-      status: 400,
-    });
+    return new ChatbotError("bad_request:chat").toResponse();
   }
 
   try {
@@ -204,6 +205,7 @@ export async function POST(request: Request) {
 
     const systemPrompt = buildSystemPrompt(context, {
       hasBookContext: hasBookSource(chunks),
+      skipRetrieval,
     });
 
     const sources = chunksToSources(chunks);
@@ -273,9 +275,6 @@ export async function POST(request: Request) {
     return createUIMessageStreamResponse({ stream });
   } catch (error) {
     console.error("Chat API error:", error);
-    return Response.json(
-      { code: "bad_request:chat", message: String(error) },
-      { status: 500 }
-    );
+    return new ChatbotError("internal:chat").toResponse();
   }
 }
