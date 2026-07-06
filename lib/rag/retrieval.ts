@@ -44,6 +44,8 @@ export interface RetrieveOptions {
   rrfK?: number;
   /** Cosine-similarity floor; below it a chunk is treated as off-topic. */
   minSimilarity?: number;
+  /** Precomputed vector — skips the embedding API call when set. */
+  queryEmbedding?: number[];
 }
 
 const DEFAULT_MATCH_COUNT = 12;
@@ -59,9 +61,11 @@ export async function retrieveRelevantChunks(
     sourceFilter = null,
     rrfK = 50,
     minSimilarity = DEFAULT_MIN_SIMILARITY,
+    queryEmbedding: precomputedEmbedding,
   } = options;
 
-  const queryEmbedding = await generateEmbedding(query);
+  const queryEmbedding =
+    precomputedEmbedding ?? (await generateEmbedding(query));
 
   const { data, error } = await supabase.rpc("match_content_chunks_hybrid", {
     query_text: query,

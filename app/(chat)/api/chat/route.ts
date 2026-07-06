@@ -27,7 +27,11 @@ import {
   updateChatTitle,
 } from "@/lib/db/queries";
 import { evaluateResponse } from "@/lib/rag/eval";
-import { buildRetrievalQuery } from "@/lib/rag/query-rewrite";
+import { generateEmbedding } from "@/lib/rag/embeddings";
+import {
+  buildRetrievalQuery,
+  type ConversationTurn,
+} from "@/lib/rag/query-rewrite";
 import {
   chunksToSources,
   formatChunksForPrompt,
@@ -42,6 +46,29 @@ import { chatRequestSchema, extractMessageText } from "./schema";
 // deliberately where that cost is acceptable, e.g. for a pre-launch eval run.
 const RESPONSE_EVAL_ENABLED = process.env.RESPONSE_EVAL_ENABLED === "true";
 
+function buildConversationHistory(
+  priorMessages: Awaited<ReturnType<typeof getMessagesByChatId>>,
+  userText: string
+): {
+  conversationHistory: ConversationTurn[];
+  priorTurns: ConversationTurn[];
+} {
+  const recentPrior: ConversationTurn[] = priorMessages.slice(-9).map(
+    (message) => ({
+      role: message.role as "user" | "assistant",
+      content: message.content,
+    })
+  );
+  const withCurrent: ConversationTurn[] = [
+    ...recentPrior,
+    { role: "user", content: userText },
+  ];
+  const conversationHistory = withCurrent.slice(-10);
+  const priorTurns = conversationHistory.slice(0, -1);
+
+  return { conversationHistory, priorTurns };
+}
+
 export async function POST(request: Request) {
   const body = await request.json();
   const parsed = chatRequestSchema.safeParse(body);
@@ -52,7 +79,7 @@ export async function POST(request: Request) {
     });
   }
 
-  const { id: chatId, message } = parsed.data;
+  const { id: chatId, message, isFirstMessage = false } = parsed.data;
   const userText = extractMessageText(message);
 
   if (!userText) {
@@ -62,12 +89,25 @@ export async function POST(request: Request) {
   }
 
   try {
-    // Get or create anonymous user
     const userId = await getOrCreateSessionUserId();
-    await getOrCreateUser(userId);
 
-    // Get or create chat
-    const existingChat = await getChatById(chatId);
+    // First message: retrieval query is userText — start embedding during DB setup.
+    const earlyEmbeddingPromise = isFirstMessage
+      ? generateEmbedding(userText)
+      : null;
+
+    const bootstrapResults = await Promise.all([
+      getOrCreateUser(userId),
+      getChatById(chatId),
+      isFirstMessage ? Promise.resolve([]) : getMessagesByChatId(chatId),
+    ]);
+    const existingChat = bootstrapResults[1];
+    let priorMessages = bootstrapResults[2];
+
+    if (isFirstMessage && existingChat) {
+      priorMessages = await getMessagesByChatId(chatId);
+    }
+
     if (!existingChat) {
       await saveChat({
         id: chatId,
@@ -76,31 +116,37 @@ export async function POST(request: Request) {
       });
     }
 
-    // Save the user's message
-    await saveMessage({
-      id: randomUUID(),
-      chat_id: chatId,
-      role: "user",
-      content: userText,
+    const { conversationHistory, priorTurns } = buildConversationHistory(
+      priorMessages,
+      userText
+    );
+
+    const userMessageId = randomUUID();
+
+    const [retrievalQuery] = await Promise.all([
+      buildRetrievalQuery(userText, priorTurns),
+      saveMessage({
+        id: userMessageId,
+        chat_id: chatId,
+        role: "user",
+        content: userText,
+      }),
+    ]);
+
+    let precomputedEmbedding: number[] | undefined;
+    if (priorTurns.length === 0 && earlyEmbeddingPromise) {
+      precomputedEmbedding = await earlyEmbeddingPromise;
+    } else if (earlyEmbeddingPromise) {
+      earlyEmbeddingPromise.catch(() => {
+        /* discarded — follow-up-style history on a flagged first message */
+      });
+    }
+
+    const chunks = await retrieveRelevantChunks(retrievalQuery, {
+      ...(precomputedEmbedding ? { queryEmbedding: precomputedEmbedding } : {}),
     });
-
-    // Conversation history (the just-saved user message is the final entry;
-    // exclude it when building the retrieval query so we fold in prior turns).
-    const previousMessages = await getMessagesByChatId(chatId);
-    const conversationHistory = previousMessages.slice(-10).map((m) => ({
-      role: m.role as "user" | "assistant",
-      content: m.content,
-    }));
-    const priorTurns = conversationHistory.slice(0, -1);
-
-    // Fold recent conversation into a standalone retrieval query for follow-ups.
-    const retrievalQuery = await buildRetrievalQuery(userText, priorTurns);
-
-    // RAG: hybrid retrieval over the retrieval query.
-    const chunks = await retrieveRelevantChunks(retrievalQuery);
     const context = formatChunksForPrompt(chunks);
 
-    // Track analytics (fire and forget)
     trackQuestion({
       chat_id: chatId,
       user_question: userText,
@@ -127,21 +173,14 @@ export async function POST(request: Request) {
       /* fire and forget */
     });
 
-    // Build system prompt with retrieved context; cite the book only when
-    // book chunks were actually retrieved.
     const systemPrompt = buildSystemPrompt(context, {
       hasBookContext: hasBookSource(chunks),
     });
 
-    // Citations to surface beneath the answer, numbered to match the inline
-    // [n] markers the model emits (see formatChunksForPrompt numbering).
     const sources = chunksToSources(chunks);
 
     const stream = createUIMessageStream<ChatMessage>({
       execute: ({ writer }) => {
-        // Emit sources first so they render above the streamed answer. When
-        // nothing relevant was retrieved, emit a notice so the UI can frame the
-        // reply as general guidance rather than a book-grounded answer.
         if (sources.length > 0) {
           writer.write({ type: "data-sources", id: "sources", data: sources });
         } else {
@@ -161,8 +200,6 @@ export async function POST(request: Request) {
             delayInMs: null,
           }),
           onFinish: async ({ text }) => {
-            // Save assistant response with its sources so the citations and
-            // notice survive a reload. [] explicitly records "no context".
             const assistantMessageId = randomUUID();
             await saveMessage({
               id: assistantMessageId,
@@ -172,10 +209,6 @@ export async function POST(request: Request) {
               sources,
             });
 
-            // Off-path response grading. Only when enabled and the answer was
-            // actually grounded in retrieved chunks — a no-context refusal has
-            // nothing to be faithful to. Runs after the user already has their
-            // answer; failures degrade to null scores inside evaluateResponse.
             if (RESPONSE_EVAL_ENABLED && chunks.length > 0) {
               const scores = await evaluateResponse({
                 question: userText,
@@ -193,7 +226,6 @@ export async function POST(request: Request) {
               });
             }
 
-            // Generate title for new chats
             if (!existingChat) {
               const titleResult = await generateText({
                 model: getTitleModel(),
