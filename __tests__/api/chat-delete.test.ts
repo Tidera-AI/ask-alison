@@ -77,7 +77,7 @@ describe("DELETE /api/chat", () => {
     expect(deleteChatById).not.toHaveBeenCalled();
   });
 
-  it("returns 404 when the session user does not own the chat", async () => {
+  it("returns 403 when the session user does not own the chat", async () => {
     vi.mocked(getChatById).mockResolvedValue({
       id: "chat-1",
       user_id: "user-2",
@@ -87,7 +87,7 @@ describe("DELETE /api/chat", () => {
     });
 
     const response = await DELETE(deleteRequest("chat-1"));
-    expect(response.status).toBe(404);
+    expect(response.status).toBe(403);
     expect(deleteChatById).not.toHaveBeenCalled();
   });
 });

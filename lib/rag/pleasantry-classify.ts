@@ -89,5 +89,5 @@ export async function shouldSkipRetrieval(message: string): Promise<boolean> {
   if (!isShortEnoughToClassify(message)) {
     return false;
   }
-  return classifyAsPleasantry(message);
+  return await classifyAsPleasantry(message);
 }

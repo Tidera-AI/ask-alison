@@ -27,8 +27,9 @@ import {
   saveMessage,
   updateChatTitle,
 } from "@/lib/db/queries";
-import { evaluateResponse } from "@/lib/rag/eval";
+import { ChatbotError } from "@/lib/errors";
 import { generateEmbedding } from "@/lib/rag/embeddings";
+import { evaluateResponse } from "@/lib/rag/eval";
 import { shouldSkipRetrieval } from "@/lib/rag/pleasantry-classify";
 import {
   buildRetrievalQuery,
@@ -40,7 +41,6 @@ import {
   hasBookSource,
   retrieveRelevantChunks,
 } from "@/lib/rag/retrieval";
-import { ChatbotError } from "@/lib/errors";
 import { getOrCreateSessionUserId } from "@/lib/session/anonymous";
 import type { ChatMessage } from "@/lib/types";
 import { chatRequestSchema, extractMessageText } from "./schema";
@@ -56,12 +56,12 @@ function buildConversationHistory(
   conversationHistory: ConversationTurn[];
   priorTurns: ConversationTurn[];
 } {
-  const recentPrior: ConversationTurn[] = priorMessages.slice(-9).map(
-    (message) => ({
+  const recentPrior: ConversationTurn[] = priorMessages
+    .slice(-9)
+    .map((message) => ({
       role: message.role as "user" | "assistant",
       content: message.content,
-    })
-  );
+    }));
   const withCurrent: ConversationTurn[] = [
     ...recentPrior,
     { role: "user", content: userText },
@@ -172,7 +172,9 @@ export async function POST(request: Request) {
     const chunks = skipRetrieval
       ? []
       : await retrieveRelevantChunks(retrievalQuery, {
-          ...(precomputedEmbedding ? { queryEmbedding: precomputedEmbedding } : {}),
+          ...(precomputedEmbedding
+            ? { queryEmbedding: precomputedEmbedding }
+            : {}),
         });
     const context = formatChunksForPrompt(chunks);
 
