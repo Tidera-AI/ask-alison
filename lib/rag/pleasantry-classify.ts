@@ -81,6 +81,17 @@ async function classifyAsPleasantry(message: string): Promise<boolean> {
   }
 }
 
+/**
+ * True when cheap synchronous heuristics guarantee retrieval will run, without
+ * needing the classifier model. Only messages that are neither punctuation-only
+ * nor short enough to be a pleasantry qualify, so this never returns true for
+ * greetings/thanks/junk. Use it to gate expensive prewarming (e.g. embeddings)
+ * that would otherwise be wasted when retrieval ends up skipped.
+ */
+export function isRetrievalCertain(message: string): boolean {
+  return !(isPunctuationOnly(message) || isShortEnoughToClassify(message));
+}
+
 /** True when retrieval should be skipped (pleasantry or meaningless input). */
 export async function shouldSkipRetrieval(message: string): Promise<boolean> {
   if (isPunctuationOnly(message)) {

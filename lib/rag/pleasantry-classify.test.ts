@@ -10,7 +10,7 @@ vi.mock("../ai/providers", () => ({
   getTitleModel: () => "mock-title-model",
 }));
 
-import { shouldSkipRetrieval } from "./pleasantry-classify";
+import { isRetrievalCertain, shouldSkipRetrieval } from "./pleasantry-classify";
 
 beforeEach(() => {
   vi.clearAllMocks();
@@ -45,5 +45,29 @@ describe("shouldSkipRetrieval", () => {
     generateText.mockRejectedValue(new Error("unavailable"));
 
     expect(await shouldSkipRetrieval("hi")).toBe(false);
+  });
+});
+
+describe("isRetrievalCertain", () => {
+  it("is certain for long messages that cannot be a pleasantry", () => {
+    expect(isRetrievalCertain("thanks for the gift advice")).toBe(true);
+    expect(isRetrievalCertain("what should I wear to a wedding")).toBe(true);
+  });
+
+  it("is not certain for short inputs that need the classifier", () => {
+    expect(isRetrievalCertain("heyyy")).toBe(false);
+    expect(isRetrievalCertain("thnks")).toBe(false);
+    expect(isRetrievalCertain("why?")).toBe(false);
+  });
+
+  it("is not certain for punctuation-only input", () => {
+    expect(isRetrievalCertain(".")).toBe(false);
+    expect(isRetrievalCertain("???")).toBe(false);
+  });
+
+  it("never triggers the classifier model", () => {
+    isRetrievalCertain("thanks for the gift advice");
+    isRetrievalCertain("heyyy");
+    expect(generateText).not.toHaveBeenCalled();
   });
 });

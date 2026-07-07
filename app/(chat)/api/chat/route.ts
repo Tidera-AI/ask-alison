@@ -30,7 +30,10 @@ import {
 import { ChatbotError } from "@/lib/errors";
 import { generateEmbedding } from "@/lib/rag/embeddings";
 import { evaluateResponse } from "@/lib/rag/eval";
-import { shouldSkipRetrieval } from "@/lib/rag/pleasantry-classify";
+import {
+  isRetrievalCertain,
+  shouldSkipRetrieval,
+} from "@/lib/rag/pleasantry-classify";
 import {
   buildRetrievalQuery,
   type ConversationTurn,
@@ -96,6 +99,13 @@ export async function DELETE(request: Request) {
   return Response.json({ success: true });
 }
 
+function shouldPrewarmEmbedding(
+  isFirstMessage: boolean,
+  userText: string
+): boolean {
+  return isFirstMessage && isRetrievalCertain(userText);
+}
+
 export async function POST(request: Request) {
   const body = await request.json();
   const parsed = chatRequestSchema.safeParse(body);
@@ -114,7 +124,14 @@ export async function POST(request: Request) {
   try {
     const userId = await getOrCreateSessionUserId();
 
-    const earlyEmbeddingPromise = isFirstMessage
+    // Only prewarm the embedding when cheap heuristics already guarantee
+    // retrieval will run. This keeps the parallel head start for real questions
+    // while avoiding a wasted embedding API call when `shouldSkipRetrieval`
+    // ends up true for greetings/thanks/junk.
+    const earlyEmbeddingPromise = shouldPrewarmEmbedding(
+      isFirstMessage,
+      userText
+    )
       ? generateEmbedding(userText)
       : null;
 
