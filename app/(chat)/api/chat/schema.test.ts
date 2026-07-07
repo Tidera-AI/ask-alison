@@ -61,7 +61,7 @@ describe("chatRequestSchema", () => {
 
   it("accepts optional isFirstMessage", () => {
     const result = chatRequestSchema.safeParse({
-      id: "chat-1",
+      id: CHAT_ID,
       message: { role: "user", content: "Hello" },
       isFirstMessage: true,
     });
