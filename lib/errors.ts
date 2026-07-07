@@ -101,9 +101,9 @@ export function getMessageByErrorCode(errorCode: ErrorCode): string {
     case "rate_limit:chat":
       return "You've reached the message limit. Come back in 1 hour to continue chatting.";
     case "not_found:chat":
-      return "The requested chat was not found. Please check the chat ID and try again.";
+      return "This chat is private or no longer available.";
     case "forbidden:chat":
-      return "This chat belongs to another user. Please check the chat ID and try again.";
+      return "This chat is private. Ask the owner to set it to public if you'd like to view it.";
     case "unauthorized:chat":
       return "You need to sign in to view this chat. Please sign in and try again.";
     case "offline:chat":

@@ -1,10 +1,12 @@
 import { describe, expect, it } from "vitest";
 import { chatRequestSchema, extractMessageText } from "./schema";
 
+const CHAT_ID = "550e8400-e29b-41d4-a716-446655440000";
+
 describe("chatRequestSchema", () => {
   it("accepts message with content string", () => {
     const result = chatRequestSchema.safeParse({
-      id: "chat-1",
+      id: CHAT_ID,
       message: { role: "user", content: "Hello" },
     });
     expect(result.success).toBe(true);
@@ -12,7 +14,7 @@ describe("chatRequestSchema", () => {
 
   it("accepts message with parts array", () => {
     const result = chatRequestSchema.safeParse({
-      id: "chat-1",
+      id: CHAT_ID,
       message: {
         role: "user",
         parts: [{ type: "text", text: "Hello" }],
@@ -23,7 +25,7 @@ describe("chatRequestSchema", () => {
 
   it("accepts message with both content and parts", () => {
     const result = chatRequestSchema.safeParse({
-      id: "chat-1",
+      id: CHAT_ID,
       message: {
         role: "user",
         content: "Hello",
@@ -35,7 +37,7 @@ describe("chatRequestSchema", () => {
 
   it("rejects message with wrong role", () => {
     const result = chatRequestSchema.safeParse({
-      id: "chat-1",
+      id: CHAT_ID,
       message: { role: "assistant", content: "Hello" },
     });
     expect(result.success).toBe(false);
@@ -50,7 +52,7 @@ describe("chatRequestSchema", () => {
 
   it("accepts optional selectedChatModel", () => {
     const result = chatRequestSchema.safeParse({
-      id: "chat-1",
+      id: CHAT_ID,
       message: { role: "user", content: "Hello" },
       selectedChatModel: "anthropic/claude-haiku-4.5",
     });
@@ -59,7 +61,7 @@ describe("chatRequestSchema", () => {
 
   it("accepts optional isFirstMessage", () => {
     const result = chatRequestSchema.safeParse({
-      id: "chat-1",
+      id: CHAT_ID,
       message: { role: "user", content: "Hello" },
       isFirstMessage: true,
     });

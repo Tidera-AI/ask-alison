@@ -2,22 +2,21 @@ import { randomUUID } from "node:crypto";
 import {
   createUIMessageStream,
   createUIMessageStreamResponse,
-  generateText,
   smoothStream,
   streamText,
 } from "ai";
 import { DEFAULT_CHAT_MODEL_ID } from "@/lib/ai/models";
-import { buildSystemPrompt, titlePrompt } from "@/lib/ai/prompts";
-import {
-  EVAL_MODEL_ID,
-  getLanguageModel,
-  getTitleModel,
-} from "@/lib/ai/providers";
+import { buildSystemPrompt } from "@/lib/ai/prompts";
+import { EVAL_MODEL_ID, getLanguageModel } from "@/lib/ai/providers";
 import {
   trackQuestion,
   trackResponseEval,
   trackRetrieval,
 } from "@/lib/analytics/track";
+import {
+  createStaticReplyStream,
+  generateChatTitle,
+} from "@/lib/chat/static-reply";
 import {
   deleteChatById,
   getChatById,
@@ -28,8 +27,13 @@ import {
   updateChatTitle,
 } from "@/lib/db/queries";
 import { ChatbotError } from "@/lib/errors";
+import {
+  COPY_VIOLATION_REFUSAL,
+  checkCopyViolation,
+} from "@/lib/rag/copy-guard";
 import { generateEmbedding } from "@/lib/rag/embeddings";
 import { evaluateResponse } from "@/lib/rag/eval";
+import { EXTRACTION_REFUSAL, isExtractionAttempt } from "@/lib/rag/input-guard";
 import {
   isRetrievalCertain,
   shouldSkipRetrieval,
@@ -44,12 +48,14 @@ import {
   hasBookSource,
   retrieveRelevantChunks,
 } from "@/lib/rag/retrieval";
+import { checkChatRateLimit, getClientIp } from "@/lib/rate-limit";
+import { logSecurityEvent } from "@/lib/security/audit-log";
+import { isChatOwner } from "@/lib/security/chat-access";
+import { isAllowedMutatingOrigin } from "@/lib/security/origin";
 import { getOrCreateSessionUserId } from "@/lib/session/anonymous";
 import type { ChatMessage } from "@/lib/types";
 import { chatRequestSchema, extractMessageText } from "./schema";
 
-// Off by default: each graded answer costs an extra (cheap) grader call. Enable
-// deliberately where that cost is acceptable, e.g. for a pre-launch eval run.
 const RESPONSE_EVAL_ENABLED = process.env.RESPONSE_EVAL_ENABLED === "true";
 
 function buildConversationHistory(
@@ -75,7 +81,19 @@ function buildConversationHistory(
   return { conversationHistory, priorTurns };
 }
 
+function shouldPrewarmEmbedding(
+  isFirstMessage: boolean,
+  userText: string
+): boolean {
+  return isFirstMessage && isRetrievalCertain(userText);
+}
+
 export async function DELETE(request: Request) {
+  if (!isAllowedMutatingOrigin(request.headers)) {
+    logSecurityEvent("origin_denied", { surface: "chat_delete" });
+    return new ChatbotError("forbidden:chat").toResponse();
+  }
+
   const { searchParams } = new URL(request.url);
   const chatId = searchParams.get("id");
 
@@ -90,39 +108,52 @@ export async function DELETE(request: Request) {
     return new ChatbotError("not_found:chat").toResponse();
   }
 
-  if (chat.user_id !== userId) {
+  if (!isChatOwner(chat, userId)) {
+    logSecurityEvent("ownership_denied", {
+      surface: "chat_delete",
+      chatId,
+      userId,
+    });
     return new ChatbotError("forbidden:chat").toResponse();
   }
 
-  await deleteChatById(chatId);
+  await deleteChatById(chatId, userId);
 
   return Response.json({ success: true });
 }
 
-function shouldPrewarmEmbedding(
-  isFirstMessage: boolean,
-  userText: string
-): boolean {
-  return isFirstMessage && isRetrievalCertain(userText);
-}
-
 export async function POST(request: Request) {
-  const body = await request.json();
-  const parsed = chatRequestSchema.safeParse(body);
+  if (!isAllowedMutatingOrigin(request.headers)) {
+    logSecurityEvent("origin_denied", { surface: "chat" });
+    return new ChatbotError("forbidden:chat").toResponse();
+  }
 
+  let body: unknown;
+  try {
+    body = await request.json();
+  } catch {
+    return new ChatbotError("bad_request:api").toResponse();
+  }
+
+  const parsed = chatRequestSchema.safeParse(body);
   if (!parsed.success) {
     return new ChatbotError("bad_request:api").toResponse();
   }
 
   const { id: chatId, message, isFirstMessage = false } = parsed.data;
   const userText = extractMessageText(message);
-
   if (!userText) {
     return new ChatbotError("bad_request:chat").toResponse();
   }
 
   try {
     const userId = await getOrCreateSessionUserId();
+    const clientIp = getClientIp(request);
+
+    if (!checkChatRateLimit(userId, clientIp)) {
+      logSecurityEvent("rate_limit", { chatId, userId, ip: clientIp });
+      return new ChatbotError("rate_limit:chat").toResponse();
+    }
 
     // Only prewarm the embedding when cheap heuristics already guarantee
     // retrieval will run. This keeps the parallel head start for real questions
@@ -146,11 +177,22 @@ export async function POST(request: Request) {
     const existingChat = bootstrapResults[1];
     let priorMessages = bootstrapResults[2];
 
+    if (existingChat && !isChatOwner(existingChat, userId)) {
+      logSecurityEvent("ownership_denied", {
+        surface: "chat_post",
+        chatId,
+        userId,
+      });
+      return new ChatbotError("forbidden:chat").toResponse();
+    }
+
+    const isNewChat = !existingChat;
+
     if (isFirstMessage && existingChat) {
       priorMessages = await getMessagesByChatId(chatId);
     }
 
-    if (!existingChat) {
+    if (isNewChat) {
       await saveChat({
         id: chatId,
         user_id: userId,
@@ -164,6 +206,27 @@ export async function POST(request: Request) {
     );
 
     const userMessageId = randomUUID();
+
+    if (isExtractionAttempt(userText)) {
+      logSecurityEvent("input_guard", { chatId, userId });
+      earlyEmbeddingPromise?.catch(() => {
+        /* discarded — extraction attempt short-circuits retrieval */
+      });
+      await saveMessage({
+        id: userMessageId,
+        chat_id: chatId,
+        role: "user",
+        content: userText,
+      });
+      const stream = createStaticReplyStream({
+        chatId,
+        text: EXTRACTION_REFUSAL,
+        isNewChat,
+        userText,
+        showNoContextNotice: true,
+      });
+      return createUIMessageStreamResponse({ stream });
+    }
 
     const [retrievalQuery] = await Promise.all([
       skipRetrieval
@@ -202,9 +265,7 @@ export async function POST(request: Request) {
         .map((c) => c.topic)
         .filter((t): t is string => t !== null),
       chunks_used: chunks.length,
-    }).catch(() => {
-      /* fire and forget */
-    });
+    }).catch(() => undefined);
 
     trackRetrieval({
       chat_id: chatId,
@@ -218,9 +279,7 @@ export async function POST(request: Request) {
         similarity: c.similarity,
         rrf_score: c.rrfScore,
       })),
-    }).catch(() => {
-      /* fire and forget */
-    });
+    }).catch(() => undefined);
 
     const systemPrompt = buildSystemPrompt(context, {
       hasBookContext: hasBookSource(chunks),
@@ -250,19 +309,44 @@ export async function POST(request: Request) {
             delayInMs: null,
           }),
           onFinish: async ({ text }) => {
+            const copyCheck = checkCopyViolation(text, chunks);
+            const finalText = copyCheck.violated
+              ? COPY_VIOLATION_REFUSAL
+              : text;
+
+            if (copyCheck.violated) {
+              logSecurityEvent("copy_guard", {
+                chatId,
+                userId,
+                maxConsecutive: copyCheck.maxConsecutive,
+                wordOverlapRatio: copyCheck.wordOverlapRatio,
+              });
+            }
+
+            let finalSources: typeof sources | null = sources;
+            if (copyCheck.violated) {
+              finalSources = [];
+            } else if (skipRetrieval) {
+              finalSources = null;
+            }
+
             const assistantMessageId = randomUUID();
             await saveMessage({
               id: assistantMessageId,
               chat_id: chatId,
               role: "assistant",
-              content: text,
-              sources: skipRetrieval ? null : sources,
+              content: finalText,
+              sources: finalSources,
             });
 
-            if (RESPONSE_EVAL_ENABLED && chunks.length > 0) {
+            if (
+              RESPONSE_EVAL_ENABLED &&
+              chunks.length > 0 &&
+              !copyCheck.violated
+            ) {
               const scores = await evaluateResponse({
                 question: userText,
-                answer: text,
+                answer: finalText,
                 chunks,
               });
               await trackResponseEval({
@@ -276,13 +360,8 @@ export async function POST(request: Request) {
               });
             }
 
-            if (!existingChat) {
-              const titleResult = await generateText({
-                model: getTitleModel(),
-                system: titlePrompt,
-                messages: [{ role: "user" as const, content: userText }],
-              });
-              await updateChatTitle(chatId, titleResult.text.trim());
+            if (isNewChat) {
+              await updateChatTitle(chatId, await generateChatTitle(userText));
             }
           },
         });

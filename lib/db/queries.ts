@@ -88,23 +88,39 @@ export async function updateChatTitle(chatId: string, title: string) {
 
 export async function updateChatVisibilityById(
   chatId: string,
+  userId: string,
   visibility: "private" | "public"
 ) {
-  const { error } = await supabase
+  const { data, error } = await supabase
     .from("chat")
     .update({ visibility })
-    .eq("id", chatId);
+    .eq("id", chatId)
+    .eq("user_id", userId)
+    .select("id")
+    .maybeSingle();
 
   if (error) {
     throw new Error(`Failed to update chat visibility: ${error.message}`);
   }
+  if (!data) {
+    throw new Error("Chat not found or access denied");
+  }
 }
 
-export async function deleteChatById(chatId: string) {
-  const { error } = await supabase.from("chat").delete().eq("id", chatId);
+export async function deleteChatById(chatId: string, userId: string) {
+  const { data, error } = await supabase
+    .from("chat")
+    .delete()
+    .eq("id", chatId)
+    .eq("user_id", userId)
+    .select("id")
+    .maybeSingle();
 
   if (error) {
     throw new Error(`Failed to delete chat: ${error.message}`);
+  }
+  if (!data) {
+    throw new Error("Chat not found or access denied");
   }
 }
 

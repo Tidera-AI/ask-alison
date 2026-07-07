@@ -37,6 +37,7 @@ function deleteRequest(chatId?: string): Request {
   const query = chatId ? `?id=${chatId}` : "";
   return new Request(`http://localhost/api/chat${query}`, {
     method: "DELETE",
+    headers: { origin: "http://localhost:3000" },
   });
 }
 
@@ -60,7 +61,7 @@ describe("DELETE /api/chat", () => {
 
     expect(response.status).toBe(200);
     expect(data).toEqual({ success: true });
-    expect(deleteChatById).toHaveBeenCalledWith("chat-1");
+    expect(deleteChatById).toHaveBeenCalledWith("chat-1", "user-1");
   });
 
   it("returns 400 when id is missing", async () => {
