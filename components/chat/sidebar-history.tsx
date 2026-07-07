@@ -5,7 +5,8 @@ import { motion } from "framer-motion";
 import { usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
 import { toast } from "sonner";
-import useSWRInfinite from "swr/infinite";
+import { useSWRConfig } from "swr";
+import useSWRInfinite, { unstable_serialize } from "swr/infinite";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -23,7 +24,8 @@ import {
   SidebarMenu,
   useSidebar,
 } from "@/components/ui/sidebar";
-import { fetcher } from "@/lib/utils";
+import { ChatbotError } from "@/lib/errors";
+import { fetcher, fetchWithErrorHandlers } from "@/lib/utils";
 
 type Chat = {
   id: string;
@@ -104,6 +106,49 @@ export function getChatHistoryPaginationKey(
   return `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/history?ending_before=${firstChatFromPage.id}&limit=${PAGE_SIZE}`;
 }
 
+async function removeChatFromHistoryCache(
+  globalMutate: ReturnType<typeof useSWRConfig>["mutate"],
+  chatId: string
+) {
+  const historyKey = unstable_serialize(getChatHistoryPaginationKey);
+  await globalMutate(
+    historyKey,
+    (pages: ChatHistory[] | undefined) => {
+      if (!pages) {
+        return pages;
+      }
+      return pages.map((page) => ({
+        ...page,
+        chats: page.chats.filter((chat) => chat.id !== chatId),
+      }));
+    },
+    { revalidate: false }
+  );
+}
+
+export async function deleteChatFromHistory(
+  globalMutate: ReturnType<typeof useSWRConfig>["mutate"],
+  chatId: string
+): Promise<{ ok: true } | { ok: false; message: string }> {
+  const url = `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/chat?id=${chatId}`;
+
+  try {
+    await fetchWithErrorHandlers(url, { method: "DELETE" });
+  } catch (error) {
+    if (error instanceof ChatbotError && error.type === "not_found") {
+      await removeChatFromHistoryCache(globalMutate, chatId);
+      return { ok: false, message: "Chat not found." };
+    }
+    if (error instanceof ChatbotError) {
+      return { ok: false, message: error.message };
+    }
+    return { ok: false, message: "Failed to delete chat." };
+  }
+
+  await removeChatFromHistoryCache(globalMutate, chatId);
+  return { ok: true };
+}
+
 export function SidebarHistory() {
   const { setOpenMobile } = useSidebar();
   const pathname = usePathname();
@@ -114,12 +159,12 @@ export function SidebarHistory() {
     setSize,
     isValidating,
     isLoading,
-    mutate,
   } = useSWRInfinite<ChatHistory>(getChatHistoryPaginationKey, fetcher, {
     fallbackData: [],
     revalidateOnFocus: false,
   });
 
+  const { mutate: globalMutate } = useSWRConfig();
   const router = useRouter();
   const [deleteId, setDeleteId] = useState<string | null>(null);
   const [showDeleteDialog, setShowDeleteDialog] = useState(false);
@@ -132,31 +177,26 @@ export function SidebarHistory() {
     ? paginatedChatHistories.every((page) => page.chats.length === 0)
     : false;
 
-  const handleDelete = () => {
+  const handleDelete = async () => {
     const chatToDelete = deleteId;
+    if (!chatToDelete) {
+      return;
+    }
+
     const isCurrentChat = pathname === `/chat/${chatToDelete}`;
 
     setShowDeleteDialog(false);
+    setDeleteId(null);
 
-    if (isCurrentChat) {
-      router.replace("/");
-    }
-
-    mutate((chatHistories) => {
-      if (chatHistories) {
-        return chatHistories.map((chatHistory) => ({
-          ...chatHistory,
-          chats: chatHistory.chats.filter((chat) => chat.id !== chatToDelete),
-        }));
+    const result = await deleteChatFromHistory(globalMutate, chatToDelete);
+    if (result.ok) {
+      if (isCurrentChat) {
+        router.replace("/");
       }
-    });
-
-    fetch(
-      `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/chat?id=${chatToDelete}`,
-      { method: "DELETE" }
-    );
-
-    toast.success("Chat deleted");
+      toast.success("Chat deleted");
+    } else {
+      toast.error(result.message);
+    }
   };
 
   if (isLoading) {

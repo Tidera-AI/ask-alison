@@ -11,10 +11,12 @@ export function MessageResponse({
   children,
   className,
   sources,
+  isStreaming = false,
   ...props
 }: ComponentPropsWithoutRef<"div"> & {
   children: string;
   sources?: ChatSource[];
+  isStreaming?: boolean;
 }) {
   // Only enable inline-citation rendering when the message has sources to
   // point at; otherwise leave Streamdown's defaults completely untouched.
@@ -28,7 +30,14 @@ export function MessageResponse({
 
   return (
     <div className={cn("prose prose-sm max-w-none dark:prose-invert", className)} {...props}>
-      <Streamdown components={components} rehypePlugins={rehypePlugins}>
+      <Streamdown
+        caret={isStreaming ? "circle" : undefined}
+        components={components}
+        isAnimating={isStreaming}
+        mode={isStreaming ? "streaming" : "static"}
+        parseIncompleteMarkdown={isStreaming}
+        rehypePlugins={rehypePlugins}
+      >
         {children}
       </Streamdown>
     </div>

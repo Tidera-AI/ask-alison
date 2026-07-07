@@ -56,6 +56,15 @@ describe("chatRequestSchema", () => {
     });
     expect(result.success).toBe(true);
   });
+
+  it("accepts optional isFirstMessage", () => {
+    const result = chatRequestSchema.safeParse({
+      id: "chat-1",
+      message: { role: "user", content: "Hello" },
+      isFirstMessage: true,
+    });
+    expect(result.success).toBe(true);
+  });
 });
 
 describe("extractMessageText", () => {

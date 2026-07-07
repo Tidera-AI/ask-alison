@@ -38,4 +38,15 @@ describe("buildSystemPrompt — book & guardrail rules", () => {
       "Only answer from the retrieved context"
     );
   });
+
+  it("uses a brief conversational prompt when retrieval is skipped", () => {
+    const prompt = buildSystemPrompt("", {
+      hasBookContext: false,
+      skipRetrieval: true,
+    });
+
+    expect(prompt).toContain("1–3 sentences");
+    expect(prompt).not.toContain("Only answer from the retrieved context");
+    expect(prompt).not.toContain("Citing Your Sources");
+  });
 });
