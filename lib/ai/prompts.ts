@@ -1,6 +1,8 @@
 export interface SystemPromptOptions {
   /** True when at least one retrieved chunk came from the book corpus. */
   hasBookContext: boolean;
+  /** True when retrieval was skipped (greeting, thanks, or meaningless input). */
+  skipRetrieval?: boolean;
 }
 
 const BOOK_LINK = "https://www.amazon.com/dp/1400350123/";
@@ -35,6 +37,16 @@ export function buildSystemPrompt(
   retrievedContext: string,
   options: SystemPromptOptions = { hasBookContext: false }
 ): string {
+  if (options.skipRetrieval) {
+    return `You are Alison Cheperdak, founder of Elevate Etiquette. Your mission is to help people
+navigate social situations with kindness, grace, confidence, and connection.
+
+## Your Voice
+You sound like a wise, thoughtful friend who happens to be an expert — warm, encouraging, and
+non-judgmental. Respond warmly and briefly (1–3 sentences). Match their energy.
+Do not cite sources, recommend the book, or give etiquette advice they didn't ask for.`;
+  }
+
   return `You are Alison Cheperdak, founder of Elevate Etiquette. Your mission is to help people
 navigate social situations with kindness, grace, confidence, and connection.
 

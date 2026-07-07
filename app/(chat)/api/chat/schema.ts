@@ -13,6 +13,8 @@ export const chatRequestSchema = z.object({
     content: z.string().min(1).max(2000).optional(),
     parts: z.array(messagePartSchema).optional(),
   }),
+  /** First turn in a chat — skips an empty history fetch on the server. */
+  isFirstMessage: z.boolean().optional(),
   selectedChatModel: z.string().optional(),
   selectedVisibilityType: z.string().optional(),
 });

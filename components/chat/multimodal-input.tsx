@@ -23,7 +23,7 @@ import {
   useState,
 } from "react";
 import { toast } from "sonner";
-import useSWR from "swr";
+import useSWR, { useSWRConfig } from "swr";
 import { useLocalStorage, useWindowSize } from "usehooks-ts";
 import {
   ModelSelector,
@@ -36,6 +36,7 @@ import {
   ModelSelectorName,
   ModelSelectorTrigger,
 } from "@/components/ai-elements/model-selector";
+import { deleteChatFromHistory } from "@/components/chat/sidebar-history";
 import {
   type ChatModel,
   chatModels,
@@ -108,6 +109,7 @@ function PureMultimodalInput({
   isLoading?: boolean;
 }) {
   const router = useRouter();
+  const { mutate: globalMutate } = useSWRConfig();
   const { setTheme, resolvedTheme } = useTheme();
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const { width } = useWindowSize();
@@ -179,13 +181,14 @@ function PureMultimodalInput({
         toast("Delete this chat?", {
           action: {
             label: "Delete",
-            onClick: () => {
-              fetch(
-                `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/chat?id=${chatId}`,
-                { method: "DELETE" }
-              );
-              router.push("/");
-              toast.success("Chat deleted");
+            onClick: async () => {
+              const result = await deleteChatFromHistory(globalMutate, chatId);
+              if (result.ok) {
+                router.push("/");
+                toast.success("Chat deleted");
+              } else {
+                toast.error(result.message);
+              }
             },
           },
         });

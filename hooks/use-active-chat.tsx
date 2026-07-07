@@ -74,7 +74,11 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
   prevPathnameRef.current = pathname;
 
   const chatId = chatIdFromUrl ?? newChatIdRef.current;
-  const shouldFetchMessages = !isNewChat;
+  const isClientGeneratedChat =
+    chatIdFromUrl !== null && chatIdFromUrl === newChatIdRef.current;
+  const [clientChatSaved, setClientChatSaved] = useState(false);
+  const shouldFetchMessages =
+    !isNewChat && !(isClientGeneratedChat && !clientChatSaved);
 
   const [currentModelId, setCurrentModelId] = useState(DEFAULT_CHAT_MODEL);
   const currentModelIdRef = useRef(currentModelId);
@@ -157,7 +161,12 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
             id: request.id,
             ...(isToolApprovalContinuation
               ? { messages: request.messages }
-              : { message: lastMessage }),
+              : {
+                  message: lastMessage,
+                  isFirstMessage:
+                    !isToolApprovalContinuation &&
+                    request.messages.length === 1,
+                }),
             selectedChatModel: currentModelIdRef.current,
             selectedVisibilityType: visibility,
             ...request.body,
@@ -190,6 +199,16 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
   if (isNewChat && !loadedChatIds.current.has(newChatIdRef.current)) {
     loadedChatIds.current.add(newChatIdRef.current);
   }
+
+  useEffect(() => {
+    if (!isClientGeneratedChat) {
+      setClientChatSaved(false);
+      return;
+    }
+    if (messages.length > 0 && (status === "ready" || status === "error")) {
+      setClientChatSaved(true);
+    }
+  }, [status, isClientGeneratedChat, messages.length]);
 
   useEffect(() => {
     if (loadedChatIds.current.has(chatId)) {
