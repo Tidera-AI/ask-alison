@@ -22,6 +22,7 @@ import { cn } from "@/lib/utils";
 import { Artifact } from "./artifact";
 import { ChatHeader } from "./chat-header";
 import { DataStreamHandler } from "./data-stream-handler";
+import { EmailGate } from "./email-gate";
 import { submitEditedMessage } from "./message-editor";
 import { Messages } from "./messages";
 import { MultimodalInput } from "./multimodal-input";
@@ -48,6 +49,8 @@ export function ChatShell() {
     setCurrentModelId,
     showCreditCardAlert,
     setShowCreditCardAlert,
+    showEmailGate,
+    onEmailCaptured,
   } = useActiveChat();
 
   const [editingMessage, setEditingMessage] = useState<ChatMessage | null>(
@@ -112,7 +115,10 @@ export function ChatShell() {
 
             <div className="sticky bottom-0 z-1 mx-auto flex w-full max-w-4xl flex-col gap-2 border-t-0 bg-background px-4 pb-3 md:pb-4">
               {canShowComposer ? (
-                <MultimodalInput
+                showEmailGate ? (
+                  <EmailGate onCaptured={onEmailCaptured} />
+                ) : (
+                  <MultimodalInput
                   attachments={attachments}
                   chatId={chatId}
                   editingMessage={editingMessage}
@@ -147,6 +153,7 @@ export function ChatShell() {
                   status={status}
                   stop={stop}
                 />
+                )
               ) : null}
             </div>
           </div>

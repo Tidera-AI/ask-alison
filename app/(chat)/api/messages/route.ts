@@ -1,5 +1,5 @@
 import { dbMessagesToUiMessages } from "@/lib/chat/history";
-import { getChatById, getMessagesByChatId } from "@/lib/db/queries";
+import { getChatById, getMessagesByChatId, getOrCreateUser } from "@/lib/db/queries";
 import { getOrCreateSessionUserId } from "@/lib/session/anonymous";
 
 export async function GET(request: Request) {
@@ -11,7 +11,10 @@ export async function GET(request: Request) {
   }
 
   const userId = await getOrCreateSessionUserId();
-  const chat = await getChatById(chatId);
+  const [chat, user] = await Promise.all([
+    getChatById(chatId),
+    getOrCreateUser(userId),
+  ]);
 
   if (!chat) {
     return Response.json({ error: "Chat not found" }, { status: 404 });
@@ -34,5 +37,6 @@ export async function GET(request: Request) {
     messages: uiMessages,
     visibility,
     isReadonly: !isOwner,
+    hasEmail: Boolean(user.email),
   });
 }

@@ -17,7 +17,8 @@ export type Surface =
   | "vote"
   | "document"
   | "suggestions"
-  | "activate_gateway";
+  | "activate_gateway"
+  | "email_gate";
 
 export type ErrorCode = `${ErrorType}:${Surface}`;
 
@@ -34,6 +35,7 @@ export const visibilityBySurface: Record<Surface, ErrorVisibility> = {
   document: "response",
   suggestions: "response",
   activate_gateway: "response",
+  email_gate: "response",
 };
 
 export class ChatbotError extends Error {
@@ -108,6 +110,11 @@ export function getMessageByErrorCode(errorCode: ErrorCode): string {
       return "You need to sign in to view this chat. Please sign in and try again.";
     case "offline:chat":
       return "We're having trouble sending your message. Please check your internet connection and try again.";
+
+    case "forbidden:email_gate":
+      return "Enter your email to continue the conversation.";
+    case "bad_request:email_gate":
+      return "Please enter a valid email address.";
 
     case "not_found:document":
       return "The requested document was not found. Please check the document ID and try again.";

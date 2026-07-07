@@ -18,6 +18,7 @@ import {
   generateChatTitle,
 } from "@/lib/chat/static-reply";
 import {
+  countUserMessagesForUser,
   deleteChatById,
   getChatById,
   getMessagesByChatId,
@@ -26,6 +27,7 @@ import {
   saveMessage,
   updateChatTitle,
 } from "@/lib/db/queries";
+import { requiresEmailGate } from "@/lib/chat/email-gate";
 import { ChatbotError } from "@/lib/errors";
 import {
   COPY_VIOLATION_REFUSAL,
@@ -171,11 +173,14 @@ export async function POST(request: Request) {
         getOrCreateUser(userId),
         getChatById(chatId),
         isFirstMessage ? Promise.resolve([]) : getMessagesByChatId(chatId),
+        countUserMessagesForUser(userId),
       ]),
       shouldSkipRetrieval(userText),
     ]);
     const existingChat = bootstrapResults[1];
     let priorMessages = bootstrapResults[2];
+    const user = bootstrapResults[0];
+    const sessionUserMessageCount = bootstrapResults[3];
 
     if (existingChat && !isChatOwner(existingChat, userId)) {
       logSecurityEvent("ownership_denied", {
@@ -190,6 +195,18 @@ export async function POST(request: Request) {
 
     if (isFirstMessage && existingChat) {
       priorMessages = await getMessagesByChatId(chatId);
+    }
+
+    if (
+      requiresEmailGate({
+        email: user.email,
+        userMessageCountInSession: sessionUserMessageCount,
+      })
+    ) {
+      return new ChatbotError(
+        "forbidden:email_gate",
+        "email_required"
+      ).toResponse();
     }
 
     if (isNewChat) {
