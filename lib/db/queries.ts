@@ -46,7 +46,9 @@ export async function setUserEmail(userId: string, email: string) {
   return data;
 }
 
-export async function countUserMessagesForUser(userId: string): Promise<number> {
+export async function countUserMessagesForUser(
+  userId: string
+): Promise<number> {
   const { data: chats, error: chatError } = await supabase
     .from("chat")
     .select("id")

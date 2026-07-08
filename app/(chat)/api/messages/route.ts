@@ -1,5 +1,9 @@
 import { dbMessagesToUiMessages } from "@/lib/chat/history";
-import { getChatById, getMessagesByChatId, getOrCreateUser } from "@/lib/db/queries";
+import {
+  getChatById,
+  getMessagesByChatId,
+  getOrCreateUser,
+} from "@/lib/db/queries";
 import { getOrCreateSessionUserId } from "@/lib/session/anonymous";
 
 export async function GET(request: Request) {

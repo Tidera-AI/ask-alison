@@ -5,11 +5,11 @@ import { useChat } from "@ai-sdk/react";
 import { DefaultChatTransport } from "ai";
 import { usePathname } from "next/navigation";
 import {
-  useCallback,
   createContext,
   type Dispatch,
   type ReactNode,
   type SetStateAction,
+  useCallback,
   useContext,
   useEffect,
   useMemo,
@@ -27,7 +27,12 @@ import { DEFAULT_CHAT_MODEL } from "@/lib/ai/models";
 import type { Vote } from "@/lib/db/schema";
 import { ChatbotError } from "@/lib/errors";
 import type { ChatMessage } from "@/lib/types";
-import { fetcher, fetchWithErrorHandlers, generateUUID, getTextFromMessage } from "@/lib/utils";
+import {
+  fetcher,
+  fetchWithErrorHandlers,
+  generateUUID,
+  getTextFromMessage,
+} from "@/lib/utils";
 
 type ActiveChatContextValue = {
   chatId: string;

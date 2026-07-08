@@ -50,8 +50,8 @@ export function EmailGate({ onCaptured }: { onCaptured: () => void }) {
         </p>
         <p className="text-xs leading-relaxed text-muted-foreground">
           We&apos;ll email you a copy of this conversation. We&apos;ve also
-          added you to the Elevate Etiquette mailing list for etiquette tips
-          and updates. You can unsubscribe at any time.
+          added you to the Elevate Etiquette mailing list for etiquette tips and
+          updates. You can unsubscribe at any time.
         </p>
       </div>
 
