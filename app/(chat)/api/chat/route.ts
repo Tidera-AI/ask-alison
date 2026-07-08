@@ -13,6 +13,7 @@ import {
   trackResponseEval,
   trackRetrieval,
 } from "@/lib/analytics/track";
+import { requiresEmailGate } from "@/lib/chat/email-gate";
 import {
   createStaticReplyStream,
   generateChatTitle,
@@ -27,7 +28,6 @@ import {
   saveMessage,
   updateChatTitle,
 } from "@/lib/db/queries";
-import { requiresEmailGate } from "@/lib/chat/email-gate";
 import { ChatbotError } from "@/lib/errors";
 import { checkCopyViolation } from "@/lib/rag/copy-guard";
 import { generateEmbedding } from "@/lib/rag/embeddings";

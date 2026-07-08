@@ -67,20 +67,17 @@ function LinkSafetyModalContent({
     <div
       className="fixed inset-0 z-50 flex items-center justify-center bg-background/50 backdrop-blur-sm"
       data-streamdown="link-safety-modal"
-      onClick={onClose}
-      onKeyDown={(event) => {
-        if (event.key === "Escape") {
-          onClose();
-        }
-      }}
-      role="button"
-      tabIndex={0}
     >
+      <button
+        aria-label="Dismiss link safety dialog"
+        className="absolute inset-0 cursor-default"
+        onClick={onClose}
+        type="button"
+      />
       <div
-        className="relative mx-4 flex w-full max-w-md flex-col gap-4 rounded-xl border bg-background p-6 shadow-lg"
-        onClick={(event) => event.stopPropagation()}
-        onKeyDown={(event) => event.stopPropagation()}
-        role="presentation"
+        aria-modal="true"
+        className="relative z-10 mx-4 flex w-full max-w-md flex-col gap-4 rounded-xl border bg-background p-6 shadow-lg"
+        role="dialog"
       >
         <div className="flex flex-col gap-2 pr-8">
           <div className="flex items-center gap-2 font-semibold text-lg">
