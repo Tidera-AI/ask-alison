@@ -54,7 +54,9 @@ export async function getOrCreateSessionUserId(): Promise<string> {
   return userId;
 }
 
-export async function setPersistentSessionUserId(userId: string): Promise<void> {
+export async function setPersistentSessionUserId(
+  userId: string
+): Promise<void> {
   const cookieStore = await cookies();
   cookieStore.set(PERSISTENT_COOKIE_NAME, userId, {
     ...cookieBase,
