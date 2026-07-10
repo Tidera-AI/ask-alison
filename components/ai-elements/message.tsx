@@ -3,9 +3,15 @@
 import type { ComponentPropsWithoutRef } from "react";
 import { defaultRehypePlugins, Streamdown } from "streamdown";
 import { createCitationComponents } from "@/components/chat/citation-marker";
+import { renderLinkSafetyModal } from "@/components/chat/link-safety-modal";
 import type { ChatSource } from "@/lib/rag/format";
 import { rehypeInlineCitations } from "@/lib/markdown/rehype-inline-citations";
 import { cn } from "@/lib/utils";
+
+const linkSafety = {
+  enabled: true,
+  renderModal: renderLinkSafetyModal,
+} as const;
 
 export function MessageResponse({
   children,
@@ -34,6 +40,7 @@ export function MessageResponse({
         caret={isStreaming ? "circle" : undefined}
         components={components}
         isAnimating={isStreaming}
+        linkSafety={linkSafety}
         mode={isStreaming ? "streaming" : "static"}
         parseIncompleteMarkdown={isStreaming}
         rehypePlugins={rehypePlugins}

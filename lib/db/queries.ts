@@ -9,12 +9,18 @@ function isUnknownColumnError(error: { code?: string } | null): boolean {
 
 // --- User ---
 
-export async function getOrCreateUser(userId: string) {
-  const { data: existing } = await supabase
+export async function getUserById(userId: string) {
+  const { data } = await supabase
     .from("user")
     .select("*")
     .eq("id", userId)
     .maybeSingle();
+
+  return data;
+}
+
+export async function getOrCreateUser(userId: string) {
+  const existing = await getUserById(userId);
 
   if (existing) {
     return existing;
@@ -30,6 +36,50 @@ export async function getOrCreateUser(userId: string) {
     throw new Error(`Failed to create user: ${error.message}`);
   }
   return created;
+}
+
+export async function setUserEmail(userId: string, email: string) {
+  const { data, error } = await supabase
+    .from("user")
+    .update({ email, email_timestamptz: new Date().toISOString() })
+    .eq("id", userId)
+    .select()
+    .single();
+
+  if (error) {
+    throw new Error(`Failed to save email: ${error.message}`);
+  }
+  return data;
+}
+
+export async function countUserMessagesForUser(
+  userId: string
+): Promise<number> {
+  const { data: chats, error: chatError } = await supabase
+    .from("chat")
+    .select("id")
+    .eq("user_id", userId);
+
+  if (chatError) {
+    throw new Error(`Failed to count user messages: ${chatError.message}`);
+  }
+
+  const chatIds = (chats ?? []).map((chat) => chat.id);
+  if (chatIds.length === 0) {
+    return 0;
+  }
+
+  const { count, error: messageError } = await supabase
+    .from("message")
+    .select("id", { count: "exact", head: true })
+    .eq("role", "user")
+    .in("chat_id", chatIds);
+
+  if (messageError) {
+    throw new Error(`Failed to count user messages: ${messageError.message}`);
+  }
+
+  return count ?? 0;
 }
 
 // --- Chat ---

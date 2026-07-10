@@ -9,6 +9,7 @@ import {
   type Dispatch,
   type ReactNode,
   type SetStateAction,
+  useCallback,
   useContext,
   useEffect,
   useMemo,
@@ -26,7 +27,12 @@ import { DEFAULT_CHAT_MODEL } from "@/lib/ai/models";
 import type { Vote } from "@/lib/db/schema";
 import { ChatbotError } from "@/lib/errors";
 import type { ChatMessage } from "@/lib/types";
-import { fetcher, fetchWithErrorHandlers, generateUUID } from "@/lib/utils";
+import {
+  fetcher,
+  fetchWithErrorHandlers,
+  generateUUID,
+  getTextFromMessage,
+} from "@/lib/utils";
 
 type ActiveChatContextValue = {
   chatId: string;
@@ -49,6 +55,9 @@ type ActiveChatContextValue = {
   setCurrentModelId: (id: string) => void;
   showCreditCardAlert: boolean;
   setShowCreditCardAlert: Dispatch<SetStateAction<boolean>>;
+  showEmailGate: boolean;
+  hasEmailCaptured: boolean;
+  onEmailCaptured: () => void;
 };
 
 const ActiveChatContext = createContext<ActiveChatContextValue | null>(null);
@@ -91,6 +100,9 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
   const [latchedInaccessibleId, setLatchedInaccessibleId] = useState<
     string | null
   >(null);
+  const [showEmailGate, setShowEmailGate] = useState(false);
+  const [hasEmailCaptured, setHasEmailCaptured] = useState(false);
+  const pendingMessageRef = useRef<string | null>(null);
 
   const {
     data: chatData,
@@ -106,6 +118,12 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
       revalidateOnReconnect: false,
       shouldRetryOnError: false,
     }
+  );
+
+  const { data: sessionData } = useSWR(
+    `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/session`,
+    fetcher,
+    { revalidateOnFocus: false }
   );
 
   const initialMessages: ChatMessage[] = shouldFetchMessages
@@ -183,6 +201,22 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
     onError: (error) => {
       if (error.message?.includes("AI Gateway requires a valid credit card")) {
         setShowCreditCardAlert(true);
+      } else if (
+        error instanceof ChatbotError &&
+        error.cause === "email_required"
+      ) {
+        setMessages((current) => {
+          const last = current.at(-1);
+          if (last?.role === "user") {
+            const text = getTextFromMessage(last);
+            if (text) {
+              pendingMessageRef.current = text;
+            }
+            return current.slice(0, -1);
+          }
+          return current;
+        });
+        setShowEmailGate(true);
       } else if (error instanceof ChatbotError) {
         toast({ type: "error", description: error.message });
       } else {
@@ -193,6 +227,27 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
       }
     },
   });
+
+  const onEmailCaptured = useCallback(() => {
+    setHasEmailCaptured(true);
+    setShowEmailGate(false);
+
+    const pending = pendingMessageRef.current;
+    pendingMessageRef.current = null;
+    if (pending) {
+      sendMessage({
+        role: "user" as const,
+        parts: [{ type: "text", text: pending }],
+      });
+    }
+  }, [sendMessage]);
+
+  useEffect(() => {
+    if (chatData?.hasEmail || sessionData?.hasEmail) {
+      setHasEmailCaptured(true);
+      setShowEmailGate(false);
+    }
+  }, [chatData?.hasEmail, sessionData?.hasEmail]);
 
   const loadedChatIds = useRef(new Set<string>());
 
@@ -224,6 +279,8 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     if (prevChatIdRef.current !== chatId) {
       prevChatIdRef.current = chatId;
+      setShowEmailGate(false);
+      pendingMessageRef.current = null;
       if (isNewChat) {
         setMessages([]);
       }
@@ -322,6 +379,9 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
       setCurrentModelId,
       showCreditCardAlert,
       setShowCreditCardAlert,
+      showEmailGate,
+      hasEmailCaptured,
+      onEmailCaptured,
     }),
     [
       chatId,
@@ -342,6 +402,9 @@ export function ActiveChatProvider({ children }: { children: ReactNode }) {
       votes,
       currentModelId,
       showCreditCardAlert,
+      showEmailGate,
+      hasEmailCaptured,
+      onEmailCaptured,
     ]
   );
 

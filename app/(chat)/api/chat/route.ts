@@ -13,11 +13,13 @@ import {
   trackResponseEval,
   trackRetrieval,
 } from "@/lib/analytics/track";
+import { requiresEmailGate } from "@/lib/chat/email-gate";
 import {
   createStaticReplyStream,
   generateChatTitle,
 } from "@/lib/chat/static-reply";
 import {
+  countUserMessagesForUser,
   deleteChatById,
   getChatById,
   getMessagesByChatId,
@@ -27,10 +29,7 @@ import {
   updateChatTitle,
 } from "@/lib/db/queries";
 import { ChatbotError } from "@/lib/errors";
-import {
-  COPY_VIOLATION_REFUSAL,
-  checkCopyViolation,
-} from "@/lib/rag/copy-guard";
+import { checkCopyViolation } from "@/lib/rag/copy-guard";
 import { generateEmbedding } from "@/lib/rag/embeddings";
 import { evaluateResponse } from "@/lib/rag/eval";
 import { EXTRACTION_REFUSAL, isExtractionAttempt } from "@/lib/rag/input-guard";
@@ -171,11 +170,14 @@ export async function POST(request: Request) {
         getOrCreateUser(userId),
         getChatById(chatId),
         isFirstMessage ? Promise.resolve([]) : getMessagesByChatId(chatId),
+        countUserMessagesForUser(userId),
       ]),
       shouldSkipRetrieval(userText),
     ]);
     const existingChat = bootstrapResults[1];
     let priorMessages = bootstrapResults[2];
+    const user = bootstrapResults[0];
+    const sessionUserMessageCount = bootstrapResults[3];
 
     if (existingChat && !isChatOwner(existingChat, userId)) {
       logSecurityEvent("ownership_denied", {
@@ -190,6 +192,18 @@ export async function POST(request: Request) {
 
     if (isFirstMessage && existingChat) {
       priorMessages = await getMessagesByChatId(chatId);
+    }
+
+    if (
+      requiresEmailGate({
+        email: user.email,
+        userMessageCountInSession: sessionUserMessageCount,
+      })
+    ) {
+      return new ChatbotError(
+        "forbidden:email_gate",
+        "email_required"
+      ).toResponse();
     }
 
     if (isNewChat) {
@@ -309,11 +323,10 @@ export async function POST(request: Request) {
             delayInMs: null,
           }),
           onFinish: async ({ text }) => {
+            // Phase 1: persist the streamed answer as shown to the user.
+            // Still detect copy overlap for monitoring, but do not replace the
+            // saved content/sources with the refusal (that caused refresh mismatch).
             const copyCheck = checkCopyViolation(text, chunks);
-            const finalText = copyCheck.violated
-              ? COPY_VIOLATION_REFUSAL
-              : text;
-
             if (copyCheck.violated) {
               logSecurityEvent("copy_guard", {
                 chatId,
@@ -323,30 +336,23 @@ export async function POST(request: Request) {
               });
             }
 
-            let finalSources: typeof sources | null = sources;
-            if (copyCheck.violated) {
-              finalSources = [];
-            } else if (skipRetrieval) {
-              finalSources = null;
-            }
+            const finalSources: typeof sources | null = skipRetrieval
+              ? null
+              : sources;
 
             const assistantMessageId = randomUUID();
             await saveMessage({
               id: assistantMessageId,
               chat_id: chatId,
               role: "assistant",
-              content: finalText,
+              content: text,
               sources: finalSources,
             });
 
-            if (
-              RESPONSE_EVAL_ENABLED &&
-              chunks.length > 0 &&
-              !copyCheck.violated
-            ) {
+            if (RESPONSE_EVAL_ENABLED && chunks.length > 0) {
               const scores = await evaluateResponse({
                 question: userText,
-                answer: finalText,
+                answer: text,
                 chunks,
               });
               await trackResponseEval({
