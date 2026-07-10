@@ -1,4 +1,4 @@
-/** One free user question per session; further messages require a captured email. */
+/** One free user question per browser session; further messages require email in the DB. */
 export function requiresEmailGate({
   email,
   userMessageCountInSession,

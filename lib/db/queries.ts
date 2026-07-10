@@ -9,12 +9,18 @@ function isUnknownColumnError(error: { code?: string } | null): boolean {
 
 // --- User ---
 
-export async function getOrCreateUser(userId: string) {
-  const { data: existing } = await supabase
+export async function getUserById(userId: string) {
+  const { data } = await supabase
     .from("user")
     .select("*")
     .eq("id", userId)
     .maybeSingle();
+
+  return data;
+}
+
+export async function getOrCreateUser(userId: string) {
+  const existing = await getUserById(userId);
 
   if (existing) {
     return existing;

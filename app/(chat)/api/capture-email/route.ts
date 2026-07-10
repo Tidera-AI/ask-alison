@@ -1,7 +1,10 @@
 import { z } from "zod";
-import { setUserEmail } from "@/lib/db/queries";
+import { getOrCreateUser, setUserEmail } from "@/lib/db/queries";
 import { ChatbotError } from "@/lib/errors";
-import { getOrCreateSessionUserId } from "@/lib/session/anonymous";
+import {
+  getOrCreateSessionUserId,
+  setPersistentSessionUserId,
+} from "@/lib/session/anonymous";
 
 const captureEmailSchema = z.object({
   email: z.string().trim().email(),
@@ -17,7 +20,9 @@ export async function POST(request: Request) {
 
   try {
     const userId = await getOrCreateSessionUserId();
+    await getOrCreateUser(userId);
     await setUserEmail(userId, parsed.data.email.toLowerCase());
+    await setPersistentSessionUserId(userId);
 
     return Response.json({ success: true });
   } catch (error) {
