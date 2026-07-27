@@ -7,7 +7,13 @@ import { fetchWithErrorHandlers } from "@/lib/utils";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 
-export function EmailGate({ onCaptured }: { onCaptured: () => void }) {
+export function EmailGate({
+  chatId,
+  onCaptured,
+}: {
+  chatId: string;
+  onCaptured: () => void;
+}) {
   const [email, setEmail] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -23,7 +29,7 @@ export function EmailGate({ onCaptured }: { onCaptured: () => void }) {
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ email }),
+          body: JSON.stringify({ chatId, email }),
         }
       );
       toast.success("Thanks! You can continue the conversation.");
