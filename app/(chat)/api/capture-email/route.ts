@@ -1,12 +1,19 @@
 import { z } from "zod";
-import { getOrCreateUser, setUserEmail } from "@/lib/db/queries";
+import {
+  getChatById,
+  getMessagesByChatId,
+  getOrCreateUser,
+  setUserEmail,
+} from "@/lib/db/queries";
 import { ChatbotError } from "@/lib/errors";
+import { deliverLeadCapture } from "@/lib/google/lead-capture";
 import {
   getOrCreateSessionUserId,
   setPersistentSessionUserId,
 } from "@/lib/session/anonymous";
 
 const captureEmailSchema = z.object({
+  chatId: z.string().uuid(),
   email: z.string().trim().email(),
 });
 
@@ -20,8 +27,29 @@ export async function POST(request: Request) {
 
   try {
     const userId = await getOrCreateSessionUserId();
-    await getOrCreateUser(userId);
-    await setUserEmail(userId, parsed.data.email.toLowerCase());
+    const [user, chat] = await Promise.all([
+      getOrCreateUser(userId),
+      getChatById(parsed.data.chatId),
+    ]);
+
+    if (!chat || chat.user_id !== userId) {
+      return new ChatbotError("forbidden:chat").toResponse();
+    }
+
+    if (user.email) {
+      await setPersistentSessionUserId(userId);
+      return Response.json({ success: true });
+    }
+
+    const email = parsed.data.email.toLowerCase();
+    const messages = await getMessagesByChatId(parsed.data.chatId);
+
+    await deliverLeadCapture({
+      chatId: parsed.data.chatId,
+      email,
+      messages,
+    });
+    await setUserEmail(userId, email);
     await setPersistentSessionUserId(userId);
 
     return Response.json({ success: true });
