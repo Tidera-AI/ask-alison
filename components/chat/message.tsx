@@ -1,5 +1,6 @@
 "use client";
 import type { UseChatHelpers } from "@ai-sdk/react";
+import { ChevronDownIcon } from "lucide-react";
 import { isAssistantTextPartStreaming } from "@/lib/chat/text-part-streaming";
 import type { Vote } from "@/lib/db/schema";
 import type { ChatSource } from "@/lib/rag/format";
@@ -135,9 +136,18 @@ const PurePreviewMessage = ({
         return null;
       }
       return (
-        <Sources key={key}>
-          <SourcesTrigger count={sources.length} />
-          <SourcesContent>
+        <Sources className="not-prose w-full text-[14px]" key={key}>
+          <SourcesTrigger
+            className="group/sources flex w-full cursor-pointer items-center justify-between"
+            count={sources.length}
+          >
+            <span className="font-semibold text-link underline underline-offset-2">
+              Used {sources.length}{" "}
+              {sources.length === 1 ? "source" : "sources"}
+            </span>
+            <ChevronDownIcon className="size-3.5 shrink-0 text-muted-foreground transition-transform duration-200 group-data-[state=open]/sources:rotate-180" />
+          </SourcesTrigger>
+          <SourcesContent className="w-full">
             {sources.map((source) => (
               <Source
                 href={safeExternalUrl(source.url)}
@@ -162,8 +172,8 @@ const PurePreviewMessage = ({
 
       return (
         <MessageContent
-          className={cn("text-[13px] leading-[1.65]", {
-            "w-fit max-w-[min(80%,56ch)] overflow-hidden break-words rounded-2xl rounded-br-lg border border-primary/15 bg-gradient-to-br from-secondary to-primary/[0.06] px-3.5 py-2 shadow-[var(--shadow-card)]":
+          className={cn("text-[16px] leading-[1.8] tracking-[0.01em]", {
+            "w-fit max-w-[min(100%,640px)] overflow-hidden break-words rounded-[18px] bg-secondary px-[18px] py-4":
               message.role === "user",
           })}
           data-testid="message-content"
@@ -409,16 +419,16 @@ const PurePreviewMessage = ({
         )}
       >
         {isAssistant && (
-          <div className="flex h-[calc(13px*1.65)] shrink-0 items-center">
-            <div className="flex size-7 items-center justify-center rounded-full bg-primary/10 ring-1 ring-primary/20">
-              <span className="font-serif text-[11px] font-normal text-primary">
-                EE
-              </span>
-            </div>
+          <div className="flex size-8 shrink-0 items-center justify-center rounded-full border border-border bg-card font-semibold text-[13px] text-foreground">
+            A
           </div>
         )}
         {isAssistant ? (
-          <div className="flex min-w-0 flex-1 flex-col gap-2">{content}</div>
+          // The answer sits in its own card — white, hairline border, soft
+          // drop shadow — per the response mockup.
+          <div className="flex min-w-0 flex-1 flex-col gap-3 rounded-2xl border border-border bg-card p-4 shadow-[var(--shadow-answer)]">
+            {content}
+          </div>
         ) : (
           content
         )}
@@ -437,12 +447,8 @@ export const ThinkingMessage = () => {
       data-testid="message-assistant-loading"
     >
       <div className="flex items-start gap-3">
-        <div className="flex h-[calc(13px*1.65)] shrink-0 items-center">
-          <div className="flex size-7 items-center justify-center rounded-full bg-primary/10 ring-1 ring-primary/20">
-            <span className="font-serif text-[10px] font-semibold text-primary">
-              EE
-            </span>
-          </div>
+        <div className="flex size-8 shrink-0 items-center justify-center rounded-full border border-border bg-card font-semibold text-[13px] text-foreground">
+          A
         </div>
 
         <div className="flex h-[calc(13px*1.65)] items-center text-[13px] leading-[1.65]">

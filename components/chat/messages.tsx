@@ -1,13 +1,13 @@
 import type { UseChatHelpers } from "@ai-sdk/react";
 import { ArrowDownIcon } from "lucide-react";
 import { useEffect, useRef } from "react";
+import { Wordmark } from "@/components/brand/wordmark";
 import { useMessages } from "@/hooks/use-messages";
 import type { Vote } from "@/lib/db/schema";
 import type { ChatMessage } from "@/lib/types";
 import { cn } from "@/lib/utils";
 import { ChatInaccessible } from "./chat-inaccessible";
 import { useDataStream } from "./data-stream-provider";
-import { Greeting } from "./greeting";
 import { PreviewMessage, ThinkingMessage } from "./message";
 
 type MessagesProps = {
@@ -64,21 +64,20 @@ function PureMessages({
 
   return (
     <div className="relative flex-1 bg-background">
-      {messages.length === 0 && !isLoading && !isChatInaccessible && (
-        <div className="pointer-events-none absolute inset-0 z-0 flex items-center justify-center overflow-hidden px-4">
-          <Greeting />
-        </div>
-      )}
       <div
         className={cn(
-          "absolute inset-0 touch-pan-y overflow-y-auto",
-          messages.length > 0 ? "bg-background" : "bg-transparent",
+          "absolute inset-0 touch-pan-y overflow-y-auto bg-background",
           isChatInaccessible && messages.length === 0 && "pointer-events-none"
         )}
         ref={messagesContainerRef}
         style={isArtifactVisible ? { scrollbarWidth: "none" } : undefined}
       >
-        <div className="mx-auto flex min-h-full min-w-0 max-w-4xl flex-col gap-5 px-4 py-6 md:gap-7">
+        <div className="mx-auto flex min-h-full min-w-0 max-w-[920px] flex-col gap-6 px-4 py-6">
+          {/* The wordmark heads the conversation and scrolls away with it. */}
+          <div className="flex justify-center pb-4">
+            <Wordmark className="h-14 w-auto text-foreground sm:h-[68px]" />
+          </div>
+
           {messages.map((message, index) => (
             <PreviewMessage
               addToolApprovalResponse={addToolApprovalResponse}

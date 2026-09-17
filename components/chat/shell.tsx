@@ -23,6 +23,7 @@ import { Artifact } from "./artifact";
 import { ChatHeader } from "./chat-header";
 import { DataStreamHandler } from "./data-stream-handler";
 import { EmailGate } from "./email-gate";
+import { EmptyState } from "./empty-state";
 import { submitEditedMessage } from "./message-editor";
 import { Messages } from "./messages";
 import { MultimodalInput } from "./multimodal-input";
@@ -74,6 +75,58 @@ export function ChatShell() {
     }
   }, [chatId, setArtifact]);
 
+  const isEmptyState =
+    messages.length === 0 && !isLoading && !isChatInaccessible;
+
+  // Built once so the landing and in-conversation layouts share a single
+  // definition; the email gate takes the composer's place when it is showing.
+  const renderComposer = (variant: "default" | "hero") => {
+    if (!canShowComposer) {
+      return null;
+    }
+    if (showEmailGate) {
+      return <EmailGate chatId={chatId} onCaptured={onEmailCaptured} />;
+    }
+    return (
+      <MultimodalInput
+        attachments={attachments}
+        chatId={chatId}
+        editingMessage={editingMessage}
+        input={input}
+        isLoading={isLoading}
+        messages={messages}
+        onCancelEdit={() => {
+          setEditingMessage(null);
+          setInput("");
+        }}
+        onModelChange={setCurrentModelId}
+        selectedModelId={currentModelId}
+        selectedVisibilityType={visibilityType}
+        sendMessage={
+          editingMessage
+            ? async () => {
+                const msg = editingMessage;
+                setEditingMessage(null);
+                await submitEditedMessage({
+                  message: msg,
+                  text: input,
+                  setMessages,
+                  regenerate,
+                });
+                setInput("");
+              }
+            : sendMessage
+        }
+        setAttachments={setAttachments}
+        setInput={setInput}
+        setMessages={setMessages}
+        status={status}
+        stop={stop}
+        variant={variant}
+      />
+    );
+  };
+
   return (
     <>
       <div className="flex h-dvh w-full flex-row overflow-hidden">
@@ -90,72 +143,44 @@ export function ChatShell() {
           />
 
           <div className="relative flex min-h-0 flex-1 flex-col overflow-hidden bg-background md:rounded-tl-[12px] md:border-t md:border-l md:border-border/40">
-            <Messages
-              addToolApprovalResponse={addToolApprovalResponse}
-              chatId={chatId}
-              isArtifactVisible={isArtifactVisible}
-              isChatInaccessible={isChatInaccessible}
-              isLoading={isLoading}
-              isReadonly={isReadonly}
-              messages={messages}
-              onEditMessage={(msg) => {
-                const text = msg.parts
-                  ?.filter((p) => p.type === "text")
-                  .map((p) => p.text)
-                  .join("");
-                setInput(text ?? "");
-                setEditingMessage(msg);
-              }}
-              regenerate={regenerate}
-              selectedModelId={currentModelId}
-              setMessages={setMessages}
-              status={status}
-              votes={votes}
-            />
+            {isEmptyState ? (
+              <EmptyState
+                chatId={chatId}
+                selectedVisibilityType={visibilityType}
+                sendMessage={sendMessage}
+              >
+                {renderComposer("hero")}
+              </EmptyState>
+            ) : (
+              <>
+                <Messages
+                  addToolApprovalResponse={addToolApprovalResponse}
+                  chatId={chatId}
+                  isArtifactVisible={isArtifactVisible}
+                  isChatInaccessible={isChatInaccessible}
+                  isLoading={isLoading}
+                  isReadonly={isReadonly}
+                  messages={messages}
+                  onEditMessage={(msg) => {
+                    const text = msg.parts
+                      ?.filter((p) => p.type === "text")
+                      .map((p) => p.text)
+                      .join("");
+                    setInput(text ?? "");
+                    setEditingMessage(msg);
+                  }}
+                  regenerate={regenerate}
+                  selectedModelId={currentModelId}
+                  setMessages={setMessages}
+                  status={status}
+                  votes={votes}
+                />
 
-            <div className="sticky bottom-0 z-1 mx-auto flex w-full max-w-4xl flex-col gap-2 border-t-0 bg-background px-4 pb-3 md:pb-4">
-              {canShowComposer ? (
-                showEmailGate ? (
-                  <EmailGate chatId={chatId} onCaptured={onEmailCaptured} />
-                ) : (
-                  <MultimodalInput
-                    attachments={attachments}
-                    chatId={chatId}
-                    editingMessage={editingMessage}
-                    input={input}
-                    isLoading={isLoading}
-                    messages={messages}
-                    onCancelEdit={() => {
-                      setEditingMessage(null);
-                      setInput("");
-                    }}
-                    onModelChange={setCurrentModelId}
-                    selectedModelId={currentModelId}
-                    selectedVisibilityType={visibilityType}
-                    sendMessage={
-                      editingMessage
-                        ? async () => {
-                            const msg = editingMessage;
-                            setEditingMessage(null);
-                            await submitEditedMessage({
-                              message: msg,
-                              text: input,
-                              setMessages,
-                              regenerate,
-                            });
-                            setInput("");
-                          }
-                        : sendMessage
-                    }
-                    setAttachments={setAttachments}
-                    setInput={setInput}
-                    setMessages={setMessages}
-                    status={status}
-                    stop={stop}
-                  />
-                )
-              ) : null}
-            </div>
+                <div className="sticky bottom-0 z-1 mx-auto flex w-full max-w-[920px] flex-col gap-2 border-t-0 bg-background px-4 pb-4">
+                  {renderComposer("default")}
+                </div>
+              </>
+            )}
           </div>
         </div>
 

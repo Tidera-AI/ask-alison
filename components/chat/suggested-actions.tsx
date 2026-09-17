@@ -1,7 +1,6 @@
 "use client";
 
 import type { UseChatHelpers } from "@ai-sdk/react";
-import { motion } from "framer-motion";
 import { memo } from "react";
 import { suggestions } from "@/lib/constants";
 import type { ChatMessage } from "@/lib/types";
@@ -19,40 +18,36 @@ function PureSuggestedActions({ chatId, sendMessage }: SuggestedActionsProps) {
 
   return (
     <div
-      className="grid w-full grid-cols-1 gap-2.5 pb-1 sm:grid-cols-2"
+      className="grid w-full grid-cols-1 gap-x-4 gap-y-3 sm:grid-cols-2"
       data-testid="suggested-actions"
     >
       {suggestedActions.map((suggestedAction, index) => (
-        <motion.div
-          animate={{ opacity: 1, y: 0 }}
-          className="min-w-0"
-          exit={{ opacity: 0, y: 16 }}
-          initial={{ opacity: 0, y: 16 }}
+        <Suggestion
+          // CSS stagger, not framer-motion: a JS `initial={{ opacity: 0 }}`
+          // keeps the cards invisible until hydration completes.
+          className="fade-up flex h-[45px] w-full cursor-pointer items-center gap-3 rounded-md border border-border bg-card px-3 text-left text-[14px] text-muted-foreground transition-colors duration-200 hover:border-ee-dusty-pink hover:bg-ee-pearl-pink hover:text-foreground"
           key={suggestedAction}
-          transition={{
-            delay: 0.06 * index,
-            duration: 0.4,
-            ease: [0.22, 1, 0.36, 1],
+          onClick={(suggestion) => {
+            window.history.pushState(
+              {},
+              "",
+              `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/chat/${chatId}`
+            );
+            sendMessage({
+              role: "user",
+              parts: [{ type: "text", text: suggestion }],
+            });
           }}
+          style={{ animationDelay: `${(index + 4) * 80}ms` }}
+          suggestion={suggestedAction}
         >
-          <Suggestion
-            className="h-auto w-full cursor-pointer rounded-xl border border-primary/15 bg-card/30 px-4 py-3 text-left text-[12px] leading-relaxed text-muted-foreground transition-all duration-200 sm:p-4 sm:text-[13px] hover:-translate-y-0.5 hover:border-primary/25 hover:bg-primary/[0.04] hover:text-foreground hover:shadow-[var(--shadow-card)]"
-            onClick={(suggestion) => {
-              window.history.pushState(
-                {},
-                "",
-                `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/chat/${chatId}`
-              );
-              sendMessage({
-                role: "user",
-                parts: [{ type: "text", text: suggestion }],
-              });
-            }}
-            suggestion={suggestedAction}
-          >
-            {suggestedAction}
-          </Suggestion>
-        </motion.div>
+          {/* Decorative bullet — Wisis Pink never carries text. */}
+          <span
+            aria-hidden="true"
+            className="size-[5px] shrink-0 rounded-full bg-ee-wisis-pink"
+          />
+          <span className="min-w-0 truncate">{suggestedAction}</span>
+        </Suggestion>
       ))}
     </div>
   );

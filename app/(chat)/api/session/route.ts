@@ -7,5 +7,8 @@ export async function GET() {
 
   return Response.json({
     hasEmail: Boolean(user.email),
+    // The caller's own address, behind their own session cookie — used by the
+    // sidebar profile card. Never logged.
+    email: user.email ?? null,
   });
 }

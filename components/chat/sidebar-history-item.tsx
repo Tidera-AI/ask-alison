@@ -56,10 +56,16 @@ const PureChatItem = ({
     <SidebarMenuItem>
       <SidebarMenuButton
         asChild
-        className="h-8 rounded-none text-[13px] text-sidebar-foreground/50 transition-all duration-150 hover:bg-transparent hover:text-sidebar-foreground data-active:bg-transparent data-active:font-normal data-active:text-sidebar-foreground/50 data-[active=true]:text-sidebar-foreground data-[active=true]:font-medium data-[active=true]:border-b data-[active=true]:border-dashed data-[active=true]:border-sidebar-foreground/50"
+        className="h-[35px] gap-2.5 rounded-md px-3 text-[13px] text-sidebar-foreground/80 transition-colors duration-150 hover:bg-sidebar-accent/60 hover:text-sidebar-foreground data-[active=true]:bg-sidebar-accent data-[active=true]:font-medium data-[active=true]:text-sidebar-foreground"
         isActive={isActive}
       >
         <Link href={`/chat/${chat.id}`} onClick={() => setOpenMobile(false)}>
+          {/* Wisis Pink is decorative-only per the brand rules — it never
+              carries text, so a 5px bullet is a compliant use. */}
+          <span
+            aria-hidden="true"
+            className="size-[5px] shrink-0 rounded-full bg-ee-wisis-pink"
+          />
           <span className="truncate">{chat.title}</span>
         </Link>
       </SidebarMenuButton>
