@@ -106,11 +106,7 @@ function PureMultimodalInput({
   onCancelEdit?: () => void;
   /** Read by the `memo` comparator below, not in the render body. */
   isLoading?: boolean;
-  /**
-   * "hero" is the landing-screen composer: a single-line field with no tools
-   * row, per the 2026 design. "default" keeps the full toolbar for the
-   * in-conversation composer.
-   */
+  /** "hero" is the landing composer: single line, no tools row. */
   variant?: "default" | "hero";
 }) {
   const router = useRouter();
@@ -416,8 +412,7 @@ function PureMultimodalInput({
 
       <PromptInput
         className={cn(
-          // `PromptInput` renders an un-styleable inner wrapper, so the shell
-          // has to be reached through `[&>div]:`.
+          // `PromptInput`'s inner wrapper is un-styleable; reach it via `[&>div]:`.
           "[&>div]:border [&>div]:shadow-[var(--shadow-composer)] [&>div]:transition-shadow [&>div]:duration-300 [&>div]:focus-within:shadow-[var(--shadow-composer-focus)]",
           variant === "hero"
             ? "relative [&>div]:min-h-[68px] [&>div]:justify-center [&>div]:rounded-[20px] [&>div]:border-border [&>div]:bg-card"
@@ -480,8 +475,7 @@ function PureMultimodalInput({
             "leading-relaxed placeholder:text-muted-foreground/35",
             variant === "hero"
               ? "h-7 min-h-0 px-5 pr-16 text-[15px]"
-              : // `rows={3}` is hardcoded in the vendored primitive, so the field
-                // is sized here instead: one line at rest, growing with content.
+              : // the vendored primitive hardcodes `rows={3}`; size it here instead
                 "field-sizing-content max-h-40 min-h-7 px-0 text-[16px]"
           )}
           data-testid="multimodal-input"

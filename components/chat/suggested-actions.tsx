@@ -23,8 +23,6 @@ function PureSuggestedActions({ chatId, sendMessage }: SuggestedActionsProps) {
     >
       {suggestedActions.map((suggestedAction, index) => (
         <Suggestion
-          // CSS stagger, not framer-motion: a JS `initial={{ opacity: 0 }}`
-          // keeps the cards invisible until hydration completes.
           className="fade-up flex h-[45px] w-full cursor-pointer items-center gap-3 rounded-md border border-border bg-card px-3 text-left text-[14px] text-muted-foreground transition-colors duration-200 hover:border-ee-dusty-pink hover:bg-ee-pearl-pink hover:text-foreground"
           key={suggestedAction}
           onClick={(suggestion) => {
@@ -41,7 +39,6 @@ function PureSuggestedActions({ chatId, sendMessage }: SuggestedActionsProps) {
           style={{ animationDelay: `${(index + 4) * 80}ms` }}
           suggestion={suggestedAction}
         >
-          {/* Decorative bullet — Wisis Pink never carries text. */}
           <span
             aria-hidden="true"
             className="size-[5px] shrink-0 rounded-full bg-ee-wisis-pink"

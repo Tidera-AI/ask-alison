@@ -60,8 +60,7 @@ const PureChatItem = ({
         isActive={isActive}
       >
         <Link href={`/chat/${chat.id}`} onClick={() => setOpenMobile(false)}>
-          {/* Wisis Pink is decorative-only per the brand rules — it never
-              carries text, so a 5px bullet is a compliant use. */}
+          {/* Wisis Pink is decorative-only; a bullet carries no text. */}
           <span
             aria-hidden="true"
             className="size-[5px] shrink-0 rounded-full bg-ee-wisis-pink"

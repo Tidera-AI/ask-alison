@@ -17,15 +17,9 @@ type SessionResponse = {
   email: string | null;
 };
 
-/**
- * Footer identity card. The app has no accounts — the only thing we ever know
- * about a visitor is the email captured by the gate, so the card stays hidden
- * until then and the avatar is just that address's first letter.
- */
 export function SidebarUserCard() {
   const { setTheme } = useTheme();
-  // Same SWR key as `use-active-chat`, so this shares that cache rather than
-  // issuing a second request.
+  // Same key as `use-active-chat`, so this shares its cache.
   const { data } = useSWR<SessionResponse>(
     `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/session`,
     fetcher,

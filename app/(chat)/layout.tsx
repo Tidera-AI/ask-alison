@@ -26,8 +26,6 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
 async function SidebarShell({ children }: { children: React.ReactNode }) {
   const cookieStore = await cookies();
-  // Default to open: a first-time visitor (no cookie) should land on the
-  // expanded sidebar the design specifies.
   const isCollapsed = cookieStore.get("sidebar_state")?.value === "false";
 
   return (

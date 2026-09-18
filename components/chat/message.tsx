@@ -424,8 +424,6 @@ const PurePreviewMessage = ({
           </div>
         )}
         {isAssistant ? (
-          // The answer sits in its own card — white, hairline border, soft
-          // drop shadow — per the response mockup.
           <div className="flex min-w-0 flex-1 flex-col gap-3 rounded-2xl border border-border bg-card p-4 shadow-[var(--shadow-answer)]">
             {content}
           </div>

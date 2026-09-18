@@ -1,9 +1,4 @@
-/**
- * Elevate Etiquette wordmark — the script "Elevate" over letterspaced
- * "ETIQUETTE", from the 2026 rebrand Figma. Two stacked vector groups composed
- * into one viewBox; drawn with `currentColor` so it inherits the surrounding
- * text color and adapts to light/dark, like [[Monogram]].
- */
+/** Elevate Etiquette wordmark. Uses `currentColor`, like Monogram. */
 type WordmarkProps = {
   className?: string;
   title?: string;

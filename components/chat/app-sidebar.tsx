@@ -31,8 +31,6 @@ export function AppSidebar() {
       <SidebarHeader className="gap-4 px-6 pt-8 pb-0 group-data-[collapsible=icon]:px-2">
         <SidebarMenu>
           <SidebarMenuItem className="flex flex-row items-center justify-between">
-            {/* Logo swaps to a collapse toggle on hover while collapsed — the
-                only expand affordance besides the rail and ⌘B. */}
             <div className="group/logo relative flex items-center justify-center">
               <SidebarMenuButton
                 asChild
@@ -40,8 +38,7 @@ export function AppSidebar() {
                 tooltip="Ask Alison"
               >
                 <Link href="/" onClick={() => setOpenMobile(false)}>
-                  {/* `!` is required: the vendored sidebar sets `[&_svg]:size-5`
-                      as a descendant selector, which otherwise wins. */}
+                  {/* `!`: the vendored sidebar's `[&_svg]:size-5` otherwise wins. */}
                   <Monogram className="size-13! text-primary group-data-[collapsible=icon]:size-8!" />
                 </Link>
               </SidebarMenuButton>
@@ -88,8 +85,6 @@ export function AppSidebar() {
                 </SidebarMenuButton>
               </SidebarMenuItem>
 
-              {/* Section label styled as a nav item — not interactive, so it is
-                  rendered as a div rather than a button. */}
               <SidebarMenuItem>
                 <div className="flex h-10 items-center gap-3 rounded-[8px] px-3 font-medium text-[14px] text-muted-foreground group-data-[collapsible=icon]:hidden">
                   <BookmarkIcon className="size-[18px] shrink-0 text-ee-wisis-pink" />

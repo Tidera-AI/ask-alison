@@ -73,7 +73,6 @@ function PureMessages({
         style={isArtifactVisible ? { scrollbarWidth: "none" } : undefined}
       >
         <div className="mx-auto flex min-h-full min-w-0 max-w-[920px] flex-col gap-6 px-4 py-6">
-          {/* The wordmark heads the conversation and scrolls away with it. */}
           <div className="flex justify-center pb-4">
             <Wordmark className="h-14 w-auto text-foreground sm:h-[68px]" />
           </div>

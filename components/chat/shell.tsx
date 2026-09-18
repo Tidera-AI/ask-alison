@@ -78,8 +78,6 @@ export function ChatShell() {
   const isEmptyState =
     messages.length === 0 && !isLoading && !isChatInaccessible;
 
-  // Built once so the landing and in-conversation layouts share a single
-  // definition; the email gate takes the composer's place when it is showing.
   const renderComposer = (variant: "default" | "hero") => {
     if (!canShowComposer) {
       return null;

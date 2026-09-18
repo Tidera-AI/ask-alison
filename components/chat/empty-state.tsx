@@ -7,12 +7,8 @@ import type { ChatMessage } from "@/lib/types";
 import { SuggestedActions } from "./suggested-actions";
 import type { VisibilityType } from "./visibility-selector";
 
-/**
- * Staggered entrance uses the CSS `fade-up` utility rather than framer-motion
- * on purpose: a JS-driven `initial={{ opacity: 0 }}` leaves the whole hero
- * invisible until hydration finishes, which on a cold dev compile was several
- * seconds of blank screen. CSS animations start at first paint instead.
- */
+// CSS `fade-up`, not framer-motion: a JS `initial={{ opacity: 0 }}` leaves the
+// hero invisible until hydration finishes.
 const stagger = (index: number) => ({
   animationDelay: `${index * 80}ms`,
 });
@@ -21,18 +17,9 @@ type EmptyStateProps = {
   chatId: string;
   sendMessage: UseChatHelpers<ChatMessage>["sendMessage"];
   selectedVisibilityType: VisibilityType;
-  /** The composer (or the email gate when it has taken the composer's place). */
   children: ReactNode;
 };
 
-/**
- * The landing screen: one centred column in normal document flow.
- *
- * This deliberately replaces the old arrangement, where the greeting was an
- * absolutely-positioned overlay inside the scroll area and the suggestions were
- * children of a sticky composer — those two could never be centred as a single
- * stack.
- */
 export function EmptyState({
   chatId,
   sendMessage,
@@ -43,7 +30,6 @@ export function EmptyState({
     <div className="flex min-h-0 flex-1 touch-pan-y flex-col overflow-y-auto">
       <div className="mx-auto flex w-full max-w-[752px] flex-1 flex-col justify-center gap-9 px-4 py-10">
         <div
-          // The mockup leaves a deliberately large gap under the wordmark.
           className="mb-4 flex justify-center fade-up sm:mb-[79px]"
           style={stagger(0)}
         >

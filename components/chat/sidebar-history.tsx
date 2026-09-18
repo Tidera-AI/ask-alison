@@ -107,7 +107,6 @@ export async function deleteChatFromHistory(
   return { ok: true };
 }
 
-/** Indent + width of the recent list, per the design's 32px inset. */
 const LIST_GROUP_CLASSES =
   "px-6 pt-2 pb-0 pl-14 group-data-[collapsible=icon]:hidden";
 
