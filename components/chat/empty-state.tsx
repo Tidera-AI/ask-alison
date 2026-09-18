@@ -36,7 +36,7 @@ export function EmptyState({
           <Wordmark className="h-14 w-auto text-foreground sm:h-[68px]" />
         </div>
 
-        <div className="flex flex-col items-center gap-3 text-center">
+        <div className="flex flex-col items-center gap-4 text-center">
           <p
             className="text-eyebrow fade-up text-muted-foreground"
             style={stagger(1)}
@@ -44,13 +44,13 @@ export function EmptyState({
             Your AI Etiquette Guide
           </p>
           <h1
-            className="fade-up font-light font-serif text-[40px] text-foreground leading-[1.05] tracking-[-0.025em] sm:text-[52px] md:text-[64px]"
+            className="fade-up font-light font-serif text-[40px] text-foreground leading-[1.1] tracking-[-0.8px] sm:text-[52px] md:text-[64px] md:leading-[70.4px] md:tracking-[-1.28px]"
             style={stagger(2)}
           >
             Ask Alison
           </h1>
           <p
-            className="fade-up text-balance text-[16px] text-muted-foreground sm:text-[18px]"
+            className="fade-up text-balance text-[16px] text-muted-foreground leading-[28.8px] tracking-[0.16px] sm:text-[18px]"
             style={stagger(3)}
           >
             Here to help you navigate social and professional situations with

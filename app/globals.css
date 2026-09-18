@@ -51,6 +51,7 @@
   --color-ee-stone: var(--ee-stone);
   --color-ee-light-gray: var(--ee-light-gray);
   --color-ee-slate: var(--ee-slate);
+  --color-ee-tundora: var(--ee-tundora);
   --color-ee-near-black: var(--ee-near-black);
   --color-ee-pearl-pink: var(--ee-pearl-pink);
   --color-ee-dusty-pink: var(--ee-dusty-pink);
@@ -70,6 +71,7 @@
   --ee-stone: #eeebe6;
   --ee-light-gray: #d6d2cc;
   --ee-slate: #7a7470;
+  --ee-tundora: #4e4e4e;
   --ee-near-black: #3d3a37;
   --ee-pearl-pink: #faf0f5;
   --ee-dusty-pink: #e8b8cc;

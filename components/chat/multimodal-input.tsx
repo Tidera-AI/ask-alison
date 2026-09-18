@@ -415,7 +415,7 @@ function PureMultimodalInput({
           // `PromptInput`'s inner wrapper is un-styleable; reach it via `[&>div]:`.
           "[&>div]:border [&>div]:shadow-[var(--shadow-composer)] [&>div]:transition-shadow [&>div]:duration-300 [&>div]:focus-within:shadow-[var(--shadow-composer-focus)]",
           variant === "hero"
-            ? "relative [&>div]:min-h-[68px] [&>div]:justify-center [&>div]:rounded-[20px] [&>div]:border-border [&>div]:bg-card"
+            ? "relative [&>div]:min-h-[68px] [&>div]:justify-center [&>div]:rounded-[20px] [&>div]:border-border [&>div]:bg-card [&>div]:shadow-[var(--shadow-answer)]!"
             : "[&>div]:gap-4 [&>div]:rounded-[20px] [&>div]:border-border [&>div]:bg-card [&>div]:p-4 [&>div]:shadow-[var(--shadow-answer)]!"
         )}
         onSubmit={() => {
