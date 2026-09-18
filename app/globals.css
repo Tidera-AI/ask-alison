@@ -51,6 +51,7 @@
   --color-ee-stone: var(--ee-stone);
   --color-ee-light-gray: var(--ee-light-gray);
   --color-ee-slate: var(--ee-slate);
+  --color-ee-tundora: var(--ee-tundora);
   --color-ee-near-black: var(--ee-near-black);
   --color-ee-pearl-pink: var(--ee-pearl-pink);
   --color-ee-dusty-pink: var(--ee-dusty-pink);
@@ -58,6 +59,7 @@
   --color-ee-sky-blue: var(--ee-sky-blue);
   --color-ee-mist-blue: var(--ee-mist-blue);
   --color-ee-ocean-blue: var(--ee-ocean-blue);
+  --color-link: var(--link);
 }
 
 :root {
@@ -69,6 +71,7 @@
   --ee-stone: #eeebe6;
   --ee-light-gray: #d6d2cc;
   --ee-slate: #7a7470;
+  --ee-tundora: #4e4e4e;
   --ee-near-black: #3d3a37;
   --ee-pearl-pink: #faf0f5;
   --ee-dusty-pink: #e8b8cc;
@@ -96,6 +99,10 @@
   --border: var(--ee-light-gray);
   --input: var(--ee-light-gray);
   --ring: var(--ee-ocean-blue);
+  /* Links + inline affordances. Ocean Blue clears AA on light ground;
+     dark mode steps up to Mist Blue, which Ocean Blue cannot match on
+     the dark card. */
+  --link: var(--ee-ocean-blue);
   --chart-1: var(--ee-wisis-pink);
   --chart-2: var(--ee-ocean-blue);
   --chart-3: var(--ee-mist-blue);
@@ -118,6 +125,8 @@
     0 0 0 1px rgb(74 122 155 / 0.25), 0 2px 8px -2px rgb(61 58 55 / 0.1);
   --shadow-inset: inset 0 1px 1px rgb(0 0 0 / 0.03);
   --shadow-glow: 0 0 20px rgb(74 122 155 / 0.12);
+  /* Answer card + conversation composer, per the response mockup. */
+  --shadow-answer: 0 12px 12px rgb(61 58 55 / 0.04);
 
   --ease-spring: cubic-bezier(0.22, 1, 0.36, 1);
   --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -150,6 +159,7 @@
   --border: #555049;
   --input: #555049;
   --ring: var(--ee-mist-blue);
+  --link: var(--ee-mist-blue);
   --chart-1: var(--ee-wisis-pink);
   --chart-2: var(--ee-mist-blue);
   --chart-3: var(--ee-ocean-blue);
@@ -175,6 +185,7 @@
   --shadow-composer-focus:
     0 0 0 1px rgb(168 192 212 / 0.3), 0 4px 16px -4px rgb(0 0 0 / 0.3),
     inset 0 1px 0 rgb(255 255 255 / 0.04);
+  --shadow-answer: 0 12px 12px rgb(0 0 0 / 0.18);
 }
 
 @layer base {

@@ -26,10 +26,13 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
 async function SidebarShell({ children }: { children: React.ReactNode }) {
   const cookieStore = await cookies();
-  const isCollapsed = cookieStore.get("sidebar_state")?.value !== "true";
+  const isCollapsed = cookieStore.get("sidebar_state")?.value === "false";
 
   return (
-    <SidebarProvider defaultOpen={!isCollapsed}>
+    <SidebarProvider
+      defaultOpen={!isCollapsed}
+      style={{ "--sidebar-width": "22.5rem" } as React.CSSProperties}
+    >
       <AppSidebar />
       <SidebarInset>
         <Toaster

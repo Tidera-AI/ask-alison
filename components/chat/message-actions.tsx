@@ -1,4 +1,5 @@
 import equal from "fast-deep-equal";
+import { CopyIcon, ThumbsDownIcon, ThumbsUpIcon } from "lucide-react";
 import { memo } from "react";
 import { toast } from "sonner";
 import { useSWRConfig } from "swr";
@@ -9,7 +10,7 @@ import {
   MessageAction as Action,
   MessageActions as Actions,
 } from "../ai-elements/message";
-import { CopyIcon, PencilEditIcon, ThumbDownIcon, ThumbUpIcon } from "./icons";
+import { PencilEditIcon } from "./icons";
 
 export function PureMessageActions({
   chatId,
@@ -66,7 +67,7 @@ export function PureMessageActions({
             onClick={handleCopy}
             tooltip="Copy"
           >
-            <CopyIcon />
+            <CopyIcon className="size-4" />
           </Action>
         </div>
       </Actions>
@@ -74,17 +75,17 @@ export function PureMessageActions({
   }
 
   return (
-    <Actions className="-ml-0.5 opacity-0 transition-opacity duration-150 group-hover/message:opacity-100">
+    <Actions className="gap-3">
       <Action
-        className="text-muted-foreground/50 hover:text-foreground"
+        className="size-8 shrink-0 rounded-full border border-border bg-secondary text-muted-foreground transition-colors hover:text-foreground disabled:cursor-not-allowed disabled:opacity-50"
         onClick={handleCopy}
         tooltip="Copy"
       >
-        <CopyIcon />
+        <CopyIcon className="size-4" />
       </Action>
 
       <Action
-        className="text-muted-foreground/50 hover:text-foreground"
+        className="size-8 shrink-0 rounded-full border border-border bg-secondary text-muted-foreground transition-colors hover:text-foreground disabled:cursor-not-allowed disabled:opacity-50"
         data-testid="message-upvote"
         disabled={vote?.isUpvoted}
         onClick={() => {
@@ -133,11 +134,11 @@ export function PureMessageActions({
         }}
         tooltip="Upvote Response"
       >
-        <ThumbUpIcon />
+        <ThumbsUpIcon className="size-4" />
       </Action>
 
       <Action
-        className="text-muted-foreground/50 hover:text-foreground"
+        className="size-8 shrink-0 rounded-full border border-border bg-secondary text-muted-foreground transition-colors hover:text-foreground disabled:cursor-not-allowed disabled:opacity-50"
         data-testid="message-downvote"
         disabled={vote && !vote.isUpvoted}
         onClick={() => {
@@ -186,7 +187,7 @@ export function PureMessageActions({
         }}
         tooltip="Downvote Response"
       >
-        <ThumbDownIcon />
+        <ThumbsDownIcon className="size-4" />
       </Action>
     </Actions>
   );

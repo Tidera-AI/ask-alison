@@ -7,6 +7,7 @@ import {
   ArrowUpIcon,
   BrainIcon,
   EyeIcon,
+  FileTextIcon,
   LockIcon,
   WrenchIcon,
 } from "lucide-react";
@@ -53,14 +54,13 @@ import {
   PromptInputTools,
 } from "../ai-elements/prompt-input";
 import { Button } from "../ui/button";
-import { PaperclipIcon, StopIcon } from "./icons";
+import { StopIcon } from "./icons";
 import { PreviewAttachment } from "./preview-attachment";
 import {
   type SlashCommand,
   SlashCommandMenu,
   slashCommands,
 } from "./slash-commands";
-import { SuggestedActions } from "./suggested-actions";
 import type { VisibilityType } from "./visibility-selector";
 
 function setCookie(name: string, value: string) {
@@ -77,16 +77,14 @@ function PureMultimodalInput({
   stop,
   attachments,
   setAttachments,
-  messages,
   setMessages,
   sendMessage,
   className,
-  selectedVisibilityType,
   selectedModelId,
   onModelChange,
   editingMessage,
   onCancelEdit,
-  isLoading,
+  variant = "default",
 }: {
   chatId: string;
   input: string;
@@ -106,7 +104,10 @@ function PureMultimodalInput({
   onModelChange?: (modelId: string) => void;
   editingMessage?: ChatMessage | null;
   onCancelEdit?: () => void;
+  /** Read by the `memo` comparator below, not in the render body. */
   isLoading?: boolean;
+  /** "hero" is the landing composer: single line, no tools row. */
+  variant?: "default" | "hero";
 }) {
   const router = useRouter();
   const { mutate: globalMutate } = useSWRConfig();
@@ -389,18 +390,6 @@ function PureMultimodalInput({
         </div>
       )}
 
-      {!editingMessage &&
-        !isLoading &&
-        messages.length === 0 &&
-        attachments.length === 0 &&
-        uploadQueue.length === 0 && (
-          <SuggestedActions
-            chatId={chatId}
-            selectedVisibilityType={selectedVisibilityType}
-            sendMessage={sendMessage}
-          />
-        )}
-
       <input
         className="pointer-events-none fixed -top-4 -left-4 size-0.5 opacity-0"
         multiple
@@ -422,7 +411,13 @@ function PureMultimodalInput({
       </div>
 
       <PromptInput
-        className="[&>div]:rounded-2xl [&>div]:border [&>div]:border-border/30 [&>div]:bg-card/70 [&>div]:shadow-[var(--shadow-composer)] [&>div]:transition-shadow [&>div]:duration-300 [&>div]:focus-within:shadow-[var(--shadow-composer-focus)]"
+        className={cn(
+          // `PromptInput`'s inner wrapper is un-styleable; reach it via `[&>div]:`.
+          "[&>div]:border [&>div]:shadow-[var(--shadow-composer)] [&>div]:transition-shadow [&>div]:duration-300 [&>div]:focus-within:shadow-[var(--shadow-composer-focus)]",
+          variant === "hero"
+            ? "relative [&>div]:min-h-[68px] [&>div]:justify-center [&>div]:rounded-[20px] [&>div]:border-border [&>div]:bg-card [&>div]:shadow-[var(--shadow-answer)]!"
+            : "[&>div]:gap-4 [&>div]:rounded-[20px] [&>div]:border-border [&>div]:bg-card [&>div]:p-4 [&>div]:shadow-[var(--shadow-answer)]!"
+        )}
         onSubmit={() => {
           if (input.startsWith("/")) {
             const query = input.slice(1).trim();
@@ -476,7 +471,13 @@ function PureMultimodalInput({
           </div>
         )}
         <PromptInputTextarea
-          className="min-h-24 text-[13px] leading-relaxed px-4 pt-3.5 pb-1.5 placeholder:text-muted-foreground/35"
+          className={cn(
+            "leading-relaxed placeholder:text-muted-foreground/35",
+            variant === "hero"
+              ? "h-7 min-h-0 px-5 pr-16 text-[15px]"
+              : // the vendored primitive hardcodes `rows={3}`; size it here instead
+                "field-sizing-content max-h-40 min-h-7 px-0 text-[16px]"
+          )}
           data-testid="multimodal-input"
           onChange={handleInput}
           onKeyDown={(e) => {
@@ -515,33 +516,42 @@ function PureMultimodalInput({
           placeholder={
             editingMessage
               ? "Edit your message..."
-              : "Ask an etiquette question..."
+              : "Ask me an etiquette question…"
           }
           ref={textareaRef}
           value={input}
         />
-        <PromptInputFooter className="px-3 pb-3">
-          <PromptInputTools>
-            <AttachmentsButton
-              fileInputRef={fileInputRef}
-              selectedModelId={selectedModelId}
-              status={status}
-            />
-            <ModelSelectorCompact
-              onModelChange={onModelChange}
-              selectedModelId={selectedModelId}
-            />
-          </PromptInputTools>
+        <PromptInputFooter
+          className={cn(
+            variant === "hero"
+              ? "-translate-y-1/2 absolute top-1/2 right-4 w-auto"
+              : "w-full"
+          )}
+        >
+          {variant === "hero" ? null : (
+            <PromptInputTools>
+              <AttachmentsButton
+                fileInputRef={fileInputRef}
+                selectedModelId={selectedModelId}
+                status={status}
+              />
+              <ModelSelectorCompact
+                onModelChange={onModelChange}
+                selectedModelId={selectedModelId}
+              />
+            </PromptInputTools>
+          )}
 
           {status === "submitted" || status === "streaming" ? (
             <StopButton setMessages={setMessages} stop={stop} />
           ) : (
             <PromptInputSubmit
               className={cn(
-                "h-7 w-7 rounded-xl transition-all duration-200",
+                "rounded-full transition-all duration-200",
+                "size-9",
                 input.trim()
-                  ? "bg-primary text-primary-foreground hover:opacity-85 active:scale-95"
-                  : "bg-muted text-muted-foreground/25 cursor-not-allowed"
+                  ? "bg-ee-ocean-blue text-white hover:opacity-85 active:scale-95"
+                  : "cursor-not-allowed bg-muted text-muted-foreground/25"
               )}
               data-testid="send-button"
               disabled={!input.trim() || uploadQueue.length > 0}
@@ -611,10 +621,10 @@ function PureAttachmentsButton({
   return (
     <Button
       className={cn(
-        "h-7 w-7 rounded-lg border border-border/40 p-1 transition-colors",
+        "h-auto gap-2 px-0 py-0 text-[16px] transition-colors hover:bg-transparent",
         hasVision
-          ? "text-foreground hover:border-border hover:text-foreground"
-          : "text-muted-foreground/30 cursor-not-allowed"
+          ? "text-link hover:opacity-80"
+          : "cursor-not-allowed text-muted-foreground/40"
       )}
       data-testid="attachments-button"
       disabled={status !== "ready" || !hasVision}
@@ -624,7 +634,8 @@ function PureAttachmentsButton({
       }}
       variant="ghost"
     >
-      <PaperclipIcon size={14} style={{ width: 14, height: 14 }} />
+      <FileTextIcon className="size-[18px]" />
+      <span>Upload file</span>
     </Button>
   );
 }
@@ -810,7 +821,7 @@ function PureStopButton({
 }) {
   return (
     <Button
-      className="h-7 w-7 rounded-xl bg-primary p-1 text-primary-foreground transition-all duration-200 hover:opacity-85 active:scale-95 disabled:bg-muted disabled:text-muted-foreground/25 disabled:cursor-not-allowed"
+      className="size-9 rounded-full bg-ee-ocean-blue p-1 text-white transition-all duration-200 hover:opacity-85 active:scale-95 disabled:cursor-not-allowed disabled:bg-muted disabled:text-muted-foreground/25"
       data-testid="stop-button"
       onClick={(event) => {
         event.preventDefault();

@@ -7,5 +7,6 @@ export async function GET() {
 
   return Response.json({
     hasEmail: Boolean(user.email),
+    email: user.email ?? null,
   });
 }
