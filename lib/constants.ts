@@ -11,6 +11,6 @@ export const suggestions = [
   "What should I wear to a business dinner?",
   "How do I write a heartfelt thank-you note?",
   "What's the best way to introduce people at a party?",
-  "How do I handle a difficult conversation with a family member?",
+  "How do I handle difficult conversations with family?",
   "What are the basics of being a great dinner guest?",
 ];

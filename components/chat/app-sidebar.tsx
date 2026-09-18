@@ -1,18 +1,12 @@
 "use client";
 
-import { PanelLeftIcon, PenSquareIcon, TrashIcon } from "lucide-react";
+import { BookmarkIcon, PanelLeftIcon, PenSquareIcon } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
-import { toast } from "sonner";
-import { useSWRConfig } from "swr";
-import useSWRInfinite, { unstable_serialize } from "swr/infinite";
 import { Monogram } from "@/components/brand/monogram";
-import {
-  type ChatHistory,
-  getChatHistoryPaginationKey,
-  SidebarHistory,
-} from "@/components/chat/sidebar-history";
+import { SidebarHistory } from "@/components/chat/sidebar-history";
+import { SidebarUserCard } from "@/components/chat/sidebar-user-card";
+import { ThemeToggle } from "@/components/theme-toggle";
 import {
   Sidebar,
   SidebarContent,
@@ -27,141 +21,89 @@ import {
   SidebarTrigger,
   useSidebar,
 } from "@/components/ui/sidebar";
-import { fetcher } from "@/lib/utils";
-import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-} from "../ui/alert-dialog";
 import { Tooltip, TooltipContent, TooltipTrigger } from "../ui/tooltip";
 
 export function AppSidebar() {
   const router = useRouter();
   const { setOpenMobile, toggleSidebar } = useSidebar();
-  const { mutate } = useSWRConfig();
-  const { data: paginatedHistory } = useSWRInfinite<ChatHistory>(
-    getChatHistoryPaginationKey,
-    fetcher,
-    { revalidateOnFocus: false }
-  );
-  const hasChats = paginatedHistory
-    ? paginatedHistory.some((page) => page.chats.length > 0)
-    : false;
-  const [showDeleteAllDialog, setShowDeleteAllDialog] = useState(false);
-
-  const handleDeleteAll = () => {
-    setShowDeleteAllDialog(false);
-    router.replace("/");
-    mutate(unstable_serialize(getChatHistoryPaginationKey), [], {
-      revalidate: false,
-    });
-
-    fetch(`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/history`, {
-      method: "DELETE",
-    });
-
-    toast.success("All chats deleted");
-  };
 
   return (
-    <>
-      <Sidebar collapsible="icon">
-        <SidebarHeader className="pb-0 pt-3">
-          <SidebarMenu>
-            <SidebarMenuItem className="flex flex-row items-center justify-between">
-              <div className="group/logo relative flex items-center justify-center">
-                <SidebarMenuButton
-                  asChild
-                  className="size-10 !px-0 items-center justify-center group-data-[collapsible=icon]:group-hover/logo:opacity-0"
-                  tooltip="Ask Alison"
-                >
-                  <Link href="/" onClick={() => setOpenMobile(false)}>
-                    <Monogram className="size-8 text-primary" />
-                  </Link>
-                </SidebarMenuButton>
-                <Tooltip>
-                  <TooltipTrigger asChild>
-                    <SidebarMenuButton
-                      className="pointer-events-none absolute inset-0 size-10 opacity-0 group-data-[collapsible=icon]:pointer-events-auto group-data-[collapsible=icon]:group-hover/logo:opacity-100"
-                      onClick={() => toggleSidebar()}
-                    >
-                      <PanelLeftIcon className="size-5" />
-                    </SidebarMenuButton>
-                  </TooltipTrigger>
-                  <TooltipContent className="hidden md:block" side="right">
-                    Open sidebar
-                  </TooltipContent>
-                </Tooltip>
-              </div>
-              <div className="group-data-[collapsible=icon]:hidden">
-                <SidebarTrigger className="text-sidebar-foreground/60 transition-colors duration-150 hover:text-sidebar-foreground" />
-              </div>
-            </SidebarMenuItem>
-          </SidebarMenu>
-        </SidebarHeader>
-        <SidebarContent>
-          <SidebarGroup className="pt-2">
-            <SidebarGroupContent>
-              <SidebarMenu>
-                <SidebarMenuItem>
+    <Sidebar collapsible="icon">
+      <SidebarHeader className="gap-4 px-6 pt-8 pb-0 group-data-[collapsible=icon]:px-2">
+        <SidebarMenu>
+          <SidebarMenuItem className="flex flex-row items-center justify-between">
+            <div className="group/logo relative flex items-center justify-center">
+              <SidebarMenuButton
+                asChild
+                className="size-13 !px-0 items-center justify-center group-data-[collapsible=icon]:size-10! group-data-[collapsible=icon]:group-hover/logo:opacity-0"
+                tooltip="Ask Alison"
+              >
+                <Link href="/" onClick={() => setOpenMobile(false)}>
+                  {/* `!`: the vendored sidebar's `[&_svg]:size-5` otherwise wins. */}
+                  <Monogram className="size-13! text-primary group-data-[collapsible=icon]:size-8!" />
+                </Link>
+              </SidebarMenuButton>
+              <Tooltip>
+                <TooltipTrigger asChild>
                   <SidebarMenuButton
-                    className="h-10 rounded-lg border border-sidebar-border text-[13px] text-sidebar-foreground/70 transition-colors duration-150 hover:bg-sidebar-accent/50 hover:text-sidebar-foreground"
-                    onClick={() => {
-                      setOpenMobile(false);
-                      router.push("/");
-                    }}
-                    tooltip="New Chat"
+                    className="pointer-events-none absolute inset-0 size-10 opacity-0 group-data-[collapsible=icon]:pointer-events-auto group-data-[collapsible=icon]:group-hover/logo:opacity-100"
+                    onClick={() => toggleSidebar()}
                   >
-                    <PenSquareIcon className="size-5" />
-                    <span className="font-medium">New chat</span>
+                    <PanelLeftIcon className="size-5" />
                   </SidebarMenuButton>
-                </SidebarMenuItem>
-                {hasChats && (
-                  <SidebarMenuItem>
-                    <SidebarMenuButton
-                      className="rounded-lg text-sidebar-foreground/40 transition-colors duration-150 hover:bg-destructive/10 hover:text-destructive"
-                      onClick={() => setShowDeleteAllDialog(true)}
-                      tooltip="Delete All Chats"
-                    >
-                      <TrashIcon className="size-5" />
-                      <span className="text-[13px]">Delete all</span>
-                    </SidebarMenuButton>
-                  </SidebarMenuItem>
-                )}
-              </SidebarMenu>
-            </SidebarGroupContent>
-          </SidebarGroup>
-          <SidebarHistory />
-        </SidebarContent>
-        <SidebarFooter className="border-t border-sidebar-border pt-2 pb-3" />
-        <SidebarRail />
-      </Sidebar>
+                </TooltipTrigger>
+                <TooltipContent className="hidden md:block" side="right">
+                  Open sidebar
+                </TooltipContent>
+              </Tooltip>
+            </div>
+            <div className="flex items-center gap-1 group-data-[collapsible=icon]:hidden">
+              <ThemeToggle />
+              <SidebarTrigger className="text-sidebar-foreground/60 transition-colors duration-150 hover:text-sidebar-foreground" />
+            </div>
+          </SidebarMenuItem>
+        </SidebarMenu>
 
-      <AlertDialog
-        onOpenChange={setShowDeleteAllDialog}
-        open={showDeleteAllDialog}
-      >
-        <AlertDialogContent>
-          <AlertDialogHeader>
-            <AlertDialogTitle>Delete all chats?</AlertDialogTitle>
-            <AlertDialogDescription>
-              This action cannot be undone. This will permanently delete all
-              your chats and remove them from our servers.
-            </AlertDialogDescription>
-          </AlertDialogHeader>
-          <AlertDialogFooter>
-            <AlertDialogCancel>Cancel</AlertDialogCancel>
-            <AlertDialogAction onClick={handleDeleteAll}>
-              Delete All
-            </AlertDialogAction>
-          </AlertDialogFooter>
-        </AlertDialogContent>
-      </AlertDialog>
-    </>
+        <h1 className="px-1 font-light font-serif text-[36px] text-sidebar-foreground leading-none tracking-[-0.96px] group-data-[collapsible=icon]:hidden">
+          Ask Alison
+        </h1>
+      </SidebarHeader>
+
+      <SidebarContent className="gap-0">
+        <SidebarGroup className="px-6 pt-6 pb-0 group-data-[collapsible=icon]:px-2">
+          <SidebarGroupContent>
+            <SidebarMenu className="gap-0.5">
+              <SidebarMenuItem>
+                <SidebarMenuButton
+                  className="h-10 gap-3 rounded-[8px] px-3 font-semibold text-[14px] text-sidebar-foreground"
+                  onClick={() => {
+                    setOpenMobile(false);
+                    router.push("/");
+                  }}
+                  tooltip="New Chat"
+                >
+                  <PenSquareIcon className="size-[18px] text-ee-wisis-pink" />
+                  <span>New Chat</span>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+
+              <SidebarMenuItem>
+                <div className="flex h-10 items-center gap-3 rounded-[8px] px-3 font-medium text-[14px] text-muted-foreground group-data-[collapsible=icon]:hidden">
+                  <BookmarkIcon className="size-[18px] shrink-0 text-ee-wisis-pink" />
+                  <span>Recent Queries</span>
+                </div>
+              </SidebarMenuItem>
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
+
+        <SidebarHistory />
+      </SidebarContent>
+
+      <SidebarFooter className="px-6 pb-8 group-data-[collapsible=icon]:hidden">
+        <SidebarUserCard />
+      </SidebarFooter>
+      <SidebarRail />
+    </Sidebar>
   );
 }

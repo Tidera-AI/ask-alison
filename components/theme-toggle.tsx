@@ -12,7 +12,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 
 export function ThemeToggle() {
-  const { theme, setTheme } = useTheme();
+  const { resolvedTheme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -23,7 +23,7 @@ export function ThemeToggle() {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button aria-label="Toggle theme" size="icon-sm" variant="ghost">
-          {mounted && theme === "dark" ? (
+          {mounted && resolvedTheme === "dark" ? (
             <MoonIcon className="size-4" />
           ) : (
             <SunIcon className="size-4" />
