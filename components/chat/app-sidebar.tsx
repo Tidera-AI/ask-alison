@@ -6,7 +6,6 @@ import { useRouter } from "next/navigation";
 import { Monogram } from "@/components/brand/monogram";
 import { SidebarHistory } from "@/components/chat/sidebar-history";
 import { SidebarUserCard } from "@/components/chat/sidebar-user-card";
-import { ThemeToggle } from "@/components/theme-toggle";
 import {
   Sidebar,
   SidebarContent,
@@ -57,8 +56,7 @@ export function AppSidebar() {
                 </TooltipContent>
               </Tooltip>
             </div>
-            <div className="flex items-center gap-1 group-data-[collapsible=icon]:hidden">
-              <ThemeToggle />
+            <div className="group-data-[collapsible=icon]:hidden">
               <SidebarTrigger className="text-sidebar-foreground/60 transition-colors duration-150 hover:text-sidebar-foreground" />
             </div>
           </SidebarMenuItem>
