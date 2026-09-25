@@ -23,7 +23,7 @@ function PureSuggestedActions({ chatId, sendMessage }: SuggestedActionsProps) {
     >
       {suggestedActions.map((suggestedAction, index) => (
         <Suggestion
-          className="fade-up flex w-full cursor-pointer items-center gap-2 bg-card p-3 shadow-[inset_0_0_0_1px_var(--ee-wisis-pink)] text-left font-normal text-[14px] text-ee-tundora leading-[21px] transition-colors duration-200 hover:bg-ee-pearl-pink hover:font-medium"
+          className="fade-up flex w-full cursor-pointer items-center gap-2 bg-card p-3 shadow-[inset_0_0_0_1px_var(--ee-wisis-pink)] text-left font-normal text-[14px] text-ee-tundora leading-[21px] transition-colors duration-200 hover:bg-ee-pearl-pink hover:font-medium dark:text-card-foreground dark:hover:bg-accent"
           key={suggestedAction}
           onClick={(suggestion) => {
             window.history.pushState(
