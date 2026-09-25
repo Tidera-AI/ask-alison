@@ -1,6 +1,8 @@
 import { z } from "zod";
+import { requiresEmailGate } from "@/lib/chat/email-gate";
 import { resolveTranscriptSource } from "@/lib/chat/transcript-source";
 import {
+  countUserMessagesForUser,
   getChatById,
   getChatsByUserId,
   getMessagesByChatId,
@@ -9,6 +11,8 @@ import {
 } from "@/lib/db/queries";
 import { ChatbotError } from "@/lib/errors";
 import { deliverLeadCapture } from "@/lib/google/lead-capture";
+import { logSecurityEvent } from "@/lib/security/audit-log";
+import { isAllowedMutatingOrigin } from "@/lib/security/origin";
 import {
   getOrCreateSessionUserId,
   setPersistentSessionUserId,
@@ -20,6 +24,14 @@ const captureEmailSchema = z.object({
 });
 
 export async function POST(request: Request) {
+  // Session cookies are SameSite=None for the iframe widget, so without this
+  // a cross-site page could submit its own address and receive the visitor's
+  // transcript.
+  if (!isAllowedMutatingOrigin(request.headers)) {
+    logSecurityEvent("origin_denied", { surface: "capture_email" });
+    return new ChatbotError("forbidden:chat").toResponse();
+  }
+
   const body = await request.json();
   const parsed = captureEmailSchema.safeParse(body);
 
@@ -41,6 +53,18 @@ export async function POST(request: Request) {
     if (user.email) {
       await setPersistentSessionUserId(userId);
       return Response.json({ success: true });
+    }
+
+    // Only a session the chat route would actually gate may capture, so a
+    // fresh session can't manufacture leads or trigger transcript emails.
+    const userMessageCount = await countUserMessagesForUser(userId);
+    if (
+      !requiresEmailGate({
+        email: user.email,
+        userMessageCountInSession: userMessageCount,
+      })
+    ) {
+      return new ChatbotError("bad_request:email_gate").toResponse();
     }
 
     const email = parsed.data.email.toLowerCase();

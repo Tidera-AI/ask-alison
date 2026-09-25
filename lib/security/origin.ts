@@ -28,9 +28,24 @@ function hostFromUrl(value: string): string | null {
   }
 }
 
+/**
+ * This project's Vercel preview deployments, e.g.
+ * ask-alison-<hash>-elevateetiquettes-projects.vercel.app. The team suffix is
+ * reserved by Vercel, so unlike a bare `*.vercel.app` match, nobody else can
+ * deploy a site that passes this check.
+ */
+const PREVIEW_HOST_PREFIX = "ask-alison-";
+const PREVIEW_HOST_SUFFIX = "-elevateetiquettes-projects.vercel.app";
+
+function isProjectPreviewHost(hostname: string): boolean {
+  return (
+    hostname.startsWith(PREVIEW_HOST_PREFIX) &&
+    hostname.endsWith(PREVIEW_HOST_SUFFIX)
+  );
+}
+
 function isAllowedHost(hostname: string): boolean {
-  const allowed = allowedHosts();
-  return allowed.has(hostname) || hostname.endsWith(".vercel.app");
+  return allowedHosts().has(hostname) || isProjectPreviewHost(hostname);
 }
 
 export function isAllowedMutatingOrigin(headers: Headers): boolean {
