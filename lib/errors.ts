@@ -115,6 +115,8 @@ export function getMessageByErrorCode(errorCode: ErrorCode): string {
       return "Enter your email to continue the conversation.";
     case "bad_request:email_gate":
       return "Please enter a valid email address.";
+    case "internal:email_gate":
+      return "We couldn't save your email just now. Please try again.";
 
     case "not_found:document":
       return "The requested document was not found. Please check the document ID and try again.";

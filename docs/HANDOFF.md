@@ -41,6 +41,9 @@ Managed via the Vercel dashboard or `vercel env`. Currently set:
 - Supabase: `SUPABASE_URL`, `SUPABASE_ANON_KEY`, `SUPABASE_SERVICE_ROLE_KEY`, `SUPABASE_JWT_SECRET`, `SUPABASE_PUBLISHABLE_KEY`, `SUPABASE_SECRET_KEY`, and `NEXT_PUBLIC_*` variants
 - Postgres (Production only): `POSTGRES_URL`, `POSTGRES_PRISMA_URL`, `POSTGRES_URL_NON_POOLING`, `POSTGRES_USER/HOST/PASSWORD/DATABASE`
 - `INGEST_SECRET` — auth for `POST /api/ingest` (Production + Preview)
+- **Lead capture (required, Production):** `GOOGLE_CLIENT_ID`, `GOOGLE_CLIENT_SECRET`, `GOOGLE_REFRESH_TOKEN`, `GOOGLE_SENDER_EMAIL`, `SUBSCRIBER_SHEET_ID`. Used by `lib/google/lead-capture.ts` to email the transcript (Gmail) and append the subscriber row (Sheets). The Google OAuth app must be **In production**, not Testing — Testing-mode refresh tokens expire after 7 days. Redeploy after changing any of them, then smoke-test the email gate.
+
+**Lead capture is best-effort after the email is saved.** `POST /api/capture-email` saves the visitor's email on the `user` row (`email`, `email_timestamptz`) *before* calling Google, so a Google outage, timeout or missing config never blocks the visitor or loses the lead. Each attempt logs one `lead_delivery` JSON line (error level when anything failed) with `sheet` / `transcript` status: `delivered`, `failed`, `skipped` (OAuth or config), or `timeout` (**outcome unknown** — Google may have accepted it; check before resending). To reconcile: search Vercel logs for `"lead_delivery","ok":false`, or compare `user` rows with a non-null `email` against the Subscribers sheet. There is no automatic retry. A corrected address gets its own Sheet row, so the superseded row may need manual cleanup.
 
 **Gotchas:**
 - Several vars are Production-only. Preview builds fail with `Missing SUPABASE_URL` unless vars are extended to the Preview environment.
