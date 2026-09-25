@@ -326,15 +326,6 @@ export async function POST(request: Request) {
             chunking: "word",
             delayInMs: null,
           }),
-          // A model failure inside the stream never reaches the outer catch
-          // and skips onFinish, so no answer is saved: drop the question too.
-          onError: async ({ error }) => {
-            console.error("Chat stream error:", error);
-            await rollbackFailedTurn(
-              { chatId, userMessageId },
-              { deleteMessage: deleteMessageById }
-            );
-          },
           onFinish: async ({ text }) => {
             // Phase 1: persist the streamed answer as shown to the user.
             // Still detect copy overlap for monitoring, but do not replace the
