@@ -38,18 +38,28 @@ export async function getOrCreateUser(userId: string) {
   return created;
 }
 
-export async function setUserEmail(userId: string, email: string) {
-  const { data, error } = await supabase
+/**
+ * Save the visitor's email only if it still equals `previous` (null = none
+ * yet). Returns false when a concurrent request changed it first, so only
+ * one request goes on to deliver the lead.
+ */
+export async function claimUserEmail(
+  userId: string,
+  previous: string | null,
+  email: string
+): Promise<boolean> {
+  const update = supabase
     .from("user")
     .update({ email, email_timestamptz: new Date().toISOString() })
-    .eq("id", userId)
-    .select()
-    .single();
+    .eq("id", userId);
+  const guarded =
+    previous === null ? update.is("email", null) : update.eq("email", previous);
+  const { data, error } = await guarded.select("id").maybeSingle();
 
   if (error) {
     throw new Error(`Failed to save email: ${error.message}`);
   }
-  return data;
+  return data !== null;
 }
 
 export async function countUserMessagesForUser(

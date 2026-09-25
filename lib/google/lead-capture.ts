@@ -5,6 +5,25 @@ type TranscriptMessage = {
 
 const TRANSCRIPT_SUBJECT = "Your conversation with Elevate Etiquette";
 
+/** Delivery runs inline in the request, so every Google call is bounded. */
+const OAUTH_TIMEOUT_MS = 2000;
+const STEP_TIMEOUT_MS = 3000;
+
+/** `timeout` means the outcome is unknown: Google may still have accepted it. */
+export type DeliveryStatus = "delivered" | "failed" | "timeout" | "skipped";
+
+export type DeliveryStepResult = {
+  status: DeliveryStatus;
+  durationMs: number;
+  /** Sanitized: status codes and config names only, never addresses. */
+  error?: string;
+};
+
+export type LeadDeliveryResult = {
+  sheet: DeliveryStepResult;
+  transcript: DeliveryStepResult;
+};
+
 function getRequiredEnv(name: string): string {
   const value = process.env[name];
   if (!value) {
@@ -23,6 +42,7 @@ async function getGoogleAccessToken(): Promise<string> {
       refresh_token: getRequiredEnv("GOOGLE_REFRESH_TOKEN"),
       grant_type: "refresh_token",
     }),
+    signal: AbortSignal.timeout(OAUTH_TIMEOUT_MS),
   });
 
   if (!response.ok) {
@@ -116,6 +136,7 @@ async function sendTranscriptEmail({
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ raw }),
+      signal: AbortSignal.timeout(STEP_TIMEOUT_MS),
     }
   );
 
@@ -148,6 +169,7 @@ async function appendSubscriber({
       body: JSON.stringify({
         values: [[email, true, "chatbot", chatId, capturedAt, "subscribed"]],
       }),
+      signal: AbortSignal.timeout(STEP_TIMEOUT_MS),
     }
   );
 
@@ -158,6 +180,36 @@ async function appendSubscriber({
   }
 }
 
+function isTimeout(error: unknown): boolean {
+  return (
+    error instanceof Error &&
+    (error.name === "TimeoutError" || error.name === "AbortError")
+  );
+}
+
+function describeError(error: unknown): string {
+  return error instanceof Error ? error.message : "Unknown error";
+}
+
+async function runStep(step: () => Promise<void>): Promise<DeliveryStepResult> {
+  const started = Date.now();
+  try {
+    await step();
+    return { status: "delivered", durationMs: Date.now() - started };
+  } catch (error) {
+    return {
+      status: isTimeout(error) ? "timeout" : "failed",
+      durationMs: Date.now() - started,
+      error: describeError(error),
+    };
+  }
+}
+
+/**
+ * Best-effort: never rejects. Adds the subscriber row and sends the
+ * transcript independently, reporting each outcome, so one failing (or a
+ * missing config) can't hide the other or block the visitor.
+ */
 export async function deliverLeadCapture({
   chatId,
   email,
@@ -166,12 +218,24 @@ export async function deliverLeadCapture({
   chatId: string;
   email: string;
   messages: TranscriptMessage[];
-}): Promise<void> {
-  const accessToken = await getGoogleAccessToken();
-  const capturedAt = new Date().toISOString();
+}): Promise<LeadDeliveryResult> {
+  const started = Date.now();
+  let accessToken: string;
+  try {
+    accessToken = await getGoogleAccessToken();
+  } catch (error) {
+    const skipped: DeliveryStepResult = {
+      status: "skipped",
+      durationMs: Date.now() - started,
+      error: `OAuth ${isTimeout(error) ? "timed out" : "failed"}: ${describeError(error)}`,
+    };
+    return { sheet: skipped, transcript: skipped };
+  }
 
-  await Promise.all([
-    appendSubscriber({ accessToken, chatId, email, capturedAt }),
-    sendTranscriptEmail({ accessToken, email, messages }),
+  const capturedAt = new Date().toISOString();
+  const [sheet, transcript] = await Promise.all([
+    runStep(() => appendSubscriber({ accessToken, chatId, email, capturedAt })),
+    runStep(() => sendTranscriptEmail({ accessToken, email, messages })),
   ]);
+  return { sheet, transcript };
 }
