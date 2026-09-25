@@ -24,7 +24,7 @@ export function EmailGate({
     setIsSubmitting(true);
 
     try {
-      await fetchWithErrorHandlers(
+      const response = await fetchWithErrorHandlers(
         `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/api/capture-email`,
         {
           method: "POST",
@@ -32,7 +32,11 @@ export function EmailGate({
           body: JSON.stringify({ chatId, email }),
         }
       );
-      toast.success("Thanks! You can continue the conversation.");
+      // captured: false means the gate went stale; just resume the chat.
+      const { captured } = (await response.json()) as { captured?: boolean };
+      if (captured !== false) {
+        toast.success("Thanks! You can continue the conversation.");
+      }
       onCaptured();
     } catch (err) {
       if (err instanceof ChatbotError) {
