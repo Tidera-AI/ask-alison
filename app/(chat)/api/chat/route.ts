@@ -14,19 +14,20 @@ import {
   trackRetrieval,
 } from "@/lib/analytics/track";
 import { requiresEmailGate } from "@/lib/chat/email-gate";
+import { type FailedTurn, rollbackFailedTurn } from "@/lib/chat/failed-turn";
 import {
   createStaticReplyStream,
-  generateChatTitle,
+  updateChatTitleBestEffort,
 } from "@/lib/chat/static-reply";
 import {
   countUserMessagesForUser,
   deleteChatById,
+  deleteMessageById,
   getChatById,
   getMessagesByChatId,
   getOrCreateUser,
   saveChat,
   saveMessage,
-  updateChatTitle,
 } from "@/lib/db/queries";
 import { ChatbotError } from "@/lib/errors";
 import { checkCopyViolation } from "@/lib/rag/copy-guard";
@@ -145,6 +146,10 @@ export async function POST(request: Request) {
     return new ChatbotError("bad_request:chat").toResponse();
   }
 
+  // What this request has persisted, so a failure before streaming starts
+  // can undo it (see rollbackFailedTurn).
+  let persisted: FailedTurn | null = null;
+
   try {
     const userId = await getOrCreateSessionUserId();
     const clientIp = getClientIp(request);
@@ -164,6 +169,11 @@ export async function POST(request: Request) {
     )
       ? generateEmbedding(userText)
       : null;
+    // Observe a rejection immediately: a fast gateway error would otherwise
+    // be reported as an unhandled rejection before any later await or
+    // early return attaches a handler. Awaiting the original promise below
+    // still surfaces the error to the catch.
+    earlyEmbeddingPromise?.catch(() => undefined);
 
     const [bootstrapResults, skipRetrieval] = await Promise.all([
       Promise.all([
@@ -212,6 +222,12 @@ export async function POST(request: Request) {
         user_id: userId,
         title: "New conversation",
       });
+      persisted = {
+        chatId,
+        userId,
+        createdChat: true,
+        savedUserMessageId: null,
+      };
     }
 
     const { conversationHistory, priorTurns } = buildConversationHistory(
@@ -220,12 +236,15 @@ export async function POST(request: Request) {
     );
 
     const userMessageId = randomUUID();
+    persisted = {
+      chatId,
+      userId,
+      createdChat: isNewChat,
+      savedUserMessageId: userMessageId,
+    };
 
     if (isExtractionAttempt(userText)) {
       logSecurityEvent("input_guard", { chatId, userId });
-      earlyEmbeddingPromise?.catch(() => {
-        /* discarded — extraction attempt short-circuits retrieval */
-      });
       await saveMessage({
         id: userMessageId,
         chat_id: chatId,
@@ -257,10 +276,6 @@ export async function POST(request: Request) {
     let precomputedEmbedding: number[] | undefined;
     if (!skipRetrieval && priorTurns.length === 0 && earlyEmbeddingPromise) {
       precomputedEmbedding = await earlyEmbeddingPromise;
-    } else if (earlyEmbeddingPromise) {
-      earlyEmbeddingPromise.catch(() => {
-        /* discarded — follow-up-style history on a flagged first message */
-      });
     }
 
     const chunks = skipRetrieval
@@ -367,7 +382,7 @@ export async function POST(request: Request) {
             }
 
             if (isNewChat) {
-              await updateChatTitle(chatId, await generateChatTitle(userText));
+              await updateChatTitleBestEffort(chatId, userText);
             }
           },
         });
@@ -379,6 +394,12 @@ export async function POST(request: Request) {
     return createUIMessageStreamResponse({ stream });
   } catch (error) {
     console.error("Chat API error:", error);
+    if (persisted) {
+      await rollbackFailedTurn(persisted, {
+        deleteChat: deleteChatById,
+        deleteMessage: deleteMessageById,
+      });
+    }
     return new ChatbotError("internal:chat").toResponse();
   }
 }

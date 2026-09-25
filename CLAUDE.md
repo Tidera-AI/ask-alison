@@ -89,8 +89,8 @@ for latency:
 2. Zod parse (`./schema.ts`), session id, in-memory rate limit (`lib/rate-limit.ts` — per-process Map,
    so it resets on every serverless cold start).
 3. **Speculative embedding**: if this is the first message *and* `isRetrievalCertain()` says retrieval
-   will definitely run, `generateEmbedding` is kicked off before the DB round-trip. Every branch that
-   abandons it must `.catch()` the promise — there are three such sites.
+   will definitely run, `generateEmbedding` is kicked off before the DB round-trip. A no-op `.catch()` is
+   attached the moment it's created, so a fast gateway error can't surface as an unhandled rejection.
 4. Bootstrap fan-out: user/chat/messages/message-count in one `Promise.all`, racing `shouldSkipRetrieval()`.
 5. Ownership check → email gate → `isExtractionAttempt()` (`lib/rag/input-guard.ts`), which short-circuits
    to a canned refusal streamed by `lib/chat/static-reply.ts` — no model call.
@@ -100,7 +100,11 @@ for latency:
 8. Sources (or a `no-context` notice) are written to the UI stream **before** `streamText` starts, so
    citations render ahead of the answer.
 9. `onFinish`: copy-guard check (logged only, see below), persist the assistant message with its sources,
-   optional faithfulness eval, title generation for new chats.
+   optional faithfulness eval, best-effort title generation for new chats.
+
+If anything throws before the stream starts, the outer catch calls `rollbackFailedTurn`
+(`lib/chat/failed-turn.ts`) to delete the chat or user message this request saved. Otherwise the unanswered
+message counts toward the email gate and the visitor hits the gate on retry.
 
 **Copy guard is monitor-only.** `checkCopyViolation` used to replace the answer with a refusal, which
 caused the saved message to differ from what the user saw on refresh. It now only calls `logSecurityEvent`

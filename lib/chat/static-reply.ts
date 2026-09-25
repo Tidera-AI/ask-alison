@@ -15,6 +15,27 @@ export async function generateChatTitle(userText: string): Promise<string> {
   return result.text.trim();
 }
 
+/**
+ * Titles are cosmetic: a failed model call or DB write keeps the default
+ * "New conversation" title instead of failing an answer already delivered.
+ */
+export async function updateChatTitleBestEffort(
+  chatId: string,
+  userText: string
+): Promise<void> {
+  try {
+    const title = await generateChatTitle(userText);
+    if (title) {
+      await updateChatTitle(chatId, title);
+    }
+  } catch (error) {
+    console.error("Chat title generation failed, keeping default:", {
+      chatId,
+      error,
+    });
+  }
+}
+
 export function createStaticReplyStream(args: {
   chatId: string;
   text: string;
@@ -58,7 +79,7 @@ export function createStaticReplyStream(args: {
       });
 
       if (isNewChat) {
-        await updateChatTitle(chatId, await generateChatTitle(userText));
+        await updateChatTitleBestEffort(chatId, userText);
       }
     },
   });
