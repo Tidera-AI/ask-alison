@@ -82,6 +82,24 @@ export async function countUserMessagesForUser(
   return count ?? 0;
 }
 
+/** Id of the user's chat holding their most recent message, or null. */
+export async function findLatestChatWithMessages(
+  userId: string
+): Promise<string | null> {
+  const { data, error } = await supabase
+    .from("message")
+    .select("chat_id, chat!inner(user_id)")
+    .eq("chat.user_id", userId)
+    .order("created_at", { ascending: false })
+    .limit(1)
+    .maybeSingle();
+
+  if (error) {
+    throw new Error(`Failed to find latest chat: ${error.message}`);
+  }
+  return data?.chat_id ?? null;
+}
+
 // --- Chat ---
 
 export async function saveChat({

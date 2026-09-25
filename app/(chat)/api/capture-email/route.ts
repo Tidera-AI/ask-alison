@@ -3,8 +3,8 @@ import { requiresEmailGate } from "@/lib/chat/email-gate";
 import { resolveTranscriptSource } from "@/lib/chat/transcript-source";
 import {
   countUserMessagesForUser,
+  findLatestChatWithMessages,
   getChatById,
-  getChatsByUserId,
   getMessagesByChatId,
   getOrCreateUser,
   setUserEmail,
@@ -70,7 +70,10 @@ export async function POST(request: Request) {
     const email = parsed.data.email.toLowerCase();
     const transcript = await resolveTranscriptSource(
       { requestedChatId: parsed.data.chatId, requestedChat: chat, userId },
-      { listUserChats: getChatsByUserId, getMessages: getMessagesByChatId }
+      {
+        findLatestChatWithMessages,
+        getMessages: getMessagesByChatId,
+      }
     );
     if (!transcript.ok) {
       return new ChatbotError("forbidden:chat").toResponse();
