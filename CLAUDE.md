@@ -102,9 +102,11 @@ for latency:
 9. `onFinish`: copy-guard check (logged only, see below), persist the assistant message with its sources,
    optional faithfulness eval, best-effort title generation for new chats.
 
-If anything throws before the stream starts, the outer catch calls `rollbackFailedTurn`
-(`lib/chat/failed-turn.ts`) to delete the chat or user message this request saved. Otherwise the unanswered
-message counts toward the email gate and the visitor hits the gate on retry.
+If a request fails without saving an answer — a throw before the stream starts (outer catch) or a model
+error inside the stream (`streamText` `onError`, which skips `onFinish`) — `rollbackFailedTurn`
+(`lib/chat/failed-turn.ts`) deletes the user message it saved. Otherwise the unanswered message counts toward
+the email gate and the visitor hits the gate on retry. It never deletes the chat: the cascade could remove
+another request's messages.
 
 **Copy guard is monitor-only.** `checkCopyViolation` used to replace the answer with a refusal, which
 caused the saved message to differ from what the user saw on refresh. It now only calls `logSecurityEvent`

@@ -14,7 +14,7 @@ import {
   trackRetrieval,
 } from "@/lib/analytics/track";
 import { requiresEmailGate } from "@/lib/chat/email-gate";
-import { type FailedTurn, rollbackFailedTurn } from "@/lib/chat/failed-turn";
+import { rollbackFailedTurn } from "@/lib/chat/failed-turn";
 import {
   createStaticReplyStream,
   updateChatTitleBestEffort,
@@ -146,9 +146,9 @@ export async function POST(request: Request) {
     return new ChatbotError("bad_request:chat").toResponse();
   }
 
-  // What this request has persisted, so a failure before streaming starts
-  // can undo it (see rollbackFailedTurn).
-  let persisted: FailedTurn | null = null;
+  // Set once this request may have saved the user message, so a failure
+  // before an answer is saved can delete it (see rollbackFailedTurn).
+  let savedUserMessageId: string | null = null;
 
   try {
     const userId = await getOrCreateSessionUserId();
@@ -222,12 +222,6 @@ export async function POST(request: Request) {
         user_id: userId,
         title: "New conversation",
       });
-      persisted = {
-        chatId,
-        userId,
-        createdChat: true,
-        savedUserMessageId: null,
-      };
     }
 
     const { conversationHistory, priorTurns } = buildConversationHistory(
@@ -236,12 +230,7 @@ export async function POST(request: Request) {
     );
 
     const userMessageId = randomUUID();
-    persisted = {
-      chatId,
-      userId,
-      createdChat: isNewChat,
-      savedUserMessageId: userMessageId,
-    };
+    savedUserMessageId = userMessageId;
 
     if (isExtractionAttempt(userText)) {
       logSecurityEvent("input_guard", { chatId, userId });
@@ -337,6 +326,15 @@ export async function POST(request: Request) {
             chunking: "word",
             delayInMs: null,
           }),
+          // A model failure inside the stream never reaches the outer catch
+          // and skips onFinish, so no answer is saved: drop the question too.
+          onError: async ({ error }) => {
+            console.error("Chat stream error:", error);
+            await rollbackFailedTurn(
+              { chatId, userMessageId },
+              { deleteMessage: deleteMessageById }
+            );
+          },
           onFinish: async ({ text }) => {
             // Phase 1: persist the streamed answer as shown to the user.
             // Still detect copy overlap for monitoring, but do not replace the
@@ -394,11 +392,11 @@ export async function POST(request: Request) {
     return createUIMessageStreamResponse({ stream });
   } catch (error) {
     console.error("Chat API error:", error);
-    if (persisted) {
-      await rollbackFailedTurn(persisted, {
-        deleteChat: deleteChatById,
-        deleteMessage: deleteMessageById,
-      });
+    if (savedUserMessageId) {
+      await rollbackFailedTurn(
+        { chatId, userMessageId: savedUserMessageId },
+        { deleteMessage: deleteMessageById }
+      );
     }
     return new ChatbotError("internal:chat").toResponse();
   }
