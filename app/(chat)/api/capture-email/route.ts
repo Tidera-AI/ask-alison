@@ -1,6 +1,8 @@
 import { z } from "zod";
+import { resolveTranscriptSource } from "@/lib/chat/transcript-source";
 import {
   getChatById,
+  getChatsByUserId,
   getMessagesByChatId,
   getOrCreateUser,
   setUserEmail,
@@ -32,7 +34,7 @@ export async function POST(request: Request) {
       getChatById(parsed.data.chatId),
     ]);
 
-    if (!chat || chat.user_id !== userId) {
+    if (chat && chat.user_id !== userId) {
       return new ChatbotError("forbidden:chat").toResponse();
     }
 
@@ -42,12 +44,18 @@ export async function POST(request: Request) {
     }
 
     const email = parsed.data.email.toLowerCase();
-    const messages = await getMessagesByChatId(parsed.data.chatId);
+    const transcript = await resolveTranscriptSource(
+      { requestedChatId: parsed.data.chatId, requestedChat: chat, userId },
+      { listUserChats: getChatsByUserId, getMessages: getMessagesByChatId }
+    );
+    if (!transcript.ok) {
+      return new ChatbotError("forbidden:chat").toResponse();
+    }
 
     await deliverLeadCapture({
-      chatId: parsed.data.chatId,
+      chatId: transcript.chatId,
       email,
-      messages,
+      messages: transcript.messages,
     });
     await setUserEmail(userId, email);
     await setPersistentSessionUserId(userId);
