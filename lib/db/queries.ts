@@ -212,6 +212,18 @@ export async function saveMessage({
   throw new Error(`Failed to save message: ${error.message}`);
 }
 
+export async function deleteMessageById(messageId: string, chatId: string) {
+  const { error } = await supabase
+    .from("message")
+    .delete()
+    .eq("id", messageId)
+    .eq("chat_id", chatId);
+
+  if (error) {
+    throw new Error(`Failed to delete message: ${error.message}`);
+  }
+}
+
 export async function saveMessages(
   messages: Array<{
     id: string;
