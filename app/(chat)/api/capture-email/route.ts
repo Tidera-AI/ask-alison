@@ -52,11 +52,14 @@ export async function POST(request: Request) {
 
     if (user.email) {
       await setPersistentSessionUserId(userId);
-      return Response.json({ success: true });
+      return Response.json({ success: true, captured: true });
     }
 
     // Only a session the chat route would actually gate may capture, so a
     // fresh session can't manufacture leads or trigger transcript emails.
+    // A gate can also go stale while shown (e.g. the visitor deletes the chat
+    // holding their free question); report that without side effects so the
+    // client can dismiss the gate and resume.
     const userMessageCount = await countUserMessagesForUser(userId);
     if (
       !requiresEmailGate({
@@ -64,7 +67,7 @@ export async function POST(request: Request) {
         userMessageCountInSession: userMessageCount,
       })
     ) {
-      return new ChatbotError("bad_request:email_gate").toResponse();
+      return Response.json({ success: true, captured: false });
     }
 
     const email = parsed.data.email.toLowerCase();
@@ -87,7 +90,7 @@ export async function POST(request: Request) {
     await setUserEmail(userId, email);
     await setPersistentSessionUserId(userId);
 
-    return Response.json({ success: true });
+    return Response.json({ success: true, captured: true });
   } catch (error) {
     console.error("Capture email error:", error);
     return new ChatbotError("internal:chat").toResponse();

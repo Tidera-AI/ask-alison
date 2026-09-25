@@ -58,6 +58,7 @@ describe("POST /api/capture-email", () => {
   it("captures the email when the gated chat is not saved yet", async () => {
     const res = await post();
     expect(res.status).toBe(200);
+    expect(await res.json()).toEqual({ success: true, captured: true });
     expect(deliverLeadCapture).toHaveBeenCalledWith({
       chatId: "c0",
       email: "guest@example.com",
@@ -74,10 +75,11 @@ describe("POST /api/capture-email", () => {
     expect(db.setUserEmail).not.toHaveBeenCalled();
   });
 
-  it("rejects a session that has not reached the email gate", async () => {
+  it("captures nothing when the session no longer needs the gate", async () => {
     db.countUserMessagesForUser.mockResolvedValue(0);
     const res = await post();
-    expect(res.status).toBe(400);
+    expect(res.status).toBe(200);
+    expect(await res.json()).toEqual({ success: true, captured: false });
     expect(deliverLeadCapture).not.toHaveBeenCalled();
     expect(db.setUserEmail).not.toHaveBeenCalled();
   });
