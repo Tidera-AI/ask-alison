@@ -1,6 +1,3 @@
-/** How many of the user's recent chats to search for a non-empty transcript. */
-const MAX_FALLBACK_CHATS = 5;
-
 export type TranscriptSourceInput = {
   requestedChatId: string;
   /** The chat the email gate was shown in, or null if it isn't saved yet. */
@@ -9,8 +6,8 @@ export type TranscriptSourceInput = {
 };
 
 export type TranscriptSourceDeps<M> = {
-  /** The user's chats, newest first. */
-  listUserChats: (userId: string) => Promise<{ id: string }[]>;
+  /** Id of the user's most recent chat that contains a message, or null. */
+  findLatestChatWithMessages: (userId: string) => Promise<string | null>;
   getMessages: (chatId: string) => Promise<M[]>;
 };
 
@@ -23,9 +20,9 @@ export type TranscriptSource<M> =
  *
  * The chat route checks the gate before it saves a new chat, so a visitor
  * whose second question starts a new chat submits a chat id that doesn't
- * exist yet. Refusing that locked those visitors out of the email gate.
- * Only a chat owned by someone else is refused; otherwise use the requested
- * chat if it has messages, else the visitor's latest chat that does.
+ * exist yet (and failed requests can leave empty chats behind). Only a chat
+ * owned by someone else is refused. The transcript is the requested chat when
+ * it has messages, else the visitor's latest chat that does.
  */
 export async function resolveTranscriptSource<M>(
   { requestedChatId, requestedChat, userId }: TranscriptSourceInput,
@@ -42,16 +39,10 @@ export async function resolveTranscriptSource<M>(
     }
   }
 
-  const candidates = (await deps.listUserChats(userId))
-    .filter((chat) => chat.id !== requestedChat?.id)
-    .slice(0, MAX_FALLBACK_CHATS);
-
-  for (const chat of candidates) {
-    const messages = await deps.getMessages(chat.id);
-    if (messages.length > 0) {
-      return { ok: true, chatId: chat.id, messages };
-    }
+  const chatId = await deps.findLatestChatWithMessages(userId);
+  if (!chatId) {
+    return { ok: true, chatId: requestedChatId, messages: [] };
   }
 
-  return { ok: true, chatId: requestedChatId, messages: [] };
+  return { ok: true, chatId, messages: await deps.getMessages(chatId) };
 }

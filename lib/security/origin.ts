@@ -20,17 +20,26 @@ function allowedHosts(): Set<string> {
   return hosts;
 }
 
-function hostFromUrl(value: string): string | null {
+function parseUrl(value: string): URL | null {
   try {
-    return new URL(value).hostname;
+    return new URL(value);
   } catch {
     return null;
   }
 }
 
-function isAllowedHost(hostname: string): boolean {
-  const allowed = allowedHosts();
-  return allowed.has(hostname) || hostname.endsWith(".vercel.app");
+/**
+ * Allowed when the caller's origin is this deployment itself (the chat UI,
+ * including inside the widget iframe, is served by the app, so its requests
+ * are same-origin on every production and preview URL) or an exact
+ * allowlisted host. Browsers don't let a page forge Origin/Referer, so a
+ * cross-site page can't pass. Hostname patterns such as `*.vercel.app` are
+ * deliberately not trusted: anyone can deploy there.
+ */
+function isAllowedSource(source: URL, requestHost: string | null): boolean {
+  // Same-origin compares host:port; allowlisted names are domains we
+  // control, so any port on them is fine (e.g. localhost:3000).
+  return source.host === requestHost || allowedHosts().has(source.hostname);
 }
 
 export function isAllowedMutatingOrigin(headers: Headers): boolean {
@@ -38,17 +47,12 @@ export function isAllowedMutatingOrigin(headers: Headers): boolean {
     return true;
   }
 
-  const origin = headers.get("origin");
-  if (origin) {
-    const host = hostFromUrl(origin);
-    return host !== null && isAllowedHost(host);
+  const requestHost = headers.get("host")?.toLowerCase() ?? null;
+  const source = headers.get("origin") ?? headers.get("referer");
+  if (!source) {
+    return false;
   }
 
-  const referer = headers.get("referer");
-  if (referer) {
-    const host = hostFromUrl(referer);
-    return host !== null && isAllowedHost(host);
-  }
-
-  return false;
+  const url = parseUrl(source);
+  return url !== null && isAllowedSource(url, requestHost);
 }
