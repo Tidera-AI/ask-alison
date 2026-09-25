@@ -3,7 +3,7 @@ import { beforeEach, describe, expect, it, vi } from "vitest";
 const db = {
   getOrCreateUser: vi.fn(),
   getChatById: vi.fn(),
-  getChatsByUserId: vi.fn(),
+  findLatestChatWithMessages: vi.fn(),
   getMessagesByChatId: vi.fn(),
   countUserMessagesForUser: vi.fn(),
   setUserEmail: vi.fn(),
@@ -47,7 +47,7 @@ describe("POST /api/capture-email", () => {
     allowedOrigin.mockReset().mockReturnValue(true);
     db.getOrCreateUser.mockResolvedValue({ id: "u1", email: null });
     db.getChatById.mockResolvedValue(null);
-    db.getChatsByUserId.mockResolvedValue([{ id: "c0" }]);
+    db.findLatestChatWithMessages.mockResolvedValue("c0");
     db.getMessagesByChatId.mockImplementation((id: string) =>
       Promise.resolve(id === "c0" ? [q] : [])
     );
